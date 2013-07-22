@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'MasonryTests' target in the 'Masonry' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+
+    #import "Specta.h"
+
+    #define EXP_SHORTHAND
+    #import "Expecta.h"
+    #undef equal
+    #define ex_equal(expected) _equal(EXPObjectify((expected)))
+
+    #define HC_SHORTHAND
+    #import <OCHamcrest/OCHamcrest.h>
+
+    #define MOCKITO_SHORTHAND
+    #import <OCMockito/OCMockito.h>
+#endif
