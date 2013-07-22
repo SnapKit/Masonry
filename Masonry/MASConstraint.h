@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+enum {
+    MASLayoutPriorityRequired = UILayoutPriorityRequired,
+    MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh,
+    MASLayoutPriorityDefaultMedium = 500,
+    MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow,
+    MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel,
+};
+typedef float MASLayoutPriority;
+
 @protocol MASConstraint <NSObject>
 
 @property (nonatomic, copy, readonly) id<MASConstraint> (^insets)(UIEdgeInsets insets);
@@ -16,6 +25,9 @@
 @property (nonatomic, copy, readonly) id<MASConstraint> (^offset)(CGFloat offset);
 @property (nonatomic, copy, readonly) id<MASConstraint> (^percent)(CGFloat percent);
 @property (nonatomic, copy, readonly) id<MASConstraint> (^priority)(UILayoutPriority priority);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^priorityLow)();
+@property (nonatomic, copy, readonly) id<MASConstraint> (^priorityMedium)();
+@property (nonatomic, copy, readonly) id<MASConstraint> (^priorityHigh)();
 @property (nonatomic, copy, readonly) id<MASConstraint> (^equal)(id attr);
 @property (nonatomic, copy, readonly) id<MASConstraint> (^greaterThanOrEqual)(id attr);
 @property (nonatomic, copy, readonly) id<MASConstraint> (^lessThanOrEqual)(id attr);

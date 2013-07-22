@@ -13,7 +13,7 @@
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
 @property (nonatomic, strong) NSLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
-@property (nonatomic, assign) UILayoutPriority layoutPriority;
+@property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;
 @property (nonatomic, assign) CGFloat layoutConstant;
 @property (nonatomic, assign) BOOL hasLayoutRelation;
@@ -27,7 +27,7 @@
     if (!self) return nil;
     
     _firstViewAttribute = firstViewAttribute;
-    self.layoutPriority = UILayoutPriorityRequired;
+    self.layoutPriority = MASLayoutPriorityRequired;
     self.layoutMultiplier = 1;
     
     return self;
@@ -141,12 +141,33 @@
 
 #pragma mark - layout priority
 
-- (id<MASConstraint> (^)(UILayoutPriority))priority {
-    return ^id(UILayoutPriority priority) {
+- (id<MASConstraint> (^)(MASLayoutPriority))priority {
+    return ^id(MASLayoutPriority priority) {
         NSAssert(!self.hasBeenCommitted,
                  @"Cannot modify constraint priority after it has been committed");
         
         self.layoutPriority = priority;
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityLow {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultLow);
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityMedium {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultMedium);
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityHigh {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultHigh);
         return self;
     };
 }

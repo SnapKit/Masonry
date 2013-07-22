@@ -122,11 +122,32 @@
 
 #pragma mark - layout priority
 
-- (id<MASConstraint> (^)(UILayoutPriority))priority {
-    return ^id(UILayoutPriority priority) {
+- (id<MASConstraint> (^)(MASLayoutPriority))priority {
+    return ^id(MASLayoutPriority priority) {
         for (id<MASConstraint> constraint in self.currentChildConstraints) {
             constraint.priority(priority);
         }
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityLow {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultLow);
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityMedium {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultMedium);
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)())priorityHigh {
+    return ^id{
+        self.priority(MASLayoutPriorityDefaultHigh);
         return self;
     };
 }
