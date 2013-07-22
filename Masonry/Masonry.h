@@ -7,5 +7,9 @@
 //
 
 #import "UIView+MASAdditions.h"
+#import "UIView+MASShorthandAdditions.h"
+#import "MASConstraint.h"
+#import "MASCompositeConstraint.h"
+#import "MASViewAttribute.h"
 #import "MASViewConstraint.h"
 #import "MASConstraintBuilder.h"

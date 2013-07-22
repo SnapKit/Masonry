@@ -10,15 +10,15 @@
 
 @protocol MASConstraint <NSObject>
 
-@property (nonatomic, strong, readonly) id<MASConstraint> (^insets)(UIEdgeInsets insets);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^sizeOffset)(CGSize offset);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^centerOffset)(CGPoint offset);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^offset)(CGFloat offset);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^percent)(CGFloat percent);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^priority)(UILayoutPriority priority);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^equal)(id attr);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^greaterThanOrEqual)(id attr);
-@property (nonatomic, strong, readonly) id<MASConstraint> (^lessThanOrEqual)(id attr);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^insets)(UIEdgeInsets insets);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^sizeOffset)(CGSize offset);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^centerOffset)(CGPoint offset);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^offset)(CGFloat offset);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^percent)(CGFloat percent);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^priority)(UILayoutPriority priority);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^equal)(id attr);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^greaterThanOrEqual)(id attr);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^lessThanOrEqual)(id attr);
 
 - (void)commit;
 

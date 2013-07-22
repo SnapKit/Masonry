@@ -10,7 +10,6 @@
 #import "MASConstraintBuilder.h"
 #import "MASViewAttribute.h"
 
-
 @interface UIView (MASAdditions)
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_left;
@@ -28,25 +27,3 @@
 - (void)mas_buildConstraints:(void(^)(MASConstraintBuilder *constraints))block;
 
 @end
-
-#ifdef MAS_SHORTHAND
-
-@interface UIView (MASShortHandAdditions)
-
-@property (nonatomic, strong, readonly) MASViewAttribute *left;
-@property (nonatomic, strong, readonly) MASViewAttribute *top;
-@property (nonatomic, strong, readonly) MASViewAttribute *right;
-@property (nonatomic, strong, readonly) MASViewAttribute *bottom;
-@property (nonatomic, strong, readonly) MASViewAttribute *leading;
-@property (nonatomic, strong, readonly) MASViewAttribute *trailing;
-@property (nonatomic, strong, readonly) MASViewAttribute *width;
-@property (nonatomic, strong, readonly) MASViewAttribute *height;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerX;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerY;
-@property (nonatomic, strong, readonly) MASViewAttribute *baseline;
-
-- (void)buildConstraints:(void(^)(MASConstraintBuilder *constraints))block;
-
-@end
-
-#endif
