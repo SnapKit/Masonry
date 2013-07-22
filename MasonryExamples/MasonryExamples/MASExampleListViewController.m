@@ -11,6 +11,7 @@
 #import "MASExampleBasicView.h"
 #import "MASExampleConstantsView.h"
 #import "MASExampleSidesView.h"
+#import "MASExampleAnimatedView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -32,6 +33,7 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
         [[MASExampleViewController alloc] initWithTitle:@"Basic" viewClass:MASExampleBasicView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Using Constants" viewClass:MASExampleConstantsView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Composite sides" viewClass:MASExampleSidesView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Basic Animated" viewClass:MASExampleAnimatedView.class],
     ];
     
     return self;
