@@ -9,3 +9,4 @@ TODO
 - more examples
 - more tests
 - fix MASCompositeConstraint
+- compile out shorthand implementation.. currently only headers are removed
