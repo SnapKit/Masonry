@@ -27,6 +27,7 @@
 		DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F269179CB34A005CD195 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE2653F179D24E600D48565 /* UIView+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* UIView+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0D61B353FCC42358F962A3C /* libPods-MasonryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE643A835A4447F4807FDBFA /* libPods-MasonryTests.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		DD52F1E5179CAACA005CD195 /* UIView+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MASAdditions.h"; sourceTree = "<group>"; };
 		DD52F1E6179CAACA005CD195 /* UIView+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MASAdditions.m"; sourceTree = "<group>"; };
 		DD52F1ED179CAAEE005CD195 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		DDE2653D179D24E600D48565 /* UIView+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		DE643A835A4447F4807FDBFA /* libPods-MasonryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MasonryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			children = (
 				DD52F1E5179CAACA005CD195 /* UIView+MASAdditions.h */,
 				DD52F1E6179CAACA005CD195 /* UIView+MASAdditions.m */,
+				DDE2653D179D24E600D48565 /* UIView+MASShorthandAdditions.h */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			files = (
 				DD52F264179CB327005CD195 /* Masonry.h in Headers */,
 				DD52F265179CB32B005CD195 /* UIView+MASAdditions.h in Headers */,
+				DDE2653F179D24E600D48565 /* UIView+MASShorthandAdditions.h in Headers */,
 				DD52F266179CB33F005CD195 /* MASConstraint.h in Headers */,
 				DD52F267179CB342005CD195 /* MASConstraintBuilder.h in Headers */,
 				DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */,
@@ -459,12 +463,10 @@
 				DSTROOT = /tmp/Masonry.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -474,12 +476,10 @@
 				DSTROOT = /tmp/Masonry.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 			};
 			name = Release;
 		};
