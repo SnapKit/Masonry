@@ -3,10 +3,10 @@ Pod::Spec.new do |s|
   s.version  = '0.0.1'
   s.license  = 'MIT'
   s.summary  = 'A light-weight layout framework which makes creating iOS AutoLayout NSLayoutConstraints in code quick, readable and descriptive.'
-  s.homepage = 'http://github.com/cloudkite/masonry'
+  s.homepage = 'https://github.com/cloudkite/Masonry'
   s.author   = { 'Jonas Budelmann' => 'jonas.budelmann@gmail.com' }
 
-  s.source   = { :git => 'https://github.com/cloudkite/masonry.git', :tag => 'v0.0.1' }
+  s.source   = { :git => 'https://github.com/cloudkite/Masonry.git', :tag => 'v0.0.1' }
 
   s.description = %{
     Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax.
@@ -18,5 +18,6 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'Foundation', 'UIKit'
 
-  s.ios.xcconfig    = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "$(SDKROOT)/Developer/Library/Frameworks" "$(DEVELOPER_LIBRARY_DIR)/Frameworks"' }
+  s.ios.deployment_target = '6.0' # using autolayout
+  s.requires_arc = true
 end
