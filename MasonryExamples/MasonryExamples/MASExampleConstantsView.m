@@ -28,18 +28,18 @@
     
     //example of using constants
     
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *constraints) {
-        constraints.top.equal(@20);
-        constraints.left.equal(@20);
-        constraints.bottom.equal(@-20);
-        constraints.right.equal(@-20);
+    [view1 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+        constrain.top.equal(@20);
+        constrain.left.equal(@20);
+        constrain.bottom.equal(@-20);
+        constrain.right.equal(@-20);
     }];
     
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *constraints) {
-        constraints.centerY.equal(@50);
-        constraints.centerX.equal(@0);
-        constraints.width.equal(@200);
-        constraints.height.equal(@100);
+    [view2 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+        constrain.centerY.equal(@50);
+        constrain.centerX.equal(@0);
+        constrain.width.equal(@200);
+        constrain.height.equal(@100);
     }];
     
     return self;

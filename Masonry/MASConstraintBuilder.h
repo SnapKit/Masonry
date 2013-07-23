@@ -23,7 +23,7 @@
 @property (nonatomic, strong, readonly) id<MASConstraint> centerY;
 @property (nonatomic, strong, readonly) id<MASConstraint> baseline;
 
-@property (nonatomic, strong, readonly) id<MASConstraint> sides;
+@property (nonatomic, strong, readonly) id<MASConstraint> edges;
 @property (nonatomic, strong, readonly) id<MASConstraint> size;
 @property (nonatomic, strong, readonly) id<MASConstraint> center;
 

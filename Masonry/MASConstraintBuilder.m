@@ -101,8 +101,8 @@
 
 #pragma mark - composite Attributes
 
-- (id<MASConstraint>)sides {
-    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeViewConstraintTypeSides];
+- (id<MASConstraint>)edges {
+    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeViewConstraintTypeEdges];
     constraint.delegate = self;
     return constraint;
 }

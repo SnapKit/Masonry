@@ -48,7 +48,7 @@ MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
 
-- (void)buildConstraints:(void(^)(MASConstraintBuilder *constraints))block {
+- (void)buildConstraints:(void(^)(MASConstraintBuilder *))block {
     [self mas_buildConstraints:block];
 }
 
