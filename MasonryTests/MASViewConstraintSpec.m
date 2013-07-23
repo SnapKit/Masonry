@@ -8,6 +8,7 @@
 
 #import "MASViewConstraint.h"
 #import "MASConstraint.h"
+#import "SpecHelpers.h"
 
 @interface MASViewConstraint ()
 
@@ -24,22 +25,15 @@ SpecBegin(MASViewConstraint)
 
 __block UIView *superview;
 __block MASViewConstraint *constraint;
-__block id<MASConstraintDelegate> delegate;
 __block MASViewAttribute *secondViewAttribute;
 
 beforeEach(^{
-    superview = mock(UIView.class);
-    
-    UIView *secondView = mock(UIView.class);
-    [given(secondView.superview) willReturn:superview];
-    secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondView layoutAttribute:NSLayoutAttributeHeight];
-    delegate = mockProtocol(@protocol(MASConstraintDelegate));
-    
-    UIView *firstView = mock(UIView.class);
-    [given(firstView.superview) willReturn:superview];
-    MASViewAttribute *firstViewAttribute = [[MASViewAttribute alloc] initWithView:firstView layoutAttribute:NSLayoutAttributeWidth];
-    constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:firstViewAttribute];
-    constraint.delegate = delegate;
+    superview = UIView.new;
+    constraint = createConstraintWithLayoutAttribute(NSLayoutAttributeWidth);
+    [superview addSubview:constraint.firstViewAttribute.view];
+
+    secondViewAttribute = createViewAttribute(NSLayoutAttributeHeight);
+    [superview addSubview:secondViewAttribute.view];
 });
 
 describe(@"equality chaining", ^{
@@ -47,7 +41,7 @@ describe(@"equality chaining", ^{
     it(@"should return same constraint when encountering equal for first time", ^{
         MASViewConstraint *newConstraint = constraint.equalTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationEqual);
@@ -57,15 +51,15 @@ describe(@"equality chaining", ^{
         constraint.greaterThanOrEqualTo(secondViewAttribute);
         MASViewConstraint *newConstraint = constraint.equalTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
-        [verify(delegate) addConstraint:(id)newConstraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)newConstraint];
         expect(newConstraint).notTo.beIdenticalTo(constraint);
     });
     
     it(@"should return same constraint when encountering greaterThanOrEqual for first time", ^{
         MASViewConstraint *newConstraint = constraint.greaterThanOrEqualTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationGreaterThanOrEqual);
@@ -75,15 +69,15 @@ describe(@"equality chaining", ^{
         constraint.lessThanOrEqualTo(secondViewAttribute);
         MASViewConstraint *newConstraint = constraint.greaterThanOrEqualTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
-        [verify(delegate) addConstraint:(id)newConstraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)newConstraint];
         expect(newConstraint).notTo.beIdenticalTo(constraint);
     });
     
     it(@"should return same constraint when encountering lessThanOrEqual for first time", ^{
         MASViewConstraint *newConstraint = constraint.lessThanOrEqualTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationLessThanOrEqual);
@@ -93,8 +87,8 @@ describe(@"equality chaining", ^{
         constraint.equalTo(secondViewAttribute);
         MASViewConstraint *newConstraint = constraint.lessThanOrEqualTo(secondViewAttribute);
         
-        [verify(delegate) addConstraint:(id)constraint];
-        [verify(delegate) addConstraint:(id)newConstraint];
+        [verify(constraint.delegate) addConstraint:(id)constraint];
+        [verify(constraint.delegate) addConstraint:(id)newConstraint];
         expect(newConstraint).notTo.beIdenticalTo(constraint);
     });
     
@@ -122,6 +116,14 @@ describe(@"equality chaining", ^{
         }).to.raise(@"NSInternalInconsistencyException");
     });
 
+    it(@"should accept view object", ^{
+        UIView *view = UIView.new;
+        constraint.equalTo(view);
+
+        expect(constraint.secondViewAttribute.view).to.beIdenticalTo(view);
+        expect(constraint.firstViewAttribute.layoutAttribute).to.equal(constraint.secondViewAttribute.layoutAttribute);
+    });
+
     xit(@"should create composite when passed array of views", ^{
 
     });
@@ -145,11 +147,55 @@ describe(@"multiplier & constant", ^{
         expect(constraint.layoutConstraint.constant).to.equal(10);
     });
     
-    xit(@"should update sides only", ^{});
+    it(@"should update sides offset only", ^{
+        MASViewConstraint *centerY = createConstraintWithLayoutAttribute(NSLayoutAttributeCenterY);
+        centerY.insets(UIEdgeInsetsMake(10, 10, 10, 10));
+        expect(centerY.layoutConstant).to.equal(0);
+
+        MASViewConstraint *top = createConstraintWithLayoutAttribute(NSLayoutAttributeTop);
+        top.insets(UIEdgeInsetsMake(15, 10, 10, 10));
+        expect(top.layoutConstant).to.equal(15);
+
+        MASViewConstraint *left = createConstraintWithLayoutAttribute(NSLayoutAttributeLeft);
+        left.insets(UIEdgeInsetsMake(10, 15, 10, 10));
+        expect(left.layoutConstant).to.equal(15);
+
+        MASViewConstraint *bottom = createConstraintWithLayoutAttribute(NSLayoutAttributeBottom);
+        bottom.insets(UIEdgeInsetsMake(10, 10, 15, 10));
+        expect(bottom.layoutConstant).to.equal(-15);
+
+        MASViewConstraint *right = createConstraintWithLayoutAttribute(NSLayoutAttributeRight);
+        right.insets(UIEdgeInsetsMake(10, 10, 10, 15));
+        expect(right.layoutConstant).to.equal(-15);
+    });
     
-    xit(@"should update center only", ^{});
+    it(@"should update center offset only", ^{
+        MASViewConstraint *width = createConstraintWithLayoutAttribute(NSLayoutAttributeWidth);
+        width.centerOffset(CGPointMake(-20, -10));
+        expect(width.layoutConstant).to.equal(0);
+
+        MASViewConstraint *centerX = createConstraintWithLayoutAttribute(NSLayoutAttributeCenterX);
+        centerX.centerOffset(CGPointMake(-20, -10));
+        expect(centerX.layoutConstant).to.equal(-20);
+
+        MASViewConstraint *centerY = createConstraintWithLayoutAttribute(NSLayoutAttributeCenterY);
+        centerY.centerOffset(CGPointMake(-20, -10));
+        expect(centerY.layoutConstant).to.equal(-10);
+    });
     
-    xit(@"should update size only", ^{});
+    it(@"should update size offset only", ^{
+        MASViewConstraint *bottom = createConstraintWithLayoutAttribute(NSLayoutAttributeBottom);
+        bottom.sizeOffset(CGSizeMake(-40, 55));
+        expect(bottom.layoutConstant).to.equal(0);
+
+        MASViewConstraint *width = createConstraintWithLayoutAttribute(NSLayoutAttributeWidth);
+        width.sizeOffset(CGSizeMake(-40, 55));
+        expect(width.layoutConstant).to.equal(-40);
+
+        MASViewConstraint *height = createConstraintWithLayoutAttribute(NSLayoutAttributeHeight);
+        height.sizeOffset(CGSizeMake(-40, 55));
+        expect(height.layoutConstant).to.equal(55);
+    });
 });
 
 describe(@"commit", ^{
@@ -169,8 +215,8 @@ describe(@"commit", ^{
         expect(constraint.layoutConstraint.constant).to.equal(10);
         expect(constraint.layoutConstraint.priority).to.equal(345);
         expect(constraint.layoutConstraint.multiplier).to.equal(0.5);
-        
-        [verify(superview) addConstraint:constraint.layoutConstraint];
+
+        expect(superview.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
     });
     
 });

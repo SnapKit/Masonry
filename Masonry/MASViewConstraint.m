@@ -225,6 +225,12 @@
     };
 }
 
+#pragma mark - Semantic properties
+
+- (id<MASConstraint>)with {
+    return self;
+}
+
 #pragma mark - MASConstraint
 
 - (void)commit {

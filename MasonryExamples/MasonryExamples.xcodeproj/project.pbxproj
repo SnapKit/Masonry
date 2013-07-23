@@ -66,7 +66,6 @@
 		DD52F21E179CAD57005CD195 = {
 			isa = PBXGroup;
 			children = (
-				DD52F26D179CBA05005CD195 /* libMasonry.a */,
 				DD52F230179CAD57005CD195 /* MasonryExamples */,
 				DD52F229179CAD57005CD195 /* Frameworks */,
 				DD52F228179CAD57005CD195 /* Products */,
@@ -84,6 +83,7 @@
 		DD52F229179CAD57005CD195 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD52F26D179CBA05005CD195 /* libMasonry.a */,
 				DD52F22A179CAD57005CD195 /* UIKit.framework */,
 				DD52F22C179CAD57005CD195 /* Foundation.framework */,
 				DD52F22E179CAD57005CD195 /* CoreGraphics.framework */,
