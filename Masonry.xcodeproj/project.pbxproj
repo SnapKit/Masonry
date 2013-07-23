@@ -79,6 +79,7 @@
 		DD52F1E6179CAACA005CD195 /* UIView+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MASAdditions.m"; sourceTree = "<group>"; };
 		DD52F1ED179CAAEE005CD195 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
 		DDE2653D179D24E600D48565 /* UIView+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		DDF3875D179E8A2900178773 /* SpecHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecHelpers.h; sourceTree = "<group>"; };
 		DE643A835A4447F4807FDBFA /* libPods-MasonryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MasonryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,6 +179,7 @@
 		DD52F1D7179CAA78005CD195 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
+				DDF3875D179E8A2900178773 /* SpecHelpers.h */,
 				DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */,
 				DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */,
 			);

@@ -34,23 +34,26 @@
     
     UIView *superview = self;
     int padding = 10;
-    
-    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.greaterThanOrEqualTo(superview.mas_top).offset(padding);
-        make.left.equalTo(superview.mas_left).offset(padding);
-        make.bottom.equalTo(view3.mas_top).offset(-padding);
-        make.right.equalTo(view2.mas_left).offset(-padding);
-        make.width.equalTo(view2.mas_width);
+
+    //if you want to use Masonry without the mas_ prefix
+    //define MAS_SHORTHAND before importing Masonry.h see MasonryExamples-Prefix.pch
+    [view1 makeConstraints:^(MASConstraintMaker *make) {
+        make.top.greaterThanOrEqualTo(superview.top).offset(padding);
+        make.left.equalTo(superview.left).offset(padding);
+        make.bottom.equalTo(view3.top).offset(-padding);
+        make.right.equalTo(view2.left).offset(-padding);
+        make.width.equalTo(view2.width);
         
         //you can chain same attribute
         make.height
-            .equalTo(view2.mas_height)
-            .equalTo(view3.mas_height);
+            .equalTo(view2.height)
+            .equalTo(view3.height);
     }];
-    
+
+    //with is semantic and option
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(superview.mas_top).offset(padding);
-        make.left.equalTo(view1.mas_right).offset(padding);
+        make.top.equalTo(superview.mas_top).with.offset(padding); //with with
+        make.left.equalTo(view1.mas_right).offset(padding); //without with
         make.bottom.equalTo(view3.mas_top).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         make.width.equalTo(view1.mas_width);

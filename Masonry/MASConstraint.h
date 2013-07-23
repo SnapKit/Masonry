@@ -32,6 +32,9 @@ typedef float MASLayoutPriority;
 @property (nonatomic, copy, readonly) id<MASConstraint> (^greaterThanOrEqualTo)(id attr);
 @property (nonatomic, copy, readonly) id<MASConstraint> (^lessThanOrEqualTo)(id attr);
 
+//semantic properties
+@property (nonatomic, copy, readonly) id<MASConstraint> with;
+
 - (void)commit;
 
 @end
