@@ -25,7 +25,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
 
-- (void)buildConstraints:(void(^)(MASConstraintBuilder *constraints))block;
+- (void)buildConstraints:(void(^)(MASConstraintBuilder *make))block;
 
 @end
 
