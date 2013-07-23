@@ -35,41 +35,41 @@
     UIView *superview = self;
     int padding = 10;
     
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *constraints) {
-        constraints.top.equal(superview.mas_top).offset(padding);
-        constraints.left.equal(superview.mas_left).offset(padding);
-        constraints.bottom.equal(view3.mas_top).offset(-padding);
-        constraints.right.equal(view2.mas_left).offset(-padding);
-        constraints.width.equal(view2.mas_width);
+    [view1 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+        constrain.top.greaterThanOrEqual(superview.mas_top).offset(padding);
+        constrain.left.equal(superview.mas_left).offset(padding);
+        constrain.bottom.equal(view3.mas_top).offset(-padding);
+        constrain.right.equal(view2.mas_left).offset(-padding);
+        constrain.width.equal(view2.mas_width);
         
         //you can chain same attribute
-        constraints.height
+        constrain.height
             .equal(view2.mas_height)
             .equal(view3.mas_height);
     }];
     
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *constraints) {
-        constraints.top.equal(superview.mas_top).offset(padding);
-        constraints.left.equal(view1.mas_right).offset(padding);
-        constraints.bottom.equal(view3.mas_top).offset(-padding);
-        constraints.right.equal(superview.mas_right).offset(-padding);
-        constraints.width.equal(view1.mas_width);
+    [view2 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+        constrain.top.equal(superview.mas_top).offset(padding);
+        constrain.left.equal(view1.mas_right).offset(padding);
+        constrain.bottom.equal(view3.mas_top).offset(-padding);
+        constrain.right.equal(superview.mas_right).offset(-padding);
+        constrain.width.equal(view1.mas_width);
         
         //or define it multiple times
-        constraints.height.equal(view1.mas_height);
-        constraints.height.equal(view3.mas_height);
+        constrain.height.equal(view1.mas_height);
+        constrain.height.equal(view3.mas_height);
     }];
     
-    [view3 mas_buildConstraints:^(MASConstraintBuilder *constraints) {
-        constraints.top.equal(view1.mas_bottom).offset(padding);
-        constraints.left.equal(superview.mas_left).offset(padding);
-        constraints.bottom.equal(superview.mas_bottom).offset(-padding);
-        constraints.right.equal(superview.mas_right).offset(-padding);
+    [view3 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+        constrain.top.equal(view1.mas_bottom).offset(padding);
+        constrain.left.equal(superview.mas_left).offset(padding);
+        constrain.bottom.equal(superview.mas_bottom).offset(-padding);
+        constrain.right.equal(superview.mas_right).offset(-padding);
         
         //TODO or pass an array
         //constraints.height.equal(superview.subviews);
-        constraints.height.equal(view1.mas_height);
-        constraints.height.equal(view2.mas_height);
+        constrain.height.equal(view1.mas_height);
+        constrain.height.equal(view2.mas_height);
     }];
     
     return self;

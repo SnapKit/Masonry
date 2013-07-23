@@ -10,7 +10,7 @@
 #import "MASConstraint.h"
 
 typedef NS_ENUM(NSInteger, MASCompositeViewConstraintType) {
-    MASCompositeViewConstraintTypeSides,
+    MASCompositeViewConstraintTypeEdges,
     MASCompositeViewConstraintTypeSize,
     MASCompositeViewConstraintTypeCenter,
 };

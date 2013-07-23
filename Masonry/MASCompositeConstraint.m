@@ -37,7 +37,7 @@
     
     NSArray *viewAttributes;
     switch (self.type) {
-        case MASCompositeViewConstraintTypeSides:
+        case MASCompositeViewConstraintTypeEdges:
             viewAttributes = @[
                 self.view.mas_left, self.view.mas_top,
                 self.view.mas_bottom, self.view.mas_right
