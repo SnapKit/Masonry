@@ -49,6 +49,21 @@
     return self.layoutConstraint != nil;
 }
 
+- (void)setSecondViewAttribute:(id)secondViewAttribute {
+    if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
+        self.layoutConstant = [secondViewAttribute doubleValue];
+//    } else if ([secondViewAttribute isKindOfClass:NSArray.class]) {
+//        //TODO Composite
+    } else if ([secondViewAttribute isKindOfClass:UIView.class]) {
+        _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
+    } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
+        _secondViewAttribute = secondViewAttribute;
+    } else {
+        NSAssert(YES, @"attempting to add unsupported attribute: %@", secondViewAttribute);
+    }
+    [self.delegate addConstraint:self];
+}
+
 - (instancetype)cloneIfNeeded {
     if (self.hasLayoutRelation) {
         MASViewAttribute *firstViewAttribute = [[MASViewAttribute alloc] initWithView:self.firstViewAttribute.view layoutAttribute:self.firstViewAttribute.layoutAttribute];
@@ -173,21 +188,6 @@
 }
 
 #pragma mark - layout relation
-
-- (void)setSecondViewAttribute:(id)secondViewAttribute {
-    if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
-        self.layoutConstant = [secondViewAttribute doubleValue];
-    } else if ([secondViewAttribute isKindOfClass:NSArray.class]) {
-        //TODO Composite
-    } else if ([secondViewAttribute isKindOfClass:UIView.class]) {
-        _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
-    } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
-        _secondViewAttribute = secondViewAttribute;
-    } else {
-        NSAssert(YES, @"attempting to add unsupported attribute: %@", secondViewAttribute);
-    }
-    [self.delegate addConstraint:self];
-}
 
 - (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {

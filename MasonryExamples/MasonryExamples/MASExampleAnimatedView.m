@@ -79,23 +79,35 @@
         make.height.equalTo(view2.mas_height);
     }];
 
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWithGestureRecognizer:)];
-    [self addGestureRecognizer:tapGestureRecognizer];
-
     return self;
 }
 
-- (void)didTapWithGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
-    self.padding += 20;
-    UIEdgeInsets paddingInsets = UIEdgeInsetsMake(self.padding, self.padding, self.padding, self.padding);
+- (void)didMoveToSuperview {
+    [self startAnimatingWithInvertedInsets:NO];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (!newSuperview) {
+        [self.layer removeAllAnimations];
+    }
+}
+
+- (void)startAnimatingWithInvertedInsets:(BOOL)invertedInsets {
+    int padding = invertedInsets ? 100 : self.padding;
+    UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
     for (id<MASConstraint> constraint in self.animatableConstraints) {
         constraint.insets(paddingInsets);
     }
 
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self startAnimatingWithInvertedInsets:!invertedInsets];
+        }
     }];
 }
+
 
 @end
 
