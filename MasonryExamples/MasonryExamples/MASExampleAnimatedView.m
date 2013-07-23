@@ -45,38 +45,38 @@
 
     self.animatableConstraints = NSMutableArray.new;
 
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+    [view1 mas_buildConstraints:^(MASConstraintBuilder *make) {
         [self.animatableConstraints addObjectsFromArray:@[
-            constrain.edges.equal(superview).insets(paddingInsets).priorityLow(),
-            constrain.bottom.equal(view3.mas_top).offset(-padding),
-            constrain.right.equal(view2.mas_left).offset(-padding),
+            make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
+            make.bottom.equalTo(view3.mas_top).offset(-padding),
+            make.right.equalTo(view2.mas_left).offset(-padding),
         ]];
 
-        constrain.size.equal(view2);
-        constrain.height.equal(view3.mas_height);
+        make.size.equalTo(view2);
+        make.height.equalTo(view3.mas_height);
     }];
 
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+    [view2 mas_buildConstraints:^(MASConstraintBuilder *make) {
         [self.animatableConstraints addObjectsFromArray:@[
-            constrain.edges.equal(superview).insets(paddingInsets).priorityLow(),
-            constrain.left.equal(view1.mas_right).offset(padding),
-            constrain.bottom.equal(view3.mas_top).offset(-padding),
+            make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
+            make.left.equalTo(view1.mas_right).offset(padding),
+            make.bottom.equalTo(view3.mas_top).offset(-padding),
         ]];
 
-        constrain.size.equal(view1);
-        constrain.height.equal(view3.mas_height);
+        make.size.equalTo(view1);
+        make.height.equalTo(view3.mas_height);
     }];
 
-    [view3 mas_buildConstraints:^(MASConstraintBuilder *constrain) {
+    [view3 mas_buildConstraints:^(MASConstraintBuilder *make) {
         [self.animatableConstraints addObjectsFromArray:@[
-            constrain.edges.equal(superview).insets(paddingInsets).priorityLow(),
-            constrain.top.equal(view1.mas_bottom).offset(padding),
+            make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
+            make.top.equalTo(view1.mas_bottom).offset(padding),
         ]];
 
         //TODO or pass an array
         //constraints.height.equal(superview.subviews);
-        constrain.height.equal(view1.mas_height);
-        constrain.height.equal(view2.mas_height);
+        make.height.equalTo(view1.mas_height);
+        make.height.equalTo(view2.mas_height);
     }];
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWithGestureRecognizer:)];

@@ -9,11 +9,6 @@
 
     #define EXP_SHORTHAND
     #import "Expecta.h"
-    #undef equal
-    #define ex_equal(expected) _equal(EXPObjectify((expected)))
-
-    #define HC_SHORTHAND
-    #import <OCHamcrest/OCHamcrest.h>
 
     #define MOCKITO_SHORTHAND
     #import <OCMockito/OCMockito.h>

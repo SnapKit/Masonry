@@ -22,8 +22,8 @@
         view.layer.borderWidth = 2;
         [self addSubview:view];
         
-        [view mas_buildConstraints:^(MASConstraintBuilder *constrain) {
-            constrain.edges.equal(lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20));
+        [view mas_buildConstraints:^(MASConstraintBuilder *make) {
+            make.edges.equalTo(lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20));
         }];
         
         lastView = view;

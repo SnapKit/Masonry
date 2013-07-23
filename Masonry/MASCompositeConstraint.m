@@ -169,21 +169,21 @@
     };
 }
 
-- (id<MASConstraint> (^)(id))equal {
+- (id<MASConstraint> (^)(id))equalTo {
     return [self equalityWithBlock:^id(id<MASConstraint> constraint, id attr) {
-        return constraint.equal(attr);
+        return constraint.equalTo(attr);
     }];
 }
 
-- (id<MASConstraint> (^)(id))greaterThanOrEqual {
+- (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
     return [self equalityWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
-        return constraint.greaterThanOrEqual(attr);
+        return constraint.greaterThanOrEqualTo(attr);
     }];
 }
 
-- (id<MASConstraint> (^)(id))lessThanOrEqual {
+- (id<MASConstraint> (^)(id))lessThanOrEqualTo {
     return [self equalityWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
-        return constraint.lessThanOrEqual(attr);
+        return constraint.lessThanOrEqualTo(attr);
     }];
 }
 

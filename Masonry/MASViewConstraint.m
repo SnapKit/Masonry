@@ -189,7 +189,7 @@
     [self.delegate addConstraint:self];
 }
 
-- (id<MASConstraint> (^)(id))equal {
+- (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {
         NSAssert(!self.hasBeenCommitted,
                  @"Cannot modify constraint equal relation after it has been committed");
@@ -201,7 +201,7 @@
     };
 }
 
-- (id<MASConstraint> (^)(id))greaterThanOrEqual {
+- (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
     return ^id(id attr) {
         NSAssert(!self.hasBeenCommitted,
                  @"Cannot modify constraint greaterThanOrEqual relation after it has been committed");
@@ -213,7 +213,7 @@
     };
 }
 
-- (id<MASConstraint> (^)(id))lessThanOrEqual {
+- (id<MASConstraint> (^)(id))lessThanOrEqualTo {
     return ^id(id attr) {
         NSAssert(!self.hasBeenCommitted,
                  @"Cannot modify constraint lessThanOrEqual relation after it has been committed");
