@@ -28,14 +28,14 @@
     
     //example of using constants
     
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@20);
         make.left.equalTo(@20);
         make.bottom.equalTo(@-20);
         make.right.equalTo(@-20);
     }];
     
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(@50);
         make.centerX.equalTo(@0);
         make.width.equalTo(@200);

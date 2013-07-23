@@ -12,4 +12,4 @@
 #import "MASCompositeConstraint.h"
 #import "MASViewAttribute.h"
 #import "MASViewConstraint.h"
-#import "MASConstraintBuilder.h"
+#import "MASConstraintMaker.h"

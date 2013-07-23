@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import "MASConstraintBuilder.h"
+#import "MASConstraintMaker.h"
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
 #import "MASViewAttribute.h"
 
-@interface MASConstraintBuilder () <MASConstraintDelegate>
+@interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
 
-@implementation MASConstraintBuilder
+@implementation MASConstraintMaker
 
 - (id)initWithView:(UIView *)view {
     self = [super init];

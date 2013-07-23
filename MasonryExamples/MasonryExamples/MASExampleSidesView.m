@@ -22,7 +22,7 @@
         view.layer.borderWidth = 2;
         [self addSubview:view];
         
-        [view mas_buildConstraints:^(MASConstraintBuilder *make) {
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20));
         }];
         

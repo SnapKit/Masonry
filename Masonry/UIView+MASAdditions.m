@@ -10,11 +10,11 @@
 
 @implementation UIView (MASAdditions)
 
-- (void)mas_buildConstraints:(void(^)(MASConstraintBuilder *))block {
+- (void)mas_makeConstraints:(void(^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    MASConstraintBuilder *constraintBuilder = [[MASConstraintBuilder alloc] initWithView:self];
-    block(constraintBuilder);
-    [constraintBuilder commit];
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    block(constraintMaker);
+    [constraintMaker commit];
 }
 
 #pragma mark - attribute properties

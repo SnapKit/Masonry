@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MASConstraint.h"
 
-@interface MASConstraintBuilder : NSObject
+@interface MASConstraintMaker : NSObject
 
 @property (nonatomic, strong, readonly) id<MASConstraint> left;
 @property (nonatomic, strong, readonly) id<MASConstraint> top;

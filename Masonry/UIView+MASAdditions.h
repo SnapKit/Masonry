@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MASConstraintBuilder.h"
+#import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
 
 @interface UIView (MASAdditions)
@@ -24,6 +24,6 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 
-- (void)mas_buildConstraints:(void(^)(MASConstraintBuilder *make))block;
+- (void)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
