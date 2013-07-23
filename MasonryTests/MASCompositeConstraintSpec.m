@@ -83,6 +83,8 @@ it(@"should create width and height children", ^{
 it(@"should complete children", ^{
     UIView *view = UIView.new;
     MASCompositeConstraint *composite = createCompositeWithType(MASCompositeViewConstraintTypeSize);
+
+    //first equality statement
     composite.equalTo(view).sizeOffset(CGSizeMake(90, 30));
 
     [verify(composite.delegate) addConstraint:(id)composite];
@@ -100,6 +102,7 @@ it(@"should complete children", ^{
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
     expect(viewConstraint.layoutConstant).to.equal(30);
 
+    //chain another equality statement
     composite.greaterThanOrEqualTo(@6);
     expect(composite.completedChildConstraints).to.haveCountOf(4);
     expect(composite.currentChildConstraints).to.haveCountOf(2);
@@ -113,6 +116,15 @@ it(@"should complete children", ^{
     expect(viewConstraint.secondViewAttribute.view).to.beNil();
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(0);
     expect(viewConstraint.layoutConstant).to.equal(6);
+
+    //still referencing same view
+    viewConstraint = composite.currentChildConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+
+    viewConstraint = composite.currentChildConstraints[1];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
 });
 
 SpecEnd

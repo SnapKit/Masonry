@@ -152,7 +152,7 @@
 
 #pragma mark - layout relation
 
-- (id<MASConstraint> (^)(id))equalityWithBlock:(id<MASConstraint> (^)(id<MASConstraint> constraint, id attr))block {
+- (id<MASConstraint> (^)(id))relationWithBlock:(id<MASConstraint> (^)(id<MASConstraint> constraint, id attr))block {
     return ^id(id attr) {
         if (!self.added) {
             [self.delegate addConstraint:self];
@@ -170,19 +170,19 @@
 }
 
 - (id<MASConstraint> (^)(id))equalTo {
-    return [self equalityWithBlock:^id(id<MASConstraint> constraint, id attr) {
+    return [self relationWithBlock:^id(id<MASConstraint> constraint, id attr) {
         return constraint.equalTo(attr);
     }];
 }
 
 - (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
-    return [self equalityWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
+    return [self relationWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
         return constraint.greaterThanOrEqualTo(attr);
     }];
 }
 
 - (id<MASConstraint> (^)(id))lessThanOrEqualTo {
-    return [self equalityWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
+    return [self relationWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
         return constraint.lessThanOrEqualTo(attr);
     }];
 }
