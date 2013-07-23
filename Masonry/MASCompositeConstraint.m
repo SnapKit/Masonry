@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSMutableArray *completedChildConstraints;
 @property (nonatomic, strong) NSMutableArray *currentChildConstraints;
+@property (nonatomic, assign) BOOL added;
 
 @end
 
@@ -65,10 +66,7 @@
 #pragma mark - MASConstraintDelegate
 
 - (void)addConstraint:(id<MASConstraint>)constraint {
-    //TODO fixme
-    if (![self.currentChildConstraints containsObject:constraint]) {
-        [self.currentChildConstraints addObject:constraint];
-    }
+    [self.completedChildConstraints addObject:constraint];
 }
 
 #pragma mark - layout constant
@@ -156,14 +154,16 @@
 
 - (id<MASConstraint> (^)(id))equalityWithBlock:(id<MASConstraint> (^)(id<MASConstraint> constraint, id attr))block {
     return ^id(id attr) {
-        [self.delegate addConstraint:self]; //TODO make sure we dont add more than once
+        if (!self.added) {
+            [self.delegate addConstraint:self];
+            self.added = YES;
+        }
         for (id<MASConstraint> constraint in self.currentChildConstraints.copy) {
-            //TODO fixme
             id<MASConstraint> newConstraint = block(constraint, attr);
-            //if (newConstraint != constraint) { //TODO fix
-                //[self.currentChildConstraints removeObject:constraint];
-                [self.completedChildConstraints addObject:newConstraint];
-            //}
+            if (newConstraint != constraint) {
+                [self.currentChildConstraints removeObject:constraint];
+                [self.currentChildConstraints addObject:newConstraint];
+            }
         }
         return self;
     };
