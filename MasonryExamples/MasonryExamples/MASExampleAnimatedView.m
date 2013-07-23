@@ -45,7 +45,7 @@
 
     self.animatableConstraints = NSMutableArray.new;
 
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
             make.bottom.equalTo(view3.mas_top).offset(-padding),
@@ -56,7 +56,7 @@
         make.height.equalTo(view3.mas_height);
     }];
 
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
             make.left.equalTo(view1.mas_right).offset(padding),
@@ -67,7 +67,7 @@
         make.height.equalTo(view3.mas_height);
     }];
 
-    [view3 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
             make.top.equalTo(view1.mas_bottom).offset(padding),

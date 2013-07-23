@@ -16,14 +16,14 @@
 		DD52F1DA179CAA9C005CD195 /* MASCompositeConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */; };
 		DD52F1DB179CAA9C005CD195 /* MASViewConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */; };
 		DD52F1E7179CAACA005CD195 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1DD179CAACA005CD195 /* MASCompositeConstraint.m */; };
-		DD52F1E8179CAACA005CD195 /* MASConstraintBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E0179CAACA005CD195 /* MASConstraintBuilder.m */; };
+		DD52F1E8179CAACA005CD195 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E0179CAACA005CD195 /* MASConstraintMaker.m */; };
 		DD52F1E9179CAACA005CD195 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E2179CAACA005CD195 /* MASViewAttribute.m */; };
 		DD52F1EA179CAACA005CD195 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E4179CAACA005CD195 /* MASViewConstraint.m */; };
 		DD52F1EB179CAACA005CD195 /* UIView+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E6179CAACA005CD195 /* UIView+MASAdditions.m */; };
 		DD52F264179CB327005CD195 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1ED179CAAEE005CD195 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F265179CB32B005CD195 /* UIView+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E5179CAACA005CD195 /* UIView+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F266179CB33F005CD195 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DE179CAACA005CD195 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F267179CB342005CD195 /* MASConstraintBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DF179CAACA005CD195 /* MASConstraintBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD52F267179CB342005CD195 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DF179CAACA005CD195 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F269179CB34A005CD195 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,8 +69,8 @@
 		DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		DD52F1DD179CAACA005CD195 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		DD52F1DE179CAACA005CD195 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		DD52F1DF179CAACA005CD195 /* MASConstraintBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintBuilder.h; sourceTree = "<group>"; };
-		DD52F1E0179CAACA005CD195 /* MASConstraintBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintBuilder.m; sourceTree = "<group>"; };
+		DD52F1DF179CAACA005CD195 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		DD52F1E0179CAACA005CD195 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
 		DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
 		DD52F1E2179CAACA005CD195 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 				DD52F1DE179CAACA005CD195 /* MASConstraint.h */,
 				DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */,
 				DD52F1DD179CAACA005CD195 /* MASCompositeConstraint.m */,
-				DD52F1DF179CAACA005CD195 /* MASConstraintBuilder.h */,
-				DD52F1E0179CAACA005CD195 /* MASConstraintBuilder.m */,
+				DD52F1DF179CAACA005CD195 /* MASConstraintMaker.h */,
+				DD52F1E0179CAACA005CD195 /* MASConstraintMaker.m */,
 				DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */,
 				DD52F1E2179CAACA005CD195 /* MASViewAttribute.m */,
 				DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */,
@@ -221,7 +221,7 @@
 				DD52F265179CB32B005CD195 /* UIView+MASAdditions.h in Headers */,
 				DDE2653F179D24E600D48565 /* UIView+MASShorthandAdditions.h in Headers */,
 				DD52F266179CB33F005CD195 /* MASConstraint.h in Headers */,
-				DD52F267179CB342005CD195 /* MASConstraintBuilder.h in Headers */,
+				DD52F267179CB342005CD195 /* MASConstraintMaker.h in Headers */,
 				DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */,
 				DD52F269179CB34A005CD195 /* MASViewConstraint.h in Headers */,
 				DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */,
@@ -358,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD52F1E7179CAACA005CD195 /* MASCompositeConstraint.m in Sources */,
-				DD52F1E8179CAACA005CD195 /* MASConstraintBuilder.m in Sources */,
+				DD52F1E8179CAACA005CD195 /* MASConstraintMaker.m in Sources */,
 				DD52F1E9179CAACA005CD195 /* MASViewAttribute.m in Sources */,
 				DD52F1EA179CAACA005CD195 /* MASViewConstraint.m in Sources */,
 				DD52F1EB179CAACA005CD195 /* UIView+MASAdditions.m in Sources */,

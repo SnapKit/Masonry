@@ -35,7 +35,7 @@
     UIView *superview = self;
     int padding = 10;
     
-    [view1 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.greaterThanOrEqualTo(superview.mas_top).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(view3.mas_top).offset(-padding);
@@ -48,7 +48,7 @@
             .equalTo(view3.mas_height);
     }];
     
-    [view2 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).offset(padding);
         make.left.equalTo(view1.mas_right).offset(padding);
         make.bottom.equalTo(view3.mas_top).offset(-padding);
@@ -60,7 +60,7 @@
         make.height.equalTo(view3.mas_height);
     }];
     
-    [view3 mas_buildConstraints:^(MASConstraintBuilder *make) {
+    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(view1.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);

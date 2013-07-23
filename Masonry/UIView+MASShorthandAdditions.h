@@ -25,7 +25,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
 
-- (void)buildConstraints:(void(^)(MASConstraintBuilder *make))block;
+- (void)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
 
@@ -48,8 +48,8 @@ MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
 
-- (void)buildConstraints:(void(^)(MASConstraintBuilder *))block {
-    [self mas_buildConstraints:block];
+- (void)makeConstraints:(void(^)(MASConstraintMaker *))block {
+    [self mas_makeConstraints:block];
 }
 
 @end
