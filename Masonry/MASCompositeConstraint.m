@@ -69,7 +69,7 @@
     [self.completedChildConstraints addObject:constraint];
 }
 
-#pragma mark - layout constant
+#pragma mark - NSLayoutConstraint constant proxies
 
 - (id<MASConstraint> (^)(UIEdgeInsets))insets {
     return ^id(UIEdgeInsets insets) {
@@ -107,7 +107,7 @@
     };
 }
 
-#pragma mark - layout multiplier
+#pragma mark - NSLayoutConstraint multiplier proxies 
 
 - (id<MASConstraint> (^)(CGFloat))percent {
     return ^id(CGFloat percent) {
@@ -118,7 +118,7 @@
     };
 }
 
-#pragma mark - layout priority
+#pragma mark - MASLayoutPriority proxies
 
 - (id<MASConstraint> (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
@@ -150,7 +150,7 @@
     };
 }
 
-#pragma mark - layout relation
+#pragma mark - NSLayoutRelation proxies
 
 - (id<MASConstraint> (^)(id))relationWithBlock:(id<MASConstraint> (^)(id<MASConstraint> constraint, id attr))block {
     return ^id(id attr) {
@@ -199,6 +199,8 @@
     for (id<MASConstraint> constraint in self.completedChildConstraints) {
         [constraint commit];
     }
+    [self.currentChildConstraints removeAllObjects];
+    [self.completedChildConstraints removeAllObjects];
 }
 
 @end
