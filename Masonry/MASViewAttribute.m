@@ -20,8 +20,8 @@
     return self;
 }
 
-- (BOOL)isAlignment {
-    return self.layoutAttribute != NSLayoutAttributeWidth && self.layoutAttribute != NSLayoutAttributeHeight;
+- (BOOL)isSizeAttribute {
+    return self.layoutAttribute == NSLayoutAttributeWidth || self.layoutAttribute == NSLayoutAttributeHeight;
 }
 
 @end

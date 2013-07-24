@@ -10,15 +10,15 @@
 #import "MASConstraint.h"
 
 typedef NS_ENUM(NSInteger, MASCompositeViewConstraintType) {
-    MASCompositeViewConstraintTypeEdges,
-    MASCompositeViewConstraintTypeSize,
-    MASCompositeViewConstraintTypeCenter,
+    MASCompositeViewConstraintTypeEdges, //top, left, bottom, right
+    MASCompositeViewConstraintTypeSize, //width, height
+    MASCompositeViewConstraintTypeCenter, //centerX, centerY
 };
 
 @interface MASCompositeConstraint : NSObject <MASConstraint>
 
 @property (nonatomic, weak) id<MASConstraintDelegate> delegate;
-@property (nonatomic, strong, readonly) UIView *view;
+@property (nonatomic, weak, readonly) UIView *view;
 @property (nonatomic, assign, readonly) MASCompositeViewConstraintType type;
 
 - (id)initWithView:(UIView *)view type:(MASCompositeViewConstraintType)type;

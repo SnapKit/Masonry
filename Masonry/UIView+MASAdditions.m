@@ -17,7 +17,7 @@
     [constraintMaker commit];
 }
 
-#pragma mark - attribute properties
+#pragma mark - NSLayoutAttribute properties
 
 - (MASViewAttribute *)mas_left {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeft];

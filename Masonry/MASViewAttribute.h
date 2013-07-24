@@ -10,11 +10,16 @@
 
 @interface MASViewAttribute : NSObject
 
-@property (nonatomic, strong, readonly) UIView *view;
+@property (nonatomic, weak, readonly) UIView *view;
 @property (nonatomic, assign, readonly) NSLayoutAttribute layoutAttribute;
 
 - (id)initWithView:(UIView *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
-- (BOOL)isAlignment;
+/**
+ Creates a MASConstraintMaker with the callee view. any constraints defined are added to the view or the appropriate superview once the block has finished executing
+
+ @return YES if layoutAttribute is equal to NSLayoutAttributeWidth or NSLayoutAttributeHeight
+ */
+- (BOOL)isSizeAttribute;
 
 @end

@@ -61,7 +61,6 @@
     } else {
         NSAssert(YES, @"attempting to add unsupported attribute: %@", secondViewAttribute);
     }
-    [self.delegate addConstraint:self];
 }
 
 - (instancetype)cloneIfNeeded {
@@ -76,7 +75,7 @@
     return self;
 }
 
-#pragma mark - layout constant
+#pragma mark - NSLayoutConstraint constant proxies
 
 - (id<MASConstraint> (^)(UIEdgeInsets))insets {
     return ^id(UIEdgeInsets insets){
@@ -142,7 +141,7 @@
     };
 }
 
-#pragma mark - layout multiplier
+#pragma mark - NSLayoutConstraint multiplier proxies
 
 - (id<MASConstraint> (^)(CGFloat))percent {
     return ^id(CGFloat percent) {
@@ -154,7 +153,7 @@
     };
 }
 
-#pragma mark - layout priority
+#pragma mark - MASLayoutPriority proxies
 
 - (id<MASConstraint> (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
@@ -187,7 +186,7 @@
     };
 }
 
-#pragma mark - layout relation
+#pragma mark - NSLayoutRelation proxies
 
 - (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {
@@ -197,6 +196,7 @@
         MASViewConstraint *viewConstraint = [self cloneIfNeeded];
         viewConstraint.layoutRelation = NSLayoutRelationEqual;
         viewConstraint.secondViewAttribute = attr;
+        [viewConstraint.delegate addConstraint:viewConstraint];
         return viewConstraint;
     };
 }
@@ -209,6 +209,7 @@
         MASViewConstraint *viewConstraint = [self cloneIfNeeded];
         viewConstraint.layoutRelation = NSLayoutRelationGreaterThanOrEqual;
         viewConstraint.secondViewAttribute = attr;
+        [viewConstraint.delegate addConstraint:viewConstraint];
         return viewConstraint;
     };
 }
@@ -221,6 +222,7 @@
         MASViewConstraint *viewConstraint = [self cloneIfNeeded];
         viewConstraint.layoutRelation = NSLayoutRelationLessThanOrEqual;
         viewConstraint.secondViewAttribute = attr;
+        [viewConstraint.delegate addConstraint:viewConstraint];
         return viewConstraint;
     };
 }
@@ -240,7 +242,7 @@
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     UIView *secondLayoutItem = self.secondViewAttribute.view;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
-    if (self.firstViewAttribute.isAlignment && !self.secondViewAttribute) {
+    if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
         secondLayoutItem = firstLayoutItem.superview;
         secondLayoutAttribute = firstLayoutAttribute;
     }

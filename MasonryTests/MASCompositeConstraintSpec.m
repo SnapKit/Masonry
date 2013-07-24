@@ -8,7 +8,6 @@
 
 #import "MASCompositeConstraint.h"
 #import "MASViewConstraint.h"
-#import "SpecHelpers.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
@@ -26,8 +25,22 @@
 
 SpecBegin(MASCompositeConstraint)
 
+__block id<MASConstraintDelegate> delegate;
+__block UIView *superview;
+__block UIView *view;
+__block MASCompositeConstraint *composite;
+
+beforeEach(^{
+    composite = nil;
+    delegate = mockProtocol(@protocol(MASConstraintDelegate));
+    view = UIView.new;
+    superview = UIView.new;
+    [superview addSubview:view];
+});
+
 it(@"should create centerY and centerX children", ^{
-    MASCompositeConstraint *composite = createCompositeWithType(MASCompositeViewConstraintTypeCenter);
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeCenter];
+
     expect(composite.currentChildConstraints).to.haveCountOf(2);
 
     MASViewConstraint *viewConstraint = composite.currentChildConstraints[0];
@@ -41,7 +54,7 @@ it(@"should create centerY and centerX children", ^{
 
 it(@"should create top, left, bottom, right children", ^{
     UIView *newView = UIView.new;
-    MASCompositeConstraint *composite = createCompositeWithType(MASCompositeViewConstraintTypeEdges);
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeEdges];
     composite.equalTo(newView);
 
     expect(composite.completedChildConstraints).to.haveCountOf(4);
@@ -68,7 +81,7 @@ it(@"should create top, left, bottom, right children", ^{
 });
 
 it(@"should create width and height children", ^{
-    MASCompositeConstraint *composite = createCompositeWithType(MASCompositeViewConstraintTypeSize);
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeSize];
     expect(composite.currentChildConstraints).to.haveCountOf(2);
 
     MASViewConstraint *viewConstraint = composite.currentChildConstraints[0];
@@ -81,24 +94,25 @@ it(@"should create width and height children", ^{
 });
 
 it(@"should complete children", ^{
-    UIView *view = UIView.new;
-    MASCompositeConstraint *composite = createCompositeWithType(MASCompositeViewConstraintTypeSize);
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeSize];
+    composite.delegate = delegate;
+    UIView *newView = UIView.new;
 
     //first equality statement
-    composite.equalTo(view).sizeOffset(CGSizeMake(90, 30));
+    composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30));
 
-    [verify(composite.delegate) addConstraint:(id)composite];
+    [verify(delegate) addConstraint:(id)composite];
 
     expect(composite.completedChildConstraints).to.haveCountOf(2);
     expect(composite.currentChildConstraints).to.haveCountOf(2);
 
     MASViewConstraint *viewConstraint = composite.completedChildConstraints[0];
-    expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(view);
+    expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(newView);
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
     expect(viewConstraint.layoutConstant).to.equal(90);
 
     viewConstraint = composite.completedChildConstraints[1];
-    expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(view);
+    expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(newView);
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
     expect(viewConstraint.layoutConstant).to.equal(30);
 
@@ -125,6 +139,26 @@ it(@"should complete children", ^{
     viewConstraint = composite.currentChildConstraints[1];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
+});
+
+it(@"should remove all on commit", ^{
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeSize];
+    composite.delegate = delegate;
+    UIView *newView = UIView.new;
+    [superview addSubview:newView];
+
+    //first equality statement
+    composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30));
+
+    [verify(delegate) addConstraint:(id)composite];
+
+    expect(composite.completedChildConstraints).to.haveCountOf(2);
+    expect(composite.currentChildConstraints).to.haveCountOf(2);
+
+    [composite commit];
+
+    expect(composite.completedChildConstraints).to.haveCountOf(0);
+    expect(composite.currentChildConstraints).to.haveCountOf(0);
 });
 
 SpecEnd
