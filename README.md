@@ -14,7 +14,7 @@ view1.translatesAutoresizingMaskIntoConstraints = NO;
 view1.backgroundColor = [UIColor greenColor];
 [superview addSubview:view1];
 
-int padding = 10;
+UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 
 [superview addConstraints:@[
 
@@ -25,7 +25,7 @@ int padding = 10;
                                     toItem:superview
                                  attribute:NSLayoutAttributeTop
                                 multiplier:1.0
-                                  constant:padding],
+                                  constant:padding.top],
 
     [NSLayoutConstraint constraintWithItem:view1
                                  attribute:NSLayoutAttributeLeft
@@ -33,7 +33,7 @@ int padding = 10;
                                     toItem:superview
                                  attribute:NSLayoutAttributeLeft
                                 multiplier:1.0
-                                  constant:padding],   
+                                  constant:padding.left],   
  
     [NSLayoutConstraint constraintWithItem:view1
                                  attribute:NSLayoutAttributeBottom
@@ -41,7 +41,7 @@ int padding = 10;
                                     toItem:superview
                                  attribute:NSLayoutAttributeBottom
                                 multiplier:1.0
-                                  constant:-padding],
+                                  constant:-padding.bottom],
  
     [NSLayoutConstraint constraintWithItem:view1
                                  attribute:NSLayoutAttributeRight
@@ -49,29 +49,30 @@ int padding = 10;
                                     toItem:superview
                                  attribute:NSLayoutAttributeRight
                                 multiplier:1
-                                  constant:-padding],
+                                  constant:-padding.right],
 
  ]];
 ```
 Even with such a simple example the code needed is quite verbose and quickly becomes unreadable when you have more than 2 or 3 views.
 
-### Meet your Maker!
+### Prepare to meet your Maker!
 
 heres the same constraints created using MASConstraintMaker
 
 ```obj-c
+UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+
 [view1 makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(superview.top).with.offset(padding);
-    make.left.equalTo(superview.left).with.offset(padding);
-    make.bottom.equalTo(superview.bottom).with.offset(-padding);
-    make.right.equalTo(superview.right).with.offset(-padding);
+    make.top.equalTo(superview.top).with.offset(padding.top); //with is an optional semantic filler
+    make.left.equalTo(superview.left).with.offset(padding.left);
+    make.bottom.equalTo(superview.bottom).with.offset(-padding.bottom);
+    make.right.equalTo(superview.right).with.offset(-padding.right);
 }];
 ```
 or ever shorter
 ```obj-c
 [view1 makeConstraints:^(MASConstraintMaker *make) {
-    UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
-    make.edges.equalTo(superview).insets(paddingInsets);
+    make.edges.equalTo(superview).with.insets(padding);
 }];
 ```
 
