@@ -70,7 +70,8 @@ heres the same constraints created using MASConstraintMaker
 or ever shorter
 ```obj-c
 [view1 makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(superview).insets(UIEdgeInsetsMake(padding, padding, padding, padding));
+    UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
+    make.edges.equalTo(superview).insets(paddingInsets);
 }];
 ```
 
