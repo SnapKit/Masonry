@@ -13,6 +13,9 @@
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
 
+    //define this constant if you want to use Masonry without the 'mas_' prefix
     #define MAS_SHORTHAND
-    #import "Masonry.h"
+
+    //if you have installed using cocoapods use #import "Masonry.h"
+    #import "Masonry/Masonry.h" 
 #endif
