@@ -73,6 +73,8 @@ or ever shorter
     make.edges.equalTo(superview).insets(UIEdgeInsetsMake(padding, padding, padding, padding));
 }];
 ```
+
+For more usage examples take a look at the MasonryExamples project in the Masonry workspace.
 note all UIView additions are prefixed with 'mas_' to avoid conflicting with other UIView categories
 if you want to use Masonry without the mas_ you need to add #define MAS_SHORTHAND to your prefix.pch
 
