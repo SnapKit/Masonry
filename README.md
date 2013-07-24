@@ -79,11 +79,12 @@ For more usage examples take a look at the MasonryExamples project in the Masonr
 note all UIView additions are prefixed with 'mas_' to avoid conflicting with other UIView categories
 if you want to use Masonry without the mas_ you need to add #define MAS_SHORTHAND to your prefix.pch
 
-### FEATURES
+### Features
 * No macro magic. Masonry won't pollute the global namespace with macros.
 * Not string or dictionary based and hence you get compile time checking.
 
 ### TODO
+* Better readme
 * Better debugging help for complicated layouts
 * Header comments/Documentation
-- More tests
+* More tests and examples
