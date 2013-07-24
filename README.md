@@ -72,7 +72,7 @@ UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 or ever shorter
 ```obj-c
 [view1 makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(superview).insets(padding);
+    make.edges.equalTo(superview).with.insets(padding);
 }];
 ```
 
