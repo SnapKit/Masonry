@@ -111,9 +111,9 @@ view.mas_baseline          |  NSLayoutAttributeBaseline
 if you want view.left to be greater than or equal to label.left :
 ```obj-c
 //these two constraints are exactly the same
-make.left.greaterThanOrEqual(label);
+make.left.greaterThanOrEqualTo(label);
 
-make.left.greaterThanOrEqual(label.left);
+make.left.greaterThanOrEqualTo(label.mas_left);
 ```
 
 #### 3. NSNumber
@@ -138,9 +138,9 @@ view.width
 
 Priorities are can be tacked on to the end of a constraint chain like so:
 ```obj-c
-make.left.greaterThanOrEqualTo(label.left).with.priorityLow();
+make.left.greaterThanOrEqualTo(label.mas_left).with.priorityLow();
 
-make.top.equal(label.top).with.priority(600);
+make.top.equal(label.mas_top).with.priority(600);
 ```
 
 ### Composition, composition, composition
