@@ -3,7 +3,7 @@ Masonry
 
 Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code which is more concise and readable.
 
-### Whats wrong with NSLayoutConstraints?
+## Whats wrong with NSLayoutConstraints?
 
 Imagine a simple example in which you want to have a view fill its superview but inset by 10 pixels on every side
 ```obj-c
@@ -55,7 +55,7 @@ UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 ```
 Even with such a simple example the code needed is quite verbose and quickly becomes unreadable when you have more than 2 or 3 views.
 
-### Prepare to meet your Maker!
+## Prepare to meet your Maker!
 
 heres the same constraints created using MASConstraintMaker
 
@@ -76,7 +76,7 @@ or ever shorter
 }];
 ```
 
-### Not all things are created equal
+## Not all things are created equal
 
 > `.equalTo` equivalent to **NSLayoutRelationEqual**
 
@@ -143,7 +143,7 @@ make.left.greaterThanOrEqualTo(label.mas_left).with.priorityLow();
 make.top.equal(label.mas_top).with.priority(600);
 ```
 
-### Composition, composition, composition
+## Composition, composition, composition
 
 Masonry also gives you a few convenience methods which create mutliple constraints at the same time. These are called MASCompositeConstraints
 
@@ -194,12 +194,12 @@ Get busy Masoning
 #import "Masonry.h"
 ```
 
-### Features
+## Features
 * No macro magic. Masonry won't pollute the global namespace with macros.
 * Not string or dictionary based and hence you get compile time checking.
 
-### TODO
-* Better readme
+## TODO
+* Eye candy
 * Better debugging help for complicated layouts
 * Header comments/Documentation
 * More tests and examples
