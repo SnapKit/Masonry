@@ -76,10 +76,128 @@ or ever shorter
 }];
 ```
 
+### Not all things are created equal
+
+> `equalTo` equivalent to **NSLayoutRelationEqual**
+
+> `lessThanOrEqualTo` equivalent to **NSLayoutRelationLessThanOrEqual**
+
+> `greaterThanOrEqualTo` equivalent to **NSLayoutRelationGreaterThanOrEqual**
+
+These methods currently except one of following
+
+These three equality constraints except one argument which can be any of the following:
+
+#### A MASViewAttribute
+
+MASViewAttribute           |  NSLayoutAttribute            
+-------------------------  |  --------------------------   
+view.mas_left              |  NSLayoutAttributeLeft        
+view.mas_right             |  NSLayoutAttributeRight       
+view.mas_top               |  NSLayoutAttributeTop         
+view.mas_bottom            |  NSLayoutAttributeBottom      
+view.mas_leading           |  NSLayoutAttributeLeading     
+view.mas_trailing          |  NSLayoutAttributeTrailing    
+view.mas_width             |  NSLayoutAttributeWidth       
+view.mas_height            |  NSLayoutAttributeHeight      
+view.mas_centerX           |  NSLayoutAttributeCenterX     
+view.mas_centerY           |  NSLayoutAttributeCenterY     
+view.mas_baseline          |  NSLayoutAttributeBaseline  
+
+#### A UIView
+
+if you want view.left to be greater than or equal to label.left
+instead of :
+```obj-c
+make.left.greaterThanOrEqual(label.left);
+```
+
+you can simply write :
+```obj-c
+make.left.greaterThanOrEqual(label);
+```
+
+#### A NSNumber
+
+if you want to set view to have a minimum and maximum width you could pass a number to the equality blocks:
+
+```obj-c
+view.width
+    .greaterThanOrEqual(@200)
+    .lessThanOrEqual(@400)
+```
+
+### Learn to prioritize
+
+> `prority(344)` you ca specify an exact priority
+
+> `priorityHigh()` equivalent to **UILayoutPriorityDefaultHigh**
+
+> `priorityMedium()` is half way between high and low
+
+> `priorityLow()` equivalent to **UILayoutPriorityDefaultLow**
+
+Priorities are can be tacked on to the end of a constraint chain like so:
+```obj-c
+make.left.greaterThanOrEqual(label.left).with.priorityLow();
+```
+
+### Composition, composition, composition
+
+Masonry also gives you a few convenience methods which create mutliple constraints at the same time. These are called MASCompositeConstraints
+
+#### edges
+
+*make*  top, left, bottom, right equal view2
+```obj-c
+make.edges.equalTo(view2)
+```
+
+*make*  top = superview.top + 5, left = superview.left + 10,
+bottom = superview.bottom - 15, right = superview.right - 20
+```obj-c
+make.edges.equalTo(superview).insets(UIEdgeInsetsMake(5, 10, 15, 20))
+```
+
+#### size
+
+*make*  width and height greater than or equal to titleLabel
+```obj-c
+make.size.greaterThanOrEqualTo(titleLabel) 
+```
+
+*make*  width = superview.width + 100, height = superview.height - 50
+```obj-c
+make.size.equalTo(superview).sizeOffset(CGSizeMake(100, -50))
+```
+
+#### center
+*make*  centerX and centerY = button1
+```obj-c
+make.center.equalTo(button1) 
+```
+
+*make*  centerX = superview.centerX - 5, centerY = superview.centerY + 10
+```obj-c
+make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
+```
+
 For more usage examples take a look at the MasonryExamples project in the Masonry workspace.
 
-note all UIView additions are prefixed with 'mas_' to avoid conflicting with other UIView categories
-if you want to use Masonry without the mas_ you need to add #define MAS_SHORTHAND to your prefix.pch
+## Installation
+Use the awesome [CocoaPods](http://github.com/CocoaPods/CocoaPods).
+In your Podfile
+```ruby
+pod 'Masonry'
+```
+If you want to use masonry without all those pesky 'mas_' prefixes. Add #define MAS_SHORTHAND to your prefix.pch before importing Masonry
+```obj-c
+#define MAS_SHORTHAND 
+```
+Get busy Masoning
+```obj-c
+#import "Masonry.h"
+```
 
 ### Features
 * No macro magic. Masonry won't pollute the global namespace with macros.
