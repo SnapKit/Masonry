@@ -84,8 +84,6 @@ or ever shorter
 
 > `greaterThanOrEqualTo` equivalent to **NSLayoutRelationGreaterThanOrEqual**
 
-These methods currently except one of following
-
 These three equality constraints except one argument which can be any of the following:
 
 #### A MASViewAttribute
