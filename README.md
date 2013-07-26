@@ -126,9 +126,9 @@ view.width
     .lessThanOrEqual(@400)
 ```
 
-### Learn to prioritize
+## Learn to prioritize
 
-> `.prority` you ca specify an exact priority
+> `.prority` allows you to specify an exact priority
 
 > `.priorityHigh` equivalent to **UILayoutPriorityDefaultHigh**
 
