@@ -78,15 +78,19 @@ or ever shorter
 
 ### Not all things are created equal
 
-> `equalTo` equivalent to **NSLayoutRelationEqual**
+> `.equalTo` equivalent to **NSLayoutRelationEqual**
 
-> `lessThanOrEqualTo` equivalent to **NSLayoutRelationLessThanOrEqual**
+> `.lessThanOrEqualTo` equivalent to **NSLayoutRelationLessThanOrEqual**
 
-> `greaterThanOrEqualTo` equivalent to **NSLayoutRelationGreaterThanOrEqual**
+> `.greaterThanOrEqualTo` equivalent to **NSLayoutRelationGreaterThanOrEqual**
 
 These three equality constraints except one argument which can be any of the following:
 
-#### A MASViewAttribute
+#### 1. MASViewAttribute
+
+```obj-c
+make.centerX.lessThanOrEqualTo(view2.mas_left);
+```
 
 MASViewAttribute           |  NSLayoutAttribute            
 -------------------------  |  --------------------------   
@@ -102,20 +106,17 @@ view.mas_centerX           |  NSLayoutAttributeCenterX
 view.mas_centerY           |  NSLayoutAttributeCenterY     
 view.mas_baseline          |  NSLayoutAttributeBaseline  
 
-#### A UIView
+#### 2. UIView
 
-if you want view.left to be greater than or equal to label.left
-instead of :
+if you want view.left to be greater than or equal to label.left :
 ```obj-c
+//these two constraints are exactly the same
+make.left.greaterThanOrEqual(label);
+
 make.left.greaterThanOrEqual(label.left);
 ```
 
-you can simply write :
-```obj-c
-make.left.greaterThanOrEqual(label);
-```
-
-#### A NSNumber
+#### 3. NSNumber
 
 if you want to set view to have a minimum and maximum width you could pass a number to the equality blocks:
 
@@ -127,17 +128,19 @@ view.width
 
 ### Learn to prioritize
 
-> `prority(344)` you ca specify an exact priority
+> `.prority` you ca specify an exact priority
 
-> `priorityHigh()` equivalent to **UILayoutPriorityDefaultHigh**
+> `.priorityHigh` equivalent to **UILayoutPriorityDefaultHigh**
 
-> `priorityMedium()` is half way between high and low
+> `.priorityMedium` is half way between high and low
 
-> `priorityLow()` equivalent to **UILayoutPriorityDefaultLow**
+> `.priorityLow` equivalent to **UILayoutPriorityDefaultLow**
 
 Priorities are can be tacked on to the end of a constraint chain like so:
 ```obj-c
-make.left.greaterThanOrEqual(label.left).with.priorityLow();
+make.left.greaterThanOrEqualTo(label.left).with.priorityLow();
+
+make.top.equal(label.top).with.priority(600);
 ```
 
 ### Composition, composition, composition
@@ -146,37 +149,31 @@ Masonry also gives you a few convenience methods which create mutliple constrain
 
 #### edges
 
-*make*  top, left, bottom, right equal view2
 ```obj-c
-make.edges.equalTo(view2)
-```
+// make top, left, bottom, right equal view2
+make.edges.equalTo(view2);
 
-*make*  top = superview.top + 5, left = superview.left + 10,
-bottom = superview.bottom - 15, right = superview.right - 20
-```obj-c
+// make top = superview.top + 5, left = superview.left + 10,
+//      bottom = superview.bottom - 15, right = superview.right - 20
 make.edges.equalTo(superview).insets(UIEdgeInsetsMake(5, 10, 15, 20))
 ```
 
 #### size
 
-*make*  width and height greater than or equal to titleLabel
 ```obj-c
+// make width and height greater than or equal to titleLabel
 make.size.greaterThanOrEqualTo(titleLabel) 
-```
 
-*make*  width = superview.width + 100, height = superview.height - 50
-```obj-c
+// make width = superview.width + 100, height = superview.height - 50
 make.size.equalTo(superview).sizeOffset(CGSizeMake(100, -50))
 ```
 
 #### center
-*make*  centerX and centerY = button1
 ```obj-c
+// make centerX and centerY = button1
 make.center.equalTo(button1) 
-```
 
-*make*  centerX = superview.centerX - 5, centerY = superview.centerY + 10
-```obj-c
+// make centerX = superview.centerX - 5, centerY = superview.centerY + 10
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
 
