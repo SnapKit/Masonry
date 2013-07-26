@@ -63,10 +63,10 @@ heres the same constraints created using MASConstraintMaker
 UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 
 [view1 makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(superview.top).with.offset(padding.top); //with is an optional semantic filler
-    make.left.equalTo(superview.left).with.offset(padding.left);
-    make.bottom.equalTo(superview.bottom).with.offset(-padding.bottom);
-    make.right.equalTo(superview.right).with.offset(-padding.right);
+    make.top.equalTo(superview.mas_top).with.offset(padding.top); //with is an optional semantic filler
+    make.left.equalTo(superview.mas_left).with.offset(padding.left);
+    make.bottom.equalTo(superview.mas_bottom).with.offset(-padding.bottom);
+    make.right.equalTo(superview.mas_right).with.offset(-padding.right);
 }];
 ```
 or ever shorter
