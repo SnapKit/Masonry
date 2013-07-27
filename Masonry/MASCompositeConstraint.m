@@ -13,7 +13,6 @@
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
 @property (nonatomic, strong) NSMutableArray *childConstraints;
-@property (nonatomic, assign) BOOL added;
 
 @end
 
