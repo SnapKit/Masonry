@@ -43,11 +43,9 @@
         make.bottom.equalTo(view3.top).offset(-padding);
         make.right.equalTo(view2.left).offset(-padding);
         make.width.equalTo(view2.width);
-        
-        //you can chain same attribute
-        make.height
-            .equalTo(view2.height)
-            .equalTo(view3.height);
+
+        make.height.equalTo(view2.height);
+        make.height.equalTo(view3.height);
     }];
 
     //with is semantic and option
@@ -58,7 +56,6 @@
         make.right.equalTo(superview.mas_right).offset(-padding);
         make.width.equalTo(view1.mas_width);
         
-        //or define it multiple times
         make.height.equalTo(view1.mas_height);
         make.height.equalTo(view3.mas_height);
     }];
@@ -69,12 +66,10 @@
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        //TODO or pass an array
-        //constraints.height.equal(superview.subviews);
         make.height.equalTo(view1.mas_height);
         make.height.equalTo(view2.mas_height);
     }];
-    
+
     return self;
 }
 

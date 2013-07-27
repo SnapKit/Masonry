@@ -49,7 +49,6 @@
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
             make.bottom.equalTo(view3.mas_top).offset(-padding),
-            make.right.equalTo(view2.mas_left).offset(-padding),
         ]];
 
         make.size.equalTo(view2);
@@ -70,11 +69,8 @@
     [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
-            make.top.equalTo(view1.mas_bottom).offset(padding),
         ]];
 
-        //TODO or pass an array
-        //constraints.height.equal(superview.subviews);
         make.height.equalTo(view1.mas_height);
         make.height.equalTo(view2.mas_height);
     }];
@@ -83,6 +79,7 @@
 }
 
 - (void)didMoveToSuperview {
+    [self layoutIfNeeded];
     [self startAnimatingWithInvertedInsets:NO];
 }
 

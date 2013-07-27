@@ -43,9 +43,9 @@ beforeEach(^{
     [superview addSubview:otherView];
 });
 
-describe(@"equality chaining", ^{
+describe(@"create equality constraint", ^{
     
-    it(@"should return same constraint when encountering equal for first time", ^{
+    it(@"should create equal constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = constraint.equalTo(secondViewAttribute);
         
@@ -55,17 +55,7 @@ describe(@"equality chaining", ^{
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationEqual);
     });
     
-    it(@"should start new constraint when encountering equal subsequently", ^{
-        MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        constraint.greaterThanOrEqualTo(secondViewAttribute);
-        MASViewConstraint *newConstraint = constraint.equalTo(secondViewAttribute);
-        
-        [verify(constraint.delegate) addConstraint:(id)constraint];
-        [verify(constraint.delegate) addConstraint:(id)newConstraint];
-        expect(newConstraint).notTo.beIdenticalTo(constraint);
-    });
-    
-    it(@"should return same constraint when encountering greaterThanOrEqual for first time", ^{
+    it(@"should create greaterThanOrEqual constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = constraint.greaterThanOrEqualTo(secondViewAttribute);
         
@@ -75,17 +65,7 @@ describe(@"equality chaining", ^{
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationGreaterThanOrEqual);
     });
     
-    it(@"should start new constraint when encountering greaterThanOrEqual subsequently", ^{
-        MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        constraint.lessThanOrEqualTo(secondViewAttribute);
-        MASViewConstraint *newConstraint = constraint.greaterThanOrEqualTo(secondViewAttribute);
-        
-        [verify(constraint.delegate) addConstraint:(id)constraint];
-        [verify(constraint.delegate) addConstraint:(id)newConstraint];
-        expect(newConstraint).notTo.beIdenticalTo(constraint);
-    });
-    
-    it(@"should return same constraint when encountering lessThanOrEqual for first time", ^{
+    it(@"create lessThanOrEqual constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = constraint.lessThanOrEqualTo(secondViewAttribute);
         
@@ -95,37 +75,27 @@ describe(@"equality chaining", ^{
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationLessThanOrEqual);
     });
     
-    it(@"should start new constraint when encountering lessThanOrEqual subsequently", ^{
+    it(@"should not allow update of equal", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        constraint.equalTo(secondViewAttribute);
-        MASViewConstraint *newConstraint = constraint.lessThanOrEqualTo(secondViewAttribute);
-        
-        [verify(constraint.delegate) addConstraint:(id)constraint];
-        [verify(constraint.delegate) addConstraint:(id)newConstraint];
-        expect(newConstraint).notTo.beIdenticalTo(constraint);
-    });
-    
-    it(@"should not allow update of equal once layoutconstraint is created", ^{
-        MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        [constraint commit];
+        constraint.lessThanOrEqualTo(secondViewAttribute);
         
         expect(^{
             constraint.equalTo(secondViewAttribute);
         }).to.raise(@"NSInternalInconsistencyException");
     });
     
-    it(@"should not allow update of lessThanOrEqual once layoutconstraint is created", ^{
+    it(@"should not allow update of lessThanOrEqual", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        [constraint commit];
+        constraint.equalTo(secondViewAttribute);
         
         expect(^{
             constraint.lessThanOrEqualTo(secondViewAttribute);
         }).to.raise(@"NSInternalInconsistencyException");
     });
     
-    it(@"should not allow update of greaterThanOrEqual once layoutconstraint is created", ^{
+    it(@"should not allow update of greaterThanOrEqual", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        [constraint commit];
+        constraint.greaterThanOrEqualTo(secondViewAttribute);
         
         expect(^{
             constraint.greaterThanOrEqualTo(secondViewAttribute);

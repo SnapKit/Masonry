@@ -63,18 +63,6 @@
     }
 }
 
-- (instancetype)cloneIfNeeded {
-    if (self.hasLayoutRelation) {
-        MASViewAttribute *firstViewAttribute = [[MASViewAttribute alloc] initWithView:self.firstViewAttribute.view layoutAttribute:self.firstViewAttribute.layoutAttribute];
-        
-        MASViewConstraint *viewConstraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:firstViewAttribute];
-        viewConstraint.delegate = self.delegate;
-        viewConstraint.layoutRelation = self.layoutRelation;
-        return viewConstraint;
-    }
-    return self;
-}
-
 #pragma mark - NSLayoutConstraint constant proxies
 
 - (id<MASConstraint> (^)(UIEdgeInsets))insets {
@@ -190,40 +178,34 @@
 
 - (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {
-        NSAssert(!self.hasBeenCommitted,
-                 @"Cannot modify constraint equal relation after it has been committed");
+        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
         
-        MASViewConstraint *viewConstraint = [self cloneIfNeeded];
-        viewConstraint.layoutRelation = NSLayoutRelationEqual;
-        viewConstraint.secondViewAttribute = attr;
-        [viewConstraint.delegate addConstraint:viewConstraint];
-        return viewConstraint;
+        self.layoutRelation = NSLayoutRelationEqual;
+        self.secondViewAttribute = attr;
+        [self.delegate addConstraint:self];
+        return self;
     };
 }
 
 - (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
     return ^id(id attr) {
-        NSAssert(!self.hasBeenCommitted,
-                 @"Cannot modify constraint greaterThanOrEqual relation after it has been committed");
+        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
         
-        MASViewConstraint *viewConstraint = [self cloneIfNeeded];
-        viewConstraint.layoutRelation = NSLayoutRelationGreaterThanOrEqual;
-        viewConstraint.secondViewAttribute = attr;
-        [viewConstraint.delegate addConstraint:viewConstraint];
-        return viewConstraint;
+        self.layoutRelation = NSLayoutRelationGreaterThanOrEqual;
+        self.secondViewAttribute = attr;
+        [self.delegate addConstraint:self];
+        return self;
     };
 }
 
 - (id<MASConstraint> (^)(id))lessThanOrEqualTo {
     return ^id(id attr) {
-        NSAssert(!self.hasBeenCommitted,
-                 @"Cannot modify constraint lessThanOrEqual relation after it has been committed");
+        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
         
-        MASViewConstraint *viewConstraint = [self cloneIfNeeded];
-        viewConstraint.layoutRelation = NSLayoutRelationLessThanOrEqual;
-        viewConstraint.secondViewAttribute = attr;
-        [viewConstraint.delegate addConstraint:viewConstraint];
-        return viewConstraint;
+        self.layoutRelation = NSLayoutRelationLessThanOrEqual;
+        self.secondViewAttribute = attr;
+        [self.delegate addConstraint:self];
+        return self;
     };
 }
 

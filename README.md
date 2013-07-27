@@ -114,7 +114,6 @@ if you want view.left to be greater than or equal to label.left :
 ```obj-c
 //these two constraints are exactly the same
 make.left.greaterThanOrEqualTo(label);
-
 make.left.greaterThanOrEqualTo(label.mas_left);
 ```
 
@@ -123,9 +122,8 @@ make.left.greaterThanOrEqualTo(label.mas_left);
 if you want to set view to have a minimum and maximum width you could pass a number to the equality blocks:
 
 ```obj-c
-make.width
-    .greaterThanOrEqualTo(@200)
-    .lessThanOrEqualTo(@400)
+make.width.greaterThanOrEqualTo(@200);
+make.width.lessThanOrEqualTo(@400)
 ```
 
 ## Learn to prioritize
