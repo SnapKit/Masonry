@@ -180,7 +180,7 @@ make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
 
 ## Installation
-Use the orsome [CocoaPods](http://github.com/CocoaPods/CocoaPods).
+Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).
 In your Podfile
 ```ruby
 pod 'Masonry'
