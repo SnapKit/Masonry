@@ -76,6 +76,8 @@ or ever shorter
 }];
 ```
 
+For more usage examples take a look at the MasonryExamples project in the Masonry workspace.
+
 ## Not all things are created equal
 
 > `.equalTo` equivalent to **NSLayoutRelationEqual**
@@ -122,8 +124,8 @@ if you want to set view to have a minimum and maximum width you could pass a num
 
 ```obj-c
 view.width
-    .greaterThanOrEqual(@200)
-    .lessThanOrEqual(@400)
+    .greaterThanOrEqualTo(@200)
+    .lessThanOrEqualTo(@400)
 ```
 
 ## Learn to prioritize
@@ -140,7 +142,7 @@ Priorities are can be tacked on to the end of a constraint chain like so:
 ```obj-c
 make.left.greaterThanOrEqualTo(label.mas_left).with.priorityLow();
 
-make.top.equal(label.mas_top).with.priority(600);
+make.top.equalTo(label.mas_top).with.priority(600);
 ```
 
 ## Composition, composition, composition
@@ -177,10 +179,8 @@ make.center.equalTo(button1)
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
 
-For more usage examples take a look at the MasonryExamples project in the Masonry workspace.
-
 ## Installation
-Use the awesome [CocoaPods](http://github.com/CocoaPods/CocoaPods).
+Use the orsome [CocoaPods](http://github.com/CocoaPods/CocoaPods).
 In your Podfile
 ```ruby
 pod 'Masonry'
