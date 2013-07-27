@@ -20,6 +20,7 @@
 @interface MASViewConstraint ()
 
 @property (nonatomic, assign) CGFloat layoutConstant;
+@property (nonatomic, assign) MASLayoutPriority layoutPriority;
 
 @end
 
@@ -100,9 +101,7 @@ it(@"should complete children", ^{
 
     //first equality statement
     composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30));
-
-    [verify(delegate) addConstraint:(id)composite];
-
+    
     expect(composite.completedChildConstraints).to.haveCountOf(2);
     expect(composite.currentChildConstraints).to.haveCountOf(2);
 
@@ -110,38 +109,20 @@ it(@"should complete children", ^{
     expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(newView);
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
     expect(viewConstraint.layoutConstant).to.equal(90);
+    expect(viewConstraint.layoutPriority).to.equal(MASLayoutPriorityRequired);
 
     viewConstraint = composite.completedChildConstraints[1];
     expect(viewConstraint.secondViewAttribute.view).to.beIdenticalTo(newView);
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
     expect(viewConstraint.layoutConstant).to.equal(30);
+    expect(viewConstraint.layoutPriority).to.equal(MASLayoutPriorityRequired);
 
-    //chain another equality statement
-    composite.greaterThanOrEqualTo(@6);
-    expect(composite.completedChildConstraints).to.haveCountOf(4);
-    expect(composite.currentChildConstraints).to.haveCountOf(2);
-
-    viewConstraint = composite.completedChildConstraints[2];
-    expect(viewConstraint.secondViewAttribute.view).to.beNil();
-    expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(0);
-    expect(viewConstraint.layoutConstant).to.equal(6);
-
-    viewConstraint = composite.completedChildConstraints[2];
-    expect(viewConstraint.secondViewAttribute.view).to.beNil();
-    expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(0);
-    expect(viewConstraint.layoutConstant).to.equal(6);
-
-    //still referencing same view
-    viewConstraint = composite.currentChildConstraints[0];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
-
-    viewConstraint = composite.currentChildConstraints[1];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
+    //new current
+    expect(composite.completedChildConstraints[0]).to.beIdenticalTo(composite.currentChildConstraints[0]);
+    expect(composite.completedChildConstraints[1]).to.beIdenticalTo(composite.currentChildConstraints[1]);
 });
 
-it(@"should remove all on commit", ^{
+it(@"should remove completed on commit", ^{
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeViewConstraintTypeSize];
     composite.delegate = delegate;
     UIView *newView = UIView.new;
@@ -158,7 +139,7 @@ it(@"should remove all on commit", ^{
     [composite commit];
 
     expect(composite.completedChildConstraints).to.haveCountOf(0);
-    expect(composite.currentChildConstraints).to.haveCountOf(0);
+    expect(composite.currentChildConstraints).to.haveCountOf(2);
 });
 
 SpecEnd

@@ -158,12 +158,8 @@
             [self.delegate addConstraint:self];
             self.added = YES;
         }
-        for (id<MASConstraint> constraint in self.currentChildConstraints.copy) {
-            id<MASConstraint> newConstraint = block(constraint, attr);
-            if (newConstraint != constraint) {
-                [self.currentChildConstraints removeObject:constraint];
-                [self.currentChildConstraints addObject:newConstraint];
-            }
+        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+            block(constraint, attr);
         }
         return self;
     };
@@ -199,7 +195,6 @@
     for (id<MASConstraint> constraint in self.completedChildConstraints) {
         [constraint commit];
     }
-    [self.currentChildConstraints removeAllObjects];
     [self.completedChildConstraints removeAllObjects];
 }
 
