@@ -12,8 +12,7 @@
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
-@property (nonatomic, strong) NSMutableArray *completedChildConstraints;
-@property (nonatomic, strong) NSMutableArray *currentChildConstraints;
+@property (nonatomic, strong) NSMutableArray *childConstraints;
 @property (nonatomic, assign) BOOL added;
 
 @end
@@ -27,14 +26,13 @@
     _view = view;
     _type = type;
     
-    self.completedChildConstraints = NSMutableArray.array;
     [self createChildren];
     
     return self;
 }
 
 - (void)createChildren {
-    self.currentChildConstraints = NSMutableArray.array;
+    self.childConstraints = NSMutableArray.array;
     
     NSArray *viewAttributes;
     switch (self.type) {
@@ -59,21 +57,21 @@
     for (MASViewAttribute *viewAttribute in viewAttributes) {
         MASViewConstraint *child = [[MASViewConstraint alloc] initWithFirstViewAttribute:viewAttribute];
         child.delegate = self;
-        [self.currentChildConstraints addObject:child];
+        [self.childConstraints addObject:child];
     }
 }
 
 #pragma mark - MASConstraintDelegate
 
 - (void)addConstraint:(id<MASConstraint>)constraint {
-    [self.completedChildConstraints addObject:constraint];
+    [self.delegate addConstraint:constraint];
 }
 
 #pragma mark - NSLayoutConstraint constant proxies
 
 - (id<MASConstraint> (^)(UIEdgeInsets))insets {
     return ^id(UIEdgeInsets insets) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.insets(insets);
         }
         return self;
@@ -82,7 +80,7 @@
 
 - (id<MASConstraint> (^)(CGFloat))offset {
     return ^id(CGFloat offset) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.offset(offset);
         }
         return self;
@@ -91,7 +89,7 @@
 
 - (id<MASConstraint> (^)(CGSize))sizeOffset {
     return ^id(CGSize offset) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.sizeOffset(offset);
         }
         return self;
@@ -100,7 +98,7 @@
 
 - (id<MASConstraint> (^)(CGPoint))centerOffset {
     return ^id(CGPoint offset) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.centerOffset(offset);
         }
         return self;
@@ -111,7 +109,7 @@
 
 - (id<MASConstraint> (^)(CGFloat))percent {
     return ^id(CGFloat percent) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.percent(percent);
         }
         return self;
@@ -122,7 +120,7 @@
 
 - (id<MASConstraint> (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.priority(priority);
         }
         return self;
@@ -152,35 +150,31 @@
 
 #pragma mark - NSLayoutRelation proxies
 
-- (id<MASConstraint> (^)(id))relationWithBlock:(id<MASConstraint> (^)(id<MASConstraint> constraint, id attr))block {
+- (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {
-        if (!self.added) {
-            [self.delegate addConstraint:self];
-            self.added = YES;
-        }
-        for (id<MASConstraint> constraint in self.currentChildConstraints) {
-            block(constraint, attr);
+        for (id<MASConstraint> constraint in self.childConstraints) {
+            constraint.equalTo(attr);
         }
         return self;
     };
 }
 
-- (id<MASConstraint> (^)(id))equalTo {
-    return [self relationWithBlock:^id(id<MASConstraint> constraint, id attr) {
-        return constraint.equalTo(attr);
-    }];
-}
-
 - (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
-    return [self relationWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
-        return constraint.greaterThanOrEqualTo(attr);
-    }];
+    return ^id(id attr) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
+            constraint.greaterThanOrEqualTo(attr);
+        }
+        return self;
+    };
 }
 
 - (id<MASConstraint> (^)(id))lessThanOrEqualTo {
-    return [self relationWithBlock:^id<MASConstraint>(id<MASConstraint> constraint, id attr) {
-        return constraint.lessThanOrEqualTo(attr);
-    }];
+    return ^id(id attr) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
+            constraint.lessThanOrEqualTo(attr);
+        }
+        return self;
+    };
 }
 
 #pragma mark - Semantic properties
@@ -192,10 +186,6 @@
 #pragma mark - MASConstraint
 
 - (void)commit {
-    for (id<MASConstraint> constraint in self.completedChildConstraints) {
-        [constraint commit];
-    }
-    [self.completedChildConstraints removeAllObjects];
 }
 
 @end
