@@ -123,7 +123,7 @@ make.left.greaterThanOrEqualTo(label.mas_left);
 if you want to set view to have a minimum and maximum width you could pass a number to the equality blocks:
 
 ```obj-c
-view.width
+make.width
     .greaterThanOrEqualTo(@200)
     .lessThanOrEqualTo(@400)
 ```
