@@ -126,6 +126,15 @@ make.width.greaterThanOrEqualTo(@200);
 make.width.lessThanOrEqualTo(@400)
 ```
 
+#### 4. NSArray
+
+An array of a mixture of any of the previous types
+```obj-c
+make.height.equalTo(@[view1.mas_height, view2.mas_height]); 
+make.height.equalTo(@[view1, view2]);
+make.left.equalTo(@[view1, @100, view3.right]);
+````
+
 ## Learn to prioritize
 
 > `.prority` allows you to specify an exact priority

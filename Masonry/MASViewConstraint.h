@@ -9,7 +9,7 @@
 #import "MASViewAttribute.h"
 #import "MASConstraint.h"
 
-@interface MASViewConstraint : NSObject <MASConstraint>
+@interface MASViewConstraint : NSObject <MASConstraint, NSCopying>
 
 @property (nonatomic, weak) id<MASConstraintDelegate> delegate;
 @property (nonatomic, strong, readonly) MASViewAttribute *firstViewAttribute;

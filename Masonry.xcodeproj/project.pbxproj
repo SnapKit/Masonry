@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */; };
 		DD52F1AE179CA93B005CD195 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AD179CA93B005CD195 /* Foundation.framework */; };
 		DD52F1BD179CA93B005CD195 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */; };
 		DD52F1BF179CA93B005CD195 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BE179CA93B005CD195 /* UIKit.framework */; };
@@ -55,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		CC61B4599FE44F12AD607E9B /* Pods-MasonryTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryTests.xcconfig"; path = "Pods/Pods-MasonryTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		DD38397C17A5170F00C35C17 /* MASConstraintDelegateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintDelegateMock.h; sourceTree = "<group>"; };
+		DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintDelegateMock.m; sourceTree = "<group>"; };
 		DD52F1AA179CA93B005CD195 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD52F1AD179CA93B005CD195 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD52F1B1179CA93B005CD195 /* Masonry-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Masonry-Prefix.pch"; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 		DD52F1C5179CA93B005CD195 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD38397C17A5170F00C35C17 /* MASConstraintDelegateMock.h */,
+				DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */,
 				DD52F1D6179CAA71005CD195 /* MasonryTests-Prefix.pch */,
 				DD52F1C6179CA93B005CD195 /* MasonryTests-Info.plist */,
 				DD52F1C7179CA93B005CD195 /* InfoPlist.strings */,
@@ -371,6 +376,7 @@
 			files = (
 				DD52F1DA179CAA9C005CD195 /* MASCompositeConstraintSpec.m in Sources */,
 				DD52F1DB179CAA9C005CD195 /* MASViewConstraintSpec.m in Sources */,
+				DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

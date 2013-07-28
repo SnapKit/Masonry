@@ -18,7 +18,7 @@
 
 @implementation MASCompositeConstraint
 
-- (id)initWithView:(UIView *)view type:(MASCompositeViewConstraintType)type {
+- (id)initWithView:(UIView *)view type:(MASCompositeConstraintType)type {
     self = [super init];
     if (!self) return nil;
     
@@ -30,23 +30,33 @@
     return self;
 }
 
+- (id)initWithView:(UIView *)view children:(NSArray *)children {
+    self = [super init];
+    if (!self) return nil;
+
+    _view = view;
+    _childConstraints = [children mutableCopy];
+
+    return self;
+}
+
 - (void)createChildren {
     self.childConstraints = NSMutableArray.array;
     
     NSArray *viewAttributes;
     switch (self.type) {
-        case MASCompositeViewConstraintTypeEdges:
+        case MASCompositeConstraintTypeEdges:
             viewAttributes = @[
                 self.view.mas_top, self.view.mas_left,
                 self.view.mas_bottom, self.view.mas_right
             ];
             break;
-        case MASCompositeViewConstraintTypeSize:
+        case MASCompositeConstraintTypeSize:
             viewAttributes = @[
                 self.view.mas_width, self.view.mas_height
             ];
             break;
-        case MASCompositeViewConstraintTypeCenter:
+        case MASCompositeConstraintTypeCenter:
             viewAttributes = @[
                 self.view.mas_centerX, self.view.mas_centerY
             ];

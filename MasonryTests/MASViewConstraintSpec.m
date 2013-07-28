@@ -9,6 +9,7 @@
 #import "MASViewConstraint.h"
 #import "MASConstraint.h"
 #import "UIView+MASAdditions.h"
+#import "MASConstraintDelegateMock.h"
 
 @interface MASViewConstraint ()
 
@@ -23,7 +24,7 @@
 
 SpecBegin(MASViewConstraint)
 
-__block id<MASConstraintDelegate> delegate;
+__block MASConstraintDelegateMock *delegate;
 __block UIView *superview;
 __block MASViewConstraint *constraint;
 __block UIView *otherView;
@@ -31,7 +32,7 @@ __block UIView *otherView;
 
 beforeEach(^{
     superview = UIView.new;
-    delegate = mockProtocol(@protocol(MASConstraintDelegate));
+    delegate = MASConstraintDelegateMock.new;
 
     UIView *view = UIView.new;
     constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width];
@@ -47,9 +48,9 @@ describe(@"create equality constraint", ^{
     
     it(@"should create equal constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        MASViewConstraint *newConstraint = constraint.equalTo(secondViewAttribute);
+        MASViewConstraint *newConstraint = (id)constraint.equalTo(secondViewAttribute);
         
-        [verify(constraint.delegate) addConstraint:(id)constraint];
+        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationEqual);
@@ -57,9 +58,9 @@ describe(@"create equality constraint", ^{
     
     it(@"should create greaterThanOrEqual constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        MASViewConstraint *newConstraint = constraint.greaterThanOrEqualTo(secondViewAttribute);
-        
-        [verify(constraint.delegate) addConstraint:(id)constraint];
+        MASViewConstraint *newConstraint = (id)constraint.greaterThanOrEqualTo(secondViewAttribute);
+
+        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationGreaterThanOrEqual);
@@ -67,9 +68,9 @@ describe(@"create equality constraint", ^{
     
     it(@"create lessThanOrEqual constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
-        MASViewConstraint *newConstraint = constraint.lessThanOrEqualTo(secondViewAttribute);
-        
-        [verify(constraint.delegate) addConstraint:(id)constraint];
+        MASViewConstraint *newConstraint = (id)constraint.lessThanOrEqualTo(secondViewAttribute);
+
+        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationLessThanOrEqual);
@@ -110,8 +111,34 @@ describe(@"create equality constraint", ^{
         expect(constraint.firstViewAttribute.layoutAttribute).to.equal(constraint.secondViewAttribute.layoutAttribute);
     });
     
-    xit(@"should create composite when passed array of views", ^{
+    it(@"should create composite when passed array of views", ^{
+        NSArray *views = @[UIView.new, UIView.new, UIView.new];
+        constraint.equalTo(views).priorityMedium().offset(-10);
 
+        expect(delegate.constraints).to.haveCountOf(3);
+        for (MASViewConstraint *constraint in delegate.constraints) {
+            int index = [delegate.constraints indexOfObject:constraint];
+            expect(constraint.secondViewAttribute.view).to.beIdenticalTo(views[index]);
+            expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+            expect(constraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+            expect(constraint.layoutPriority).to.equal(MASLayoutPriorityDefaultMedium);
+            expect(constraint.layoutConstant).to.equal(-10);
+        }
+    });
+
+    it(@"should create composite when passed array of attributes", ^{
+        NSArray *viewAttributes = @[UIView.new.mas_height, UIView.new.mas_left];
+        constraint.equalTo(viewAttributes).priority(60).offset(10);
+
+        expect(delegate.constraints).to.haveCountOf(2);
+        for (MASViewConstraint *constraint in delegate.constraints) {
+            int index = [delegate.constraints indexOfObject:constraint];
+            expect(constraint.secondViewAttribute.view).to.beIdenticalTo([viewAttributes[index] view]);
+            expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+            expect(constraint.secondViewAttribute.layoutAttribute).to.equal([viewAttributes[index] layoutAttribute]);
+            expect(constraint.layoutPriority).to.equal(60);
+            expect(constraint.layoutConstant).to.equal(10);
+        }
     });
 });
 
