@@ -9,7 +9,4 @@
 
     #define EXP_SHORTHAND
     #import "Expecta.h"
-
-    #define MOCKITO_SHORTHAND
-    #import <OCMockito/OCMockito.h>
 #endif

@@ -7,6 +7,7 @@
 //
 
 #import "MASViewConstraint.h"
+#import "MASCompositeConstraint.h"
 
 @interface MASViewConstraint ()
 
@@ -33,6 +34,18 @@
     return self;
 }
 
+#pragma mark - NSCoping
+
+- (id)copyWithZone:(NSZone *)zone {
+    MASViewConstraint *constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:self.firstViewAttribute];
+    constraint.layoutConstant = self.layoutConstant;
+    constraint.layoutRelation = self.layoutRelation;
+    constraint.layoutPriority = self.layoutPriority;
+    constraint.layoutMultiplier = self.layoutMultiplier;
+    constraint.delegate = self.delegate;
+    return constraint;
+}
+
 #pragma mark - private
 
 - (void)setLayoutConstant:(CGFloat)layoutConstant {
@@ -52,9 +65,7 @@
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
         self.layoutConstant = [secondViewAttribute doubleValue];
-//    } else if ([secondViewAttribute isKindOfClass:NSArray.class]) {
-//        //TODO Composite
-    } else if ([secondViewAttribute isKindOfClass:UIView.class]) {
+    }  else if ([secondViewAttribute isKindOfClass:UIView.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
@@ -176,37 +187,39 @@
 
 #pragma mark - NSLayoutRelation proxies
 
-- (id<MASConstraint> (^)(id))equalTo {
-    return ^id(id attr) {
+- (id<MASConstraint> (^)(id))equalityWithRelation:(NSLayoutRelation)relation {
+    return ^id(id attribute) {
         NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
-        
-        self.layoutRelation = NSLayoutRelationEqual;
-        self.secondViewAttribute = attr;
-        [self.delegate addConstraint:self];
-        return self;
+        if ([attribute isKindOfClass:NSArray.class]) {
+            NSMutableArray *children = NSMutableArray.new;
+            for (id attr in attribute) {
+                MASViewConstraint *viewConstraint = [self copy];
+                viewConstraint.secondViewAttribute = attr;
+                [viewConstraint.delegate addConstraint:viewConstraint];
+                [children addObject:viewConstraint];
+            }
+            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithView:self.firstViewAttribute.view children:children];
+            compositeConstraint.delegate = self.delegate;
+            return compositeConstraint;
+        } else {
+            self.layoutRelation = relation;
+            self.secondViewAttribute = attribute;
+            [self.delegate addConstraint:self];
+            return self;
+        }
     };
+}
+
+- (id<MASConstraint> (^)(id))equalTo {
+    return [self equalityWithRelation:NSLayoutRelationEqual];
 }
 
 - (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
-    return ^id(id attr) {
-        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
-        
-        self.layoutRelation = NSLayoutRelationGreaterThanOrEqual;
-        self.secondViewAttribute = attr;
-        [self.delegate addConstraint:self];
-        return self;
-    };
+    return [self equalityWithRelation:NSLayoutRelationGreaterThanOrEqual];
 }
 
 - (id<MASConstraint> (^)(id))lessThanOrEqualTo {
-    return ^id(id attr) {
-        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
-        
-        self.layoutRelation = NSLayoutRelationLessThanOrEqual;
-        self.secondViewAttribute = attr;
-        [self.delegate addConstraint:self];
-        return self;
-    };
+    return [self equalityWithRelation:NSLayoutRelationLessThanOrEqual];
 }
 
 #pragma mark - Semantic properties

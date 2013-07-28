@@ -102,19 +102,19 @@
 #pragma mark - composite Attributes
 
 - (id<MASConstraint>)edges {
-    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeViewConstraintTypeEdges];
+    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeConstraintTypeEdges];
     constraint.delegate = self;
     return constraint;
 }
 
 - (id<MASConstraint>)size {
-    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeViewConstraintTypeSize];
+    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeConstraintTypeSize];
     constraint.delegate = self;
     return constraint;
 }
 
 - (id<MASConstraint>)center {
-    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeViewConstraintTypeCenter];
+    MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithView:self.view type:MASCompositeConstraintTypeCenter];
     constraint.delegate = self;
     return constraint;
 }

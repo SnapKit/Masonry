@@ -56,8 +56,7 @@
         make.right.equalTo(superview.mas_right).offset(-padding);
         make.width.equalTo(view1.mas_width);
         
-        make.height.equalTo(view1.mas_height);
-        make.height.equalTo(view3.mas_height);
+        make.height.equalTo(@[view1, view3]); //can pass array of views
     }];
     
     [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,8 +65,7 @@
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         
-        make.height.equalTo(view1.mas_height);
-        make.height.equalTo(view2.mas_height);
+        make.height.equalTo(@[view1.mas_height, view2.mas_height]); //can pass array of attributes
     }];
 
     return self;
