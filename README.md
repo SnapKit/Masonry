@@ -57,6 +57,8 @@ UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
  ]];
 ```
 Even with such a simple example the code needed is quite verbose and quickly becomes unreadable when you have more than 2 or 3 views.
+Another option is to use Visual Format Language (VFL), which is a bit less long winded. 
+However the ascii type syntax has its own pitfalls and its also a bit harder to animate as `NSLayoutConstraint constraintsWithVisualFormat:` returns an array.
 
 ## Prepare to meet your Maker!
 
