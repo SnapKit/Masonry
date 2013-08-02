@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *animatableConstraints;
 @property (nonatomic, assign) int padding;
+@property (nonatomic, assign) BOOL animating;
 
 @end
 
@@ -80,16 +81,21 @@
 
 - (void)didMoveToSuperview {
     [self layoutIfNeeded];
-    [self startAnimatingWithInvertedInsets:NO];
+
+    if (self.superview) {
+        self.animating = YES;
+        [self animateWithInvertedInsets:NO];
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     if (!newSuperview) {
-        [self.layer removeAllAnimations];
+        self.animating = NO;
     }
 }
 
-- (void)startAnimatingWithInvertedInsets:(BOOL)invertedInsets {
+- (void)animateWithInvertedInsets:(BOOL)invertedInsets {
+    if (!self.animating) return;
     int padding = invertedInsets ? 100 : self.padding;
     UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
     for (id<MASConstraint> constraint in self.animatableConstraints) {
@@ -99,9 +105,8 @@
     [UIView animateWithDuration:1 animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
-        if (finished) {
-            [self startAnimatingWithInvertedInsets:!invertedInsets];
-        }
+        //repeat!
+        [self animateWithInvertedInsets:!invertedInsets];
     }];
 }
 
