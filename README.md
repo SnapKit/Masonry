@@ -240,18 +240,15 @@ For an example of how to set this up take a look at the **MasonryExamples** proj
 
 ## Installation
 Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).
+
 In your Podfile
-```ruby
-pod 'Masonry'
-```
+>`pod 'Masonry'`
+
 If you want to use masonry without all those pesky 'mas_' prefixes. Add #define MAS_SHORTHAND to your prefix.pch before importing Masonry
-```obj-c
-#define MAS_SHORTHAND 
-```
+>`#define MAS_SHORTHAND`
+
 Get busy Masoning
-```obj-c
-#import "Masonry.h"
-```
+>`#import "Masonry.h"`
 
 ## Features
 * Orsome debug support, give your views and constraints meaningful names.
