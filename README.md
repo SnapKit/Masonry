@@ -1,7 +1,7 @@
 Masonry
 =======
 
-Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code which is more concise and readable.
+Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 
 For examples take a look at the **MasonryExamples** project in the Masonry workspace.
 
@@ -81,7 +81,7 @@ Or ever shorter
 }];
 ```
 
-Also note in the first example we had add the constraints to the superview `[superview addConstraints:...`.
+Also note in the first example we had to add the constraints to the superview `[superview addConstraints:...`.
 Masonry however will automagically add constraints to the appropriate view.
 
 Masonry will also call `view1.translatesAutoresizingMaskIntoConstraints = NO;` for you.
@@ -219,7 +219,7 @@ Will attempt to recover by breaking constraint
 ```
 
 Masonry adds a category to NSLayoutConstraint which overrides the default implementation of `- (NSString *)description`.
-Now you can give meaningful names to views and constraints, and also easily see which constraints are creating by Masonry.
+Now you can give meaningful names to views and constraints, and also easily pick out the constraints created by Masonry.
 
 which means your console output can now look like this: 
 
