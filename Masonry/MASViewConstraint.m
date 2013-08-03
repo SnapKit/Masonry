@@ -8,11 +8,13 @@
 
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
+#import "MASLayoutConstraint.h"
+#import "NSObject+MASDebugAdditions.h"
 
 @interface MASViewConstraint ()
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
-@property (nonatomic, strong) NSLayoutConstraint *layoutConstraint;
+@property (nonatomic, strong, readwrite) MASLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;
@@ -228,6 +230,15 @@
     return self;
 }
 
+#pragma mark - debug helpers
+
+- (id<MASConstraint> (^)(NSString *))debugName {
+    return ^id(NSString *debugName) {
+        self.mas_debugName = debugName;
+        return self;
+    };
+}
+
 #pragma mark - MASConstraint
 
 - (void)commit {
@@ -243,15 +254,16 @@
     }
     
     
-    self.layoutConstraint = [NSLayoutConstraint constraintWithItem:firstLayoutItem
-                                                         attribute:firstLayoutAttribute
-                                                         relatedBy:self.layoutRelation
-                                                            toItem:secondLayoutItem
-                                                         attribute:secondLayoutAttribute
-                                                        multiplier:self.layoutMultiplier
-                                                          constant:self.layoutConstant];
+    self.layoutConstraint = [MASLayoutConstraint constraintWithItem:firstLayoutItem
+                                                          attribute:firstLayoutAttribute
+                                                          relatedBy:self.layoutRelation
+                                                             toItem:secondLayoutItem
+                                                          attribute:secondLayoutAttribute
+                                                         multiplier:self.layoutMultiplier
+                                                           constant:self.layoutConstant];
     
     self.layoutConstraint.priority = self.layoutPriority;
+    self.layoutConstraint.mas_debugName = self.mas_debugName;
     
     if (secondLayoutItem) {
         UIView *closestCommonSuperview = nil;
@@ -276,8 +288,6 @@
         
         [firstLayoutItem addConstraint:self.layoutConstraint];
     }
-    
-    
 }
 
 @end
