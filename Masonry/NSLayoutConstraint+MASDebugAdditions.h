@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSObject+MASDebugAdditions.h"
+#import "NSObject+MASKeyAdditions.h"
 
 /**
  *	makes debug and log output of NSLayoutConstraints more readable

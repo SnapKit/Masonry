@@ -9,7 +9,7 @@
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
 #import "MASLayoutConstraint.h"
-#import "NSObject+MASDebugAdditions.h"
+#import "NSObject+MASKeyAdditions.h"
 
 @interface MASViewConstraint ()
 
@@ -232,9 +232,9 @@
 
 #pragma mark - debug helpers
 
-- (id<MASConstraint> (^)(NSString *))debugName {
-    return ^id(NSString *debugName) {
-        self.mas_debugName = debugName;
+- (id<MASConstraint> (^)(id))key {
+    return ^id(id key) {
+        self.mas_key = key;
         return self;
     };
 }
@@ -263,7 +263,7 @@
                                                            constant:self.layoutConstant];
     
     self.layoutConstraint.priority = self.layoutPriority;
-    self.layoutConstraint.mas_debugName = self.mas_debugName;
+    self.layoutConstraint.mas_key = self.mas_key;
     
     if (secondLayoutItem) {
         UIView *closestCommonSuperview = nil;

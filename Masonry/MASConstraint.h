@@ -108,7 +108,7 @@ typedef float MASLayoutPriority;
 /**
  *	Sets the constraint debug name
  */
-@property (nonatomic, copy, readonly) id<MASConstraint> (^debugName)(NSString* debugName);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^key)(id key);
 
 /**
  *	Creates a NSLayoutConstraint. The constraint is added to the first view or the or the closest common superview of the first and second view. 
