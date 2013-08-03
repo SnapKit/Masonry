@@ -201,6 +201,39 @@ make.center.equalTo(button1)
 // make centerX = superview.centerX - 5, centerY = superview.centerY + 10
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
+## When the ^&*!@ hits the fan!
+
+Laying out your views doesn't always goto plan. So when things literally go pear shaped, you don't want to be looking at console output like this:
+
+```
+Unable to simultaneously satisfy constraints.....blah blah blah....
+(
+    "<MASLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>",
+    "<NSAutoresizingMaskLayoutConstraint:0x839ea20 h=--& v=--& V:[MASExampleDebuggingView:0x7186560(416)]>",
+    "<MASLayoutConstraint:0x7189c70 UILabel:0x7186980.bottom == MASExampleDebuggingView:0x7186560.bottom - 10>",
+    "<MASLayoutConstraint:0x7189560 V:|-(1)-[UILabel:0x7186980]   (Names: '|':MASExampleDebuggingView:0x7186560 )>"
+)
+
+Will attempt to recover by breaking constraint 
+<MASLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>
+```
+
+Masonry adds a category to NSLayoutConstraint which overrides the default implementation of `- (NSString *)description` it allows you to give meaningful names to views and constraints which means your console output can now look like this: 
+
+```
+Unable to simultaneously satisfy constraints......blah blah blah....
+(
+    "<NSAutoresizingMaskLayoutConstraint:0x8887740 MASExampleDebuggingView:superview.height == 416>",
+    "<MASLayoutConstraint:ConstantConstraint UILabel:view3.height >= 5000>",
+    "<MASLayoutConstraint:BottomConstraint UILabel:view3.bottom == MASExampleDebuggingView:superview.bottom - 10>",
+    "<MASLayoutConstraint:ConflictingConstraint[0] UILabel:view3.top == MASExampleDebuggingView:superview.top + 1>"
+)
+
+Will attempt to recover by breaking constraint 
+<MASLayoutConstraint:ConstantConstraint UILabel:view3.height >= 5000>
+```
+
+For an example of how to set this up take a look at the **MasonryExamples** project in the Masonry workspace.
 
 ## Installation
 Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).
@@ -218,11 +251,11 @@ Get busy Masoning
 ```
 
 ## Features
-* No macro magic. Masonry won't pollute the global namespace with macros.
+* Orsome debug support, give your views and constraints meaningful names.
+* Constraints read like sentences.
+* No crazy macro magic. Masonry won't pollute the global namespace with macros.
 * Not string or dictionary based and hence you get compile time checking.
 
 ## TODO
 * Eye candy
-* Better debugging help for complicated layouts
-* Header comments/Documentation
 * More tests and examples
