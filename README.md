@@ -208,17 +208,20 @@ Laying out your views doesn't always goto plan. So when things literally go pear
 ```
 Unable to simultaneously satisfy constraints.....blah blah blah....
 (
-    "<MASLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>",
+    "<NSLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>",
     "<NSAutoresizingMaskLayoutConstraint:0x839ea20 h=--& v=--& V:[MASExampleDebuggingView:0x7186560(416)]>",
-    "<MASLayoutConstraint:0x7189c70 UILabel:0x7186980.bottom == MASExampleDebuggingView:0x7186560.bottom - 10>",
-    "<MASLayoutConstraint:0x7189560 V:|-(1)-[UILabel:0x7186980]   (Names: '|':MASExampleDebuggingView:0x7186560 )>"
+    "<NSLayoutConstraint:0x7189c70 UILabel:0x7186980.bottom == MASExampleDebuggingView:0x7186560.bottom - 10>",
+    "<NSLayoutConstraint:0x7189560 V:|-(1)-[UILabel:0x7186980]   (Names: '|':MASExampleDebuggingView:0x7186560 )>"
 )
 
 Will attempt to recover by breaking constraint 
-<MASLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>
+<NSLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>
 ```
 
-Masonry adds a category to NSLayoutConstraint which overrides the default implementation of `- (NSString *)description` it allows you to give meaningful names to views and constraints which means your console output can now look like this: 
+Masonry adds a category to NSLayoutConstraint which overrides the default implementation of `- (NSString *)description`.
+Now you can give meaningful names to views and constraints, and also easily see which constraints are creating by Masonry.
+
+which means your console output can now look like this: 
 
 ```
 Unable to simultaneously satisfy constraints......blah blah blah....
