@@ -8,19 +8,13 @@
 
 #import "MASExampleBasicView.h"
 
-@interface MASExampleBasicView ()
-
-@property (nonatomic, strong) UIView *view1;
-
-@end
-
 @implementation MASExampleBasicView
 
 - (id)init {
     self = [super init];
     if (!self) return nil;
     
-    UIView *view1 = self.view1 = UIView.new;
+    UIView *view1 = UIView.new;
     view1.backgroundColor = UIColor.greenColor;
     view1.layer.borderColor = UIColor.blackColor.CGColor;
     view1.layer.borderWidth = 2;
@@ -40,14 +34,6 @@
     
     UIView *superview = self;
     int padding = 10;
-
-    //debug names
-//    view1.mas_debugName = @"view1";
-//    view2.mas_debugName = @"view2";
-//    view3.mas_debugName = @"view3";
-//    superview.mas_debugName = @"superview";
-    //or
-    MASAttachDebugNames(self.view1, view2, view3, superview);
 
     //if you want to use Masonry without the mas_ prefix
     //define MAS_SHORTHAND before importing Masonry.h see MasonryExamples-Prefix.pch
@@ -78,7 +64,6 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.edges.equalTo(@1).debugName(@"DumbConstraint");
         make.height.equalTo(@[view1.mas_height, view2.mas_height]); //can pass array of attributes
     }];
 

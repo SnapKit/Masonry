@@ -66,8 +66,8 @@
 #pragma mark - description override
 
 + (NSString *)descriptionForObject:(id)obj {
-    if ([obj mas_debugName]) {
-        return [NSString stringWithFormat:@"%@:%@", [obj class], [obj mas_debugName]];
+    if ([obj mas_key]) {
+        return [NSString stringWithFormat:@"%@:%@", [obj class], [obj mas_key]];
     }
     return [NSString stringWithFormat:@"%@:%p", [obj class], obj];
 }
@@ -88,7 +88,7 @@
         [description appendFormat:@" %@", [self.class descriptionForObject:self.secondItem]];
     }
     if (self.secondAttribute != NSLayoutAttributeNotAnAttribute) {
-        [description appendFormat:@".%@ ", self.class.layoutAttributeDescriptionsByValue[@(self.secondAttribute)]];
+        [description appendFormat:@".%@", self.class.layoutAttributeDescriptionsByValue[@(self.secondAttribute)]];
     }
     
     if (self.multiplier != 1) {
@@ -96,7 +96,11 @@
     }
     
     if (self.constant) {
-        [description appendFormat:@" %f", self.constant];
+        if (self.secondAttribute == NSLayoutAttributeNotAnAttribute) {
+            [description appendFormat:@" %f", self.constant];
+        } else {
+            [description appendFormat:@" %@ %f", (self.constant < 0 ? @"-" : @"+"), ABS(self.constant)];
+        }
     }
 
     if (self.priority != UILayoutPriorityRequired) {

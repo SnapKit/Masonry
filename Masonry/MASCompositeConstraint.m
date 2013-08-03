@@ -9,6 +9,7 @@
 #import "MASCompositeConstraint.h"
 #import "UIView+MASAdditions.h"
 #import "MASViewConstraint.h"
+#import "NSObject+MASKeyAdditions.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
@@ -197,11 +198,12 @@
 
 #pragma mark - debug helpers
 
-- (id<MASConstraint> (^)(NSString *))debugName {
-    return ^id(NSString *debugName) {
+- (id<MASConstraint> (^)(id))key {
+    return ^id(id key) {
+        self.mas_key = key;
         int i = 0;
         for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.debugName([NSString stringWithFormat:@"%@[%d]", debugName, i++]);
+            constraint.key([NSString stringWithFormat:@"%@[%d]", key, i++]);
         }
         return self;
     };
