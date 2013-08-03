@@ -92,14 +92,14 @@
     }
     
     if (self.multiplier != 1) {
-        [description appendFormat:@" * %f", self.multiplier];
+        [description appendFormat:@" * %g", self.multiplier];
     }
     
     if (self.constant) {
         if (self.secondAttribute == NSLayoutAttributeNotAnAttribute) {
-            [description appendFormat:@" %f", self.constant];
+            [description appendFormat:@" %g", self.constant];
         } else {
-            [description appendFormat:@" %@ %f", (self.constant < 0 ? @"-" : @"+"), ABS(self.constant)];
+            [description appendFormat:@" %@ %g", (self.constant < 0 ? @"-" : @"+"), ABS(self.constant)];
         }
     }
 
