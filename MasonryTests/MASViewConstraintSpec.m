@@ -13,7 +13,6 @@
 
 @interface MASViewConstraint ()
 
-@property (nonatomic, strong) NSLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;

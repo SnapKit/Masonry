@@ -11,6 +11,10 @@
 
 #ifdef MAS_SHORTHAND
 
+/**
+ *	Shorthand view additions without the 'mas_' prefixes,
+ *  only enabled if MAS_SHORTHAND is defined
+ */
 @interface UIView (MASShorthandAdditions)
 
 @property (nonatomic, strong, readonly) MASViewAttribute *left;

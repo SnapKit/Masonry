@@ -34,6 +34,7 @@
     self = [super init];
     if (!self) return nil;
 
+    _type = MASCompositeConstraintTypeUnknown;
     _view = view;
     _childConstraints = [children mutableCopy];
 
@@ -60,6 +61,8 @@
             viewAttributes = @[
                 self.view.mas_centerX, self.view.mas_centerY
             ];
+            break;
+        default:
             break;
     }
     
@@ -190,6 +193,18 @@
 
 - (id<MASConstraint>)with {
     return self;
+}
+
+#pragma mark - debug helpers
+
+- (id<MASConstraint> (^)(NSString *))debugName {
+    return ^id(NSString *debugName) {
+        int i = 0;
+        for (id<MASConstraint> constraint in self.childConstraints) {
+            constraint.debugName([NSString stringWithFormat:@"%@[%d]", debugName, i++]);
+        }
+        return self;
+    };
 }
 
 #pragma mark - MASConstraint
