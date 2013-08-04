@@ -227,13 +227,13 @@ which means your console output can now look like this:
 Unable to simultaneously satisfy constraints......blah blah blah....
 (
     "<NSAutoresizingMaskLayoutConstraint:0x8887740 MASExampleDebuggingView:superview.height == 416>",
-    "<MASLayoutConstraint:ConstantConstraint UILabel:view3.height >= 5000>",
-    "<MASLayoutConstraint:BottomConstraint UILabel:view3.bottom == MASExampleDebuggingView:superview.bottom - 10>",
-    "<MASLayoutConstraint:ConflictingConstraint[0] UILabel:view3.top == MASExampleDebuggingView:superview.top + 1>"
+    "<MASLayoutConstraint:ConstantConstraint UILabel:messageLabel.height >= 5000>",
+    "<MASLayoutConstraint:BottomConstraint UILabel:messageLabel.bottom == MASExampleDebuggingView:superview.bottom - 10>",
+    "<MASLayoutConstraint:ConflictingConstraint[0] UILabel:messageLabel.top == MASExampleDebuggingView:superview.top + 1>"
 )
 
 Will attempt to recover by breaking constraint 
-<MASLayoutConstraint:ConstantConstraint UILabel:view3.height >= 5000>
+<MASLayoutConstraint:ConstantConstraint UILabel:messageLabel.height >= 5000>
 ```
 
 For an example of how to set this up take a look at the **MasonryExamples** project in the Masonry workspace.
@@ -251,11 +251,13 @@ Get busy Masoning
 >`#import "Masonry.h"`
 
 ## Features
-* Orsome debug support, give your views and constraints meaningful names.
+* Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do to!
+* Great debug support, give your views and constraints meaningful names.
 * Constraints read like sentences.
 * No crazy macro magic. Masonry won't pollute the global namespace with macros.
 * Not string or dictionary based and hence you get compile time checking.
 
 ## TODO
 * Eye candy
+* Mac support
 * More tests and examples
