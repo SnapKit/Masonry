@@ -6,4 +6,4 @@
     - brew install xctool
 
   script:
-    - xctool -workspace Masonry -scheme Masonry build test
+    - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry' -configuration Debug -sdk iphonesimulator build test
