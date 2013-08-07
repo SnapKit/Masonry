@@ -64,7 +64,6 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        
         make.height.equalTo(@[view1.mas_height, view2.mas_height]); //can pass array of attributes
     }];
 

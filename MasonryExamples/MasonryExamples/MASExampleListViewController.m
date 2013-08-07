@@ -12,6 +12,7 @@
 #import "MASExampleConstantsView.h"
 #import "MASExampleSidesView.h"
 #import "MASExampleAnimatedView.h"
+#import "MASExampleDebuggingView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -30,10 +31,16 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
     self.title = @"Examples";
     
     self.exampleControllers = @[
-        [[MASExampleViewController alloc] initWithTitle:@"Basic" viewClass:MASExampleBasicView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Using Constants" viewClass:MASExampleConstantsView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Composite sides" viewClass:MASExampleSidesView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Basic Animated" viewClass:MASExampleAnimatedView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Basic"
+                                              viewClass:MASExampleBasicView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Using Constants"
+                                              viewClass:MASExampleConstantsView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Composite sides"
+                                              viewClass:MASExampleSidesView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
+                                              viewClass:MASExampleAnimatedView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Debugging helpers"
+                                              viewClass:MASExampleDebuggingView.class],
     ];
     
     return self;

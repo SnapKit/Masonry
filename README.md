@@ -1,7 +1,7 @@
 Masonry
 =======
 
-Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code which is more concise and readable.
+Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 
 For examples take a look at the **MasonryExamples** project in the Masonry workspace.
 
@@ -81,7 +81,7 @@ Or ever shorter
 }];
 ```
 
-Also note in the first example we had add the constraints to the superview `[superview addConstraints:...`.
+Also note in the first example we had to add the constraints to the superview `[superview addConstraints:...`.
 Masonry however will automagically add constraints to the appropriate view.
 
 Masonry will also call `view1.translatesAutoresizingMaskIntoConstraints = NO;` for you.
@@ -201,28 +201,63 @@ make.center.equalTo(button1)
 // make centerX = superview.centerX - 5, centerY = superview.centerY + 10
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
+## When the ^&*!@ hits the fan!
+
+Laying out your views doesn't always goto plan. So when things literally go pear shaped, you don't want to be looking at console output like this:
+
+```
+Unable to simultaneously satisfy constraints.....blah blah blah....
+(
+    "<NSLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>",
+    "<NSAutoresizingMaskLayoutConstraint:0x839ea20 h=--& v=--& V:[MASExampleDebuggingView:0x7186560(416)]>",
+    "<NSLayoutConstraint:0x7189c70 UILabel:0x7186980.bottom == MASExampleDebuggingView:0x7186560.bottom - 10>",
+    "<NSLayoutConstraint:0x7189560 V:|-(1)-[UILabel:0x7186980]   (Names: '|':MASExampleDebuggingView:0x7186560 )>"
+)
+
+Will attempt to recover by breaking constraint 
+<NSLayoutConstraint:0x7189ac0 V:[UILabel:0x7186980(>=5000)]>
+```
+
+Masonry adds a category to NSLayoutConstraint which overrides the default implementation of `- (NSString *)description`.
+Now you can give meaningful names to views and constraints, and also easily pick out the constraints created by Masonry.
+
+which means your console output can now look like this: 
+
+```
+Unable to simultaneously satisfy constraints......blah blah blah....
+(
+    "<NSAutoresizingMaskLayoutConstraint:0x8887740 MASExampleDebuggingView:superview.height == 416>",
+    "<MASLayoutConstraint:ConstantConstraint UILabel:messageLabel.height >= 5000>",
+    "<MASLayoutConstraint:BottomConstraint UILabel:messageLabel.bottom == MASExampleDebuggingView:superview.bottom - 10>",
+    "<MASLayoutConstraint:ConflictingConstraint[0] UILabel:messageLabel.top == MASExampleDebuggingView:superview.top + 1>"
+)
+
+Will attempt to recover by breaking constraint 
+<MASLayoutConstraint:ConstantConstraint UILabel:messageLabel.height >= 5000>
+```
+
+For an example of how to set this up take a look at the **MasonryExamples** project in the Masonry workspace.
 
 ## Installation
 Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).
+
 In your Podfile
-```ruby
-pod 'Masonry'
-```
+>`pod 'Masonry'`
+
 If you want to use masonry without all those pesky 'mas_' prefixes. Add #define MAS_SHORTHAND to your prefix.pch before importing Masonry
-```obj-c
-#define MAS_SHORTHAND 
-```
+>`#define MAS_SHORTHAND`
+
 Get busy Masoning
-```obj-c
-#import "Masonry.h"
-```
+>`#import "Masonry.h"`
 
 ## Features
-* No macro magic. Masonry won't pollute the global namespace with macros.
+* Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do to!
+* Great debug support, give your views and constraints meaningful names.
+* Constraints read like sentences.
+* No crazy macro magic. Masonry won't pollute the global namespace with macros.
 * Not string or dictionary based and hence you get compile time checking.
 
 ## TODO
 * Eye candy
-* Better debugging help for complicated layouts
-* Header comments/Documentation
+* Mac support
 * More tests and examples

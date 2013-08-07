@@ -17,33 +17,101 @@ enum {
 };
 typedef float MASLayoutPriority;
 
+/**
+ *	Enables Constraints to be created with chainable syntax
+ *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
+ *  or a group of NSLayoutConstraints (MASComposisteConstraint)
+ */
 @protocol MASConstraint <NSObject>
 
-//NSLayoutConstraint constant proxies
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
+ *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^insets)(UIEdgeInsets insets);
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^sizeOffset)(CGSize offset);
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeCenterX, NSLayoutAttributeCenterY
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^centerOffset)(CGPoint offset);
+
+
+/**
+ *	Modifies the NSLayoutConstraint constant
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^offset)(CGFloat offset);
 
-//NSLayoutConstraint multiplier proxies
+/**
+ *	Sets the NSLayoutConstraint multiplier property
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^percent)(CGFloat percent);
 
-//MASLayoutPriority proxies
+/**
+ *	Sets the NSLayoutConstraint priority to a float or MASLayoutPriority
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^priority)(MASLayoutPriority priority);
+
+/**
+ *	Sets the NSLayoutConstraint priority to MASLayoutPriorityLow
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^priorityLow)();
+
+/**
+ *	Sets the NSLayoutConstraint priority to MASLayoutPriorityMedium
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^priorityMedium)();
+
+/**
+ *	Sets the NSLayoutConstraint priority to MASLayoutPriorityHigh
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^priorityHigh)();
 
-//NSLayoutRelation proxies
+/**
+ *	Sets the constraint relation to NSLayoutRelationEqual
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSNumber, NSArray
+ *  see readme for more details.
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^equalTo)(id attr);
+
+/**
+ *	Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSNumber, NSArray
+ *  see readme for more details.
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^greaterThanOrEqualTo)(id attr);
+
+/**
+ *	Sets the constraint relation to NSLayoutRelationLessThanOrEqual
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSNumber, NSArray
+ *  see readme for more details.
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^lessThanOrEqualTo)(id attr);
 
-//semantic properties
+/**
+ *	optional semantic property which has no effect but improves the readability of constraint
+ */
 @property (nonatomic, copy, readonly) id<MASConstraint> with;
 
 /**
- Creates a NSLayoutConstraint. The constraint is added to the first view or the or the closest common superview of the first and second view. 
+ *	Sets the constraint debug name
+ */
+@property (nonatomic, copy, readonly) id<MASConstraint> (^key)(id key);
+
+/**
+ *	Creates a NSLayoutConstraint. The constraint is added to the first view or the or the closest common superview of the first and second view. 
  */
 - (void)commit;
 
@@ -52,7 +120,9 @@ typedef float MASLayoutPriority;
 @protocol MASConstraintDelegate <NSObject>
 
 /**
- Notifies the delegate when the constraint is has the minimum set of properties, has a NSLayoutRelation and view
+ *	Notifies the delegate when the constraint is has the minimum set of properties.
+ *
+ *	@param	constraint	a constraint that has at least a NSLayoutRelation and view
  */
 - (void)addConstraint:(id<MASConstraint>)constraint;
 

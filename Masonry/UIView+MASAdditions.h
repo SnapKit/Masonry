@@ -10,9 +10,15 @@
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
 
+/**
+ *	Provides constraint maker block 
+ *  and convience methods for creating MASViewAttribute which are view + NSLayoutAttribute pairs
+ */
 @interface UIView (MASAdditions)
 
-// following properties return a new MASViewAttribute with current view and appropriate NSLayoutAttribute
+/**
+ *	following properties return a new MASViewAttribute with current view and appropriate NSLayoutAttribute
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_left;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_top;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_right;

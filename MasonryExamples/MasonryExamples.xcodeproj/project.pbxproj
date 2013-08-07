@@ -19,6 +19,7 @@
 		DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */; };
 		DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F250179CADC0005CD195 /* MASExampleViewController.m */; };
 		DD52F26E179CBA05005CD195 /* libMasonry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F26D179CBA05005CD195 /* libMasonry.a */; };
+		DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */; };
 		DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		DD52F24F179CADC0005CD195 /* MASExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleViewController.h; sourceTree = "<group>"; };
 		DD52F250179CADC0005CD195 /* MASExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleViewController.m; sourceTree = "<group>"; };
 		DD52F26D179CBA05005CD195 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleDebuggingView.h; sourceTree = "<group>"; };
+		DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleDebuggingView.m; sourceTree = "<group>"; };
 		DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAnimatedView.h; sourceTree = "<group>"; };
 		DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAnimatedView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +128,8 @@
 				DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */,
 				DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */,
 				DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */,
+				DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */,
+				DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */,
 				DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */,
 				DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */,
+				DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
