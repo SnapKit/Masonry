@@ -1,0 +1,9 @@
+---
+  language: objective-c
+
+  before_script:
+	- brew update
+	- brew install xctool
+	
+  script:
+	- xctool -workspace Masonry -scheme Masonry build test
