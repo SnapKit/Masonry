@@ -1,9 +1,13 @@
-Masonry
+Masonry 
 =======
 
 Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 
 For examples take a look at the **MasonryExamples** project in the Masonry workspace.
+
+[![Build Status](https://travis-ci.org/cloudkite/Masonry.png?branch=master)](https://travis-ci.org/cloudkite/Masonry)
+[![Version](http://cocoapod-badges.herokuapp.com/v/Masonry/badge.png)](http://cocoadocs.org/docsets/Masonry)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/Masonry/badge.png)](http://cocoadocs.org/docsets/Masonry)
 
 ## Whats wrong with NSLayoutConstraints?
 
