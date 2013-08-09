@@ -98,7 +98,7 @@ Masonry will also call `view1.translatesAutoresizingMaskIntoConstraints = NO;` f
 
 > `.greaterThanOrEqualTo` equivalent to **NSLayoutRelationGreaterThanOrEqual**
 
-These three equality constraints except one argument which can be any of the following:
+These three equality constraints accept one argument which can be any of the following:
 
 #### 1. MASViewAttribute
 
@@ -255,7 +255,7 @@ Get busy Masoning
 >`#import "Masonry.h"`
 
 ## Features
-* Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do to!
+* Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!
 * Great debug support, give your views and constraints meaningful names.
 * Constraints read like sentences.
 * No crazy macro magic. Masonry won't pollute the global namespace with macros.
