@@ -76,8 +76,10 @@
 
 #pragma mark - MASConstraintDelegate
 
-- (void)addConstraint:(id<MASConstraint>)constraint {
-    [self.delegate addConstraint:constraint];
+- (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint {
+    int index = [self.childConstraints indexOfObject:constraint];
+    NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
+    [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
 #pragma mark - NSLayoutConstraint constant proxies
@@ -165,7 +167,7 @@
 
 - (id<MASConstraint> (^)(id))equalTo {
     return ^id(id attr) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints.copy) {
             constraint.equalTo(attr);
         }
         return self;
@@ -174,7 +176,7 @@
 
 - (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
     return ^id(id attr) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints.copy) {
             constraint.greaterThanOrEqualTo(attr);
         }
         return self;
@@ -183,7 +185,7 @@
 
 - (id<MASConstraint> (^)(id))lessThanOrEqualTo {
     return ^id(id attr) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
+        for (id<MASConstraint> constraint in self.childConstraints.copy) {
             constraint.lessThanOrEqualTo(attr);
         }
         return self;
@@ -211,7 +213,16 @@
 
 #pragma mark - MASConstraint
 
-- (void)commit {
+- (void)installConstraint {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        [constraint installConstraint];
+    }
+}
+
+- (void)uninstallConstraint {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        [constraint uninstallConstraint];
+    }
 }
 
 @end

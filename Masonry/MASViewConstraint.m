@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
 @property (nonatomic, strong, readwrite) MASLayoutConstraint *layoutConstraint;
+@property (nonatomic, weak) UIView *installedView;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;
@@ -60,7 +61,7 @@
     self.hasLayoutRelation = YES;
 }
 
-- (BOOL)hasBeenCommitted {
+- (BOOL)hasBeenInstalled {
     return self.layoutConstraint != nil;
 }
 
@@ -146,8 +147,8 @@
 
 - (id<MASConstraint> (^)(CGFloat))percent {
     return ^id(CGFloat percent) {
-        NSAssert(!self.hasBeenCommitted,
-                 @"Cannot modify constraint percent after it has been committed");
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint percent after it has been installed");
         
         self.layoutMultiplier = percent;
         return self;
@@ -158,8 +159,8 @@
 
 - (id<MASConstraint> (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
-        NSAssert(!self.hasBeenCommitted,
-                 @"Cannot modify constraint priority after it has been committed");
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint priority after it has been installed");
         
         self.layoutPriority = priority;
         return self;
@@ -197,16 +198,15 @@
             for (id attr in attribute) {
                 MASViewConstraint *viewConstraint = [self copy];
                 viewConstraint.secondViewAttribute = attr;
-                [viewConstraint.delegate addConstraint:viewConstraint];
                 [children addObject:viewConstraint];
             }
             MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithView:self.firstViewAttribute.view children:children];
             compositeConstraint.delegate = self.delegate;
+            [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
             return compositeConstraint;
         } else {
             self.layoutRelation = relation;
             self.secondViewAttribute = attribute;
-            [self.delegate addConstraint:self];
             return self;
         }
     };
@@ -241,8 +241,8 @@
 
 #pragma mark - MASConstraint
 
-- (void)commit {
-    NSAssert(!self.hasBeenCommitted, @"Cannot commit constraint more than once");
+- (void)installConstraint {
+    NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
     
     UIView *firstLayoutItem = self.firstViewAttribute.view;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
@@ -283,11 +283,18 @@
                  @"couldn't find a common superview for %@ and %@",
                  firstLayoutItem,
                  secondLayoutItem);
+        self.installedView = closestCommonSuperview;
         [closestCommonSuperview addConstraint:self.layoutConstraint];
     } else {
-        
+        self.installedView = firstLayoutItem;
         [firstLayoutItem addConstraint:self.layoutConstraint];
     }
+}
+
+- (void)uninstallConstraint {
+    [self.installedView removeConstraint:self.layoutConstraint];
+    self.layoutConstraint = nil;
+    self.installedView = nil;
 }
 
 @end

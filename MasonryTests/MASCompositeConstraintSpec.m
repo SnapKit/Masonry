@@ -116,7 +116,7 @@ it(@"should complete children", ^{
     expect(viewConstraint.layoutPriority).to.equal(MASLayoutPriorityDefaultLow);
 });
 
-it(@"should not remove on commit", ^{
+it(@"should not remove on install", ^{
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
     composite.delegate = delegate;
     UIView *newView = UIView.new;
@@ -125,11 +125,22 @@ it(@"should not remove on commit", ^{
     //first equality statement
     composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30));
 
-    [composite commit];
+    [composite installConstraint];
 
     expect(composite.childConstraints).to.haveCountOf(2);
-    expect(delegate.constraints).to.contain(composite.childConstraints[0]);
-    expect(delegate.constraints).to.contain(composite.childConstraints[1]);
+});
+
+it(@"should spawn child composite constraints", ^{
+    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
+    composite.delegate = delegate;
+
+    UIView *otherView = UIView.new;
+    [superview addSubview:otherView];
+    composite.lessThanOrEqualTo(@[@2, otherView]);
+
+    expect(composite.childConstraints).to.haveCountOf(2);
+    expect(composite.childConstraints[0]).to.beKindOf(MASCompositeConstraint.class);
+    expect(composite.childConstraints[1]).to.beKindOf(MASCompositeConstraint.class);
 });
 
 SpecEnd

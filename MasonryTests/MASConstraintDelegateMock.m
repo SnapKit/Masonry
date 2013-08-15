@@ -19,8 +19,8 @@
     return self;
 }
 
-- (void)addConstraint:(id<MASConstraint>)constraint {
-    [self.constraints addObject:constraint];
+- (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint {
+    [self.constraints replaceObjectAtIndex:[self.constraints indexOfObject:constraint] withObject:replacementConstraint];
 }
 
 @end

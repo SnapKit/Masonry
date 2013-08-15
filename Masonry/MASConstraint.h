@@ -111,19 +111,23 @@ typedef float MASLayoutPriority;
 @property (nonatomic, copy, readonly) id<MASConstraint> (^key)(id key);
 
 /**
- *	Creates a NSLayoutConstraint. The constraint is added to the first view or the or the closest common superview of the first and second view. 
+ *	Creates a NSLayoutConstraint. The constraint is installed to the first view or the or the closest common superview of the first and second view. 
  */
-- (void)commit;
+- (void)installConstraint;
+
+/**
+ *	Removes previously installed NSLayoutConstraint
+ */
+- (void)uninstallConstraint;
 
 @end
 
 @protocol MASConstraintDelegate <NSObject>
 
 /**
- *	Notifies the delegate when the constraint is has the minimum set of properties.
- *
- *	@param	constraint	a constraint that has at least a NSLayoutRelation and view
+ *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example 
+ *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
  */
-- (void)addConstraint:(id<MASConstraint>)constraint;
+- (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint;
 
 @end

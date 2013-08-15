@@ -10,6 +10,7 @@
 #import "MASConstraint.h"
 #import "UIView+MASAdditions.h"
 #import "MASConstraintDelegateMock.h"
+#import "MASCompositeConstraint.h"
 
 @interface MASViewConstraint ()
 
@@ -18,6 +19,12 @@
 @property (nonatomic, assign) CGFloat layoutMultiplier;
 @property (nonatomic, assign) CGFloat layoutConstant;
 @property (nonatomic, assign) BOOL hasLayoutRelation;
+
+@end
+
+@interface MASCompositeConstraint () <MASConstraintDelegate>
+
+@property (nonatomic, strong) NSMutableArray *childConstraints;
 
 @end
 
@@ -49,7 +56,6 @@ describe(@"create equality constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = (id)constraint.equalTo(secondViewAttribute);
         
-        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationEqual);
@@ -59,7 +65,6 @@ describe(@"create equality constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = (id)constraint.greaterThanOrEqualTo(secondViewAttribute);
 
-        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationGreaterThanOrEqual);
@@ -69,7 +74,6 @@ describe(@"create equality constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_top;
         MASViewConstraint *newConstraint = (id)constraint.lessThanOrEqualTo(secondViewAttribute);
 
-        expect(delegate.constraints).to.contain(constraint);
         expect(newConstraint).to.beIdenticalTo(constraint);
         expect(constraint.secondViewAttribute).to.beIdenticalTo(secondViewAttribute);
         expect(constraint.layoutRelation).to.equal(NSLayoutRelationLessThanOrEqual);
@@ -112,11 +116,14 @@ describe(@"create equality constraint", ^{
     
     it(@"should create composite when passed array of views", ^{
         NSArray *views = @[UIView.new, UIView.new, UIView.new];
-        constraint.equalTo(views).priorityMedium().offset(-10);
+        [delegate.constraints addObject:constraint];
 
-        expect(delegate.constraints).to.haveCountOf(3);
-        for (MASViewConstraint *constraint in delegate.constraints) {
-            int index = [delegate.constraints indexOfObject:constraint];
+        MASCompositeConstraint *composite = (id)constraint.equalTo(views).priorityMedium().offset(-10);
+
+        expect(delegate.constraints).to.haveCountOf(1);
+        expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
+        for (MASViewConstraint *constraint in composite.childConstraints) {
+            int index = [composite.childConstraints indexOfObject:constraint];
             expect(constraint.secondViewAttribute.view).to.beIdenticalTo(views[index]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
@@ -127,11 +134,14 @@ describe(@"create equality constraint", ^{
 
     it(@"should create composite when passed array of attributes", ^{
         NSArray *viewAttributes = @[UIView.new.mas_height, UIView.new.mas_left];
-        constraint.equalTo(viewAttributes).priority(60).offset(10);
+        [delegate.constraints addObject:constraint];
+        
+        MASCompositeConstraint *composite = (id)constraint.equalTo(viewAttributes).priority(60).offset(10);
 
-        expect(delegate.constraints).to.haveCountOf(2);
-        for (MASViewConstraint *constraint in delegate.constraints) {
-            int index = [delegate.constraints indexOfObject:constraint];
+        expect(delegate.constraints).to.haveCountOf(1);
+        expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
+        for (MASViewConstraint *constraint in composite.childConstraints) {
+            int index = [composite.childConstraints indexOfObject:constraint];
             expect(constraint.secondViewAttribute.view).to.beIdenticalTo([viewAttributes[index] view]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.secondViewAttribute.layoutAttribute).to.equal([viewAttributes[index] layoutAttribute]);
@@ -144,7 +154,7 @@ describe(@"create equality constraint", ^{
 describe(@"multiplier & constant", ^{
 
     it(@"should not allow update of multiplier after layoutconstraint is created", ^{
-        [constraint commit];
+        [constraint installConstraint];
         
         expect(^{
             constraint.percent(0.9);
@@ -152,7 +162,7 @@ describe(@"multiplier & constant", ^{
     });
     
     it(@"should allow update of constant after layoutconstraint is created", ^{
-        [constraint commit];
+        [constraint installConstraint];
         constraint.offset(10);
         
         expect(constraint.layoutConstant).to.equal(10);
@@ -210,7 +220,7 @@ describe(@"multiplier & constant", ^{
     });
 });
 
-describe(@"commit", ^{
+describe(@"install", ^{
 
     it(@"should create layout constraint on commit", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_height;
@@ -218,7 +228,7 @@ describe(@"commit", ^{
         constraint.percent(0.5);
         constraint.offset(10);
         constraint.priority(345);
-        [constraint commit];
+        [constraint installConstraint];
 
         expect(constraint.layoutConstraint.firstAttribute).to.equal(NSLayoutAttributeWidth);
         expect(constraint.layoutConstraint.secondAttribute).to.equal(NSLayoutAttributeHeight);
@@ -230,6 +240,18 @@ describe(@"commit", ^{
         expect(constraint.layoutConstraint.multiplier).to.equal(0.5);
 
         expect(superview.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
+    });
+
+    it(@"should uninstall constraint", ^{
+        MASViewAttribute *secondViewAttribute = otherView.mas_height;
+        constraint.equalTo(secondViewAttribute);
+        [constraint installConstraint];
+
+        expect(superview.constraints).to.haveCountOf(1);
+        expect(superview.constraints[0]).to.equal(constraint.layoutConstraint);
+
+        [constraint uninstallConstraint];
+        expect(superview.constraints).to.haveCountOf(0);
     });
 
 });
