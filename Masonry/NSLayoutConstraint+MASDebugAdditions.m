@@ -8,6 +8,7 @@
 
 #import "NSLayoutConstraint+MASDebugAdditions.h"
 #import "MASConstraint.h"
+#import "MASLayoutConstraint.h"
 
 @implementation NSLayoutConstraint (MASDebugAdditions)
 
@@ -66,7 +67,7 @@
 #pragma mark - description override
 
 + (NSString *)descriptionForObject:(id)obj {
-    if ([obj mas_key]) {
+    if ([obj respondsToSelector:@selector(mas_key)] && [obj mas_key]) {
         return [NSString stringWithFormat:@"%@:%@", [obj class], [obj mas_key]];
     }
     return [NSString stringWithFormat:@"%@:%p", [obj class], obj];

@@ -9,7 +9,6 @@
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
 #import "MASLayoutConstraint.h"
-#import "NSObject+MASKeyAdditions.h"
 
 @interface MASViewConstraint ()
 
@@ -20,6 +19,7 @@
 @property (nonatomic, assign) CGFloat layoutMultiplier;
 @property (nonatomic, assign) CGFloat layoutConstant;
 @property (nonatomic, assign) BOOL hasLayoutRelation;
+@property (nonatomic, strong) id mas_key;
 
 @end
 

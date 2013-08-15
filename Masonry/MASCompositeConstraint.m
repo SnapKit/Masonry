@@ -9,10 +9,10 @@
 #import "MASCompositeConstraint.h"
 #import "UIView+MASAdditions.h"
 #import "MASViewConstraint.h"
-#import "NSObject+MASKeyAdditions.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
+@property (nonatomic, strong) id mas_key;
 @property (nonatomic, strong) NSMutableArray *childConstraints;
 
 @end

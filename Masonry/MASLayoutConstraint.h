@@ -14,4 +14,9 @@
  */
 @interface MASLayoutConstraint : NSLayoutConstraint
 
+/**
+ *	a key to associate with this constraint
+ */
+@property (nonatomic, strong) id mas_key;
+
 @end

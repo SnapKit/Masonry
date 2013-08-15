@@ -32,6 +32,11 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 
 /**
+ *	a key to associate with this view
+ */
+@property (nonatomic, strong) id mas_key;
+
+/**
  Creates a MASConstraintMaker with the callee view. any constraints defined are added to the view or the appropriate superview once the block has finished executing
 
  @param block scope within which you can build up the constraints which you wish to apply to the view.
