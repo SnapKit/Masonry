@@ -13,11 +13,6 @@
 @interface MASViewConstraint : NSObject <MASConstraint, NSCopying>
 
 /**
- *	Usually MASConstraintMaker but could be a parent MASConstraint
- */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
-
-/**
  *	First item/view and first attribute of the NSLayoutConstraint
  */
 @property (nonatomic, strong, readonly) MASViewAttribute *firstViewAttribute;

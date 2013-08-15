@@ -32,7 +32,7 @@
 
 - (void)commit {
     for (id<MASConstraint> constraint in self.constraints) {
-        [constraint installConstraint];
+        [constraint install];
     }
     [self.constraints removeAllObjects];
 }

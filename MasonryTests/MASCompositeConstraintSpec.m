@@ -125,7 +125,7 @@ it(@"should not remove on install", ^{
     //first equality statement
     composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30));
 
-    [composite installConstraint];
+    [composite install];
 
     expect(composite.childConstraints).to.haveCountOf(2);
 });

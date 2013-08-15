@@ -154,7 +154,7 @@ describe(@"create equality constraint", ^{
 describe(@"multiplier & constant", ^{
 
     it(@"should not allow update of multiplier after layoutconstraint is created", ^{
-        [constraint installConstraint];
+        [constraint install];
         
         expect(^{
             constraint.percent(0.9);
@@ -162,7 +162,7 @@ describe(@"multiplier & constant", ^{
     });
     
     it(@"should allow update of constant after layoutconstraint is created", ^{
-        [constraint installConstraint];
+        [constraint install];
         constraint.offset(10);
         
         expect(constraint.layoutConstant).to.equal(10);
@@ -228,7 +228,7 @@ describe(@"install", ^{
         constraint.percent(0.5);
         constraint.offset(10);
         constraint.priority(345);
-        [constraint installConstraint];
+        [constraint install];
 
         expect(constraint.layoutConstraint.firstAttribute).to.equal(NSLayoutAttributeWidth);
         expect(constraint.layoutConstraint.secondAttribute).to.equal(NSLayoutAttributeHeight);
@@ -245,12 +245,12 @@ describe(@"install", ^{
     it(@"should uninstall constraint", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_height;
         constraint.equalTo(secondViewAttribute);
-        [constraint installConstraint];
+        [constraint install];
 
         expect(superview.constraints).to.haveCountOf(1);
         expect(superview.constraints[0]).to.equal(constraint.layoutConstraint);
 
-        [constraint uninstallConstraint];
+        [constraint uninstall];
         expect(superview.constraints).to.haveCountOf(0);
     });
 

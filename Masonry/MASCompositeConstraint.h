@@ -23,11 +23,6 @@ typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
 @interface MASCompositeConstraint : NSObject <MASConstraint>
 
 /**
- *	Usually MASConstraintMaker but could be a parent MASConstraint
- */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
-
-/**
  *	default first item for any child MASConstraints
  */
 @property (nonatomic, weak, readonly) UIView *view;

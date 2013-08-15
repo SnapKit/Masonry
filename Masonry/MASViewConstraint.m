@@ -26,6 +26,8 @@
 
 @implementation MASViewConstraint
 
+@synthesize delegate = _delegate;
+
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
     if (!self) return nil;
@@ -241,7 +243,7 @@
 
 #pragma mark - MASConstraint
 
-- (void)installConstraint {
+- (void)install {
     NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
     
     UIView *firstLayoutItem = self.firstViewAttribute.view;
@@ -291,7 +293,7 @@
     }
 }
 
-- (void)uninstallConstraint {
+- (void)uninstall {
     [self.installedView removeConstraint:self.layoutConstraint];
     self.layoutConstraint = nil;
     self.installedView = nil;

@@ -19,6 +19,8 @@
 
 @implementation MASCompositeConstraint
 
+@synthesize delegate = _delegate;
+
 - (id)initWithView:(UIView *)view type:(MASCompositeConstraintType)type {
     self = [super init];
     if (!self) return nil;
@@ -38,6 +40,9 @@
     _type = MASCompositeConstraintTypeUnknown;
     _view = view;
     _childConstraints = [children mutableCopy];
+    for (id<MASConstraint> constraint in _childConstraints) {
+        constraint.delegate = self;
+    }
 
     return self;
 }
@@ -213,15 +218,15 @@
 
 #pragma mark - MASConstraint
 
-- (void)installConstraint {
+- (void)install {
     for (id<MASConstraint> constraint in self.childConstraints) {
-        [constraint installConstraint];
+        [constraint install];
     }
 }
 
-- (void)uninstallConstraint {
+- (void)uninstall {
     for (id<MASConstraint> constraint in self.childConstraints) {
-        [constraint uninstallConstraint];
+        [constraint uninstall];
     }
 }
 

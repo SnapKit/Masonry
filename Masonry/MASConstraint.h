@@ -17,12 +17,19 @@ enum {
 };
 typedef float MASLayoutPriority;
 
+@protocol MASConstraintDelegate;
+
 /**
  *	Enables Constraints to be created with chainable syntax
  *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
  *  or a group of NSLayoutConstraints (MASComposisteConstraint)
  */
 @protocol MASConstraint <NSObject>
+
+/**
+ *	Usually MASConstraintMaker but could be a parent MASConstraint
+ */
+@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
 
 /**
  *	Modifies the NSLayoutConstraint constant,
@@ -113,12 +120,12 @@ typedef float MASLayoutPriority;
 /**
  *	Creates a NSLayoutConstraint. The constraint is installed to the first view or the or the closest common superview of the first and second view. 
  */
-- (void)installConstraint;
+- (void)install;
 
 /**
  *	Removes previously installed NSLayoutConstraint
  */
-- (void)uninstallConstraint;
+- (void)uninstall;
 
 @end
 
