@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "MASConstraint.h"
+#import "MASUtilities.h"
 
 typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
     MASCompositeConstraintTypeEdges, //top, left, bottom, right
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
 /**
  *	default first item for any child MASConstraints
  */
-@property (nonatomic, weak, readonly) UIView *view;
+@property (nonatomic, weak, readonly) MAS_VIEW *view;
 
 /**
  *	type of Composite, used internally to generate child MASViewConstraits
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
  *
  *	@return	a composite constraint
  */
-- (id)initWithView:(UIView *)view type:(MASCompositeConstraintType)type;
+- (id)initWithView:(MAS_VIEW *)view type:(MASCompositeConstraintType)type;
 
 /**
  *	Creates a composite with a predefined array of children
@@ -51,6 +51,6 @@ typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
  *
  *	@return	a composite constraint
  */
-- (id)initWithView:(UIView *)view children:(NSArray *)children;
+- (id)initWithView:(MAS_VIEW *)view children:(NSArray *)children;
 
 @end

@@ -18,20 +18,20 @@
 		DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24C179CADC0005CD195 /* MASExampleListViewController.m */; };
 		DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */; };
 		DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F250179CADC0005CD195 /* MASExampleViewController.m */; };
-		DD52F26E179CBA05005CD195 /* libMasonry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F26D179CBA05005CD195 /* libMasonry.a */; };
 		DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */; };
+		DDA5752F17C196A50010F88E /* libMasonry iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA5752E17C196A50010F88E /* libMasonry iOS.a */; };
 		DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DD52F227179CAD57005CD195 /* MasonryExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasonryExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD52F227179CAD57005CD195 /* Masonry iOS Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Masonry iOS Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD52F22A179CAD57005CD195 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DD52F22C179CAD57005CD195 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD52F22E179CAD57005CD195 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DD52F232179CAD57005CD195 /* MasonryExamples-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MasonryExamples-Info.plist"; sourceTree = "<group>"; };
+		DD52F232179CAD57005CD195 /* Masonry iOS Examples-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Masonry iOS Examples-Info.plist"; sourceTree = "<group>"; };
 		DD52F234179CAD57005CD195 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD52F236179CAD57005CD195 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DD52F238179CAD57005CD195 /* MasonryExamples-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MasonryExamples-Prefix.pch"; sourceTree = "<group>"; };
+		DD52F238179CAD57005CD195 /* Masonry iOS Examples-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Masonry iOS Examples-Prefix.pch"; sourceTree = "<group>"; };
 		DD52F239179CAD57005CD195 /* MASAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASAppDelegate.h; sourceTree = "<group>"; };
 		DD52F23A179CAD57005CD195 /* MASAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASAppDelegate.m; sourceTree = "<group>"; };
 		DD52F247179CADC0005CD195 /* MASExampleBasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleBasicView.h; sourceTree = "<group>"; };
@@ -44,9 +44,9 @@
 		DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleSidesView.m; sourceTree = "<group>"; };
 		DD52F24F179CADC0005CD195 /* MASExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleViewController.h; sourceTree = "<group>"; };
 		DD52F250179CADC0005CD195 /* MASExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleViewController.m; sourceTree = "<group>"; };
-		DD52F26D179CBA05005CD195 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleDebuggingView.h; sourceTree = "<group>"; };
 		DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleDebuggingView.m; sourceTree = "<group>"; };
+		DDA5752E17C196A50010F88E /* libMasonry iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMasonry iOS.a"; path = "../build/Release-iphoneos/libMasonry iOS.a"; sourceTree = SOURCE_ROOT; };
 		DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAnimatedView.h; sourceTree = "<group>"; };
 		DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAnimatedView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD52F26E179CBA05005CD195 /* libMasonry.a in Frameworks */,
+				DDA5752F17C196A50010F88E /* libMasonry iOS.a in Frameworks */,
 				DD52F22B179CAD57005CD195 /* UIKit.framework in Frameworks */,
 				DD52F22D179CAD57005CD195 /* Foundation.framework in Frameworks */,
 				DD52F22F179CAD57005CD195 /* CoreGraphics.framework in Frameworks */,
@@ -69,7 +69,7 @@
 		DD52F21E179CAD57005CD195 = {
 			isa = PBXGroup;
 			children = (
-				DD52F230179CAD57005CD195 /* MasonryExamples */,
+				DD52F230179CAD57005CD195 /* Masonry iOS Examples */,
 				DD52F229179CAD57005CD195 /* Frameworks */,
 				DD52F228179CAD57005CD195 /* Products */,
 			);
@@ -78,7 +78,7 @@
 		DD52F228179CAD57005CD195 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD52F227179CAD57005CD195 /* MasonryExamples.app */,
+				DD52F227179CAD57005CD195 /* Masonry iOS Examples.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,7 +86,7 @@
 		DD52F229179CAD57005CD195 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD52F26D179CBA05005CD195 /* libMasonry.a */,
+				DDA5752E17C196A50010F88E /* libMasonry iOS.a */,
 				DD52F22A179CAD57005CD195 /* UIKit.framework */,
 				DD52F22C179CAD57005CD195 /* Foundation.framework */,
 				DD52F22E179CAD57005CD195 /* CoreGraphics.framework */,
@@ -94,7 +94,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DD52F230179CAD57005CD195 /* MasonryExamples */ = {
+		DD52F230179CAD57005CD195 /* Masonry iOS Examples */ = {
 			isa = PBXGroup;
 			children = (
 				DD52F239179CAD57005CD195 /* MASAppDelegate.h */,
@@ -103,16 +103,16 @@
 				DD52F256179CADC4005CD195 /* Views */,
 				DD52F231179CAD57005CD195 /* Supporting Files */,
 			);
-			path = MasonryExamples;
+			path = "Masonry iOS Examples";
 			sourceTree = "<group>";
 		};
 		DD52F231179CAD57005CD195 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DD52F232179CAD57005CD195 /* MasonryExamples-Info.plist */,
+				DD52F232179CAD57005CD195 /* Masonry iOS Examples-Info.plist */,
 				DD52F233179CAD57005CD195 /* InfoPlist.strings */,
 				DD52F236179CAD57005CD195 /* main.m */,
-				DD52F238179CAD57005CD195 /* MasonryExamples-Prefix.pch */,
+				DD52F238179CAD57005CD195 /* Masonry iOS Examples-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD52F226179CAD57005CD195 /* MasonryExamples */ = {
+		DD52F226179CAD57005CD195 /* Masonry iOS Examples */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD52F244179CAD57005CD195 /* Build configuration list for PBXNativeTarget "MasonryExamples" */;
+			buildConfigurationList = DD52F244179CAD57005CD195 /* Build configuration list for PBXNativeTarget "Masonry iOS Examples" */;
 			buildPhases = (
 				DD52F223179CAD57005CD195 /* Sources */,
 				DD52F224179CAD57005CD195 /* Frameworks */,
@@ -160,9 +160,9 @@
 			);
 			dependencies = (
 			);
-			name = MasonryExamples;
-			productName = MasonryExamples;
-			productReference = DD52F227179CAD57005CD195 /* MasonryExamples.app */;
+			name = "Masonry iOS Examples";
+			productName = "Masonry iOS Examples";
+			productReference = DD52F227179CAD57005CD195 /* Masonry iOS Examples.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -175,7 +175,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jonas Budelmann";
 			};
-			buildConfigurationList = DD52F222179CAD57005CD195 /* Build configuration list for PBXProject "MasonryExamples" */;
+			buildConfigurationList = DD52F222179CAD57005CD195 /* Build configuration list for PBXProject "Masonry iOS Examples" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD52F226179CAD57005CD195 /* MasonryExamples */,
+				DD52F226179CAD57005CD195 /* Masonry iOS Examples */,
 			);
 		};
 /* End PBXProject section */
@@ -296,17 +296,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MasonryExamples/MasonryExamples-Prefix.pch";
-				INFOPLIST_FILE = "MasonryExamples/MasonryExamples-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Masonry-fbkxraflfpslgmcoluezbqgkgcsz/Build/Products/Debug-iphoneos\"",
-				);
+				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
+				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Masonry iOS Examples";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -316,17 +312,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MasonryExamples/MasonryExamples-Prefix.pch";
-				INFOPLIST_FILE = "MasonryExamples/MasonryExamples-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Masonry-fbkxraflfpslgmcoluezbqgkgcsz/Build/Products/Debug-iphoneos\"",
-				);
+				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
+				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Masonry iOS Examples";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -335,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DD52F222179CAD57005CD195 /* Build configuration list for PBXProject "MasonryExamples" */ = {
+		DD52F222179CAD57005CD195 /* Build configuration list for PBXProject "Masonry iOS Examples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD52F242179CAD57005CD195 /* Debug */,
@@ -344,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD52F244179CAD57005CD195 /* Build configuration list for PBXNativeTarget "MasonryExamples" */ = {
+		DD52F244179CAD57005CD195 /* Build configuration list for PBXNativeTarget "Masonry iOS Examples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD52F245179CAD57005CD195 /* Debug */,

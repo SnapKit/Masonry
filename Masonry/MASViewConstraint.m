@@ -9,12 +9,13 @@
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
 #import "MASLayoutConstraint.h"
+#import "View+MASAdditions.h"
 
 @interface MASViewConstraint ()
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
 @property (nonatomic, strong, readwrite) MASLayoutConstraint *layoutConstraint;
-@property (nonatomic, weak) UIView *installedView;
+@property (nonatomic, weak) MAS_VIEW *installedView;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;
@@ -70,7 +71,7 @@
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
         self.layoutConstant = [secondViewAttribute doubleValue];
-    }  else if ([secondViewAttribute isKindOfClass:UIView.class]) {
+    }  else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
@@ -81,8 +82,8 @@
 
 #pragma mark - NSLayoutConstraint constant proxies
 
-- (id<MASConstraint> (^)(UIEdgeInsets))insets {
-    return ^id(UIEdgeInsets insets){
+- (id<MASConstraint> (^)(MASEdgeInsets))insets {
+    return ^id(MASEdgeInsets insets){
         NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
         switch (layoutAttribute) {
             case NSLayoutAttributeLeft:
@@ -246,9 +247,9 @@
 - (void)install {
     NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
     
-    UIView *firstLayoutItem = self.firstViewAttribute.view;
+    MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
-    UIView *secondLayoutItem = self.secondViewAttribute.view;
+    MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
     if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
         secondLayoutItem = firstLayoutItem.superview;
@@ -268,19 +269,7 @@
     self.layoutConstraint.mas_key = self.mas_key;
     
     if (secondLayoutItem) {
-        UIView *closestCommonSuperview = nil;
-        
-        UIView *secondViewSuperview = secondLayoutItem;
-        while (!closestCommonSuperview && secondViewSuperview) {
-            UIView *firstViewSuperview = firstLayoutItem;
-            while (!closestCommonSuperview && firstViewSuperview) {
-                if (secondViewSuperview == firstViewSuperview) {
-                    closestCommonSuperview = secondViewSuperview;
-                }
-                firstViewSuperview = firstViewSuperview.superview;
-            }
-            secondViewSuperview = secondViewSuperview.superview;
-        }
+        MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
                  firstLayoutItem,

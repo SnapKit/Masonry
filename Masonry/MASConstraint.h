@@ -6,16 +6,7 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-enum {
-    MASLayoutPriorityRequired = UILayoutPriorityRequired,
-    MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh,
-    MASLayoutPriorityDefaultMedium = 500,
-    MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow,
-    MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel,
-};
-typedef float MASLayoutPriority;
+#import "MASUtilities.h"
 
 @protocol MASConstraintDelegate;
 
@@ -36,7 +27,7 @@ typedef float MASLayoutPriority;
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
-@property (nonatomic, copy, readonly) id<MASConstraint> (^insets)(UIEdgeInsets insets);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^insets)(MASEdgeInsets insets);
 
 /**
  *	Modifies the NSLayoutConstraint constant,

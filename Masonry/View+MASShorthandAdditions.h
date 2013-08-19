@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView+MASAdditions.h"
+#import "View+MASAdditions.h"
 
 #ifdef MAS_SHORTHAND
 
@@ -15,7 +15,7 @@
  *	Shorthand view additions without the 'mas_' prefixes,
  *  only enabled if MAS_SHORTHAND is defined
  */
-@interface UIView (MASShorthandAdditions)
+@interface MAS_VIEW (MASShorthandAdditions)
 
 @property (nonatomic, strong, readonly) MASViewAttribute *left;
 @property (nonatomic, strong, readonly) MASViewAttribute *top;
@@ -38,7 +38,7 @@
     return [self mas_##attr];   \
 }
 
-@implementation UIView (MASShorthandAdditions)
+@implementation MAS_VIEW (MASShorthandAdditions)
 
 MAS_ATTR_FORWARD(top);
 MAS_ATTR_FORWARD(left);

@@ -36,7 +36,7 @@
     int padding = 10;
 
     //if you want to use Masonry without the mas_ prefix
-    //define MAS_SHORTHAND before importing Masonry.h see MasonryExamples-Prefix.pch
+    //define MAS_SHORTHAND before importing Masonry.h see Masonry iOS Examples-Prefix.pch
     [view1 makeConstraints:^(MASConstraintMaker *make) {
         make.top.greaterThanOrEqualTo(superview.top).offset(padding);
         make.left.equalTo(superview.left).offset(padding);

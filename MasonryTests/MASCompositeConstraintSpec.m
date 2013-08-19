@@ -26,15 +26,15 @@
 SpecBegin(MASCompositeConstraint)
 
 __block MASConstraintDelegateMock *delegate;
-__block UIView *superview;
-__block UIView *view;
+__block MAS_VIEW *superview;
+__block MAS_VIEW *view;
 __block MASCompositeConstraint *composite;
 
 beforeEach(^{
     composite = nil;
     delegate = MASConstraintDelegateMock.new;
-    view = UIView.new;
-    superview = UIView.new;
+    view = MAS_VIEW.new;
+    superview = MAS_VIEW.new;
     [superview addSubview:view];
 });
 
@@ -53,7 +53,7 @@ it(@"should create centerY and centerX children", ^{
 });
 
 it(@"should create top, left, bottom, right children", ^{
-    UIView *newView = UIView.new;
+    MAS_VIEW *newView = MAS_VIEW.new;
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeEdges];
     composite.equalTo(newView);
 
@@ -96,7 +96,7 @@ it(@"should create width and height children", ^{
 it(@"should complete children", ^{
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
     composite.delegate = delegate;
-    UIView *newView = UIView.new;
+    MAS_VIEW *newView = MAS_VIEW.new;
 
     //first equality statement
     composite.equalTo(newView).sizeOffset(CGSizeMake(90, 30)).priorityLow();
@@ -119,7 +119,7 @@ it(@"should complete children", ^{
 it(@"should not remove on install", ^{
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
     composite.delegate = delegate;
-    UIView *newView = UIView.new;
+    MAS_VIEW *newView = MAS_VIEW.new;
     [superview addSubview:newView];
 
     //first equality statement
@@ -134,7 +134,7 @@ it(@"should spawn child composite constraints", ^{
     composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
     composite.delegate = delegate;
 
-    UIView *otherView = UIView.new;
+    MAS_VIEW *otherView = MAS_VIEW.new;
     [superview addSubview:otherView];
     composite.lessThanOrEqualTo(@[@2, otherView]);
 

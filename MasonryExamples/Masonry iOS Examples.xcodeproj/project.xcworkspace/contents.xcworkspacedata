@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MasonryExamples.xcodeproj">
+      location = "self:Masonry iOS Examples.xcodeproj">
    </FileRef>
 </Workspace>

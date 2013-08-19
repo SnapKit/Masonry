@@ -8,7 +8,7 @@
 
 #import "MASViewConstraint.h"
 #import "MASConstraint.h"
-#import "UIView+MASAdditions.h"
+#import "View+MASAdditions.h"
 #import "MASConstraintDelegateMock.h"
 #import "MASCompositeConstraint.h"
 
@@ -31,22 +31,22 @@
 SpecBegin(MASViewConstraint)
 
 __block MASConstraintDelegateMock *delegate;
-__block UIView *superview;
+__block MAS_VIEW *superview;
 __block MASViewConstraint *constraint;
-__block UIView *otherView;
+__block MAS_VIEW *otherView;
 
 
 beforeEach(^{
-    superview = UIView.new;
+    superview = MAS_VIEW.new;
     delegate = MASConstraintDelegateMock.new;
 
-    UIView *view = UIView.new;
+    MAS_VIEW *view = MAS_VIEW.new;
     constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width];
     constraint.delegate = delegate;
 
     [superview addSubview:view];
 
-    otherView = UIView.new;
+    otherView = MAS_VIEW.new;
     [superview addSubview:otherView];
 });
 
@@ -107,7 +107,7 @@ describe(@"create equality constraint", ^{
     });
 
     it(@"should accept view object", ^{
-        UIView *view = UIView.new;
+        MAS_VIEW *view = MAS_VIEW.new;
         constraint.equalTo(view);
 
         expect(constraint.secondViewAttribute.view).to.beIdenticalTo(view);
@@ -115,7 +115,7 @@ describe(@"create equality constraint", ^{
     });
     
     it(@"should create composite when passed array of views", ^{
-        NSArray *views = @[UIView.new, UIView.new, UIView.new];
+        NSArray *views = @[MAS_VIEW.new, MAS_VIEW.new, MAS_VIEW.new];
         [delegate.constraints addObject:constraint];
 
         MASCompositeConstraint *composite = (id)constraint.equalTo(views).priorityMedium().offset(-10);
@@ -123,7 +123,7 @@ describe(@"create equality constraint", ^{
         expect(delegate.constraints).to.haveCountOf(1);
         expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
         for (MASViewConstraint *constraint in composite.childConstraints) {
-            int index = [composite.childConstraints indexOfObject:constraint];
+            NSUInteger index = [composite.childConstraints indexOfObject:constraint];
             expect(constraint.secondViewAttribute.view).to.beIdenticalTo(views[index]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
@@ -133,7 +133,7 @@ describe(@"create equality constraint", ^{
     });
 
     it(@"should create composite when passed array of attributes", ^{
-        NSArray *viewAttributes = @[UIView.new.mas_height, UIView.new.mas_left];
+        NSArray *viewAttributes = @[MAS_VIEW.new.mas_height, MAS_VIEW.new.mas_left];
         [delegate.constraints addObject:constraint];
         
         MASCompositeConstraint *composite = (id)constraint.equalTo(viewAttributes).priority(60).offset(10);
@@ -141,7 +141,7 @@ describe(@"create equality constraint", ^{
         expect(delegate.constraints).to.haveCountOf(1);
         expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
         for (MASViewConstraint *constraint in composite.childConstraints) {
-            int index = [composite.childConstraints indexOfObject:constraint];
+            NSUInteger index = [composite.childConstraints indexOfObject:constraint];
             expect(constraint.secondViewAttribute.view).to.beIdenticalTo([viewAttributes[index] view]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.secondViewAttribute.layoutAttribute).to.equal([viewAttributes[index] layoutAttribute]);
@@ -171,23 +171,23 @@ describe(@"multiplier & constant", ^{
     
     it(@"should update sides offset only", ^{
         MASViewConstraint *centerY = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerY];
-        centerY.insets(UIEdgeInsetsMake(10, 10, 10, 10));
+        centerY.insets((MASEdgeInsets){10, 10, 10, 10});
         expect(centerY.layoutConstant).to.equal(0);
 
         MASViewConstraint *top = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_top];
-        top.insets(UIEdgeInsetsMake(15, 10, 10, 10));
+        top.insets((MASEdgeInsets){15, 10, 10, 10});
         expect(top.layoutConstant).to.equal(15);
 
         MASViewConstraint *left = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_left];
-        left.insets(UIEdgeInsetsMake(10, 15, 10, 10));
+        left.insets((MASEdgeInsets){10, 15, 10, 10});
         expect(left.layoutConstant).to.equal(15);
 
         MASViewConstraint *bottom = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_bottom];
-        bottom.insets(UIEdgeInsetsMake(10, 10, 15, 10));
+        bottom.insets((MASEdgeInsets){10, 10, 15, 10});
         expect(bottom.layoutConstant).to.equal(-15);
 
         MASViewConstraint *right = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_right];
-        right.insets(UIEdgeInsetsMake(10, 10, 10, 15));
+        right.insets((MASEdgeInsets){10, 10, 10, 15});
         expect(right.layoutConstant).to.equal(-15);
     });
     

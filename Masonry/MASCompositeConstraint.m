@@ -7,7 +7,7 @@
 //
 
 #import "MASCompositeConstraint.h"
-#import "UIView+MASAdditions.h"
+#import "View+MASAdditions.h"
 #import "MASViewConstraint.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
@@ -21,7 +21,7 @@
 
 @synthesize delegate = _delegate;
 
-- (id)initWithView:(UIView *)view type:(MASCompositeConstraintType)type {
+- (id)initWithView:(MAS_VIEW *)view type:(MASCompositeConstraintType)type {
     self = [super init];
     if (!self) return nil;
     
@@ -33,7 +33,7 @@
     return self;
 }
 
-- (id)initWithView:(UIView *)view children:(NSArray *)children {
+- (id)initWithView:(MAS_VIEW *)view children:(NSArray *)children {
     self = [super init];
     if (!self) return nil;
 
@@ -82,15 +82,15 @@
 #pragma mark - MASConstraintDelegate
 
 - (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint {
-    int index = [self.childConstraints indexOfObject:constraint];
+    NSUInteger index = [self.childConstraints indexOfObject:constraint];
     NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
     [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
 #pragma mark - NSLayoutConstraint constant proxies
 
-- (id<MASConstraint> (^)(UIEdgeInsets))insets {
-    return ^id(UIEdgeInsets insets) {
+- (id<MASConstraint> (^)(MASEdgeInsets))insets {
+    return ^id(MASEdgeInsets insets) {
         for (id<MASConstraint> constraint in self.childConstraints) {
             constraint.insets(insets);
         }

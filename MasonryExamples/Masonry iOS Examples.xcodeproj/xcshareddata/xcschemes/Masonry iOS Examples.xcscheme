@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD52F1A9179CA93B005CD195"
-               BuildableName = "libMasonry.a"
-               BlueprintName = "Masonry"
+               BuildableName = "libMasonry iOS.a"
+               BlueprintName = "Masonry iOS"
                ReferencedContainer = "container:../Masonry.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD52F226179CAD57005CD195"
-               BuildableName = "MasonryExamples.app"
-               BlueprintName = "MasonryExamples"
-               ReferencedContainer = "container:MasonryExamples.xcodeproj">
+               BuildableName = "Masonry iOS Examples.app"
+               BlueprintName = "Masonry iOS Examples"
+               ReferencedContainer = "container:Masonry iOS Examples.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DD52F226179CAD57005CD195"
-            BuildableName = "MasonryExamples.app"
-            BlueprintName = "MasonryExamples"
-            ReferencedContainer = "container:MasonryExamples.xcodeproj">
+            BuildableName = "Masonry iOS Examples.app"
+            BlueprintName = "Masonry iOS Examples"
+            ReferencedContainer = "container:Masonry iOS Examples.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DD52F226179CAD57005CD195"
-            BuildableName = "MasonryExamples.app"
-            BlueprintName = "MasonryExamples"
-            ReferencedContainer = "container:MasonryExamples.xcodeproj">
+            BuildableName = "Masonry iOS Examples.app"
+            BlueprintName = "Masonry iOS Examples"
+            ReferencedContainer = "container:Masonry iOS Examples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DD52F226179CAD57005CD195"
-            BuildableName = "MasonryExamples.app"
-            BlueprintName = "MasonryExamples"
-            ReferencedContainer = "container:MasonryExamples.xcodeproj">
+            BuildableName = "Masonry iOS Examples.app"
+            BlueprintName = "Masonry iOS Examples"
+            ReferencedContainer = "container:Masonry iOS Examples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

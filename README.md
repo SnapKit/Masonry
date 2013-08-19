@@ -3,7 +3,7 @@ Masonry
 
 Masonary is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonary has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 
-For examples take a look at the **MasonryExamples** project in the Masonry workspace.
+For examples take a look at the **Masonry iOS Examples** project in the Masonry workspace.
 
 [![Build Status](https://travis-ci.org/cloudkite/Masonry.png?branch=master)](https://travis-ci.org/cloudkite/Masonry)
 [![Version](http://cocoapod-badges.herokuapp.com/v/Masonry/badge.png)](http://cocoadocs.org/docsets/Masonry)
@@ -240,7 +240,7 @@ Will attempt to recover by breaking constraint
 <MASLayoutConstraint:ConstantConstraint UILabel:messageLabel.height >= 5000>
 ```
 
-For an example of how to set this up take a look at the **MasonryExamples** project in the Masonry workspace.
+For an example of how to set this up take a look at the **Masonry iOS Examples** project in the Masonry workspace.
 
 ## Installation
 Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).

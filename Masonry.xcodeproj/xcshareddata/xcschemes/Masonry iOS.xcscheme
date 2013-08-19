@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD52F1A9179CA93B005CD195"
-               BuildableName = "libMasonry.a"
-               BlueprintName = "Masonry"
+               BuildableName = "libMasonry iOS.a"
+               BlueprintName = "Masonry iOS"
                ReferencedContainer = "container:Masonry.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD52F1BA179CA93B005CD195"
-               BuildableName = "MasonryTests.octest"
-               BlueprintName = "MasonryTests"
+               BuildableName = "Masonry iOS Tests.octest"
+               BlueprintName = "Masonry iOS Tests"
                ReferencedContainer = "container:Masonry.xcodeproj">
             </BuildableReference>
          </TestableReference>

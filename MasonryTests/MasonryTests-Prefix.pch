@@ -9,4 +9,6 @@
 
     #define EXP_SHORTHAND
     #import "Expecta.h"
+
+    #import "MASUtilities.h"
 #endif

@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import "UIView+MASAdditions.h"
-#import "UIView+MASShorthandAdditions.h"
+#import "MASUtilities.h"
+#import "View+MASAdditions.h"
+#import "View+MASShorthandAdditions.h"
 #import "MASConstraint.h"
 #import "MASCompositeConstraint.h"
 #import "MASViewAttribute.h"

@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MASUtilities.h"
 
 @interface MASViewAttribute : NSObject
 
-@property (nonatomic, weak, readonly) UIView *view;
+@property (nonatomic, weak, readonly) MAS_VIEW *view;
 @property (nonatomic, assign, readonly) NSLayoutAttribute layoutAttribute;
 
-- (id)initWithView:(UIView *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *	Determine whether the layoutAttribute is a size attribute

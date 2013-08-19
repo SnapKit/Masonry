@@ -44,6 +44,7 @@
             @(NSLayoutAttributeCenterY)  : @"centerY",
             @(NSLayoutAttributeBaseline) : @"baseline",
         };
+    
     });
     return descriptionMap;
 }
@@ -53,6 +54,7 @@
     static dispatch_once_t once;
     static NSDictionary *descriptionMap;
     dispatch_once(&once, ^{
+#if TARGET_OS_IPHONE
         descriptionMap = @{
             @(MASLayoutPriorityDefaultHigh)      : @"high",
             @(MASLayoutPriorityDefaultLow)       : @"low",
@@ -60,6 +62,18 @@
             @(MASLayoutPriorityRequired)         : @"required",
             @(MASLayoutPriorityFittingSizeLevel) : @"fitting size",
         };
+#elif TARGET_OS_MAC
+        descriptionMap = @{
+            @(MASLayoutPriorityDefaultHigh)                 : @"high",
+            @(MASLayoutPriorityDragThatCanResizeWindow)     : @"drag can resize window",
+            @(MASLayoutPriorityDefaultMedium)               : @"medium",
+            @(MASLayoutPriorityWindowSizeStayPut)           : @"window size stay put",
+            @(MASLayoutPriorityDragThatCannotResizeWindow)  : @"drag cannot resize window",
+            @(MASLayoutPriorityDefaultLow)                  : @"low",
+            @(MASLayoutPriorityFittingSizeCompression)      : @"fitting size",
+            @(MASLayoutPriorityRequired)                    : @"required",
+        };
+#endif
     });
     return descriptionMap;
 }
@@ -104,7 +118,7 @@
         }
     }
 
-    if (self.priority != UILayoutPriorityRequired) {
+    if (self.priority != MASLayoutPriorityRequired) {
         [description appendFormat:@" ^%@", self.class.layoutPriorityDescriptionsByValue[@(self.priority)] ?: [NSNumber numberWithDouble:self.priority]];
     }
 

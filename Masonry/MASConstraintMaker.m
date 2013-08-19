@@ -13,14 +13,14 @@
 
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
-@property (nonatomic, weak) UIView *view;
+@property (nonatomic, weak) MAS_VIEW *view;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
 
 @implementation MASConstraintMaker
 
-- (id)initWithView:(UIView *)view {
+- (id)initWithView:(MAS_VIEW *)view {
     self = [super init];
     if (!self) return nil;
     
@@ -40,7 +40,7 @@
 #pragma mark - MASConstraintDelegate
 
 - (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint {
-    int index = [self.constraints indexOfObject:constraint];
+    NSUInteger index = [self.constraints indexOfObject:constraint];
     NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
     [self.constraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }

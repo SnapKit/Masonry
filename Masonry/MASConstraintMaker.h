@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "MASConstraint.h"
+#import "MASUtilities.h"
 
 @interface MASConstraintMaker : NSObject
 
@@ -55,7 +55,7 @@
  *
  *	@return	a new MASConstraintMaker
  */
-- (id)initWithView:(UIView *)view;
+- (id)initWithView:(MAS_VIEW *)view;
 
 /**
  *	Calls commit method on any MASConstraints which requested to be added view MASConstraintDelegate

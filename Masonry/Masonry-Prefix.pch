@@ -1,14 +1,28 @@
 //
-// Prefix header for all source files of the 'Masonry' target in the 'Masonry' project
+// Prefix header for all source files of the 'Masonry iOS/Mac' target in the 'Masonry' project
 //
 
-#import <Availability.h>
+#include <Availability.h>
 
-#ifndef __IPHONE_6_0
-#warning "This project uses features only available in iOS SDK 6.0 and later."
+#if TARGET_OS_IPHONE
+
+    #ifndef __IPHONE_6_0
+        #error "This project uses features only available in iOS SDK 6.0 and later."
+    #endif
+
+    #import <UIKit/UIKit.h>
+
+#elif TARGET_OS_MAC
+
+    #ifndef __MAC_10_7
+        #error "This project uses features only available in Mac OS X 10.7 and later"
+    #endif
+
+    #import <Cocoa/Cocoa.h>
+    #import <AppKit/AppKit.h>
+
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif

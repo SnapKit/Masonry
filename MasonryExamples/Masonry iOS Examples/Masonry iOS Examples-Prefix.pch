@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'MasonryExamples' target in the 'MasonryExamples' project
+// Prefix header for all source files of the 'Masonry iOS Examples' target in the 'Masonry iOS Examples' project
 //
 
 #import <Availability.h>
@@ -16,6 +16,5 @@
     //define this constant if you want to use Masonry without the 'mas_' prefix
     #define MAS_SHORTHAND
 
-    //if you have installed using cocoapods use #import "Masonry.h"
-    #import "Masonry/Masonry.h" 
+    #import "Masonry.h" 
 #endif

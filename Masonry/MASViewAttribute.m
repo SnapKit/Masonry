@@ -10,7 +10,7 @@
 
 @implementation MASViewAttribute
 
-- (id)initWithView:(UIView *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute {
+- (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute {
     self = [super init];
     if (!self) return nil;
     

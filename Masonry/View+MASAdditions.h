@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MASUtilities.h"
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
 
 /**
- *	Provides constraint maker block 
+ *	Provides constraint maker block
  *  and convience methods for creating MASViewAttribute which are view + NSLayoutAttribute pairs
  */
-@interface UIView (MASAdditions)
+@interface MAS_VIEW (MASAdditions)
 
 /**
  *	following properties return a new MASViewAttribute with current view and appropriate NSLayoutAttribute
@@ -35,6 +35,8 @@
  *	a key to associate with this view
  */
 @property (nonatomic, strong) id mas_key;
+
+- (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
 
 /**
  Creates a MASConstraintMaker with the callee view. any constraints defined are added to the view or the appropriate superview once the block has finished executing
