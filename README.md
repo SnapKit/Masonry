@@ -7,8 +7,6 @@ Masonry supports iOS and Mac OSX.
 For examples take a look at the **Masonry iOS Examples** project in the Masonry workspace.
 
 [![Build Status](https://travis-ci.org/cloudkite/Masonry.png?branch=master)](https://travis-ci.org/cloudkite/Masonry)
-[![Version](http://cocoapod-badges.herokuapp.com/v/Masonry/badge.png)](http://cocoadocs.org/docsets/Masonry)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/Masonry/badge.png)](http://cocoadocs.org/docsets/Masonry)
 
 ## Whats wrong with NSLayoutConstraints?
 
