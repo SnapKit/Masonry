@@ -157,7 +157,7 @@ describe(@"multiplier & constant", ^{
         [constraint install];
         
         expect(^{
-            constraint.percent(0.9);
+            constraint.multipliedBy(0.9);
         }).to.raise(@"NSInternalInconsistencyException");
     });
     
@@ -225,7 +225,7 @@ describe(@"install", ^{
     it(@"should create layout constraint on commit", ^{
         MASViewAttribute *secondViewAttribute = otherView.mas_height;
         constraint.equalTo(secondViewAttribute);
-        constraint.percent(0.5);
+        constraint.multipliedBy(0.5);
         constraint.offset(10);
         constraint.priority(345);
         [constraint install];

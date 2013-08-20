@@ -127,10 +127,19 @@
 
 #pragma mark - NSLayoutConstraint multiplier proxies 
 
-- (id<MASConstraint> (^)(CGFloat))percent {
-    return ^id(CGFloat percent) {
+- (id<MASConstraint> (^)(CGFloat))multipliedBy {
+    return ^id(CGFloat multiplier) {
         for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.percent(percent);
+            constraint.multipliedBy(multiplier);
+        }
+        return self;
+    };
+}
+
+- (id<MASConstraint> (^)(CGFloat))dividedBy {
+    return ^id(CGFloat divider) {
+        for (id<MASConstraint> constraint in self.childConstraints) {
+            constraint.dividedBy(divider);
         }
         return self;
     };

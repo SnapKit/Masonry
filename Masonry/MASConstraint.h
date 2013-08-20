@@ -52,7 +52,12 @@
 /**
  *	Sets the NSLayoutConstraint multiplier property
  */
-@property (nonatomic, copy, readonly) id<MASConstraint> (^percent)(CGFloat percent);
+@property (nonatomic, copy, readonly) id<MASConstraint> (^multipliedBy)(CGFloat multiplier);
+
+/**
+ *	Sets the NSLayoutConstraint multiplier to 1.0/dividedBy
+ */
+@property (nonatomic, copy, readonly) id<MASConstraint> (^dividedBy)(CGFloat divider);
 
 /**
  *	Sets the NSLayoutConstraint priority to a float or MASLayoutPriority

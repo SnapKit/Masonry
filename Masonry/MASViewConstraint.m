@@ -148,12 +148,23 @@
 
 #pragma mark - NSLayoutConstraint multiplier proxies
 
-- (id<MASConstraint> (^)(CGFloat))percent {
-    return ^id(CGFloat percent) {
+- (id<MASConstraint> (^)(CGFloat))multipliedBy {
+    return ^id(CGFloat multiplier) {
         NSAssert(!self.hasBeenInstalled,
-                 @"Cannot modify constraint percent after it has been installed");
+                 @"Cannot modify constraint multiplier after it has been installed");
         
-        self.layoutMultiplier = percent;
+        self.layoutMultiplier = multiplier;
+        return self;
+    };
+}
+
+
+- (id<MASConstraint> (^)(CGFloat))dividedBy {
+    return ^id(CGFloat divider) {
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint multiplier after it has been installed");
+
+        self.layoutMultiplier = 1.0/divider;
         return self;
     };
 }
