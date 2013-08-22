@@ -204,6 +204,30 @@ make.center.equalTo(button1)
 // make centerX = superview.centerX - 5, centerY = superview.centerY + 10
 make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 ```
+
+## Hold on for dear life
+
+Sometimes you need to reference constraints so you can modify them at a later stage. This lets you animate or remove/replace constraints.
+You can hold on to a reference of a particular constraint by assigning the result of a constraint make expression to a local variable or a class property.
+You could also reference multiple constraints by storing them away in an array. You can see a demo of this in the animation example in **Masonry iOS Examples** project.
+
+```obj-c
+// in public/private interface
+@property (nonatomic, strong) id<MASConstraint> topConstraint;
+
+...
+
+// when making constraints
+[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.topConstraint = make.top.equalTo(superview.mas_top).with.offset(padding.top);
+    make.left.equalTo(superview.mas_left).with.offset(padding.left);
+}];
+
+...
+// then later you can call
+[self.topConstraint uninstall];
+```
+
 ## When the ^&*!@ hits the fan!
 
 Laying out your views doesn't always goto plan. So when things literally go pear shaped, you don't want to be looking at console output like this:
