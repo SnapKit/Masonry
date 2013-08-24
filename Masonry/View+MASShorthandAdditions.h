@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "View+MASAdditions.h"
 
 #ifdef MAS_SHORTHAND
