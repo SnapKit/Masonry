@@ -121,10 +121,10 @@ describe(@"create equality constraint", ^{
         MASCompositeConstraint *composite = (id)constraint.equalTo(views).priorityMedium().offset(-10);
 
         expect(delegate.constraints).to.haveCountOf(1);
-        expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
+        expect([delegate.constraints objectAtIndex:0]).to.beKindOf(MASCompositeConstraint.class);
         for (MASViewConstraint *constraint in composite.childConstraints) {
             NSUInteger index = [composite.childConstraints indexOfObject:constraint];
-            expect(constraint.secondViewAttribute.view).to.beIdenticalTo(views[index]);
+            expect(constraint.secondViewAttribute.view).to.beIdenticalTo((MAS_VIEW *)[views objectAtIndex:index]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
             expect(constraint.layoutPriority).to.equal(MASLayoutPriorityDefaultMedium);
@@ -139,12 +139,12 @@ describe(@"create equality constraint", ^{
         MASCompositeConstraint *composite = (id)constraint.equalTo(viewAttributes).priority(60).offset(10);
 
         expect(delegate.constraints).to.haveCountOf(1);
-        expect(delegate.constraints[0]).to.beKindOf(MASCompositeConstraint.class);
+        expect([delegate.constraints objectAtIndex:0]).to.beKindOf(MASCompositeConstraint.class);
         for (MASViewConstraint *constraint in composite.childConstraints) {
             NSUInteger index = [composite.childConstraints indexOfObject:constraint];
-            expect(constraint.secondViewAttribute.view).to.beIdenticalTo([viewAttributes[index] view]);
+            expect(constraint.secondViewAttribute.view).to.beIdenticalTo([[viewAttributes objectAtIndex:index] view]);
             expect(constraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
-            expect(constraint.secondViewAttribute.layoutAttribute).to.equal([viewAttributes[index] layoutAttribute]);
+            expect(constraint.secondViewAttribute.layoutAttribute).to.equal([[viewAttributes objectAtIndex:index] layoutAttribute]);
             expect(constraint.layoutPriority).to.equal(60);
             expect(constraint.layoutConstant).to.equal(10);
         }
@@ -239,7 +239,7 @@ describe(@"install", ^{
         expect(constraint.layoutConstraint.priority).to.equal(345);
         expect(constraint.layoutConstraint.multiplier).to.equal(0.5);
 
-        expect(superview.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
+        expect([superview.constraints objectAtIndex:0]).to.beIdenticalTo(constraint.layoutConstraint);
     });
 
     it(@"should uninstall constraint", ^{
@@ -248,7 +248,7 @@ describe(@"install", ^{
         [constraint install];
 
         expect(superview.constraints).to.haveCountOf(1);
-        expect(superview.constraints[0]).to.equal(constraint.layoutConstraint);
+        expect([superview.constraints objectAtIndex:0]).to.equal(constraint.layoutConstraint);
 
         [constraint uninstall];
         expect(superview.constraints).to.haveCountOf(0);

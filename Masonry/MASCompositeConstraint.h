@@ -9,12 +9,12 @@
 #import "MASConstraint.h"
 #import "MASUtilities.h"
 
-typedef NS_ENUM(NSInteger, MASCompositeConstraintType) {
+typedef enum MASCompositeConstraintType : NSInteger {
     MASCompositeConstraintTypeEdges, //top, left, bottom, right
     MASCompositeConstraintTypeSize, //width, height
     MASCompositeConstraintTypeCenter, //centerX, centerY
     MASCompositeConstraintTypeUnknown, //could be mixture of any attributes
-};
+} MASCompositeConstraintType;
 
 /**
  *	A group of MASConstraint objects

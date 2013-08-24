@@ -1,5 +1,5 @@
 target 'Masonry Mac Tests', :exclusive => true do
-    platform :osx, '10.8'
+    platform :osx, '10.7'
     pod 'Specta'
 	pod 'Expecta'
 end
