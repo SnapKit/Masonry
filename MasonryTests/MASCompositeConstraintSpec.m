@@ -9,6 +9,7 @@
 #import "MASCompositeConstraint.h"
 #import "MASViewConstraint.h"
 #import "MASConstraintDelegateMock.h"
+#import "View+MASAdditions.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
@@ -18,6 +19,7 @@
 
 @interface MASViewConstraint ()
 
+@property (nonatomic, weak) MASLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) CGFloat layoutConstant;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 
@@ -31,71 +33,19 @@ __block MAS_VIEW *view;
 __block MASCompositeConstraint *composite;
 
 beforeEach(^{
-    composite = nil;
     delegate = MASConstraintDelegateMock.new;
     view = MAS_VIEW.new;
     superview = MAS_VIEW.new;
     [superview addSubview:view];
-});
-
-it(@"should create centerY and centerX children", ^{
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeCenter];
-
-    expect(composite.childConstraints).to.haveCountOf(2);
-
-    MASViewConstraint *viewConstraint = [composite.childConstraints objectAtIndex:0];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeCenterX);
-
-    viewConstraint = [composite.childConstraints objectAtIndex:1];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeCenterY);
-});
-
-it(@"should create top, left, bottom, right children", ^{
-    MAS_VIEW *newView = MAS_VIEW.new;
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeEdges];
-    composite.equalTo(newView);
-
-    expect(composite.childConstraints).to.haveCountOf(4);
-
-    //top
-    MASViewConstraint *viewConstraint = [composite.childConstraints objectAtIndex:0];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeTop);
-
-    //left
-    viewConstraint = [composite.childConstraints objectAtIndex:1];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeLeft);
-
-    //bottom
-    viewConstraint = [composite.childConstraints objectAtIndex:2];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeBottom);
-
-    //right
-    viewConstraint = [composite.childConstraints objectAtIndex:3];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeRight);
-});
-
-it(@"should create width and height children", ^{
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
-    expect(composite.childConstraints).to.haveCountOf(2);
-
-    MASViewConstraint *viewConstraint = [composite.childConstraints objectAtIndex:0];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
-
-    viewConstraint = [composite.childConstraints objectAtIndex:1];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(composite.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
+    NSArray *children = @[
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width],
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_height]
+    ];
+    composite = [[MASCompositeConstraint alloc] initWithChildren:children];
+    composite.delegate = delegate;
 });
 
 it(@"should complete children", ^{
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
-    composite.delegate = delegate;
     MAS_VIEW *newView = MAS_VIEW.new;
 
     //first equality statement
@@ -117,8 +67,6 @@ it(@"should complete children", ^{
 });
 
 it(@"should not remove on install", ^{
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
-    composite.delegate = delegate;
     MAS_VIEW *newView = MAS_VIEW.new;
     [superview addSubview:newView];
 
@@ -131,9 +79,6 @@ it(@"should not remove on install", ^{
 });
 
 it(@"should spawn child composite constraints", ^{
-    composite = [[MASCompositeConstraint alloc] initWithView:view type:MASCompositeConstraintTypeSize];
-    composite.delegate = delegate;
-
     MAS_VIEW *otherView = MAS_VIEW.new;
     [superview addSubview:otherView];
     composite.lessThanOrEqualTo(@[@2, otherView]);

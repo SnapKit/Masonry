@@ -61,6 +61,8 @@
 		DDA5752D17C187D40010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDEDACEF17C845DE00098BE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEDACEE17C845DE00098BE6 /* Cocoa.framework */; };
+		DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
+		DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,7 @@
 		DDA5752917C17C3E0010F88E /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
 		DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		DDEDACEE17C845DE00098BE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMakerSpec.m; sourceTree = "<group>"; };
 		EDE028375B0043E190A00F61 /* Pods-Masonry Mac Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry Mac Tests.xcconfig"; path = "Pods/Pods-Masonry Mac Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -263,6 +266,7 @@
 			children = (
 				DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */,
 				DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */,
+				DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -592,6 +596,7 @@
 				DD52F1DA179CAA9C005CD195 /* MASCompositeConstraintSpec.m in Sources */,
 				DD52F1DB179CAA9C005CD195 /* MASViewConstraintSpec.m in Sources */,
 				DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */,
+				DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +621,7 @@
 				DDA4D72717C025FD0076BD87 /* MASCompositeConstraintSpec.m in Sources */,
 				DDA4D72817C026030076BD87 /* MASViewConstraintSpec.m in Sources */,
 				DDA4D72917C0260C0076BD87 /* MASConstraintDelegateMock.m in Sources */,
+				DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

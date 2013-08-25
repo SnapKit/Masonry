@@ -15,7 +15,7 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     block(constraintMaker);
-    [constraintMaker commit];
+    [constraintMaker install];
 }
 
 #pragma mark - NSLayoutAttribute properties
@@ -64,7 +64,7 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeBaseline];
 }
 
-#pragma mark - key
+#pragma mark - associated properties
 
 - (id)mas_key {
     return objc_getAssociatedObject(self, @selector(mas_key));

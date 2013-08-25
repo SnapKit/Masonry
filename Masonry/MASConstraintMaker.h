@@ -58,8 +58,8 @@
 - (id)initWithView:(MAS_VIEW *)view;
 
 /**
- *	Calls commit method on any MASConstraints which requested to be added view MASConstraintDelegate
+ *	Calls install method on any MASConstraints which have been created by this maker
  */
-- (void)commit;
+- (void)install;
 
 @end

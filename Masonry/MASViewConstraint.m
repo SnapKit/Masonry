@@ -14,8 +14,8 @@
 @interface MASViewConstraint ()
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
-@property (nonatomic, strong, readwrite) MASLayoutConstraint *layoutConstraint;
 @property (nonatomic, weak) MAS_VIEW *installedView;
+@property (nonatomic, weak) MASLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 @property (nonatomic, assign) CGFloat layoutMultiplier;
@@ -214,7 +214,7 @@
                 viewConstraint.secondViewAttribute = attr;
                 [children addObject:viewConstraint];
             }
-            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithView:self.firstViewAttribute.view children:children];
+            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithChildren:children];
             compositeConstraint.delegate = self.delegate;
             [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
             return compositeConstraint;
@@ -262,34 +262,39 @@
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
+
+    // alignment attributes must have a secondViewAttribute
+    // therefore we assume that is refering to superview
+    // eg make.left.equalTo(@10)
     if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
         secondLayoutItem = firstLayoutItem.superview;
         secondLayoutAttribute = firstLayoutAttribute;
     }
     
+    MASLayoutConstraint *layoutConstraint
+        = [MASLayoutConstraint constraintWithItem:firstLayoutItem
+                                        attribute:firstLayoutAttribute
+                                        relatedBy:self.layoutRelation
+                                           toItem:secondLayoutItem
+                                        attribute:secondLayoutAttribute
+                                       multiplier:self.layoutMultiplier
+                                         constant:self.layoutConstant];
     
-    self.layoutConstraint = [MASLayoutConstraint constraintWithItem:firstLayoutItem
-                                                          attribute:firstLayoutAttribute
-                                                          relatedBy:self.layoutRelation
-                                                             toItem:secondLayoutItem
-                                                          attribute:secondLayoutAttribute
-                                                         multiplier:self.layoutMultiplier
-                                                           constant:self.layoutConstant];
-    
-    self.layoutConstraint.priority = self.layoutPriority;
-    self.layoutConstraint.mas_key = self.mas_key;
+    layoutConstraint.priority = self.layoutPriority;
+    layoutConstraint.mas_key = self.mas_key;
     
     if (secondLayoutItem) {
         MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
-                 firstLayoutItem,
-                 secondLayoutItem);
+                 firstLayoutItem, secondLayoutItem);
         self.installedView = closestCommonSuperview;
-        [closestCommonSuperview addConstraint:self.layoutConstraint];
+        [closestCommonSuperview addConstraint:layoutConstraint];
+        self.layoutConstraint = layoutConstraint;
     } else {
         self.installedView = firstLayoutItem;
-        [firstLayoutItem addConstraint:self.layoutConstraint];
+        [firstLayoutItem addConstraint:layoutConstraint];
+        self.layoutConstraint = layoutConstraint;
     }
 }
 

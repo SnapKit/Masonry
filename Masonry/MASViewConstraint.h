@@ -23,11 +23,6 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *secondViewAttribute;
 
 /**
- *	The generate MASLayoutConstraint could be nil if -commit has not been called
- */
-@property (nonatomic, strong, readonly) MASLayoutConstraint *layoutConstraint;
-
-/**
  *	initialises the MASViewConstraint with the first part of the equation
  *
  *	@param	firstViewAttribute	view.mas_left, view.mas_width etc.

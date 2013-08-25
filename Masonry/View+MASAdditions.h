@@ -36,6 +36,13 @@
  */
 @property (nonatomic, strong) id mas_key;
 
+/**
+ *	Finds the closest common superview between this view and another view
+ *
+ *	@param	view	other view
+ *
+ *	@return	returns nil if common superview could not be found
+ */
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
 
 /**
