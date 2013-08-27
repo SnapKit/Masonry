@@ -11,6 +11,7 @@
 		9C61C40117CCF3F0001A124A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C61C40017CCF3F0001A124A /* Cocoa.framework */; };
 		9CEFD2D917CCF7210014B0FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEFD2D817CCF7210014B0FF /* UIKit.framework */; };
 		9CEFD2DA17CCF7A90014B0FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEFD2D817CCF7210014B0FF /* UIKit.framework */; };
+		9CEFD2DB17CCF80D0014B0FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C61C40017CCF3F0001A124A /* Cocoa.framework */; };
 		9DAD1ADAED04452C8C32D34E /* libPods-Masonry iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF61518EB0044E0A00EB62E /* libPods-Masonry iOS Tests.a */; };
 		DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */; };
 		DD52F1AE179CA93B005CD195 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AD179CA93B005CD195 /* Foundation.framework */; };
@@ -174,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEFD2DB17CCF80D0014B0FF /* Cocoa.framework in Frameworks */,
 				DDA4D70217C0253B0076BD87 /* SenTestingKit.framework in Frameworks */,
 				DDA4D70617C0253B0076BD87 /* Masonry.framework in Frameworks */,
 				81A5AEFE5B9041ABBC74F614 /* libPods-Masonry Mac Tests.a in Frameworks */,
@@ -830,10 +832,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MasonryTests/MasonryTests-Prefix.pch";
@@ -842,7 +840,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -855,10 +853,6 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MasonryTests/MasonryTests-Prefix.pch";
@@ -867,7 +861,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = octest;
 			};
