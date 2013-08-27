@@ -403,6 +403,7 @@
 				DDA4D6E717C0253B0076BD87 /* Frameworks */,
 				DDA4D6E817C0253B0076BD87 /* Headers */,
 				DDA4D6E917C0253B0076BD87 /* Resources */,
+				DDCD4D0517CD6A3F00927D72 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -573,6 +574,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		DDCD4D0517CD6A3F00927D72 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = script/exportenv.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -787,6 +801,8 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
