@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		81A5AEFE5B9041ABBC74F614 /* libPods-Masonry Mac Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A66D49D177E45D1B8059268 /* libPods-Masonry Mac Tests.a */; };
+		9C61C40117CCF3F0001A124A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C61C40017CCF3F0001A124A /* Cocoa.framework */; };
+		9CEFD2D917CCF7210014B0FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEFD2D817CCF7210014B0FF /* UIKit.framework */; };
+		9CEFD2DA17CCF7A90014B0FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEFD2D817CCF7210014B0FF /* UIKit.framework */; };
+		9CEFD2DB17CCF80D0014B0FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C61C40017CCF3F0001A124A /* Cocoa.framework */; };
 		9DAD1ADAED04452C8C32D34E /* libPods-Masonry iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF61518EB0044E0A00EB62E /* libPods-Masonry iOS Tests.a */; };
 		DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */; };
 		DD52F1AE179CA93B005CD195 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AD179CA93B005CD195 /* Foundation.framework */; };
 		DD52F1BD179CA93B005CD195 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */; };
-		DD52F1BF179CA93B005CD195 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BE179CA93B005CD195 /* UIKit.framework */; };
 		DD52F1C0179CA93B005CD195 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AD179CA93B005CD195 /* Foundation.framework */; };
-		DD52F1C3179CA93B005CD195 /* libMasonry iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AA179CA93B005CD195 /* libMasonry iOS.a */; };
+		DD52F1C3179CA93B005CD195 /* libMasonry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1AA179CA93B005CD195 /* libMasonry.a */; };
 		DD52F1C9179CA93B005CD195 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD52F1C7179CA93B005CD195 /* InfoPlist.strings */; };
 		DD52F1DA179CAA9C005CD195 /* MASCompositeConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */; };
 		DD52F1DB179CAA9C005CD195 /* MASViewConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */; };
@@ -35,8 +38,7 @@
 		DD93AAF317ACB647008F7D21 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD93AAF117ACB647008F7D21 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD93AAF417ACB647008F7D21 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DD93AAF217ACB647008F7D21 /* MASLayoutConstraint.m */; };
 		DDA4D70217C0253B0076BD87 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */; };
-		DDA4D70317C0253B0076BD87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA4D6EC17C0253B0076BD87 /* Cocoa.framework */; };
-		DDA4D70617C0253B0076BD87 /* Masonry Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA4D6EB17C0253B0076BD87 /* Masonry Mac.framework */; };
+		DDA4D70617C0253B0076BD87 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA4D6EB17C0253B0076BD87 /* Masonry.framework */; };
 		DDA4D71617C025930076BD87 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1ED179CAAEE005CD195 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDA4D71717C0259A0076BD87 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E5179CAACA005CD195 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDA4D71817C025A10076BD87 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E6179CAACA005CD195 /* View+MASAdditions.m */; };
@@ -60,7 +62,6 @@
 		DDA5752B17C17C3E0010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDA5752D17C187D40010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDEDACEF17C845DE00098BE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEDACEE17C845DE00098BE6 /* Cocoa.framework */; };
 		DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 		DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 /* End PBXBuildFile section */
@@ -97,15 +98,17 @@
 /* Begin PBXFileReference section */
 		3FF61518EB0044E0A00EB62E /* libPods-Masonry iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A66D49D177E45D1B8059268 /* libPods-Masonry Mac Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry Mac Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C61C40017CCF3F0001A124A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		9CC1B90117CCE7BA0032BB18 /* Masonry-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
+		9CEFD2D817CCF7210014B0FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8646E0425DE4F42A4314C3C /* Pods-Masonry iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Tests.xcconfig"; path = "Pods/Pods-Masonry iOS Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		DD38397C17A5170F00C35C17 /* MASConstraintDelegateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintDelegateMock.h; sourceTree = "<group>"; };
 		DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintDelegateMock.m; sourceTree = "<group>"; };
-		DD52F1AA179CA93B005CD195 /* libMasonry iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMasonry iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD52F1AA179CA93B005CD195 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD52F1AD179CA93B005CD195 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD52F1B1179CA93B005CD195 /* Masonry-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Masonry-Prefix.pch"; sourceTree = "<group>"; };
 		DD52F1BB179CA93B005CD195 /* Masonry iOS Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Masonry iOS Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DD52F1BE179CA93B005CD195 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		DD52F1C6179CA93B005CD195 /* MasonryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MasonryTests-Info.plist"; sourceTree = "<group>"; };
 		DD52F1C8179CA93B005CD195 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD52F1D6179CAA71005CD195 /* MasonryTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MasonryTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -127,15 +130,13 @@
 		DD7CC16D17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		DD93AAF117ACB647008F7D21 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
 		DD93AAF217ACB647008F7D21 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		DDA4D6EB17C0253B0076BD87 /* Masonry Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Masonry Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDA4D6EC17C0253B0076BD87 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		DDA4D6EB17C0253B0076BD87 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA4D6EF17C0253B0076BD87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DDA4D6F017C0253B0076BD87 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DDA4D6F117C0253B0076BD87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DDA4D70117C0253B0076BD87 /* Masonry Mac Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Masonry Mac Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA5752917C17C3E0010F88E /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
 		DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		DDEDACEE17C845DE00098BE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMakerSpec.m; sourceTree = "<group>"; };
 		EDE028375B0043E190A00F61 /* Pods-Masonry Mac Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry Mac Tests.xcconfig"; path = "Pods/Pods-Masonry Mac Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -145,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEFD2D917CCF7210014B0FF /* UIKit.framework in Frameworks */,
 				DD52F1AE179CA93B005CD195 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,10 +155,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEFD2DA17CCF7A90014B0FF /* UIKit.framework in Frameworks */,
 				DD52F1BD179CA93B005CD195 /* SenTestingKit.framework in Frameworks */,
-				DD52F1BF179CA93B005CD195 /* UIKit.framework in Frameworks */,
 				DD52F1C0179CA93B005CD195 /* Foundation.framework in Frameworks */,
-				DD52F1C3179CA93B005CD195 /* libMasonry iOS.a in Frameworks */,
+				DD52F1C3179CA93B005CD195 /* libMasonry.a in Frameworks */,
 				9DAD1ADAED04452C8C32D34E /* libPods-Masonry iOS Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDEDACEF17C845DE00098BE6 /* Cocoa.framework in Frameworks */,
+				9C61C40117CCF3F0001A124A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,9 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEFD2DB17CCF80D0014B0FF /* Cocoa.framework in Frameworks */,
 				DDA4D70217C0253B0076BD87 /* SenTestingKit.framework in Frameworks */,
-				DDA4D70317C0253B0076BD87 /* Cocoa.framework in Frameworks */,
-				DDA4D70617C0253B0076BD87 /* Masonry Mac.framework in Frameworks */,
+				DDA4D70617C0253B0076BD87 /* Masonry.framework in Frameworks */,
 				81A5AEFE5B9041ABBC74F614 /* libPods-Masonry Mac Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,9 +200,9 @@
 		DD52F1AB179CA93B005CD195 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD52F1AA179CA93B005CD195 /* libMasonry iOS.a */,
+				DD52F1AA179CA93B005CD195 /* libMasonry.a */,
 				DD52F1BB179CA93B005CD195 /* Masonry iOS Tests.octest */,
-				DDA4D6EB17C0253B0076BD87 /* Masonry Mac.framework */,
+				DDA4D6EB17C0253B0076BD87 /* Masonry.framework */,
 				DDA4D70117C0253B0076BD87 /* Masonry Mac Tests.octest */,
 			);
 			name = Products;
@@ -209,11 +211,10 @@
 		DD52F1AC179CA93B005CD195 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DDEDACEE17C845DE00098BE6 /* Cocoa.framework */,
+				9CEFD2D817CCF7210014B0FF /* UIKit.framework */,
+				9C61C40017CCF3F0001A124A /* Cocoa.framework */,
 				DD52F1AD179CA93B005CD195 /* Foundation.framework */,
 				DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */,
-				DD52F1BE179CA93B005CD195 /* UIKit.framework */,
-				DDA4D6EC17C0253B0076BD87 /* Cocoa.framework */,
 				DDA4D6EE17C0253B0076BD87 /* Other Frameworks */,
 				8A66D49D177E45D1B8059268 /* libPods-Masonry Mac Tests.a */,
 				3FF61518EB0044E0A00EB62E /* libPods-Masonry iOS Tests.a */,
@@ -236,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				DD52F1B1179CA93B005CD195 /* Masonry-Prefix.pch */,
+				9CC1B90117CCE7BA0032BB18 /* Masonry-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -369,7 +371,7 @@
 			);
 			name = "Masonry iOS";
 			productName = Masonry;
-			productReference = DD52F1AA179CA93B005CD195 /* libMasonry iOS.a */;
+			productReference = DD52F1AA179CA93B005CD195 /* libMasonry.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DD52F1BA179CA93B005CD195 /* Masonry iOS Tests */ = {
@@ -408,7 +410,7 @@
 			);
 			name = "Masonry Mac";
 			productName = "Masonry Mac";
-			productReference = DDA4D6EB17C0253B0076BD87 /* Masonry Mac.framework */;
+			productReference = DDA4D6EB17C0253B0076BD87 /* Masonry.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DDA4D70017C0253B0076BD87 /* Masonry Mac Tests */ = {
@@ -678,8 +680,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MASONRY_PRODUCT_NAME = Masonry;
 				ONLY_ACTIVE_ARCH = NO;
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "armv7 armv7s i386";
@@ -705,7 +708,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MASONRY_PRODUCT_NAME = Masonry;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -721,7 +725,7 @@
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(MASONRY_PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -734,7 +738,7 @@
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(MASONRY_PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -780,19 +784,18 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				PRODUCT_NAME = "$(MASONRY_PRODUCT_NAME)";
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -806,19 +809,18 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry/Masonry-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				PRODUCT_NAME = "$(MASONRY_PRODUCT_NAME)";
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -830,10 +832,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MasonryTests/MasonryTests-Prefix.pch";
@@ -842,7 +840,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -855,10 +853,6 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MasonryTests/MasonryTests-Prefix.pch";
@@ -867,7 +861,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = octest;
 			};
