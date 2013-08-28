@@ -15,3 +15,4 @@ profile
 .DS_Store
 Podfile.lock
 /Pods/
+script/env.sh
