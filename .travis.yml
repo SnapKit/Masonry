@@ -3,8 +3,6 @@ language: objective-c
 
 before_script:
   - sudo easy_install cpp-coveralls
-  - brew update
-  - brew install xctool
 
 script:
   - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator6.0 clean build test
