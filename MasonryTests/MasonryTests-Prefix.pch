@@ -11,4 +11,8 @@
     #import "Expecta.h"
 
     #import "MASUtilities.h"
+
+    #if __MAC_OS_X_VERSION_MAX_ALLOWED <= 1070
+    #import "NSObject+MASSubscriptSupport.h"
+    #endif
 #endif
