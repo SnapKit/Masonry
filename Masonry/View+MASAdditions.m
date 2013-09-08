@@ -11,7 +11,7 @@
 
 @implementation MAS_VIEW (MASAdditions)
 
-- (void)mas_makeConstraints:(void(^)(MASConstraintMaker *))block {
+- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     block(constraintMaker);

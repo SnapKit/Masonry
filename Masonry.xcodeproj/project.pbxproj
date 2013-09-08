@@ -62,6 +62,10 @@
 		DDA4D72917C0260C0076BD87 /* MASConstraintDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */; };
 		DDA5752B17C17C3E0010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDA5752D17C187D40010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB4A51517DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
+		DDB4A51617DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
+		DDB682AD17DC484900159454 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */; };
+		DDB682AE17DC484900159454 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */; };
 		DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 		DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
@@ -138,6 +142,8 @@
 		DDA4D6F117C0253B0076BD87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DDA4D70117C0253B0076BD87 /* Masonry Mac Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Masonry Mac Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA5752917C17C3E0010F88E /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditionsSpec.m"; sourceTree = "<group>"; };
+		DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditionsSpec.m"; sourceTree = "<group>"; };
 		DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMakerSpec.m; sourceTree = "<group>"; };
 		EDE028375B0043E190A00F61 /* Pods-Masonry Mac Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry Mac Tests.xcconfig"; path = "Pods/Pods-Masonry Mac Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -272,6 +278,8 @@
 				DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */,
 				DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */,
 				DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */,
+				DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */,
+				DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -617,6 +625,8 @@
 				DD52F1DB179CAA9C005CD195 /* MASViewConstraintSpec.m in Sources */,
 				DD38397E17A5170F00C35C17 /* MASConstraintDelegateMock.m in Sources */,
 				DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
+				DDB682AD17DC484900159454 /* View+MASAdditionsSpec.m in Sources */,
+				DDB4A51517DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +652,8 @@
 				DDA4D72817C026030076BD87 /* MASViewConstraintSpec.m in Sources */,
 				DDA4D72917C0260C0076BD87 /* MASConstraintDelegateMock.m in Sources */,
 				DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
+				DDB682AE17DC484900159454 /* View+MASAdditionsSpec.m in Sources */,
+				DDB4A51617DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

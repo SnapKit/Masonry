@@ -94,4 +94,28 @@ it(@"should create width and height children", ^{
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
 });
 
+it(@"should install constraints", ^{
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+
+    maker.edges.equalTo(newView);
+    maker.centerX.equalTo(@[newView, @10]);
+
+    expect([maker install]).to.haveCountOf(2);
+});
+
+it(@"should create new constraints", ^{
+    expect(maker.left).notTo.beIdenticalTo(maker.left);
+    expect(maker.right).notTo.beIdenticalTo(maker.right);
+    expect(maker.top).notTo.beIdenticalTo(maker.top);
+    expect(maker.bottom).notTo.beIdenticalTo(maker.bottom);
+    expect(maker.baseline).notTo.beIdenticalTo(maker.baseline);
+    expect(maker.leading).notTo.beIdenticalTo(maker.leading);
+    expect(maker.trailing).notTo.beIdenticalTo(maker.trailing);
+    expect(maker.width).notTo.beIdenticalTo(maker.width);
+    expect(maker.height).notTo.beIdenticalTo(maker.height);
+    expect(maker.centerX).notTo.beIdenticalTo(maker.centerX);
+    expect(maker.centerY).notTo.beIdenticalTo(maker.centerY);
+});
+
 SpecEnd

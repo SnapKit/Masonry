@@ -31,11 +31,13 @@
     return self;
 }
 
-- (void)install {
-    for (id<MASConstraint> constraint in self.constraints) {
+- (NSArray *)install {
+    NSArray *constraints = self.constraints.copy;
+    for (id<MASConstraint> constraint in constraints) {
         [constraint install];
     }
     [self.constraints removeAllObjects];
+    return constraints;
 }
 
 #pragma mark - MASConstraintDelegate

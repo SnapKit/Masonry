@@ -133,4 +133,23 @@ it(@"should modify insets on appropriate children", ^{
     expect([children[5] layoutConstant]).to.equal(0);
 });
 
+it(@"should uninstall", ^{
+    NSArray *children = @[
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerX],
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerY]
+    ];
+    composite = [[MASCompositeConstraint alloc] initWithChildren:children];
+    composite.delegate = delegate;
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+
+    //first equality statement
+    composite.equalTo(newView);
+    [composite install];
+
+    expect(superview.constraints).to.haveCountOf(2);
+    [composite uninstall];
+    expect(superview.constraints).to.haveCountOf(0);
+});
+
 SpecEnd

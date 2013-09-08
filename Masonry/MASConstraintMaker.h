@@ -59,7 +59,9 @@
 
 /**
  *	Calls install method on any MASConstraints which have been created by this maker
+ *
+ *	@return	an array of all the installed MASConstraints
  */
-- (void)install;
+- (NSArray *)install;
 
 @end

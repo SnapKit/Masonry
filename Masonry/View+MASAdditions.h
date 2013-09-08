@@ -50,6 +50,6 @@
 
  @param block scope within which you can build up the constraints which you wish to apply to the view.
  */
-- (void)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
