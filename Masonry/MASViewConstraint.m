@@ -206,7 +206,6 @@
 
 - (id<MASConstraint> (^)(id))equalityWithRelation:(NSLayoutRelation)relation {
     return ^id(id attribute) {
-        NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
         if ([attribute isKindOfClass:NSArray.class]) {
             NSMutableArray *children = NSMutableArray.new;
             for (id attr in attribute) {
