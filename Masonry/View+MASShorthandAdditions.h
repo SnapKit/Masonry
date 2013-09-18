@@ -51,8 +51,8 @@ MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
 
-- (void)makeConstraints:(void(^)(MASConstraintMaker *))block {
-    [self mas_makeConstraints:block];
+- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
+    return [self mas_makeConstraints:block];
 }
 
 @end
