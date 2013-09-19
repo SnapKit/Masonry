@@ -28,7 +28,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
 
-- (void)makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
 
