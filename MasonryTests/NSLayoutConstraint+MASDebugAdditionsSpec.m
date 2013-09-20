@@ -9,6 +9,8 @@
 #import "NSLayoutConstraint+MASDebugAdditions.h"
 #import "View+MASAdditions.h"
 #import "MASLayoutConstraint.h"
+#import "MASCompositeConstraint.h"
+#import "MASViewConstraint.h"
 
 SpecBegin(NSLayoutConstraint_MASDebugAdditions)
 
@@ -18,7 +20,9 @@ it(@"should display view key", ^{
 
     MASLayoutConstraint *layoutConstraint = [MASLayoutConstraint constraintWithItem:newView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:300];
 
-    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView.width >= 300>", layoutConstraint, MAS_VIEW.class];
+    layoutConstraint.priority = MASLayoutPriorityDefaultLow;
+
+    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView.width >= 300 ^low>", layoutConstraint, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
 });
 
@@ -33,6 +37,24 @@ it(@"should display layoutConstraint key", ^{
 
     NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.baseline == %@:newView2.top + 300>", MAS_VIEW.class, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
+});
+
+it(@"should print constraint key", ^{
+    MAS_VIEW *superview = MAS_VIEW.new;
+    MAS_VIEW *newView1 = MAS_VIEW.new;
+    newView1.mas_key = @"newView1";
+    MAS_VIEW *newView2 = MAS_VIEW.new;
+    newView2.mas_key = @"newView2";
+    [superview addSubview:newView1];
+    [superview addSubview:newView2];
+
+    [newView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.greaterThanOrEqualTo(@[newView2, @10]).key(@"left");
+    }];
+
+
+    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:left[0] %@:newView1.left == %@:newView2.left>", MAS_VIEW.class, MAS_VIEW.class];
+    expect([superview.constraints[0] description]).to.equal(description);
 });
 
 SpecEnd

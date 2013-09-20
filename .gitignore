@@ -16,3 +16,5 @@ profile
 Podfile.lock
 /Pods/
 script/env.sh
+
+/Masonry.xcworkspace/xcshareddata/Masonry.xccheckout

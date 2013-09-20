@@ -135,8 +135,8 @@ it(@"should modify insets on appropriate children", ^{
 
 it(@"should uninstall", ^{
     NSArray *children = @[
-        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerX],
-        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerY]
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_leading],
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_trailing]
     ];
     composite = [[MASCompositeConstraint alloc] initWithChildren:children];
     composite.delegate = delegate;
