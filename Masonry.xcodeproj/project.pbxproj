@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4490B5BD1805A4AE00C7D494 /* MASViewAttributeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B5BB1805A41A00C7D494 /* MASViewAttributeSpec.m */; };
+		4490B5BE1805A4AF00C7D494 /* MASViewAttributeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4490B5BB1805A41A00C7D494 /* MASViewAttributeSpec.m */; };
 		81A5AEFE5B9041ABBC74F614 /* libPods-Masonry Mac Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A66D49D177E45D1B8059268 /* libPods-Masonry Mac Tests.a */; };
 		9C61C40117CCF3F0001A124A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C61C40017CCF3F0001A124A /* Cocoa.framework */; };
 		9CEFD2D917CCF7210014B0FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEFD2D817CCF7210014B0FF /* UIKit.framework */; };
@@ -102,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		3FF61518EB0044E0A00EB62E /* libPods-Masonry iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4490B5BB1805A41A00C7D494 /* MASViewAttributeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttributeSpec.m; sourceTree = "<group>"; };
 		8A66D49D177E45D1B8059268 /* libPods-Masonry Mac Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry Mac Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C61C40017CCF3F0001A124A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		9CC1B90117CCE7BA0032BB18 /* Masonry-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 				DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */,
 				DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */,
 				DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */,
+				4490B5BB1805A41A00C7D494 /* MASViewAttributeSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -627,6 +631,7 @@
 				DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
 				DDB682AD17DC484900159454 /* View+MASAdditionsSpec.m in Sources */,
 				DDB4A51517DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */,
+				4490B5BE1805A4AF00C7D494 /* MASViewAttributeSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +659,7 @@
 				DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */,
 				DDB682AE17DC484900159454 /* View+MASAdditionsSpec.m in Sources */,
 				DDB4A51617DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */,
+				4490B5BD1805A4AE00C7D494 /* MASViewAttributeSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
