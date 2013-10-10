@@ -24,4 +24,21 @@
     return self.layoutAttribute == NSLayoutAttributeWidth || self.layoutAttribute == NSLayoutAttributeHeight;
 }
 
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:self.class]) {
+        MASViewAttribute *attr = object;
+        return ([self.view isEqual:attr.view] && self.layoutAttribute == attr.layoutAttribute);
+    }
+    return [super isEqual:object];
+}
+
+// Based on http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-hashing.html
+
+#define MAS_NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
+#define MAS_NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (MAS_NSUINT_BIT - howmuch)))
+
+- (NSUInteger)hash {
+    return MAS_NSUINTROTATE([self.view hash], MAS_NSUINT_BIT / 2) ^ self.layoutAttribute;
+}
+
 @end
