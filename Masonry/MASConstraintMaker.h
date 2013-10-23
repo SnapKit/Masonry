@@ -9,6 +9,11 @@
 #import "MASConstraint.h"
 #import "MASUtilities.h"
 
+/**
+ *  Provides factory methods for creating MASConstraints.
+ *  Constraints are collected until they are ready to be installed
+ *
+ */
 @interface MASConstraintMaker : NSObject
 
 /**
