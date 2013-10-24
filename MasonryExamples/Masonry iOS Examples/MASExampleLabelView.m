@@ -50,6 +50,7 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     [self.bigButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).insets(kPadding);
         make.right.equalTo(self).insets(kPadding);
+        // you don't need to define height or width as some UIView's such as UIButtons, UIImageViews and a few others have intrinsicContentSize
     }];
 
     [self.shortLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,11 +69,17 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 - (void)layoutSubviews {
     [super layoutSubviews];
 
+    // for multiline UILabel's you need set the preferredMaxLayoutWidth
+    // you need to do this after [super layoutSubviews] as the frames will have a value from Auto Layout at this point
+
+    // stay tuned for new easier way todo this coming soon to Masonry
+
     NSInteger textMargin = 5;
     self.shortLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.frame) - CGRectGetWidth(self.bigButton.frame) - kPadding.left - kPadding.right - textMargin;
 
     self.longLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.frame) - kPadding.left - kPadding.right;
 
+    // need to layoutSubviews again as frames need to recalculated with preferredLayoutWidth
     [super layoutSubviews];
 }
 
