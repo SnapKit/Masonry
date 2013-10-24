@@ -291,13 +291,38 @@
                  @"couldn't find a common superview for %@ and %@",
                  firstLayoutItem, secondLayoutItem);
         self.installedView = closestCommonSuperview;
-        [closestCommonSuperview addConstraint:layoutConstraint];
-        self.layoutConstraint = layoutConstraint;
     } else {
         self.installedView = firstLayoutItem;
-        [firstLayoutItem addConstraint:layoutConstraint];
+    }
+
+    MASLayoutConstraint *existingConstraint = [self layoutConstraintSimiliarTo:layoutConstraint];
+    if (existingConstraint) {
+        // just update the constant
+        existingConstraint.constant = layoutConstraint.constant;
+        self.layoutConstraint = existingConstraint;
+    } else {
+        [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
     }
+}
+
+- (MASLayoutConstraint *)layoutConstraintSimiliarTo:(MASLayoutConstraint *)layoutConstraint {
+    // check if any constraints are the same apart from the only mutable property constant
+
+    // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
+    // and they are likely to be added first.
+    for (NSLayoutConstraint *existingConstraint in self.installedView.constraints.reverseObjectEnumerator) {
+        if (![existingConstraint isKindOfClass:MASLayoutConstraint.class]) continue;
+        if (existingConstraint.firstItem != layoutConstraint.firstItem) continue;
+        if (existingConstraint.secondItem != layoutConstraint.secondItem) continue;
+        if (existingConstraint.firstAttribute != layoutConstraint.firstAttribute) continue;
+        if (existingConstraint.secondAttribute != layoutConstraint.secondAttribute) continue;
+        if (existingConstraint.multiplier != layoutConstraint.multiplier) continue;
+        if (existingConstraint.priority != layoutConstraint.priority) continue;
+
+        return (id)existingConstraint;
+    }
+    return nil;
 }
 
 - (void)uninstall {
