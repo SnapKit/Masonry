@@ -21,15 +21,16 @@
 }
 
 - (BOOL)isSizeAttribute {
-    return self.layoutAttribute == NSLayoutAttributeWidth || self.layoutAttribute == NSLayoutAttributeHeight;
+    return self.layoutAttribute == NSLayoutAttributeWidth
+        || self.layoutAttribute == NSLayoutAttributeHeight;
 }
 
-- (BOOL)isEqual:(id)object {
-    if ([object isKindOfClass:self.class]) {
-        MASViewAttribute *attr = object;
-        return ([self.view isEqual:attr.view] && self.layoutAttribute == attr.layoutAttribute);
+- (BOOL)isEqual:(MASViewAttribute *)viewAttribute {
+    if ([viewAttribute isKindOfClass:self.class]) {
+        return self.view == viewAttribute.view
+            && self.layoutAttribute == viewAttribute.layoutAttribute;
     }
-    return [super isEqual:object];
+    return [super isEqual:viewAttribute];
 }
 
 - (NSUInteger)hash {
