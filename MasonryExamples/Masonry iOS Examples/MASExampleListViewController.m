@@ -13,6 +13,7 @@
 #import "MASExampleSidesView.h"
 #import "MASExampleAnimatedView.h"
 #import "MASExampleDebuggingView.h"
+#import "MASExampleLabelView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -41,6 +42,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleAnimatedView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Debugging helpers"
                                               viewClass:MASExampleDebuggingView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Bacony Labels"
+                                              viewClass:MASExampleLabelView.class],
     ];
     
     return self;

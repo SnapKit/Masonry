@@ -79,23 +79,22 @@
     return self;
 }
 
-- (void)didMoveToSuperview {
+- (void)didMoveToWindow {
     [self layoutIfNeeded];
 
-    if (self.superview) {
+    if (self.window) {
         self.animating = YES;
         [self animateWithInvertedInsets:NO];
     }
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-    if (!newSuperview) {
-        self.animating = NO;
-    }
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    self.animating = newWindow != nil;
 }
 
 - (void)animateWithInvertedInsets:(BOOL)invertedInsets {
     if (!self.animating) return;
+
     int padding = invertedInsets ? 100 : self.padding;
     UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
     for (id<MASConstraint> constraint in self.animatableConstraints) {

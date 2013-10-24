@@ -26,6 +26,7 @@
 		DDA5756317C1B07E0010F88E /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5755917C1B07E0010F88E /* MASViewConstraint.m */; };
 		DDA5756417C1B07E0010F88E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5755B17C1B07E0010F88E /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		DDA5756517C1B07E0010F88E /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5755D17C1B07E0010F88E /* View+MASAdditions.m */; };
+		DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */; };
 		DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		DDA5755C17C1B07E0010F88E /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
 		DDA5755D17C1B07E0010F88E /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		DDA5755E17C1B07E0010F88E /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		DDDF60CA181915E300BF7B8B /* MASExampleLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleLabelView.h; sourceTree = "<group>"; };
+		DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleLabelView.m; sourceTree = "<group>"; };
 		DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAnimatedView.h; sourceTree = "<group>"; };
 		DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAnimatedView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +155,8 @@
 				DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */,
 				DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */,
 				DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */,
+				DDDF60CA181915E300BF7B8B /* MASExampleLabelView.h */,
+				DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				DD52F237179CAD57005CD195 /* main.m in Sources */,
 				DD52F23B179CAD57005CD195 /* MASAppDelegate.m in Sources */,
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,
+				DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */,
 				DD52F252179CADC0005CD195 /* MASExampleConstantsView.m in Sources */,
 				DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */,
 				DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */,
