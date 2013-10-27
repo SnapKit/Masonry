@@ -50,7 +50,7 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     [self.bigButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).insets(kPadding);
         make.right.equalTo(self).insets(kPadding);
-        // you don't need to define height or width as some UIView's such as UIButtons, UIImageViews and a few others have intrinsicContentSize
+        make.width.equalTo(@100);
     }];
 
     [self.shortLabel mas_makeConstraints:^(MASConstraintMaker *make) {
