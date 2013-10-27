@@ -76,7 +76,7 @@
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
     } else {
-        NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
+        NSAssert(NO, @"attempting to add unsupported attribute: %@. Stack trace: %@", secondViewAttribute, [NSThread callStackSymbols]);
     }
 }
 
@@ -288,8 +288,8 @@
     if (secondLayoutItem) {
         MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
         NSAssert(closestCommonSuperview,
-                 @"couldn't find a common superview for %@ and %@",
-                 firstLayoutItem, secondLayoutItem);
+                 @"couldn't find a common superview for %@ and %@. Stack trace: %@",
+                 firstLayoutItem, secondLayoutItem, [NSThread callStackSymbols]);
         self.installedView = closestCommonSuperview;
         [closestCommonSuperview addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
