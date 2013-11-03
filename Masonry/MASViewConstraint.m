@@ -28,6 +28,7 @@
 @implementation MASViewConstraint
 
 @synthesize delegate = _delegate;
+@synthesize updateExisting = _updateExisting;
 
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
@@ -295,7 +296,11 @@
         self.installedView = firstLayoutItem;
     }
 
-    MASLayoutConstraint *existingConstraint = [self layoutConstraintSimiliarTo:layoutConstraint];
+
+    MASLayoutConstraint *existingConstraint = nil;
+    if (self.updateExisting) {
+        existingConstraint = [self layoutConstraintSimiliarTo:layoutConstraint];
+    }
     if (existingConstraint) {
         // just update the constant
         existingConstraint.constant = layoutConstraint.constant;

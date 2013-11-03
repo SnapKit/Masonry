@@ -114,6 +114,11 @@
 @property (nonatomic, copy, readonly) id<MASConstraint> (^key)(id key);
 
 /**
+ *  Whether or not to check for an existing constraint instead of adding constraint
+ */
+@property (nonatomic, assign) BOOL updateExisting;
+
+/**
  *	Creates a NSLayoutConstraint. The constraint is installed to the first view or the or the closest common superview of the first and second view. 
  */
 - (void)install;
