@@ -104,6 +104,47 @@ it(@"should install constraints", ^{
     expect([maker install]).to.haveCountOf(2);
 });
 
+it(@"should update constraints", ^{
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+
+    maker.updateExisting = YES;
+    maker.left.equalTo(newView).offset(10);
+    [maker install];
+
+    NSLayoutConstraint *constraint1 = superview.constraints[0];
+    expect(constraint1.constant).to.equal(10);
+
+    maker.left.equalTo(newView).offset(20);
+    [maker install];
+
+    expect(superview.constraints).to.haveCountOf(1);
+    NSLayoutConstraint *constraint2 = superview.constraints[0];
+    expect(constraint2.constant).to.equal(20);
+
+    expect(constraint2).to.beIdenticalTo(constraint2);
+});
+
+it(@"should not update constraint", ^{
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+
+    maker.updateExisting = YES;
+    maker.left.equalTo(newView).offset(10);
+    [maker install];
+
+    NSLayoutConstraint *constraint1 = superview.constraints[0];
+    expect(constraint1.constant).to.equal(10);
+
+    maker.right.equalTo(newView).offset(20);
+    [maker install];
+
+    expect(superview.constraints).to.haveCountOf(2);
+    NSLayoutConstraint *constraint2 = superview.constraints[1];
+    expect(constraint1.constant).to.equal(10);
+    expect(constraint2.constant).to.equal(20);
+});
+
 it(@"should create new constraints", ^{
     expect(maker.left).notTo.beIdenticalTo(maker.left);
     expect(maker.right).notTo.beIdenticalTo(maker.right);
