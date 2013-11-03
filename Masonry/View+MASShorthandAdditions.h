@@ -29,6 +29,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
 
@@ -53,6 +54,10 @@ MAS_ATTR_FORWARD(baseline);
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
+}
+
+- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *))block {
+    return [self mas_updateConstraints:block];
 }
 
 @end

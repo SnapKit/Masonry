@@ -18,6 +18,7 @@
 @implementation MASCompositeConstraint
 
 @synthesize delegate = _delegate;
+@synthesize updateExisting = _updateExisting;
 
 - (id)initWithChildren:(NSArray *)children {
     self = [super init];
@@ -181,6 +182,7 @@
 
 - (void)install {
     for (id<MASConstraint> constraint in self.childConstraints) {
+        constraint.updateExisting = self.updateExisting;
         [constraint install];
     }
 }

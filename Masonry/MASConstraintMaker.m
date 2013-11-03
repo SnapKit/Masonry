@@ -34,6 +34,7 @@
 - (NSArray *)install {
     NSArray *constraints = self.constraints.copy;
     for (id<MASConstraint> constraint in constraints) {
+        constraint.updateExisting = self.updateExisting;
         [constraint install];
     }
     [self.constraints removeAllObjects];

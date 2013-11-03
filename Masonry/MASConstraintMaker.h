@@ -54,6 +54,11 @@
 @property (nonatomic, strong, readonly) id<MASConstraint> center;
 
 /**
+ *  Whether or not to check for an existing constraint instead of adding constraint
+ */
+@property (nonatomic, assign) BOOL updateExisting;
+
+/**
  *	initialises the maker with a default view
  *
  *	@param	view	any MASConstrait are created with this view as the first item
