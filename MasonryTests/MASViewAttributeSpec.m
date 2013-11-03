@@ -45,6 +45,10 @@ context(@"isEqual", ^{
                                                                       layoutAttribute:NSLayoutAttributeRight];
         expect([viewAttribute isEqual:otherViewAttribute]).to.equal(NO);
     });
+
+    it(@"should return NO when non view attribute passed", ^{
+        expect([viewAttribute isEqual:NSArray.new]).to.equal(NO);
+    });
 });
 
 context(@"hash", ^{

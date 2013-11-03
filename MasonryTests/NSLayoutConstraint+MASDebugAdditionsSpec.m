@@ -32,10 +32,10 @@ it(@"should display layoutConstraint key", ^{
     MAS_VIEW *newView2 = MAS_VIEW.new;
     newView2.mas_key = @"newView2";
 
-    MASLayoutConstraint *layoutConstraint = [MASLayoutConstraint constraintWithItem:newView1 attribute:NSLayoutAttributeBaseline relatedBy:NSLayoutRelationEqual toItem:newView2 attribute:NSLayoutAttributeTop multiplier:1 constant:300];
+    MASLayoutConstraint *layoutConstraint = [MASLayoutConstraint constraintWithItem:newView1 attribute:NSLayoutAttributeBaseline relatedBy:NSLayoutRelationEqual toItem:newView2 attribute:NSLayoutAttributeTop multiplier:2 constant:300];
     layoutConstraint.mas_key = @"helloConstraint";
 
-    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.baseline == %@:newView2.top + 300>", MAS_VIEW.class, MAS_VIEW.class];
+    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.baseline == %@:newView2.top * 2 + 300>", MAS_VIEW.class, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
 });
 

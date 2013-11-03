@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD175E6A182639FB0099129A /* MASExampleUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD175E69182639FB0099129A /* MASExampleUpdateView.m */; };
 		DD52F22B179CAD57005CD195 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F22A179CAD57005CD195 /* UIKit.framework */; };
 		DD52F22D179CAD57005CD195 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F22C179CAD57005CD195 /* Foundation.framework */; };
 		DD52F22F179CAD57005CD195 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F22E179CAD57005CD195 /* CoreGraphics.framework */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD175E68182639FB0099129A /* MASExampleUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleUpdateView.h; sourceTree = "<group>"; };
+		DD175E69182639FB0099129A /* MASExampleUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleUpdateView.m; sourceTree = "<group>"; };
 		DD52F227179CAD57005CD195 /* Masonry iOS Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Masonry iOS Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD52F22A179CAD57005CD195 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DD52F22C179CAD57005CD195 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,6 +160,8 @@
 				DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */,
 				DDDF60CA181915E300BF7B8B /* MASExampleLabelView.h */,
 				DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */,
+				DD175E68182639FB0099129A /* MASExampleUpdateView.h */,
+				DD175E69182639FB0099129A /* MASExampleUpdateView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD175E6A182639FB0099129A /* MASExampleUpdateView.m in Sources */,
 				DD52F237179CAD57005CD195 /* main.m in Sources */,
 				DD52F23B179CAD57005CD195 /* MASAppDelegate.m in Sources */,
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,

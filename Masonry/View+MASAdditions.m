@@ -21,8 +21,8 @@
 - (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
-    block(constraintMaker);
     constraintMaker.updateExisting = YES;
+    block(constraintMaker);
     return [constraintMaker install];
 }
 
