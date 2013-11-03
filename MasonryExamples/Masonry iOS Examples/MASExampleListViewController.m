@@ -35,18 +35,18 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
     self.exampleControllers = @[
         [[MASExampleViewController alloc] initWithTitle:@"Basic"
                                               viewClass:MASExampleBasicView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Update Constraints"
+                                              viewClass:MASExampleUpdateView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Using Constants"
                                               viewClass:MASExampleConstantsView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Composite sides"
+        [[MASExampleViewController alloc] initWithTitle:@"Composite Edges"
                                               viewClass:MASExampleSidesView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
                                               viewClass:MASExampleAnimatedView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Debugging helpers"
+        [[MASExampleViewController alloc] initWithTitle:@"Debugging Helpers"
                                               viewClass:MASExampleDebuggingView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Bacony Labels"
                                               viewClass:MASExampleLabelView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Update constraints"
-                                              viewClass:MASExampleUpdateView.class],
     ];
     
     return self;
