@@ -12,7 +12,6 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 
 @interface MASExampleLabelView ()
 
-@property (nonatomic, strong) UIButton *bigButton;
 @property (nonatomic, strong) UILabel *shortLabel;
 @property (nonatomic, strong) UILabel *longLabel;
 
@@ -26,18 +25,11 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 
     // text courtesy of http://baconipsum.com/
 
-    self.bigButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.bigButton setTitle:@"Big Button" forState:UIControlStateNormal];
-    [self.bigButton setContentEdgeInsets:UIEdgeInsetsMake(20, 5, 20, 5)];
-    self.bigButton.layer.borderColor = UIColor.blueColor.CGColor;
-    self.bigButton.layer.borderWidth = 1;
-    [self addSubview:self.bigButton];
-
     self.shortLabel = UILabel.new;
-    self.shortLabel.numberOfLines = 3;
+    self.shortLabel.numberOfLines = 1;
     self.shortLabel.textColor = [UIColor purpleColor];
     self.shortLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.shortLabel.text = @"Bacon ipsum dolor sit amet spare ribs fatback kielbasa salami, tri-tip jowl pastrami flank short loin rump sirloin. Tenderloin frankfurter chicken biltong rump chuck filet mignon pork t-bone flank ham hock.";
+    self.shortLabel.text = @"Bacon";
     [self addSubview:self.shortLabel];
 
     self.longLabel = UILabel.new;
@@ -47,22 +39,14 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     self.longLabel.text = @"Bacon ipsum dolor sit amet spare ribs fatback kielbasa salami, tri-tip jowl pastrami flank short loin rump sirloin. Tenderloin frankfurter chicken biltong rump chuck filet mignon pork t-bone flank ham hock.";
     [self addSubview:self.longLabel];
 
-    [self.bigButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).insets(kPadding);
-        make.right.equalTo(self).insets(kPadding);
-        make.width.equalTo(@100);
+    [self.longLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.left).insets(kPadding);
+        make.top.equalTo(self.top).insets(kPadding);
     }];
 
-    [self.shortLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).insets(kPadding);
-        make.left.equalTo(self).insets(kPadding);
-        make.right.equalTo(self.bigButton.mas_left).offset(-5);
-    }];
-
-    [self.longLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.shortLabel.mas_bottom).offset(kPadding.bottom);
-        make.left.equalTo(self).insets(kPadding);
-        make.right.equalTo(self).insets(kPadding);
+    [self.shortLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.longLabel.centerY);
+        make.right.equalTo(self.right).insets(kPadding);
     }];
 
     return self;
@@ -76,8 +60,9 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 
     // stay tuned for new easier way todo this coming soon to Masonry
 
-    self.shortLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.shortLabel.frame);
-    self.longLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.longLabel.frame);
+    CGFloat width = CGRectGetMinX(self.shortLabel.frame) - kPadding.left;
+    width -= CGRectGetMinX(self.longLabel.frame);
+    self.longLabel.preferredMaxLayoutWidth = width;
 
     // need to layoutSubviews again as frames need to recalculated with preferredLayoutWidth
     [super layoutSubviews];
