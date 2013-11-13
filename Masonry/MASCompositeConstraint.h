@@ -18,7 +18,6 @@
 /**
  *	Creates a composite with a predefined array of children
  *
- *	@param	view	first item view
  *	@param	children	child MASConstraints
  *
  *	@return	a composite constraint
