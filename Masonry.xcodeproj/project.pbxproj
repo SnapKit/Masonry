@@ -29,16 +29,16 @@
 		DD52F1E9179CAACA005CD195 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E2179CAACA005CD195 /* MASViewAttribute.m */; };
 		DD52F1EA179CAACA005CD195 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E4179CAACA005CD195 /* MASViewConstraint.m */; };
 		DD52F1EB179CAACA005CD195 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1E6179CAACA005CD195 /* View+MASAdditions.m */; };
-		DD52F264179CB327005CD195 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1ED179CAAEE005CD195 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F265179CB32B005CD195 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E5179CAACA005CD195 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F266179CB33F005CD195 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DE179CAACA005CD195 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F267179CB342005CD195 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DF179CAACA005CD195 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F269179CB34A005CD195 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD7CC16E17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7CC16C17ACCF21007A469E /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD52F264179CB327005CD195 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1ED179CAAEE005CD195 /* Masonry.h */; };
+		DD52F265179CB32B005CD195 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E5179CAACA005CD195 /* View+MASAdditions.h */; };
+		DD52F266179CB33F005CD195 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DE179CAACA005CD195 /* MASConstraint.h */; };
+		DD52F267179CB342005CD195 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DF179CAACA005CD195 /* MASConstraintMaker.h */; };
+		DD52F268179CB346005CD195 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E1179CAACA005CD195 /* MASViewAttribute.h */; };
+		DD52F269179CB34A005CD195 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1E3179CAACA005CD195 /* MASViewConstraint.h */; };
+		DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD52F1DC179CAACA005CD195 /* MASCompositeConstraint.h */; };
+		DD7CC16E17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7CC16C17ACCF21007A469E /* NSLayoutConstraint+MASDebugAdditions.h */; };
 		DD7CC16F17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CC16D17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		DD93AAF317ACB647008F7D21 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD93AAF117ACB647008F7D21 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD93AAF317ACB647008F7D21 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD93AAF117ACB647008F7D21 /* MASLayoutConstraint.h */; };
 		DD93AAF417ACB647008F7D21 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DD93AAF217ACB647008F7D21 /* MASLayoutConstraint.m */; };
 		DDA4D70217C0253B0076BD87 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD52F1BC179CA93B005CD195 /* SenTestingKit.framework */; };
 		DDA4D70617C0253B0076BD87 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA4D6EB17C0253B0076BD87 /* Masonry.framework */; };
@@ -62,13 +62,13 @@
 		DDA4D72717C025FD0076BD87 /* MASCompositeConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D8179CAA9C005CD195 /* MASCompositeConstraintSpec.m */; };
 		DDA4D72817C026030076BD87 /* MASViewConstraintSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F1D9179CAA9C005CD195 /* MASViewConstraintSpec.m */; };
 		DDA4D72917C0260C0076BD87 /* MASConstraintDelegateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = DD38397D17A5170F00C35C17 /* MASConstraintDelegateMock.m */; };
-		DDA5752B17C17C3E0010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDA5752B17C17C3E0010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; };
 		DDA5752D17C187D40010F88E /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA5752917C17C3E0010F88E /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB4A51517DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
 		DDB4A51617DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB4A51417DC492F0055EDFE /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
 		DDB682AD17DC484900159454 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */; };
 		DDB682AE17DC484900159454 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB682AC17DC484900159454 /* View+MASAdditionsSpec.m */; };
-		DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE2653D179D24E600D48565 /* View+MASShorthandAdditions.h */; };
 		DDF0BE9517C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 		DDF0BE9617C9D6DA00DEA237 /* MASConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF0BE9417C9D6DA00DEA237 /* MASConstraintMakerSpec.m */; };
 /* End PBXBuildFile section */
@@ -336,6 +336,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD2F3B3B17CDF44500770F03 /* NSObject+MASSubscriptSupport.h in Headers */,
 				DD52F264179CB327005CD195 /* Masonry.h in Headers */,
 				DD52F265179CB32B005CD195 /* View+MASAdditions.h in Headers */,
 				DDE2653F179D24E600D48565 /* View+MASShorthandAdditions.h in Headers */,
@@ -347,7 +348,6 @@
 				DD52F26A179CB365005CD195 /* MASCompositeConstraint.h in Headers */,
 				DD7CC16E17ACCF22007A469E /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				DDA5752B17C17C3E0010F88E /* MASUtilities.h in Headers */,
-				DD2F3B3B17CDF44500770F03 /* NSObject+MASSubscriptSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
