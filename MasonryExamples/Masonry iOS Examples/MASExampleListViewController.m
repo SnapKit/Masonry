@@ -15,6 +15,7 @@
 #import "MASExampleDebuggingView.h"
 #import "MASExampleLabelView.h"
 #import "MASExampleUpdateView.h"
+#import "MASExampleScrollView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -47,6 +48,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleDebuggingView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Bacony Labels"
                                               viewClass:MASExampleLabelView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
+                                              viewClass:MASExampleScrollView.class],
     ];
     
     return self;

@@ -20,6 +20,7 @@
 		DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */; };
 		DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F250179CADC0005CD195 /* MASExampleViewController.m */; };
 		DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */; };
+		DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */; };
 		DDA5755F17C1B07E0010F88E /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5754D17C1B07E0010F88E /* MASCompositeConstraint.m */; };
 		DDA5756017C1B07E0010F88E /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5755017C1B07E0010F88E /* MASConstraintMaker.m */; };
 		DDA5756117C1B07E0010F88E /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5755217C1B07E0010F88E /* MASLayoutConstraint.m */; };
@@ -56,6 +57,8 @@
 		DD52F250179CADC0005CD195 /* MASExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleViewController.m; sourceTree = "<group>"; };
 		DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleDebuggingView.h; sourceTree = "<group>"; };
 		DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleDebuggingView.m; sourceTree = "<group>"; };
+		DD9B4D33183CC980002BF408 /* MASExampleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleScrollView.h; sourceTree = "<group>"; };
+		DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleScrollView.m; sourceTree = "<group>"; };
 		DDA5754C17C1B07E0010F88E /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		DDA5754D17C1B07E0010F88E /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		DDA5754E17C1B07E0010F88E /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */,
 				DD175E68182639FB0099129A /* MASExampleUpdateView.h */,
 				DD175E69182639FB0099129A /* MASExampleUpdateView.m */,
+				DD9B4D33183CC980002BF408 /* MASExampleScrollView.h */,
+				DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				DDA5756317C1B07E0010F88E /* MASViewConstraint.m in Sources */,
 				DDA5756417C1B07E0010F88E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				DDA5756517C1B07E0010F88E /* View+MASAdditions.m in Sources */,
+				DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
