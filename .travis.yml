@@ -7,7 +7,7 @@ before_install:
 
 script:
   - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator6.0 clean build test -freshSimulator -freshInstall
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry Mac' -configuration Debug -sdk macosx10.7 clean build test 
+  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry Mac' -configuration Debug -sdk macosx10.8 clean build test 
 
 after_success:
   - ./script/coveralls.sh
