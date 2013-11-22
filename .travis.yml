@@ -1,13 +1,13 @@
 ---
 language: objective-c
 
-before_script:
+before_install:
   - gem install cocoapods
   - sudo easy_install cpp-coveralls
 
 script:
   - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator6.0 clean build test -freshSimulator -freshInstall
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry Mac' -configuration Debug -sdk macosx10.7 clean build test -freshSimulator -freshInstall 
+  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry Mac' -configuration Debug -sdk macosx10.7 clean build test 
 
 after_success:
   - ./script/coveralls.sh
