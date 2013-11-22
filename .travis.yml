@@ -2,6 +2,7 @@
 language: objective-c
 
 before_script:
+  - gem install cocoapods
   - sudo easy_install cpp-coveralls
 
 script:
