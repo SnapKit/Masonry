@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD52F1BA179CA93B005CD195"
-               BuildableName = "Masonry iOS Tests.octest"
+               BuildableName = "Masonry iOS Tests.xctest"
                BlueprintName = "Masonry iOS Tests"
                ReferencedContainer = "container:Masonry.xcodeproj">
             </BuildableReference>
