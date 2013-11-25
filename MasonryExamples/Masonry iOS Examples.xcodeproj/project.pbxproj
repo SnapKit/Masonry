@@ -19,6 +19,7 @@
 		DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24C179CADC0005CD195 /* MASExampleListViewController.m */; };
 		DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */; };
 		DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F250179CADC0005CD195 /* MASExampleViewController.m */; };
+		DD653E4A1843E61500D1EC5A /* MASExampleLayoutGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD653E491843E61500D1EC5A /* MASExampleLayoutGuideViewController.m */; };
 		DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */; };
 		DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */; };
 		DDA5755F17C1B07E0010F88E /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5754D17C1B07E0010F88E /* MASCompositeConstraint.m */; };
@@ -55,6 +56,8 @@
 		DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleSidesView.m; sourceTree = "<group>"; };
 		DD52F24F179CADC0005CD195 /* MASExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleViewController.h; sourceTree = "<group>"; };
 		DD52F250179CADC0005CD195 /* MASExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleViewController.m; sourceTree = "<group>"; };
+		DD653E481843E61500D1EC5A /* MASExampleLayoutGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleLayoutGuideViewController.h; sourceTree = "<group>"; };
+		DD653E491843E61500D1EC5A /* MASExampleLayoutGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleLayoutGuideViewController.m; sourceTree = "<group>"; };
 		DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleDebuggingView.h; sourceTree = "<group>"; };
 		DD7CC17517ACE990007A469E /* MASExampleDebuggingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleDebuggingView.m; sourceTree = "<group>"; };
 		DD9B4D33183CC980002BF408 /* MASExampleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleScrollView.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				DD52F24C179CADC0005CD195 /* MASExampleListViewController.m */,
 				DD52F24F179CADC0005CD195 /* MASExampleViewController.h */,
 				DD52F250179CADC0005CD195 /* MASExampleViewController.m */,
+				DD653E481843E61500D1EC5A /* MASExampleLayoutGuideViewController.h */,
+				DD653E491843E61500D1EC5A /* MASExampleLayoutGuideViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				DD52F237179CAD57005CD195 /* main.m in Sources */,
 				DD52F23B179CAD57005CD195 /* MASAppDelegate.m in Sources */,
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,
+				DD653E4A1843E61500D1EC5A /* MASExampleLayoutGuideViewController.m in Sources */,
 				DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */,
 				DD52F252179CADC0005CD195 /* MASExampleConstantsView.m in Sources */,
 				DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */,

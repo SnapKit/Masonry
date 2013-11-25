@@ -16,6 +16,7 @@
 #import "MASExampleLabelView.h"
 #import "MASExampleUpdateView.h"
 #import "MASExampleScrollView.h"
+#import "MASExampleLayoutGuideViewController.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -50,6 +51,7 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleLabelView.class],
         [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
                                               viewClass:MASExampleScrollView.class],
+        [[MASExampleLayoutGuideViewController alloc] init],
     ];
     
     return self;
@@ -57,7 +59,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:kMASCellReuseIdentifier];
 }
 
