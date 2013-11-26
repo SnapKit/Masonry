@@ -3,7 +3,7 @@
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OSX.
 
-For examples take a look at the **Masonry iOS Examples** project in the Masonry workspace.
+For examples take a look at the **Masonry iOS Examples** project in the Masonry workspace. You will need to run `pod install` after downloading.
 
 ## Whats wrong with NSLayoutConstraints?
 
