@@ -17,6 +17,7 @@
 #import "MASExampleUpdateView.h"
 #import "MASExampleScrollView.h"
 #import "MASExampleLayoutGuideViewController.h"
+#import "MASExampleArrayView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -51,6 +52,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleLabelView.class],
         [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
                                               viewClass:MASExampleScrollView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Array"
+                                              viewClass:MASExampleArrayView.class],
         [[MASExampleLayoutGuideViewController alloc] init],
     ];
     

@@ -50,6 +50,15 @@
          location = "group:NSLayoutConstraint+MASDebugAdditions.m">
       </FileRef>
       <FileRef
+         location = "group:NSArray+MASAdditions.h">
+      </FileRef>
+      <FileRef
+         location = "group:NSArray+MASAdditions.m">
+      </FileRef>
+      <FileRef
+         location = "group:NSArray+MASShorthandAdditions.h">
+      </FileRef>
+      <FileRef
          location = "group:View+MASAdditions.h">
       </FileRef>
       <FileRef
