@@ -23,23 +23,23 @@
 
 @end
 
-SpecBegin(MASConstraintMaker)
+SpecBegin(MASConstraintMaker) {
+    __strong MASConstraintMaker *maker;
+    __strong MAS_VIEW *superview;
+    __strong MAS_VIEW *view;
+    __strong MASCompositeConstraint *composite;
+}
 
-__block MASConstraintMaker *maker;
-__block MAS_VIEW *superview;
-__block MAS_VIEW *view;
-__block MASCompositeConstraint *composite;
-
-beforeEach(^{
+- (void)setUp {
     composite = nil;
     view = MAS_VIEW.new;
     superview = MAS_VIEW.new;
     [superview addSubview:view];
 
     maker = [[MASConstraintMaker alloc] initWithView:view];
-});
+}
 
-it(@"should create centerY and centerX children", ^{
+- (void)testCreateCenterYAndCenterXChildren {
     composite = maker.center;
 
     expect(composite.childConstraints).to.haveCountOf(2);
@@ -51,9 +51,9 @@ it(@"should create centerY and centerX children", ^{
     viewConstraint = composite.childConstraints[1];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeCenterY);
-});
+}
 
-it(@"should create top, left, bottom, right children", ^{
+- (void)testCreateAllEdges {
     MAS_VIEW *newView = MAS_VIEW.new;
     composite = maker.edges;
     composite.equalTo(newView);
@@ -79,9 +79,9 @@ it(@"should create top, left, bottom, right children", ^{
     viewConstraint = composite.childConstraints[3];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeRight);
-});
+}
 
-it(@"should create width and height children", ^{
+- (void)testCreateWidthAndHeightChildren {
     composite = maker.size;
     expect(composite.childConstraints).to.haveCountOf(2);
 
@@ -92,9 +92,9 @@ it(@"should create width and height children", ^{
     viewConstraint = composite.childConstraints[1];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
-});
+}
 
-it(@"should install constraints", ^{
+- (void)testInstallConstraints {
     MAS_VIEW *newView = MAS_VIEW.new;
     [superview addSubview:newView];
 
@@ -102,9 +102,9 @@ it(@"should install constraints", ^{
     maker.centerX.equalTo(@[newView, @10]);
 
     expect([maker install]).to.haveCountOf(2);
-});
+}
 
-it(@"should update constraints", ^{
+- (void)testUpdateConstraints {
     MAS_VIEW *newView = MAS_VIEW.new;
     [superview addSubview:newView];
 
@@ -123,9 +123,9 @@ it(@"should update constraints", ^{
     expect(constraint2.constant).to.equal(20);
 
     expect(constraint2).to.beIdenticalTo(constraint2);
-});
+}
 
-it(@"should not update constraint", ^{
+- (void)testDoNotUpdateConstraints {
     MAS_VIEW *newView = MAS_VIEW.new;
     [superview addSubview:newView];
 
@@ -143,9 +143,9 @@ it(@"should not update constraint", ^{
     NSLayoutConstraint *constraint2 = superview.constraints[1];
     expect(constraint1.constant).to.equal(10);
     expect(constraint2.constant).to.equal(20);
-});
+}
 
-it(@"should create new constraints", ^{
+- (void)testCreateNewViewAttributes {
     expect(maker.left).notTo.beIdenticalTo(maker.left);
     expect(maker.right).notTo.beIdenticalTo(maker.right);
     expect(maker.top).notTo.beIdenticalTo(maker.top);
@@ -157,6 +157,6 @@ it(@"should create new constraints", ^{
     expect(maker.height).notTo.beIdenticalTo(maker.height);
     expect(maker.centerX).notTo.beIdenticalTo(maker.centerX);
     expect(maker.centerY).notTo.beIdenticalTo(maker.centerY);
-});
+}
 
 SpecEnd

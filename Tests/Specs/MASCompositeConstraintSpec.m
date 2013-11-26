@@ -26,21 +26,21 @@
 
 @end
 
-SpecBegin(MASCompositeConstraint)
+SpecBegin(MASCompositeConstraint) {
+    MASConstraintDelegateMock *delegate;
+    MAS_VIEW *superview;
+    MAS_VIEW *view;
+    MASCompositeConstraint *composite;
+}
 
-__block MASConstraintDelegateMock *delegate;
-__block MAS_VIEW *superview;
-__block MAS_VIEW *view;
-__block MASCompositeConstraint *composite;
-
-beforeEach(^{
+- (void)setUp {
     delegate = MASConstraintDelegateMock.new;
     view = MAS_VIEW.new;
     superview = MAS_VIEW.new;
     [superview addSubview:view];
-});
+}
 
-it(@"should complete children", ^{
+- (void)testCompleteChildren {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width],
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_height]
@@ -66,9 +66,9 @@ it(@"should complete children", ^{
     expect(viewConstraint.secondViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
     expect(viewConstraint.layoutConstant).to.equal(30);
     expect(viewConstraint.layoutPriority).to.equal(MASLayoutPriorityDefaultLow);
-});
+}
 
-it(@"should not remove on install", ^{
+- (void)testDoNotRemoveOnInstall {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerX],
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_centerY]
@@ -93,9 +93,9 @@ it(@"should not remove on install", ^{
     expect([viewConstraint layoutConstant]).to.equal(30);
     expect([viewConstraint layoutMultiplier]).to.equal(0.5);
     expect([viewConstraint layoutPriority]).to.equal(MASLayoutPriorityDefaultHigh);
-});
+}
 
-it(@"should spawn child composite constraints", ^{
+- (void)testSpawnChildCompositeConstraints {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width],
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_height]
@@ -109,9 +109,9 @@ it(@"should spawn child composite constraints", ^{
     expect(composite.childConstraints).to.haveCountOf(2);
     expect(composite.childConstraints[0]).to.beKindOf(MASCompositeConstraint.class);
     expect(composite.childConstraints[1]).to.beKindOf(MASCompositeConstraint.class);
-});
+}
 
-it(@"should modify insets on appropriate children", ^{
+- (void)testModifyInsetsOnAppropriateChildren {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_right],
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_top],
@@ -131,9 +131,9 @@ it(@"should modify insets on appropriate children", ^{
     expect([children[3] layoutConstant]).to.equal(2);
     expect([children[4] layoutConstant]).to.equal(0);
     expect([children[5] layoutConstant]).to.equal(0);
-});
+};
 
-it(@"should uninstall", ^{
+- (void)testUninstall {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_leading],
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_trailing]
@@ -150,6 +150,6 @@ it(@"should uninstall", ^{
     expect(superview.constraints).to.haveCountOf(2);
     [composite uninstall];
     expect(superview.constraints).to.haveCountOf(0);
-});
+}
 
 SpecEnd

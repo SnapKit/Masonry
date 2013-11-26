@@ -5,7 +5,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 
-    #import "Specta.h"
+    #import "XCTest+Spec.h"
 
     #define EXP_SHORTHAND
     #import "Expecta.h"

@@ -14,7 +14,7 @@
 
 SpecBegin(NSLayoutConstraint_MASDebugAdditions)
 
-it(@"should display view key", ^{
+- (void)testDisplayViewKey {
     MAS_VIEW *newView = MAS_VIEW.new;
     newView.mas_key = @"newView";
 
@@ -24,9 +24,9 @@ it(@"should display view key", ^{
 
     NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView.width >= 300 ^low>", layoutConstraint, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
-});
+}
 
-it(@"should display layoutConstraint key", ^{
+- (void)testDisplayLayoutConstraintKey {
     MAS_VIEW *newView1 = MAS_VIEW.new;
     newView1.mas_key = @"newView1";
     MAS_VIEW *newView2 = MAS_VIEW.new;
@@ -37,9 +37,9 @@ it(@"should display layoutConstraint key", ^{
 
     NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.baseline == %@:newView2.top * 2 + 300>", MAS_VIEW.class, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
-});
+}
 
-it(@"should print constraint key", ^{
+- (void)testDisplayConstraintKey {
     MAS_VIEW *superview = MAS_VIEW.new;
     MAS_VIEW *newView1 = MAS_VIEW.new;
     newView1.mas_key = @"newView1";
@@ -55,6 +55,6 @@ it(@"should print constraint key", ^{
 
     NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:left[0] %@:newView1.left == %@:newView2.left>", MAS_VIEW.class, MAS_VIEW.class];
     expect([superview.constraints[0] description]).to.equal(description);
-});
+}
 
 SpecEnd
