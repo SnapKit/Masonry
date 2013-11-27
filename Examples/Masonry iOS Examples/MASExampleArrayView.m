@@ -19,8 +19,7 @@ static CGFloat const kArrayExampleIncrement = 10.0;
 
 @implementation MASExampleArrayView
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (!self) return nil;
     
@@ -56,29 +55,24 @@ static CGFloat const kArrayExampleIncrement = 10.0;
     return self;
 }
 
-- (void)centerAction
-{
+- (void)centerAction {
     self.offset = 0.0;
 }
 
-- (void)raiseAction
-{
+- (void)raiseAction {
     self.offset -= kArrayExampleIncrement;
 }
 
-- (void)lowerAction
-{
+- (void)lowerAction {
     self.offset += kArrayExampleIncrement;
 }
 
-- (void)setOffset:(CGFloat)offset
-{
+- (void)setOffset:(CGFloat)offset {
     _offset = offset;
     [self setNeedsUpdateConstraints];
 }
 
-- (void)updateConstraints
-{
+- (void)updateConstraints {
     [super updateConstraints];
     [self.buttonViews updateConstraints:^(MASConstraintMaker *make) {
         make.baseline.equalTo(self.mas_centerY).with.offset(self.offset);

@@ -11,8 +11,7 @@
 
 @implementation NSArray (MASAdditions)
 
-- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block
-{
+- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block {
     NSMutableArray *constraints = [NSMutableArray array];
     for (UIView *view in self) {
         NSAssert([view isKindOfClass:[UIView class]], @"All objects in the array must be views");
@@ -21,8 +20,7 @@
     return constraints;
 }
 
-- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block
-{
+- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block {
     NSMutableArray *constraints = [NSMutableArray array];
     for (UIView *view in self) {
         NSAssert([view isKindOfClass:[UIView class]], @"All objects in the array must be views");
