@@ -170,7 +170,7 @@ make.top.equalTo(label.mas_top).with.priority(600);
 
 ## Composition, composition, composition
 
-Masonry also gives you a few convenience methods which create mutliple constraints at the same time. These are called MASCompositeConstraints
+Masonry also gives you a few convenience methods which create multiple constraints at the same time. These are called MASCompositeConstraints
 
 #### edges
 
