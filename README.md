@@ -7,7 +7,7 @@ For examples take a look at the **Masonry iOS Examples** project in the Masonry 
 
 ## Whats wrong with NSLayoutConstraints?
 
-Under the hood Auto Layout is a powerful and flexible way of organising and laying out your views. However creating constraints from code is verbose and not very descriptive.
+Under the hood Auto Layout is a powerful and flexible way of organizing and laying out your views. However creating constraints from code is verbose and not very descriptive.
 Imagine a simple example in which you want to have a view fill its superview but inset by 10 pixels on every side
 ```obj-c
 UIView *superview = self;
@@ -170,7 +170,7 @@ make.top.equalTo(label.mas_top).with.priority(600);
 
 ## Composition, composition, composition
 
-Masonry also gives you a few convenience methods which create mutliple constraints at the same time. These are called MASCompositeConstraints
+Masonry also gives you a few convenience methods which create multiple constraints at the same time. These are called MASCompositeConstraints
 
 #### edges
 
