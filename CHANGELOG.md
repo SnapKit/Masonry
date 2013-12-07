@@ -1,3 +1,15 @@
+v0.3.1
+=======
+
+* Add the same set of constraints to multiple views in an array ([danielrhammond](https://github.com/danielrhammond))
+
+```objective-c
+[@[view1, view2, view3] mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.baseline.equalTo(superView.mas_centerY);
+    make.width.equalTo(@100);
+}];
+```
+
 v0.3.0
 =======
 
