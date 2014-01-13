@@ -113,6 +113,13 @@
  */
 @property (nonatomic, copy, readonly) id<MASConstraint> (^key)(id key);
 
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+/**
+ *  Whether or not to go through the animator proxy when modifying the constraint
+ */
+@property (nonatomic, copy, readonly) id<MASConstraint> animator;
+#endif
+
 /**
  *  Whether or not to check for an existing constraint instead of adding constraint
  */
