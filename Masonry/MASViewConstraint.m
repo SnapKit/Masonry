@@ -261,8 +261,7 @@
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 
-- (id<MASConstraint>)animator
-{
+- (id<MASConstraint>)animator {
     self.useAnimator = YES;
     return self;
 }

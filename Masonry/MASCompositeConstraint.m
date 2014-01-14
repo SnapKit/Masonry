@@ -169,16 +169,13 @@
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 
-- (id<MASConstraint>)animator
-{
+- (id<MASConstraint>)animator {
     for (id<MASConstraint> constraint in self.childConstraints) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-value"
-        constraint.animator;
-#pragma clang diagnostic pop
+        [constraint animator];
     }
     return self;
 }
+
 #endif
 
 #pragma mark - debug helpers
