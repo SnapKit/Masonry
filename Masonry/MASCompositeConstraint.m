@@ -165,6 +165,19 @@
     return self;
 }
 
+#pragma mark - Animator proxy
+
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+
+- (id<MASConstraint>)animator {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        [constraint animator];
+    }
+    return self;
+}
+
+#endif
+
 #pragma mark - debug helpers
 
 - (id<MASConstraint> (^)(id))key {
