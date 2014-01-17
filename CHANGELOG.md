@@ -1,3 +1,26 @@
+v0.3.2
+=======
+
+* Add support for Mac OSX animator proxy ([pfandrade](https://github.com/pfandrade))
+
+```objective-c
+self.leftConstraint.animator.offset(20);
+```
+
+* Add setter methods for NSLayoutConstraint constant proxies like offset, centerOffset, insets, sizeOffset.
+now you can update these values using more natural syntax
+
+```objective-c
+self.edgesConstraint.insets(UIEdgeInsetsMake(20, 10, 15, 5));
+```
+
+can now be written as:
+
+```objective-c
+self.edgesConstraint.insets = UIEdgeInsetsMake(20, 10, 15, 5);
+```
+
+
 v0.3.1
 =======
 
