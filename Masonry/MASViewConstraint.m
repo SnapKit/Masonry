@@ -95,64 +95,28 @@
 
 - (id<MASConstraint> (^)(MASEdgeInsets))insets {
     return ^id(MASEdgeInsets insets){
-        NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-        switch (layoutAttribute) {
-            case NSLayoutAttributeLeft:
-                self.layoutConstant = insets.left;
-                break;
-            case NSLayoutAttributeTop:
-                self.layoutConstant = insets.top;
-                break;
-            case NSLayoutAttributeBottom:
-                self.layoutConstant = -insets.bottom;
-                break;
-            case NSLayoutAttributeRight:
-                self.layoutConstant = -insets.right;
-                break;
-            default:
-                break;
-        }
+        self.insets = insets;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGSize))sizeOffset {
     return ^id(CGSize offset) {
-        NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-        switch (layoutAttribute) {
-            case NSLayoutAttributeWidth:
-                self.layoutConstant = offset.width;
-                break;
-            case NSLayoutAttributeHeight:
-                self.layoutConstant = offset.height;
-                break;
-            default:
-                break;
-        }
+        self.sizeOffset = offset;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGPoint))centerOffset {
     return ^id(CGPoint offset) {
-        NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-        switch (layoutAttribute) {
-            case NSLayoutAttributeCenterX:
-                self.layoutConstant = offset.x;
-                break;
-            case NSLayoutAttributeCenterY:
-                self.layoutConstant = offset.y;
-                break;
-            default:
-                break;
-        }
+        self.centerOffset = offset;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGFloat))offset {
     return ^id(CGFloat offset){
-        self.layoutConstant = offset;
+        self.offset = offset;
         return self;
     };
 }
@@ -275,6 +239,60 @@
         self.mas_key = key;
         return self;
     };
+}
+
+#pragma mark - NSLayoutConstraint constant setters
+
+- (void)setInsets:(UIEdgeInsets)insets {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeLeft:
+            self.layoutConstant = insets.left;
+            break;
+        case NSLayoutAttributeTop:
+            self.layoutConstant = insets.top;
+            break;
+        case NSLayoutAttributeBottom:
+            self.layoutConstant = -insets.bottom;
+            break;
+        case NSLayoutAttributeRight:
+            self.layoutConstant = -insets.right;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setOffset:(CGFloat)offset {
+    self.layoutConstant = offset;
+}
+
+- (void)setSizeOffset:(CGSize)sizeOffset {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeWidth:
+            self.layoutConstant = sizeOffset.width;
+            break;
+        case NSLayoutAttributeHeight:
+            self.layoutConstant = sizeOffset.height;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setCenterOffset:(CGPoint)centerOffset {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeCenterX:
+            self.layoutConstant = centerOffset.x;
+            break;
+        case NSLayoutAttributeCenterY:
+            self.layoutConstant = centerOffset.y;
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - MASConstraint

@@ -28,7 +28,6 @@
 		DD717A5618442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A4E18442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
 		DD717A5718442EC600FAA7A8 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A5018442EC600FAA7A8 /* View+MASAdditionsSpec.m */; };
 		DD717A631844303200FAA7A8 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A5F1844303200FAA7A8 /* GcovTestObserver.m */; };
-		DD717A641844303200FAA7A8 /* MasonryTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD717A601844303200FAA7A8 /* MasonryTests-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,7 +264,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD717A641844303200FAA7A8 /* MasonryTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

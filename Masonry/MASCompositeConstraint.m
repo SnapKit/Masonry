@@ -44,36 +44,28 @@
 
 - (id<MASConstraint> (^)(MASEdgeInsets))insets {
     return ^id(MASEdgeInsets insets) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.insets(insets);
-        }
+        self.insets = insets;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGFloat))offset {
     return ^id(CGFloat offset) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.offset(offset);
-        }
+        self.offset = offset;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGSize))sizeOffset {
     return ^id(CGSize offset) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.sizeOffset(offset);
-        }
+        self.sizeOffset = offset;
         return self;
     };
 }
 
 - (id<MASConstraint> (^)(CGPoint))centerOffset {
     return ^id(CGPoint offset) {
-        for (id<MASConstraint> constraint in self.childConstraints) {
-            constraint.centerOffset(offset);
-        }
+        self.centerOffset = offset;
         return self;
     };
 }
@@ -189,6 +181,32 @@
         }
         return self;
     };
+}
+
+#pragma mark - NSLayoutConstraint constant setters
+
+- (void)setInsets:(UIEdgeInsets)insets {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        constraint.insets = insets;
+    }
+}
+
+- (void)setOffset:(CGFloat)offset {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        constraint.offset = offset;
+    }
+}
+
+- (void)setSizeOffset:(CGSize)sizeOffset {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        constraint.sizeOffset = sizeOffset;
+    }
+}
+
+- (void)setCenterOffset:(CGPoint)centerOffset {
+    for (id<MASConstraint> constraint in self.childConstraints) {
+        constraint.centerOffset = centerOffset;
+    }
 }
 
 #pragma mark - MASConstraint
