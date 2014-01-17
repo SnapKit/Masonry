@@ -185,7 +185,7 @@
 
 #pragma mark - NSLayoutConstraint constant setters
 
-- (void)setInsets:(UIEdgeInsets)insets {
+- (void)setInsets:(MASEdgeInsets)insets {
     for (id<MASConstraint> constraint in self.childConstraints) {
         constraint.insets = insets;
     }

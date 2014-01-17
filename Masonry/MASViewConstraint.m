@@ -243,7 +243,7 @@
 
 #pragma mark - NSLayoutConstraint constant setters
 
-- (void)setInsets:(UIEdgeInsets)insets {
+- (void)setInsets:(MASEdgeInsets)insets {
     NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
     switch (layoutAttribute) {
         case NSLayoutAttributeLeft:
