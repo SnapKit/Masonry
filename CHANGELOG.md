@@ -7,7 +7,7 @@ v0.3.2
 self.leftConstraint.animator.offset(20);
 ```
 
-* Add setter methods for NSLayoutConstraint constant proxies like offset, centerOffset, insets, sizeOffset.
+* Add setter methods for NSLayoutConstraint constant proxies like `offset`, `centerOffset`, `insets`, `sizeOffset`.
 now you can update these values using more natural syntax
 
 ```objective-c
