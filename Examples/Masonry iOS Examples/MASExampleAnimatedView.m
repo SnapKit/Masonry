@@ -97,7 +97,7 @@
 
     int padding = invertedInsets ? 100 : self.padding;
     UIEdgeInsets paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
-    for (id<MASConstraint> constraint in self.animatableConstraints) {
+    for (MASConstraint *constraint in self.animatableConstraints) {
         constraint.insets = paddingInsets;
     }
 

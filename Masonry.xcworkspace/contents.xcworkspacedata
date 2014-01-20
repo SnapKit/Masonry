@@ -11,6 +11,9 @@
          location = "group:MASConstraint.h">
       </FileRef>
       <FileRef
+         location = "group:MASConstraint.m">
+      </FileRef>
+      <FileRef
          location = "group:MASCompositeConstraint.h">
       </FileRef>
       <FileRef
