@@ -15,7 +15,7 @@
  *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
  *  or a group of NSLayoutConstraints (MASComposisteConstraint)
  */
-@protocol MASConstraint <NSObject>
+@interface MASConstraint : NSObject
 
 // Chaining Support
 
@@ -24,56 +24,56 @@
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
-- (id<MASConstraint> (^)(MASEdgeInsets insets))insets;
+- (MASConstraint * (^)(MASEdgeInsets insets))insets;
 
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
  */
-- (id<MASConstraint> (^)(CGSize offset))sizeOffset;
+- (MASConstraint * (^)(CGSize offset))sizeOffset;
 
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeCenterX, NSLayoutAttributeCenterY
  */
-- (id<MASConstraint> (^)(CGPoint offset))centerOffset;
+- (MASConstraint * (^)(CGPoint offset))centerOffset;
 
 /**
  *	Modifies the NSLayoutConstraint constant
  */
-- (id<MASConstraint> (^)(CGFloat offset))offset;
+- (MASConstraint * (^)(CGFloat offset))offset;
 
 /**
  *	Sets the NSLayoutConstraint multiplier property
  */
-- (id<MASConstraint> (^)(CGFloat multiplier))multipliedBy;
+- (MASConstraint * (^)(CGFloat multiplier))multipliedBy;
 
 /**
  *	Sets the NSLayoutConstraint multiplier to 1.0/dividedBy
  */
-- (id<MASConstraint> (^)(CGFloat divider))dividedBy;
+- (MASConstraint * (^)(CGFloat divider))dividedBy;
 
 /**
  *	Sets the NSLayoutConstraint priority to a float or MASLayoutPriority
  */
-- (id<MASConstraint> (^)(MASLayoutPriority priority))priority;
+- (MASConstraint * (^)(MASLayoutPriority priority))priority;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityLow
  */
-- (id<MASConstraint> (^)())priorityLow;
+- (MASConstraint * (^)())priorityLow;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityMedium
  */
-- (id<MASConstraint> (^)())priorityMedium;
+- (MASConstraint * (^)())priorityMedium;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityHigh
  */
-- (id<MASConstraint> (^)())priorityHigh;
+- (MASConstraint * (^)())priorityHigh;
 
 /**
  *	Sets the constraint relation to NSLayoutRelationEqual
@@ -81,7 +81,7 @@
  *    MASViewAttribute, UIView, NSNumber, NSArray
  *  see readme for more details.
  */
-- (id<MASConstraint> (^)(id attr))equalTo;
+- (MASConstraint * (^)(id attr))equalTo;
 
 /**
  *	Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual
@@ -89,7 +89,7 @@
  *    MASViewAttribute, UIView, NSNumber, NSArray
  *  see readme for more details.
  */
-- (id<MASConstraint> (^)(id attr))greaterThanOrEqualTo;
+- (MASConstraint * (^)(id attr))greaterThanOrEqualTo;
 
 /**
  *	Sets the constraint relation to NSLayoutRelationLessThanOrEqual
@@ -97,17 +97,17 @@
  *    MASViewAttribute, UIView, NSNumber, NSArray
  *  see readme for more details.
  */
-- (id<MASConstraint> (^)(id attr))lessThanOrEqualTo;
+- (MASConstraint * (^)(id attr))lessThanOrEqualTo;
 
 /**
  *	optional semantic property which has no effect but improves the readability of constraint
  */
-- (id<MASConstraint>)with;
+- (MASConstraint *)with;
 
 /**
  *	Sets the constraint debug name
  */
-- (id<MASConstraint> (^)(id key))key;
+- (MASConstraint * (^)(id key))key;
 
 
 // NSLayoutConstraint constant Setters
@@ -146,7 +146,7 @@
 /**
  *  Whether or not to go through the animator proxy when modifying the constraint
  */
-@property (nonatomic, copy, readonly) id<MASConstraint> animator;
+@property (nonatomic, copy, readonly) MASConstraint *animator;
 #endif
 
 /**
@@ -177,6 +177,6 @@
  *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example 
  *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
  */
-- (void)constraint:(id<MASConstraint>)constraint shouldBeReplacedWithConstraint:(id<MASConstraint>)replacementConstraint;
+- (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 
 @end

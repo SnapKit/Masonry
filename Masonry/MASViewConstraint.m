@@ -28,9 +28,6 @@
 
 @implementation MASViewConstraint
 
-@synthesize delegate = _delegate;
-@synthesize updateExisting = _updateExisting;
-
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
     if (!self) return nil;
@@ -93,28 +90,28 @@
 
 #pragma mark - NSLayoutConstraint constant proxies
 
-- (id<MASConstraint> (^)(MASEdgeInsets))insets {
+- (MASConstraint * (^)(MASEdgeInsets))insets {
     return ^id(MASEdgeInsets insets){
         self.insets = insets;
         return self;
     };
 }
 
-- (id<MASConstraint> (^)(CGSize))sizeOffset {
+- (MASConstraint * (^)(CGSize))sizeOffset {
     return ^id(CGSize offset) {
         self.sizeOffset = offset;
         return self;
     };
 }
 
-- (id<MASConstraint> (^)(CGPoint))centerOffset {
+- (MASConstraint * (^)(CGPoint))centerOffset {
     return ^id(CGPoint offset) {
         self.centerOffset = offset;
         return self;
     };
 }
 
-- (id<MASConstraint> (^)(CGFloat))offset {
+- (MASConstraint * (^)(CGFloat))offset {
     return ^id(CGFloat offset){
         self.offset = offset;
         return self;
@@ -123,7 +120,7 @@
 
 #pragma mark - NSLayoutConstraint multiplier proxies
 
-- (id<MASConstraint> (^)(CGFloat))multipliedBy {
+- (MASConstraint * (^)(CGFloat))multipliedBy {
     return ^id(CGFloat multiplier) {
         NSAssert(!self.hasBeenInstalled,
                  @"Cannot modify constraint multiplier after it has been installed");
@@ -134,7 +131,7 @@
 }
 
 
-- (id<MASConstraint> (^)(CGFloat))dividedBy {
+- (MASConstraint * (^)(CGFloat))dividedBy {
     return ^id(CGFloat divider) {
         NSAssert(!self.hasBeenInstalled,
                  @"Cannot modify constraint multiplier after it has been installed");
@@ -146,7 +143,7 @@
 
 #pragma mark - MASLayoutPriority proxies
 
-- (id<MASConstraint> (^)(MASLayoutPriority))priority {
+- (MASConstraint * (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
         NSAssert(!self.hasBeenInstalled,
                  @"Cannot modify constraint priority after it has been installed");
@@ -156,21 +153,21 @@
     };
 }
 
-- (id<MASConstraint> (^)())priorityLow {
+- (MASConstraint * (^)())priorityLow {
     return ^id{
         self.priority(MASLayoutPriorityDefaultLow);
         return self;
     };
 }
 
-- (id<MASConstraint> (^)())priorityMedium {
+- (MASConstraint * (^)())priorityMedium {
     return ^id{
         self.priority(MASLayoutPriorityDefaultMedium);
         return self;
     };
 }
 
-- (id<MASConstraint> (^)())priorityHigh {
+- (MASConstraint * (^)())priorityHigh {
     return ^id{
         self.priority(MASLayoutPriorityDefaultHigh);
         return self;
@@ -179,7 +176,7 @@
 
 #pragma mark - NSLayoutRelation proxies
 
-- (id<MASConstraint> (^)(id))equalityWithRelation:(NSLayoutRelation)relation {
+- (MASConstraint * (^)(id))equalityWithRelation:(NSLayoutRelation)relation {
     return ^id(id attribute) {
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
@@ -203,21 +200,21 @@
     };
 }
 
-- (id<MASConstraint> (^)(id))equalTo {
+- (MASConstraint * (^)(id))equalTo {
     return [self equalityWithRelation:NSLayoutRelationEqual];
 }
 
-- (id<MASConstraint> (^)(id))greaterThanOrEqualTo {
+- (MASConstraint * (^)(id))greaterThanOrEqualTo {
     return [self equalityWithRelation:NSLayoutRelationGreaterThanOrEqual];
 }
 
-- (id<MASConstraint> (^)(id))lessThanOrEqualTo {
+- (MASConstraint * (^)(id))lessThanOrEqualTo {
     return [self equalityWithRelation:NSLayoutRelationLessThanOrEqual];
 }
 
 #pragma mark - Semantic properties
 
-- (id<MASConstraint>)with {
+- (MASConstraint *)with {
     return self;
 }
 
@@ -225,7 +222,7 @@
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 
-- (id<MASConstraint>)animator {
+- (MASConstraint *)animator {
     self.useAnimator = YES;
     return self;
 }
@@ -234,7 +231,7 @@
 
 #pragma mark - debug helpers
 
-- (id<MASConstraint> (^)(id))key {
+- (MASConstraint * (^)(id))key {
     return ^id(id key) {
         self.mas_key = key;
         return self;

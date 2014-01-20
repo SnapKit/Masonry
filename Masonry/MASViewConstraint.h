@@ -13,9 +13,8 @@
 /**
  *  A single constraint.
  *  Contains the attributes neccessary for creating a NSLayoutConstraint and adding it to the appropriate view
- *  conforms to MASConstraint
  */
-@interface MASViewConstraint : NSObject <MASConstraint, NSCopying>
+@interface MASViewConstraint : MASConstraint <NSCopying>
 
 /**
  *	First item/view and first attribute of the NSLayoutConstraint

@@ -11,9 +11,8 @@
 
 /**
  *	A group of MASConstraint objects
- *  conforms to MASConstraint
  */
-@interface MASCompositeConstraint : NSObject <MASConstraint>
+@interface MASCompositeConstraint : MASConstraint
 
 /**
  *	Creates a composite with a predefined array of children

@@ -40,7 +40,7 @@ SpecBegin(MASConstraintMaker) {
 }
 
 - (void)testCreateCenterYAndCenterXChildren {
-    composite = maker.center;
+    composite = (MASCompositeConstraint *)maker.center;
 
     expect(composite.childConstraints).to.haveCountOf(2);
 
@@ -55,7 +55,7 @@ SpecBegin(MASConstraintMaker) {
 
 - (void)testCreateAllEdges {
     MAS_VIEW *newView = MAS_VIEW.new;
-    composite = maker.edges;
+    composite = (MASCompositeConstraint *)maker.edges;
     composite.equalTo(newView);
 
     expect(composite.childConstraints).to.haveCountOf(4);
@@ -82,7 +82,7 @@ SpecBegin(MASConstraintMaker) {
 }
 
 - (void)testCreateWidthAndHeightChildren {
-    composite = maker.size;
+    composite = (MASCompositeConstraint *)maker.size;
     expect(composite.childConstraints).to.haveCountOf(2);
 
     MASViewConstraint *viewConstraint = composite.childConstraints[0];
