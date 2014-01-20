@@ -1,3 +1,24 @@
+v0.4.0
+=======
+
+* Fixed Xcode auto-complete support ([nickynick](https://github.com/nickynick))
+
+***Breaking Changes***
+
+If you are holding onto any instances of masonry constraints ie
+```obj-c
+// in public/private interface
+@property (nonatomic, strong) id<MASConstraint> topConstraint;
+```
+
+You will need to change this to
+```obj-c
+// in public/private interface
+@property (nonatomic, strong) MASConstraint *topConstraint;
+```
+
+Instead of using protocols Masonry now uses an abstract base class for constraints in order to get Xcode auto-complete support see http://stackoverflow.com/questions/14534223/
+
 v0.3.2
 =======
 

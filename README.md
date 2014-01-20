@@ -213,7 +213,7 @@ You could also reference multiple constraints by storing them away in an array.
 
 ```obj-c
 // in public/private interface
-@property (nonatomic, strong) id<MASConstraint> topConstraint;
+@property (nonatomic, strong) MASConstraint *topConstraint;
 
 ...
 
