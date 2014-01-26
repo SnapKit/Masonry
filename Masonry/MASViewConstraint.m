@@ -57,8 +57,8 @@
     _layoutConstant = layoutConstant;
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
-    if(self.useAnimator) {
-        self.layoutConstraint.animator.constant = layoutConstant;
+    if (self.useAnimator) {
+        [self.layoutConstraint.animator setConstant:layoutConstant];
     } else {
         self.layoutConstraint.constant = layoutConstant;
     }
