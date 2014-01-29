@@ -2,11 +2,14 @@
 language: objective-c
 
 before_install:
+  - brew update
+  - brew unlink xctool
+  - brew install xctool
   - gem install cocoapods
   - sudo easy_install cpp-coveralls
 
 script:
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator7.0 clean build test -freshSimulator -freshInstall ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator7.0 clean build test ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
 
 after_success:
   - ./script/coveralls.sh
