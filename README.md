@@ -1,4 +1,4 @@
-#Masonry [![Build Status](https://travis-ci.org/cloudkite/Masonry.png?branch=master)](https://travis-ci.org/cloudkite/Masonry) [![Coverage Status](https://coveralls.io/repos/cloudkite/Masonry/badge.png?branch=master)](https://coveralls.io/r/cloudkite/Masonry?branch=master) [[](https://d2weczhvl823v0.cloudfront.net/cloudkite/masonry/trend.png)]()
+#Masonry [![Build Status](https://travis-ci.org/cloudkite/Masonry.png?branch=master)](https://travis-ci.org/cloudkite/Masonry) [![Coverage Status](https://coveralls.io/repos/cloudkite/Masonry/badge.png?branch=master)](https://coveralls.io/r/cloudkite/Masonry?branch=master)
 
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OSX.
@@ -310,3 +310,5 @@ Get busy Masoning
 * Eye candy
 * Mac example project
 * More tests and examples
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/cloudkite/masonry/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
