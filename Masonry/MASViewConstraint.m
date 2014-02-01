@@ -191,8 +191,7 @@
             [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
             return compositeConstraint;
         } else {
-            BOOL layoutConstantUpdate = self.layoutRelation == relation && [attribute isKindOfClass:NSNumber.class];
-            NSAssert(!self.hasLayoutRelation || layoutConstantUpdate, @"Redefinition of constraint relation");
+            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSNumber.class], @"Redefinition of constraint relation");
             self.layoutRelation = relation;
             self.secondViewAttribute = attribute;
             return self;
