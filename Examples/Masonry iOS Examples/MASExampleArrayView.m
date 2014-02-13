@@ -73,10 +73,12 @@ static CGFloat const kArrayExampleIncrement = 10.0;
 }
 
 - (void)updateConstraints {
-    [super updateConstraints];
     [self.buttonViews updateConstraints:^(MASConstraintMaker *make) {
         make.baseline.equalTo(self.mas_centerY).with.offset(self.offset);
     }];
+    
+    //according to apple super should be called at end of method
+    [super updateConstraints];
 }
 
 @end
