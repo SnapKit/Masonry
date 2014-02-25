@@ -311,4 +311,3 @@ Get busy Masoning
 * Mac example project
 * More tests and examples
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/cloudkite/masonry/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
