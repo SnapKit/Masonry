@@ -74,4 +74,6 @@
  */
 - (NSArray *)install;
 
+- (MASConstraint * (^)(dispatch_block_t))group;
+
 @end

@@ -142,4 +142,19 @@
     [self.constraints addObject:constraint];
     return constraint;
 }
+
+#pragma mark - grouping
+
+- (MASConstraint *(^)(dispatch_block_t group))group {
+    return ^id(dispatch_block_t group) {
+        NSInteger previousCount = self.constraints.count;
+        group();
+
+        NSArray *children = [self.constraints subarrayWithRange:NSMakeRange(previousCount, self.constraints.count - previousCount)];
+        MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithChildren:children];
+        constraint.delegate = self;
+        return constraint;
+    };
+}
+
 @end
