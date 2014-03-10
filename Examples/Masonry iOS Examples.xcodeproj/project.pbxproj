@@ -26,6 +26,7 @@
 		DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */; };
 		DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */; };
 		DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */; };
+		EDF8135872EEAA6E20E2C478 /* MASExampleBasicArrangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF81D0682B450C7A2381D0F /* MASExampleBasicArrangeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleLabelView.m; sourceTree = "<group>"; };
 		DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAnimatedView.h; sourceTree = "<group>"; };
 		DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAnimatedView.m; sourceTree = "<group>"; };
+		EDF81BB913B735868AD59D0C /* MASExampleBasicArrangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleBasicArrangeView.h; sourceTree = "<group>"; };
+		EDF81D0682B450C7A2381D0F /* MASExampleBasicArrangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleBasicArrangeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */,
 				3DB1CAD3184538E200E91FC5 /* MASExampleArrayView.h */,
 				3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */,
+				EDF81BB913B735868AD59D0C /* MASExampleBasicArrangeView.h */,
+				EDF81D0682B450C7A2381D0F /* MASExampleBasicArrangeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */,
 				DD7CC17617ACE990007A469E /* MASExampleDebuggingView.m in Sources */,
 				DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */,
+				EDF8135872EEAA6E20E2C478 /* MASExampleBasicArrangeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

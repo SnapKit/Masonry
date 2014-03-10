@@ -1,6 +1,6 @@
 //
 //  NSArray+MASAdditions.h
-//  
+//
 //
 //  Created by Daniel Hammond on 11/26/13.
 //
@@ -9,6 +9,8 @@
 #import "MASUtilities.h"
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
+
+@class MASArrangeConstraintMaker;
 
 @interface NSArray (MASAdditions)
 
@@ -32,5 +34,8 @@
  *  @return Array of created/updated MASConstraints
  */
 - (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+
+
+- (NSArray *)mas_makeArrangeConstraints:(void(^)(MASArrangeConstraintMaker *make))block;
 
 @end

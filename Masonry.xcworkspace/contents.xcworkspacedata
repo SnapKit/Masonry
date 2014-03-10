@@ -5,6 +5,18 @@
       location = "group:Masonry"
       name = "Masonry">
       <FileRef
+         location = "group:MASArrangeConstraintMaker.h">
+      </FileRef>
+      <FileRef
+         location = "group:MASArrangeConstraintMaker.m">
+      </FileRef>
+      <FileRef
+         location = "group:MASArrangeConstraint.m">
+      </FileRef>
+      <FileRef
+         location = "group:MASArrangeConstraint.h">
+      </FileRef>
+      <FileRef
          location = "group:Masonry.h">
       </FileRef>
       <FileRef
