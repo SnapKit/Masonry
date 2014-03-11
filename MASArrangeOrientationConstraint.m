@@ -12,8 +12,8 @@
 @interface MASArrangeConstraint ()
 @property(nonatomic, strong) NSArray *views;
 @property(nonatomic, retain) NSMutableArray *constraints;
+@property(nonatomic) BOOL isVertical;
 @property(nonatomic, strong) NSNumber * constant;
-@property(nonatomic, copy) NSString *asciiFormat;
 @end
 
 @implementation MASArrangeConstraint {
@@ -31,35 +31,6 @@
 
 
 - (void)install {
-    if (self.asciiFormat == nil) {
-        [self regularArrangement];
-    } else {
-        [self asciiArrangement];
-    }
-
-}
-
-- (void)asciiArrangement {
-    int number = 0;
-    NSMutableDictionary *mapping = [NSMutableDictionary dictionary];
-    for (MAS_VIEW *view in self.views) {
-        number++;
-        [mapping setObject:view forKey:[NSString stringWithFormat:@"v%d", number]];
-    }
-
-    if (self.isVertical){
-        self.asciiFormat = [@"V:" stringByAppendingString:self.asciiFormat];
-    }
-
-    NSLayoutFormatOptions opts = self.isVertical ? NSLayoutFormatAlignAllLeft : NSLayoutFormatAlignAllCenterY;
-    NSArray *layoutConstraint = [MASLayoutConstraint constraintsWithVisualFormat:self.asciiFormat options:opts metrics:nil views:mapping];
-
-    // todo check if all view are subviews of the same superview
-    MAS_VIEW*firstSuperview = ((MAS_VIEW *) self.views.firstObject).superview;
-    [firstSuperview addConstraints:layoutConstraint];
-}
-
-- (void)regularArrangement {
     NSLayoutAttribute attribute = self.isVertical ? NSLayoutAttributeTop : NSLayoutAttributeLeft;
     NSLayoutAttribute compoundAttribute = self.isVertical ? NSLayoutAttributeBottom : NSLayoutAttributeRight;
 
@@ -84,6 +55,16 @@
     }
 }
 
+- (MASArrangeConstraint *)vertically {
+    self.isVertical = YES;
+    return self;
+}
+
+- (MASArrangeConstraint *)horizontally {
+    self.isVertical = NO;
+    return self;
+}
+
 
 - (MASConstraint * (^)(id))equalTo {
     return ^id(id attribute) {
@@ -93,18 +74,15 @@
     };
 }
 
-- (MASConstraint * (^)(id))ascii {
-    return ^id(NSString * attribute) {
-        self.asciiFormat = attribute;
-        return self;
-    };
-}
-
 
 #pragma mark - MASConstraintDelegate
 
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint {
-    NSAssert(FALSE, @"Not implemented yet");
+//    NSUInteger index = [self.constraints indexOfObject:constraint];
+//    NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
+//    [self.constraints replaceObjectAtIndex:index withObject:replacementConstraint];
+
+    NSAssert(FALSE, @"Not implemented");
 }
 
 @end

@@ -12,10 +12,7 @@
 
 - (id)initWith:(NSArray *)array;
 
-// Create an array of constraints using an ASCII art-like visual format string.
-// views are labeled as v1, v2,...
-- (MASConstraint * (^)(id))ascii;
-
-@property(nonatomic) BOOL isVertical;
+@property (nonatomic, strong, readonly) MASArrangeConstraint *vertically;
+@property (nonatomic, strong, readonly) MASArrangeConstraint *horizontally;
 
 @end

@@ -31,6 +31,11 @@
     return [self mas_updateConstraints:block];
 }
 
+
+- (NSArray *)makeArrangeConstraints:(void(^)(MASArrangeConstraintMaker *make))block {
+    return [self mas_makeArrangeConstraints:block];
+}
+
 @end
 
 #endif

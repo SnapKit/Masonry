@@ -5,8 +5,10 @@
 
 
 #import <Masonry/MASViewConstraint.h>
+#import <Masonry/View+MASAdditions.h>
 #import "MASArrangeConstraintMaker.h"
 #import "MASArrangeConstraint.h"
+#import "MASArrangeOrientation.h"
 
 
 @interface MASArrangeConstraintMaker ()
@@ -28,21 +30,20 @@
 
 #pragma mark - properties
 
-- (MASArrangeConstraint *)arrange {
-    MASArrangeConstraint *constraint = [[MASArrangeConstraint alloc] initWith:self.viewsToArrange];
+- (MASArrangeOrientation *)arrange {
+    MASArrangeOrientation *constraint = [[MASArrangeOrientation alloc] initWith:self.viewsToArrange];
     [self.constraints addObject:constraint];
     return constraint;
 }
 
-- (MASArrangeConstraint *)each {
-    MASArrangeConstraint *constraint = [[MASArrangeConstraint alloc] initWith:self.viewsToArrange];
-    [self.constraints addObject:constraint];
-    return constraint;
+- (MASConstraintMaker *)each {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:[NSString stringWithFormat:@"Method is not implemented yet"] userInfo:nil];
 }
 
 - (NSArray *)install {
-    for (MASArrangeConstraint *masArrangeConstraint in self.constraints) {
-        [masArrangeConstraint install];
+    for (MASConstraint *constraint in self.constraints) {
+        [constraint install];
     }
 
     return self.constraints;

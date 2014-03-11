@@ -8,11 +8,17 @@
 #import "MASConstraintMaker.h"
 #import "MASArrangeConstraint.h"
 
+@class MASArrangeOrientation;
+
 @interface MASArrangeConstraintMaker : MASConstraintMaker
 
-@property (nonatomic, strong, readonly) MASArrangeConstraint *arrange;
-@property (nonatomic, strong, readonly) MASArrangeConstraint *each;
+// to set an arrangement of views
+@property (nonatomic, strong, readonly) MASArrangeOrientation *arrange;
 
+//  set individual constraints here?
+@property (nonatomic, strong, readonly) MASConstraintMaker *each;
+
+// list of views
 @property(nonatomic, retain) NSArray *viewsToArrange;
 
 - (id)initWithViews:(NSArray *)views;
