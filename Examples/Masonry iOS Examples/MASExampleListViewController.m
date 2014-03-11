@@ -37,8 +37,6 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
     self.title = @"Examples";
 
     self.exampleControllers = @[
-        [[MASExampleViewController alloc] initWithTitle:@"Arrange Views"
-                                                  viewClass:MASExampleBasicArrangeView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Basic"
                                               viewClass:MASExampleBasicView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Update Constraints"
@@ -57,6 +55,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleScrollView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Array"
                                               viewClass:MASExampleArrayView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Arrange Views"
+                                                      viewClass:MASExampleBasicArrangeView.class],
         [[MASExampleLayoutGuideViewController alloc] init],
     ];
 

@@ -8,6 +8,7 @@
 #import "MASConstraintMaker.h"
 #import "MASArrangeConstraintMaker.h"
 #import "MASArrangeConstraint.h"
+#import "MASArrangeOrientation.h"
 
 
 SpecBegin(MASArrangeConstraintMaker) {
@@ -30,7 +31,7 @@ SpecBegin(MASArrangeConstraintMaker) {
 
 
 - (void)testInstallRelativeToSuperview {
-    MASArrangeConstraint *constraint = (MASArrangeConstraint *) maker.arrange.vertically.equalTo(@10);
+    MASArrangeConstraint *constraint = maker.arrange.vertically.withOffset(@10);
     [constraint install];
 
     expect(maker.arrange).notTo.beNil;

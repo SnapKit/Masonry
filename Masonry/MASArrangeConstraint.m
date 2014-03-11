@@ -72,7 +72,6 @@
         MASViewAttribute *firstViewAttribute = [[MASViewAttribute alloc] initWithView:uiView layoutAttribute:attribute];
         MASViewConstraint *constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:firstViewAttribute andSecond:secondViewAttribute];
         constraint.offset(self.constant.floatValue);
-        constraint.delegate = self;
         [self.constraints addObject:constraint];
 
         // assign next one
@@ -85,7 +84,7 @@
 }
 
 
-- (MASConstraint * (^)(id))equalTo {
+- (MASArrangeConstraint * (^)(id))withOffset {
     return ^id(id attribute) {
         NSAssert([attribute isKindOfClass:[NSNumber class]], @"Only NSNumber is accepted here");
         self.constant = attribute;
@@ -93,18 +92,11 @@
     };
 }
 
-- (MASConstraint * (^)(id))ascii {
+- (MASArrangeConstraint * (^)(id))ascii {
     return ^id(NSString * attribute) {
         self.asciiFormat = attribute;
         return self;
     };
-}
-
-
-#pragma mark - MASConstraintDelegate
-
-- (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint {
-    NSAssert(FALSE, @"Not implemented yet");
 }
 
 @end

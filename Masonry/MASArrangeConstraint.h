@@ -8,14 +8,18 @@
 #import "MASViewConstraint.h"
 
 
-@interface MASArrangeConstraint : MASConstraint <MASConstraintDelegate>
+@interface MASArrangeConstraint : NSObject
+
+@property(nonatomic) BOOL isVertical;
 
 - (id)initWith:(NSArray *)array;
+- (void)install;
 
 // Create an array of constraints using an ASCII art-like visual format string.
 // views are labeled as v1, v2,...
-- (MASConstraint * (^)(id))ascii;
+- (MASArrangeConstraint * (^)(id))ascii;
 
-@property(nonatomic) BOOL isVertical;
+// offset between views
+- (MASArrangeConstraint * (^)(id))withOffset;
 
 @end

@@ -38,7 +38,7 @@
     UIView *view3 = [s addColoredView:[UIColor blueColor]];
 
     [@[view1, view2, view3] mas_makeArrangeConstraints:^(MASArrangeConstraintMaker *make) {
-        make.arrange.vertically.equalTo(@5);
+        make.arrange.vertically.withOffset(@5);
     }];
 
     [@[view1, view2, view3] makeConstraints:^(MASConstraintMaker *make) {
