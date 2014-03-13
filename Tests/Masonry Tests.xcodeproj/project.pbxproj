@@ -28,6 +28,7 @@
 		DD717A5618442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A4E18442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m */; };
 		DD717A5718442EC600FAA7A8 /* View+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A5018442EC600FAA7A8 /* View+MASAdditionsSpec.m */; };
 		DD717A631844303200FAA7A8 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = DD717A5F1844303200FAA7A8 /* GcovTestObserver.m */; };
+		EDF81A24C3A2C01303A7B947 /* MASArrangeConstraintMakerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF81350434574AD2C3E367C /* MASArrangeConstraintMakerSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		DD717A611844303200FAA7A8 /* MasonryTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MasonryTests-Prefix.pch"; sourceTree = "<group>"; };
 		DD717A621844303200FAA7A8 /* XCTest+Spec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTest+Spec.h"; sourceTree = "<group>"; };
 		DD717A651844358800FAA7A8 /* NSObject+MASSubscriptSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MASSubscriptSupport.h"; sourceTree = "<group>"; };
+		EDF81350434574AD2C3E367C /* MASArrangeConstraintMakerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASArrangeConstraintMakerSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				DD717A4E18442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m */,
 				DD717A5018442EC600FAA7A8 /* View+MASAdditionsSpec.m */,
 				3D21C42A1845D0C0001D5F97 /* NSArray+MASAdditionsSpec.m */,
+				EDF81350434574AD2C3E367C /* MASArrangeConstraintMakerSpec.m */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -228,7 +231,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					DD717A3118442ADC00FAA7A8 = {
-						TestTargetID = DD7179FD18442A6400FAA7A8;
+						TestTargetID = DD7179FD18442A6400FAA7A8 /* MasonryTestsLoader */;
 					};
 				};
 			};
@@ -355,6 +358,7 @@
 				DD717A5418442EC600FAA7A8 /* MASViewAttributeSpec.m in Sources */,
 				DD717A5218442EC600FAA7A8 /* MASConstraintDelegateMock.m in Sources */,
 				DD717A5118442EC600FAA7A8 /* MASCompositeConstraintSpec.m in Sources */,
+				EDF81A24C3A2C01303A7B947 /* MASArrangeConstraintMakerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

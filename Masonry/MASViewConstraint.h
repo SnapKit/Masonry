@@ -35,4 +35,6 @@
  */
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
 
+- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute andSecond:(MASViewAttribute *)secondViewAttribute;
+
 @end

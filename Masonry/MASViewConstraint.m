@@ -31,11 +31,21 @@
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
     if (!self) return nil;
-    
+
     _firstViewAttribute = firstViewAttribute;
     self.layoutPriority = MASLayoutPriorityRequired;
     self.layoutMultiplier = 1;
-    
+
+    return self;
+}
+
+- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute andSecond:(MASViewAttribute *)secondViewAttribute{
+    self = [self initWithFirstViewAttribute:firstViewAttribute];
+    if (!self) return nil;
+
+    _secondViewAttribute = secondViewAttribute;
+    self.layoutRelation = NSLayoutRelationEqual;
+
     return self;
 }
 
@@ -124,7 +134,7 @@
     return ^id(CGFloat multiplier) {
         NSAssert(!self.hasBeenInstalled,
                  @"Cannot modify constraint multiplier after it has been installed");
-        
+
         self.layoutMultiplier = multiplier;
         return self;
     };
@@ -147,7 +157,7 @@
     return ^id(MASLayoutPriority priority) {
         NSAssert(!self.hasBeenInstalled,
                  @"Cannot modify constraint priority after it has been installed");
-        
+
         self.layoutPriority = priority;
         return self;
     };
@@ -295,7 +305,7 @@
 
 - (void)install {
     NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
-    
+
     MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
@@ -308,7 +318,7 @@
         secondLayoutItem = firstLayoutItem.superview;
         secondLayoutAttribute = firstLayoutAttribute;
     }
-    
+
     MASLayoutConstraint *layoutConstraint
         = [MASLayoutConstraint constraintWithItem:firstLayoutItem
                                         attribute:firstLayoutAttribute
@@ -317,10 +327,10 @@
                                         attribute:secondLayoutAttribute
                                        multiplier:self.layoutMultiplier
                                          constant:self.layoutConstant];
-    
+
     layoutConstraint.priority = self.layoutPriority;
     layoutConstraint.mas_key = self.mas_key;
-    
+
     if (secondLayoutItem) {
         MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
         NSAssert(closestCommonSuperview,

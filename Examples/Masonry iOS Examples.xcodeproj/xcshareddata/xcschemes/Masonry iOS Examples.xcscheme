@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD52F1A9179CA93B005CD195"
-               BuildableName = "libMasonry.a"
-               BlueprintName = "Masonry iOS"
-               ReferencedContainer = "container:../Masonry.xcodeproj">
+               BlueprintIdentifier = "DD52F226179CAD57005CD195"
+               BuildableName = "Masonry iOS Examples.app"
+               BlueprintName = "Masonry iOS Examples"
+               ReferencedContainer = "container:Masonry iOS Examples.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
