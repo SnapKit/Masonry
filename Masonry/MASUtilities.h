@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 #if TARGET_OS_IPHONE
 
     #import <UIKit/UIKit.h>
