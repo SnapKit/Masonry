@@ -33,6 +33,12 @@
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
 
 /**
+ *  Returns a block which creates a new MASViewConstraint with the first item set
+ *  to the makers associated view and the passed-in attribute
+ */
+@property (nonatomic, strong, readonly) MASConstraint *(^attribute)(NSLayoutAttribute attr);
+
+/**
  *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
  *  which generates the appropriate MASViewConstraint children (top, left, bottom, right)
  *  with the first item set to the makers associated view

@@ -105,6 +105,12 @@
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
 }
 
+- (MASConstraint *(^)(NSLayoutAttribute))attribute {
+    return ^(NSLayoutAttribute attr){
+        return [self addConstraintWithLayoutAttribute:attr];
+    };
+}
+
 
 #pragma mark - composite Attributes
 
