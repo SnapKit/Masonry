@@ -108,10 +108,29 @@
 - (MASConstraint *)with;
 
 /**
+ *	optional semantic property which has no effect but improves the readability of constraint
+ */
+- (MASConstraint *)and;
+
+/**
+ *	creates a new MASCompositeConstraint with the called attribute and reciever
+ */
+- (MASConstraint *)left;
+- (MASConstraint *)top;
+- (MASConstraint *)right;
+- (MASConstraint *)bottom;
+- (MASConstraint *)leading;
+- (MASConstraint *)trailing;
+- (MASConstraint *)width;
+- (MASConstraint *)height;
+- (MASConstraint *)centerX;
+- (MASConstraint *)centerY;
+- (MASConstraint *)baseline;
+
+/**
  *	Sets the constraint debug name
  */
 - (MASConstraint * (^)(id key))key;
-
 
 // NSLayoutConstraint constant Setters
 // for use outside of mas_updateConstraints/mas_makeConstraints blocks
@@ -203,5 +222,7 @@
  *  A dummy method to aid autocompletion
  */
 - (MASConstraint * (^)(id offset))mas_offset;
+
+- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 @end

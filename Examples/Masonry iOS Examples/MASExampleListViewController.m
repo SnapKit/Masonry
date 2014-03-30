@@ -18,6 +18,7 @@
 #import "MASExampleScrollView.h"
 #import "MASExampleLayoutGuideViewController.h"
 #import "MASExampleArrayView.h"
+#import "MASExampleAttributeChainingView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -54,6 +55,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleScrollView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Array"
                                               viewClass:MASExampleArrayView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
+                                              viewClass:MASExampleAttributeChainingView.class],
         [[MASExampleLayoutGuideViewController alloc] init],
     ];
     

@@ -164,6 +164,30 @@
 
 - (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation { methodNotImplemented(); }
 
+- (MASConstraint *)and { methodNotImplemented(); }
+
+- (MASConstraint *)left { methodNotImplemented(); }
+
+- (MASConstraint *)top { methodNotImplemented(); }
+
+- (MASConstraint *)right { methodNotImplemented(); }
+
+- (MASConstraint *)bottom { methodNotImplemented(); }
+
+- (MASConstraint *)leading { methodNotImplemented(); }
+
+- (MASConstraint *)trailing { methodNotImplemented(); }
+
+- (MASConstraint *)width { methodNotImplemented(); }
+
+- (MASConstraint *)height { methodNotImplemented(); }
+
+- (MASConstraint *)centerX { methodNotImplemented(); }
+
+- (MASConstraint *)centerY { methodNotImplemented(); }
+
+- (MASConstraint *)baseline { methodNotImplemented(); }
+
 - (MASConstraint * (^)(id key))key { methodNotImplemented(); }
 
 - (void)setInsets:(MASEdgeInsets)insets { methodNotImplemented(); }
