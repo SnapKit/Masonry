@@ -105,9 +105,36 @@
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
 }
 
-- (MASConstraint *(^)(NSLayoutAttribute))attribute {
-    return ^(NSLayoutAttribute attr){
-        return [self addConstraintWithLayoutAttribute:attr];
+- (MASConstraint *(^)(MASAttribute))attributes {
+    return ^(MASAttribute attrs){
+        MASAttribute anyAttribute = MASAttributeLeft | MASAttributeRight | MASAttributeTop | MASAttributeBottom | MASAttributeLeading | MASAttributeTrailing | MASAttributeWidth | MASAttributeHeight | MASAttributeCenterX | MASAttributeCenterY | MASAttributeBaseline;
+        
+        NSAssert((attrs & anyAttribute) != 0, @"You didn't pass any attribute to make.attributes(...)");
+        
+        NSMutableArray *attributes = [NSMutableArray array];
+        
+        if (attrs & MASAttributeLeft) [attributes addObject:self.view.mas_left];
+        if (attrs & MASAttributeRight) [attributes addObject:self.view.mas_right];
+        if (attrs & MASAttributeTop) [attributes addObject:self.view.mas_top];
+        if (attrs & MASAttributeBottom) [attributes addObject:self.view.mas_bottom];
+        if (attrs & MASAttributeLeading) [attributes addObject:self.view.mas_leading];
+        if (attrs & MASAttributeTrailing) [attributes addObject:self.view.mas_trailing];
+        if (attrs & MASAttributeWidth) [attributes addObject:self.view.mas_width];
+        if (attrs & MASAttributeHeight) [attributes addObject:self.view.mas_height];
+        if (attrs & MASAttributeCenterX) [attributes addObject:self.view.mas_centerX];
+        if (attrs & MASAttributeCenterY) [attributes addObject:self.view.mas_centerY];
+        if (attrs & MASAttributeBaseline) [attributes addObject:self.view.mas_baseline];
+        
+        NSMutableArray *children = [NSMutableArray arrayWithCapacity:attributes.count];
+        
+        for (MASViewAttribute *a in attributes) {
+            [children addObject:[[MASViewConstraint alloc] initWithFirstViewAttribute:a]];
+        }
+        
+        MASCompositeConstraint *constraint = [[MASCompositeConstraint alloc] initWithChildren:children];
+        constraint.delegate = self;
+        [self.constraints addObject:constraint];
+        return constraint;
     };
 }
 

@@ -9,6 +9,20 @@
 #import "MASConstraint.h"
 #import "MASUtilities.h"
 
+typedef NS_OPTIONS(NSInteger, MASAttribute) {
+    MASAttributeLeft = 1 << NSLayoutAttributeLeft,
+    MASAttributeRight = 1 << NSLayoutAttributeRight,
+    MASAttributeTop = 1 << NSLayoutAttributeTop,
+    MASAttributeBottom = 1 << NSLayoutAttributeBottom,
+    MASAttributeLeading = 1 << NSLayoutAttributeLeading,
+    MASAttributeTrailing = 1 << NSLayoutAttributeTrailing,
+    MASAttributeWidth = 1 << NSLayoutAttributeWidth,
+    MASAttributeHeight = 1 << NSLayoutAttributeHeight,
+    MASAttributeCenterX = 1 << NSLayoutAttributeCenterX,
+    MASAttributeCenterY = 1 << NSLayoutAttributeCenterY,
+    MASAttributeBaseline = 1 << NSLayoutAttributeBaseline,
+};
+
 /**
  *  Provides factory methods for creating MASConstraints.
  *  Constraints are collected until they are ready to be installed
@@ -33,10 +47,11 @@
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
 
 /**
- *  Returns a block which creates a new MASViewConstraint with the first item set
- *  to the makers associated view and the passed-in attribute
+ *  Returns a block which creates a new MASCompositeConstraint with the first item set
+ *  to the makers associated view and children corresponding to the set bits in the
+ *  MASAttribute parameter. Combine multiple attributes via binary-or.
  */
-@property (nonatomic, strong, readonly) MASConstraint *(^attribute)(NSLayoutAttribute attr);
+@property (nonatomic, strong, readonly) MASConstraint *(^attributes)(MASAttribute attrs);
 
 /**
  *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges

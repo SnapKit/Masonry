@@ -39,6 +39,31 @@ SpecBegin(MASConstraintMaker) {
     maker = [[MASConstraintMaker alloc] initWithView:view];
 }
 
+- (void)testCreateSingleAttribute {
+    composite = (MASCompositeConstraint *)maker.attributes(MASAttributeHeight);
+    
+    expect(composite.childConstraints).to.haveCountOf(1);
+    
+    MASViewConstraint *viewConstraint = composite.childConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
+}
+
+- (void)testCreateAttributes {
+    composite = (MASCompositeConstraint *)maker.attributes(MASAttributeCenterX | MASAttributeWidth);
+    
+    expect(composite.childConstraints).to.haveCountOf(2);
+    
+    // children are ordered like MASAttribute, so the first is width
+    MASViewConstraint *viewConstraint = composite.childConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+    
+    viewConstraint = composite.childConstraints[1];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeCenterX);
+}
+
 - (void)testCreateCenterYAndCenterXChildren {
     composite = (MASCompositeConstraint *)maker.center;
 
