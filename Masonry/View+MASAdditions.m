@@ -72,6 +72,13 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeBaseline];
 }
 
+- (MASViewAttribute *(^)(NSLayoutAttribute))mas_attribute
+{
+    return ^(NSLayoutAttribute attr) {
+        return [[MASViewAttribute alloc] initWithView:self layoutAttribute:attr];
+    };
+}
+
 #pragma mark - associated properties
 
 - (id)mas_key {

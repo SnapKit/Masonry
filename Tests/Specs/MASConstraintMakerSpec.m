@@ -39,6 +39,31 @@ SpecBegin(MASConstraintMaker) {
     maker = [[MASConstraintMaker alloc] initWithView:view];
 }
 
+- (void)testCreateSingleAttribute {
+    composite = (MASCompositeConstraint *)maker.attributes(MASAttributeHeight);
+    
+    expect(composite.childConstraints).to.haveCountOf(1);
+    
+    MASViewConstraint *viewConstraint = composite.childConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeHeight);
+}
+
+- (void)testCreateAttributes {
+    composite = (MASCompositeConstraint *)maker.attributes(MASAttributeCenterX | MASAttributeWidth);
+    
+    expect(composite.childConstraints).to.haveCountOf(2);
+    
+    // children are ordered like MASAttribute, so the first is width
+    MASViewConstraint *viewConstraint = composite.childConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeWidth);
+    
+    viewConstraint = composite.childConstraints[1];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeCenterX);
+}
+
 - (void)testCreateCenterYAndCenterXChildren {
     composite = (MASCompositeConstraint *)maker.center;
 
@@ -60,25 +85,27 @@ SpecBegin(MASConstraintMaker) {
 
     expect(composite.childConstraints).to.haveCountOf(4);
 
+    MASViewConstraint *viewConstraint;
+    
+    //left
+    viewConstraint = composite.childConstraints[0];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeLeft);
+    
+    //right
+    viewConstraint = composite.childConstraints[1];
+    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeRight);
+    
     //top
-    MASViewConstraint *viewConstraint = composite.childConstraints[0];
+    viewConstraint = composite.childConstraints[2];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
     expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeTop);
 
-    //left
-    viewConstraint = composite.childConstraints[1];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeLeft);
-
     //bottom
-    viewConstraint = composite.childConstraints[2];
-    expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeBottom);
-
-    //right
     viewConstraint = composite.childConstraints[3];
     expect(viewConstraint.firstViewAttribute.view).to.beIdenticalTo(maker.view);
-    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeRight);
+    expect(viewConstraint.firstViewAttribute.layoutAttribute).to.equal(NSLayoutAttributeBottom);
 }
 
 - (void)testCreateWidthAndHeightChildren {

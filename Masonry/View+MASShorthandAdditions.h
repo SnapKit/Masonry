@@ -27,6 +27,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *centerX;
 @property (nonatomic, strong, readonly) MASViewAttribute *centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
+@property (nonatomic, strong, readonly) MASViewAttribute *(^attribute)(NSLayoutAttribute attr);
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
@@ -51,6 +52,7 @@ MAS_ATTR_FORWARD(height);
 MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
+MAS_ATTR_FORWARD(attribute);
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
