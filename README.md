@@ -204,7 +204,7 @@ make.center.equalTo(superview).centerOffset(CGPointMake(-5, 10))
 
 ## Hold on for dear life
 
-Sometimes you need modify existing constraints inorder to animate or remove/replace constraints.
+Sometimes you need modify existing constraints in order to animate or remove/replace constraints.
 In Masonry there are two common approaches for updating constraints.
 
 #### 1. References
