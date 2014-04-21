@@ -79,7 +79,25 @@
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
         self.layoutConstant = [secondViewAttribute doubleValue];
-    }  else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
+    } else if ([secondViewAttribute isKindOfClass:NSValue.class]) {
+        NSValue *value = (NSValue *)secondViewAttribute;
+        if (strcmp(value.objCType, @encode(CGPoint)) == 0) {
+            CGPoint point;
+            [value getValue:&point];
+            self.centerOffset = point;
+        } else if (strcmp(value.objCType, @encode(CGSize)) == 0) {
+            CGSize size;
+            [value getValue:&size];
+            self.sizeOffset = size;
+        } else if (strcmp(value.objCType, @encode(MASEdgeInsets)) == 0) {
+            MASEdgeInsets insets;
+            [value getValue:&insets];
+            self.insets = insets;
+        } else {
+            // TODO: avoid duplication
+            NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
+        }
+    } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
@@ -174,10 +192,10 @@
     };
 }
 
-#pragma mark - NSLayoutRelation proxies
+#pragma mark - NSLayoutRelation proxy
 
-- (MASConstraint * (^)(id))equalityWithRelation:(NSLayoutRelation)relation {
-    return ^id(id attribute) {
+- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
+    return ^id(id attribute, NSLayoutRelation relation) {
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
             NSMutableArray *children = NSMutableArray.new;
@@ -191,24 +209,12 @@
             [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
             return compositeConstraint;
         } else {
-            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSNumber.class], @"Redefinition of constraint relation");
+            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
             self.layoutRelation = relation;
             self.secondViewAttribute = attribute;
             return self;
         }
     };
-}
-
-- (MASConstraint * (^)(id))equalTo {
-    return [self equalityWithRelation:NSLayoutRelationEqual];
-}
-
-- (MASConstraint * (^)(id))greaterThanOrEqualTo {
-    return [self equalityWithRelation:NSLayoutRelationGreaterThanOrEqual];
-}
-
-- (MASConstraint * (^)(id))lessThanOrEqualTo {
-    return [self equalityWithRelation:NSLayoutRelationLessThanOrEqual];
 }
 
 #pragma mark - Semantic properties

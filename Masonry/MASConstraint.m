@@ -21,6 +21,14 @@
 	return [super init];
 }
 
+#pragma mark - Dummies
+
+- (MASConstraint * (^)(id))equalTo { return nil; }
+
+- (MASConstraint * (^)(id))greaterThanOrEqualTo { return nil; }
+
+- (MASConstraint * (^)(id))lessThanOrEqualTo { return nil; }
+
 #pragma mark - Abstract
 
 - (MASConstraint * (^)(MASEdgeInsets insets))insets { methodNotImplemented(); }
@@ -43,11 +51,7 @@
 
 - (MASConstraint * (^)())priorityHigh { methodNotImplemented(); }
 
-- (MASConstraint * (^)(id attr))equalTo { methodNotImplemented(); }
-
-- (MASConstraint * (^)(id attr))greaterThanOrEqualTo { methodNotImplemented(); }
-
-- (MASConstraint * (^)(id attr))lessThanOrEqualTo { methodNotImplemented(); }
+- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation { methodNotImplemented(); }
 
 - (MASConstraint *)with { methodNotImplemented(); }
 

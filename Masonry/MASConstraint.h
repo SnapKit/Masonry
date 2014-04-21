@@ -99,6 +99,16 @@
  */
 - (MASConstraint * (^)(id attr))lessThanOrEqualTo;
 
+// TODO: description
+// TODO: update docs for the methods above
+- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
+
+#define equalTo(...)                 _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationEqual)
+
+#define greaterThanOrEqualTo(...)    _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationGreaterThanOrEqual)
+
+#define lessThanOrEqualTo(...)       _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationLessThanOrEqual)
+
 /**
  *	optional semantic property which has no effect but improves the readability of constraint
  */

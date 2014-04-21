@@ -121,28 +121,10 @@
 
 #pragma mark - NSLayoutRelation proxies
 
-- (MASConstraint * (^)(id))equalTo {
-    return ^id(id attr) {
+- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
+    return ^id(id attr, NSLayoutRelation relation) {
         for (MASConstraint *constraint in self.childConstraints.copy) {
-            constraint.equalTo(attr);
-        }
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(id))greaterThanOrEqualTo {
-    return ^id(id attr) {
-        for (MASConstraint *constraint in self.childConstraints.copy) {
-            constraint.greaterThanOrEqualTo(attr);
-        }
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(id))lessThanOrEqualTo {
-    return ^id(id attr) {
-        for (MASConstraint *constraint in self.childConstraints.copy) {
-            constraint.lessThanOrEqualTo(attr);
+            constraint._equalToWithRelation(attr, relation);
         }
         return self;
     };
