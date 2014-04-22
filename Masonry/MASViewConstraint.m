@@ -67,201 +67,23 @@
 #endif
 }
 
-- (void)setLayoutRelation:(NSLayoutRelation)layoutRelation {
-    _layoutRelation = layoutRelation;
-    self.hasLayoutRelation = YES;
-}
-
-- (BOOL)hasBeenInstalled {
-    return self.layoutConstraint != nil;
-}
-
-- (void)setSecondViewAttribute:(id)secondViewAttribute {
-    if ([secondViewAttribute isKindOfClass:NSNumber.class]) {
-        self.layoutConstant = [secondViewAttribute doubleValue];
-    } else if ([secondViewAttribute isKindOfClass:NSValue.class]) {
-        NSValue *value = (NSValue *)secondViewAttribute;
-        if (strcmp(value.objCType, @encode(CGPoint)) == 0) {
-            CGPoint point;
-            [value getValue:&point];
-            self.centerOffset = point;
-        } else if (strcmp(value.objCType, @encode(CGSize)) == 0) {
-            CGSize size;
-            [value getValue:&size];
-            self.sizeOffset = size;
-        } else if (strcmp(value.objCType, @encode(MASEdgeInsets)) == 0) {
-            MASEdgeInsets insets;
-            [value getValue:&insets];
-            self.insets = insets;
-        } else {
-            // TODO: avoid duplication
-            NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
-        }
-    } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
-        _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
-    } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
-        _secondViewAttribute = secondViewAttribute;
-    } else {
-        NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
-    }
-}
-
-#pragma mark - NSLayoutConstraint constant proxies
-
-- (MASConstraint * (^)(MASEdgeInsets))insets {
-    return ^id(MASEdgeInsets insets){
+- (void)setLayoutConstantWithValue:(NSValue *)value {
+    if ([value isKindOfClass:NSNumber.class]) {
+        self.offset = [(NSNumber *)value doubleValue];
+    } else if (strcmp(value.objCType, @encode(CGPoint)) == 0) {
+        CGPoint point;
+        [value getValue:&point];
+        self.centerOffset = point;
+    } else if (strcmp(value.objCType, @encode(CGSize)) == 0) {
+        CGSize size;
+        [value getValue:&size];
+        self.sizeOffset = size;
+    } else if (strcmp(value.objCType, @encode(MASEdgeInsets)) == 0) {
+        MASEdgeInsets insets;
+        [value getValue:&insets];
         self.insets = insets;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGSize))sizeOffset {
-    return ^id(CGSize offset) {
-        self.sizeOffset = offset;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGPoint))centerOffset {
-    return ^id(CGPoint offset) {
-        self.centerOffset = offset;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGFloat))offset {
-    return ^id(CGFloat offset){
-        self.offset = offset;
-        return self;
-    };
-}
-
-#pragma mark - NSLayoutConstraint multiplier proxies
-
-- (MASConstraint * (^)(CGFloat))multipliedBy {
-    return ^id(CGFloat multiplier) {
-        NSAssert(!self.hasBeenInstalled,
-                 @"Cannot modify constraint multiplier after it has been installed");
-        
-        self.layoutMultiplier = multiplier;
-        return self;
-    };
-}
-
-
-- (MASConstraint * (^)(CGFloat))dividedBy {
-    return ^id(CGFloat divider) {
-        NSAssert(!self.hasBeenInstalled,
-                 @"Cannot modify constraint multiplier after it has been installed");
-
-        self.layoutMultiplier = 1.0/divider;
-        return self;
-    };
-}
-
-#pragma mark - MASLayoutPriority proxies
-
-- (MASConstraint * (^)(MASLayoutPriority))priority {
-    return ^id(MASLayoutPriority priority) {
-        NSAssert(!self.hasBeenInstalled,
-                 @"Cannot modify constraint priority after it has been installed");
-        
-        self.layoutPriority = priority;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityLow {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultLow);
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityMedium {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultMedium);
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityHigh {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultHigh);
-        return self;
-    };
-}
-
-#pragma mark - NSLayoutRelation proxy
-
-- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
-    return ^id(id attribute, NSLayoutRelation relation) {
-        if ([attribute isKindOfClass:NSArray.class]) {
-            NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
-            NSMutableArray *children = NSMutableArray.new;
-            for (id attr in attribute) {
-                MASViewConstraint *viewConstraint = [self copy];
-                viewConstraint.secondViewAttribute = attr;
-                [children addObject:viewConstraint];
-            }
-            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithChildren:children];
-            compositeConstraint.delegate = self.delegate;
-            [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
-            return compositeConstraint;
-        } else {
-            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
-            self.layoutRelation = relation;
-            self.secondViewAttribute = attribute;
-            return self;
-        }
-    };
-}
-
-#pragma mark - Semantic properties
-
-- (MASConstraint *)with {
-    return self;
-}
-
-#pragma mark - Animator proxy
-
-#if TARGET_OS_MAC && !TARGET_OS_IPHONE
-
-- (MASConstraint *)animator {
-    self.useAnimator = YES;
-    return self;
-}
-
-#endif
-
-#pragma mark - debug helpers
-
-- (MASConstraint * (^)(id))key {
-    return ^id(id key) {
-        self.mas_key = key;
-        return self;
-    };
-}
-
-#pragma mark - NSLayoutConstraint constant setters
-
-- (void)setInsets:(MASEdgeInsets)insets {
-    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-    switch (layoutAttribute) {
-        case NSLayoutAttributeLeft:
-            self.layoutConstant = insets.left;
-            break;
-        case NSLayoutAttributeTop:
-            self.layoutConstant = insets.top;
-            break;
-        case NSLayoutAttributeBottom:
-            self.layoutConstant = -insets.bottom;
-            break;
-        case NSLayoutAttributeRight:
-            self.layoutConstant = -insets.right;
-            break;
-        default:
-            break;
+    } else {
+        NSAssert(NO, @"attempting to set layout constant with unsupported value: %@", value);
     }
 }
 
@@ -291,6 +113,133 @@
             break;
         case NSLayoutAttributeCenterY:
             self.layoutConstant = centerOffset.y;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setLayoutRelation:(NSLayoutRelation)layoutRelation {
+    _layoutRelation = layoutRelation;
+    self.hasLayoutRelation = YES;
+}
+
+- (BOOL)hasBeenInstalled {
+    return self.layoutConstraint != nil;
+}
+
+- (void)setSecondViewAttribute:(id)secondViewAttribute {
+    if ([secondViewAttribute isKindOfClass:NSValue.class]) {
+        [self setLayoutConstantWithValue:secondViewAttribute];
+    } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
+        _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
+    } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
+        _secondViewAttribute = secondViewAttribute;
+    } else {
+        NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
+    }
+}
+
+#pragma mark - NSLayoutConstraint multiplier proxies
+
+- (MASConstraint * (^)(CGFloat))multipliedBy {
+    return ^id(CGFloat multiplier) {
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint multiplier after it has been installed");
+        
+        self.layoutMultiplier = multiplier;
+        return self;
+    };
+}
+
+
+- (MASConstraint * (^)(CGFloat))dividedBy {
+    return ^id(CGFloat divider) {
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint multiplier after it has been installed");
+
+        self.layoutMultiplier = 1.0/divider;
+        return self;
+    };
+}
+
+#pragma mark - MASLayoutPriority proxy
+
+- (MASConstraint * (^)(MASLayoutPriority))priority {
+    return ^id(MASLayoutPriority priority) {
+        NSAssert(!self.hasBeenInstalled,
+                 @"Cannot modify constraint priority after it has been installed");
+        
+        self.layoutPriority = priority;
+        return self;
+    };
+}
+
+#pragma mark - NSLayoutRelation proxy
+
+- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
+    return ^id(id attribute, NSLayoutRelation relation) {
+        if ([attribute isKindOfClass:NSArray.class]) {
+            NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
+            NSMutableArray *children = NSMutableArray.new;
+            for (id attr in attribute) {
+                MASViewConstraint *viewConstraint = [self copy];
+                viewConstraint.secondViewAttribute = attr;
+                [children addObject:viewConstraint];
+            }
+            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithChildren:children];
+            compositeConstraint.delegate = self.delegate;
+            [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
+            return compositeConstraint;
+        } else {
+            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
+            self.layoutRelation = relation;
+            self.secondViewAttribute = attribute;
+            return self;
+        }
+    };
+}
+
+#pragma mark - Animator proxy
+
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+
+- (MASConstraint *)animator {
+    self.useAnimator = YES;
+    return self;
+}
+
+#endif
+
+#pragma mark - debug helpers
+
+- (MASConstraint * (^)(id))key {
+    return ^id(id key) {
+        self.mas_key = key;
+        return self;
+    };
+}
+
+#pragma mark - NSLayoutConstraint constant setters
+
+- (void)setValueOffset:(id)offset {
+    [self setLayoutConstantWithValue:offset];
+}
+
+- (void)setInsets:(MASEdgeInsets)insets {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeLeft:
+            self.layoutConstant = insets.left;
+            break;
+        case NSLayoutAttributeTop:
+            self.layoutConstant = insets.top;
+            break;
+        case NSLayoutAttributeBottom:
+            self.layoutConstant = -insets.bottom;
+            break;
+        case NSLayoutAttributeRight:
+            self.layoutConstant = -insets.right;
             break;
         default:
             break;

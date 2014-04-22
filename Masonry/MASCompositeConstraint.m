@@ -37,36 +37,6 @@
     [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
-#pragma mark - NSLayoutConstraint constant proxies
-
-- (MASConstraint * (^)(MASEdgeInsets))insets {
-    return ^id(MASEdgeInsets insets) {
-        self.insets = insets;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGFloat))offset {
-    return ^id(CGFloat offset) {
-        self.offset = offset;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGSize))sizeOffset {
-    return ^id(CGSize offset) {
-        self.sizeOffset = offset;
-        return self;
-    };
-}
-
-- (MASConstraint * (^)(CGPoint))centerOffset {
-    return ^id(CGPoint offset) {
-        self.centerOffset = offset;
-        return self;
-    };
-}
-
 #pragma mark - NSLayoutConstraint multiplier proxies 
 
 - (MASConstraint * (^)(CGFloat))multipliedBy {
@@ -87,34 +57,13 @@
     };
 }
 
-#pragma mark - MASLayoutPriority proxies
+#pragma mark - MASLayoutPriority proxy
 
 - (MASConstraint * (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
         for (MASConstraint *constraint in self.childConstraints) {
             constraint.priority(priority);
         }
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityLow {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultLow);
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityMedium {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultMedium);
-        return self;
-    };
-}
-
-- (MASConstraint * (^)())priorityHigh {
-    return ^id{
-        self.priority(MASLayoutPriorityDefaultHigh);
         return self;
     };
 }
@@ -128,12 +77,6 @@
         }
         return self;
     };
-}
-
-#pragma mark - Semantic properties
-
-- (MASConstraint *)with {
-    return self;
 }
 
 #pragma mark - Animator proxy
@@ -164,27 +107,15 @@
 
 #pragma mark - NSLayoutConstraint constant setters
 
+- (void)setValueOffset:(id)offset {
+    for (MASConstraint *constraint in self.childConstraints) {
+        constraint.valueOffset = offset;
+    }
+}
+
 - (void)setInsets:(MASEdgeInsets)insets {
     for (MASConstraint *constraint in self.childConstraints) {
         constraint.insets = insets;
-    }
-}
-
-- (void)setOffset:(CGFloat)offset {
-    for (MASConstraint *constraint in self.childConstraints) {
-        constraint.offset = offset;
-    }
-}
-
-- (void)setSizeOffset:(CGSize)sizeOffset {
-    for (MASConstraint *constraint in self.childConstraints) {
-        constraint.sizeOffset = sizeOffset;
-    }
-}
-
-- (void)setCenterOffset:(CGPoint)centerOffset {
-    for (MASConstraint *constraint in self.childConstraints) {
-        constraint.centerOffset = centerOffset;
     }
 }
 

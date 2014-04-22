@@ -21,13 +21,6 @@
 
 /**
  *	Modifies the NSLayoutConstraint constant,
- *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
- *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
- */
-- (MASConstraint * (^)(MASEdgeInsets insets))insets;
-
-/**
- *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
  */
@@ -44,6 +37,16 @@
  *	Modifies the NSLayoutConstraint constant
  */
 - (MASConstraint * (^)(CGFloat offset))offset;
+
+// TODO: describe
+- (MASConstraint * (^)(id value))_valueOffset;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
+ *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
+ */
+- (MASConstraint * (^)(MASEdgeInsets insets))insets;
 
 /**
  *	Sets the NSLayoutConstraint multiplier property
@@ -103,12 +106,6 @@
 // TODO: update docs for the methods above
 - (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
 
-#define equalTo(...)                 _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationEqual)
-
-#define greaterThanOrEqualTo(...)    _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationGreaterThanOrEqual)
-
-#define lessThanOrEqualTo(...)       _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationLessThanOrEqual)
-
 /**
  *	optional semantic property which has no effect but improves the readability of constraint
  */
@@ -123,32 +120,15 @@
 // NSLayoutConstraint constant Setters
 // for use outside of mas_updateConstraints/mas_makeConstraints blocks
 
+// TODO: describe
+- (void)setValueOffset:(id)offset;
+
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
 - (void)setInsets:(MASEdgeInsets)insets;
-
-/**
- *	Modifies the NSLayoutConstraint constant,
- *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
- *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
- */
-- (void)setSizeOffset:(CGSize)sizeOffset;
-
-/**
- *	Modifies the NSLayoutConstraint constant,
- *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
- *  NSLayoutAttributeCenterX, NSLayoutAttributeCenterY
- */
-- (void)setCenterOffset:(CGPoint)centerOffset;
-
-/**
- *	Modifies the NSLayoutConstraint constant
- */
-- (void)setOffset:(CGFloat)offset;
-
 
 // NSLayoutConstraint Installation support
 
@@ -190,3 +170,38 @@
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 
 @end
+
+
+/**
+ *  Convenience auto-boxing macros for MASConstraint methods.
+ *
+ *  Defining MAS_SHORTHAND_GLOBALS will turn on auto-boxing for default syntax.
+ *  A potential drawback of this is that the unprefixed macros will appear in global scope.
+ */
+#define mas_equalTo(...)                 _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationEqual)
+#define mas_greaterThanOrEqualTo(...)    _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationGreaterThanOrEqual)
+#define mas_lessThanOrEqualTo(...)       _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationLessThanOrEqual)
+
+#define mas_offset(...)                  _valueOffset(MASBoxValue((__VA_ARGS__)))
+
+
+#ifdef MAS_SHORTHAND_GLOBALS
+
+#define equalTo(...)                     mas_equalTo(__VA_ARGS__)
+#define greaterThanOrEqualTo(...)        mas_greaterThanOrEqualTo(__VA_ARGS__)
+#define lessThanOrEqualTo(...)           mas_lessThanOrEqualTo(__VA_ARGS__)
+
+#define offset(...)                      mas_offset(__VA_ARGS__)
+
+#endif
+
+
+@interface MASConstraint (AutocompletionSupport)
+
+- (MASConstraint * (^)(id attr))mas_equalTo;
+- (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo;
+- (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo;
+- (MASConstraint * (^)(id offset))mas_offset;
+
+@end
+
