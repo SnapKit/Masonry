@@ -67,58 +67,6 @@
 #endif
 }
 
-- (void)setLayoutConstantWithValue:(NSValue *)value {
-    if ([value isKindOfClass:NSNumber.class]) {
-        self.offset = [(NSNumber *)value doubleValue];
-    } else if (strcmp(value.objCType, @encode(CGPoint)) == 0) {
-        CGPoint point;
-        [value getValue:&point];
-        self.centerOffset = point;
-    } else if (strcmp(value.objCType, @encode(CGSize)) == 0) {
-        CGSize size;
-        [value getValue:&size];
-        self.sizeOffset = size;
-    } else if (strcmp(value.objCType, @encode(MASEdgeInsets)) == 0) {
-        MASEdgeInsets insets;
-        [value getValue:&insets];
-        self.insets = insets;
-    } else {
-        NSAssert(NO, @"attempting to set layout constant with unsupported value: %@", value);
-    }
-}
-
-- (void)setOffset:(CGFloat)offset {
-    self.layoutConstant = offset;
-}
-
-- (void)setSizeOffset:(CGSize)sizeOffset {
-    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-    switch (layoutAttribute) {
-        case NSLayoutAttributeWidth:
-            self.layoutConstant = sizeOffset.width;
-            break;
-        case NSLayoutAttributeHeight:
-            self.layoutConstant = sizeOffset.height;
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)setCenterOffset:(CGPoint)centerOffset {
-    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
-    switch (layoutAttribute) {
-        case NSLayoutAttributeCenterX:
-            self.layoutConstant = centerOffset.x;
-            break;
-        case NSLayoutAttributeCenterY:
-            self.layoutConstant = centerOffset.y;
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)setLayoutRelation:(NSLayoutRelation)layoutRelation {
     _layoutRelation = layoutRelation;
     self.hasLayoutRelation = YES;
@@ -130,7 +78,7 @@
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSValue.class]) {
-        [self setLayoutConstantWithValue:secondViewAttribute];
+        [self _setLayoutConstantWithValue:secondViewAttribute];
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
@@ -222,10 +170,6 @@
 
 #pragma mark - NSLayoutConstraint constant setters
 
-- (void)setValueOffset:(id)offset {
-    [self setLayoutConstantWithValue:offset];
-}
-
 - (void)setInsets:(MASEdgeInsets)insets {
     NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
     switch (layoutAttribute) {
@@ -240,6 +184,38 @@
             break;
         case NSLayoutAttributeRight:
             self.layoutConstant = -insets.right;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setOffset:(CGFloat)offset {
+    self.layoutConstant = offset;
+}
+
+- (void)setSizeOffset:(CGSize)sizeOffset {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeWidth:
+            self.layoutConstant = sizeOffset.width;
+            break;
+        case NSLayoutAttributeHeight:
+            self.layoutConstant = sizeOffset.height;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setCenterOffset:(CGPoint)centerOffset {
+    NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
+    switch (layoutAttribute) {
+        case NSLayoutAttributeCenterX:
+            self.layoutConstant = centerOffset.x;
+            break;
+        case NSLayoutAttributeCenterY:
+            self.layoutConstant = centerOffset.y;
             break;
         default:
             break;

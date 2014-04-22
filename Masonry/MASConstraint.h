@@ -22,6 +22,13 @@
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
+ */
+- (MASConstraint * (^)(MASEdgeInsets insets))insets;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
  */
 - (MASConstraint * (^)(CGSize offset))sizeOffset;
@@ -37,16 +44,6 @@
  *	Modifies the NSLayoutConstraint constant
  */
 - (MASConstraint * (^)(CGFloat offset))offset;
-
-// TODO: describe
-- (MASConstraint * (^)(id value))_valueOffset;
-
-/**
- *	Modifies the NSLayoutConstraint constant,
- *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
- *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
- */
-- (MASConstraint * (^)(MASEdgeInsets insets))insets;
 
 /**
  *	Sets the NSLayoutConstraint multiplier property
@@ -102,12 +99,8 @@
  */
 - (MASConstraint * (^)(id attr))lessThanOrEqualTo;
 
-// TODO: description
-// TODO: update docs for the methods above
-- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
-
 /**
- *	optional semantic property which has no effect but improves the readability of constraint
+ *	Optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)with;
 
@@ -120,15 +113,32 @@
 // NSLayoutConstraint constant Setters
 // for use outside of mas_updateConstraints/mas_makeConstraints blocks
 
-// TODO: describe
-- (void)setValueOffset:(id)offset;
-
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
 - (void)setInsets:(MASEdgeInsets)insets;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
+ */
+- (void)setSizeOffset:(CGSize)sizeOffset;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeCenterX, NSLayoutAttributeCenterY
+ */
+- (void)setCenterOffset:(CGPoint)centerOffset;
+
+/**
+ *	Modifies the NSLayoutConstraint constant
+ */
+- (void)setOffset:(CGFloat)offset;
+
 
 // NSLayoutConstraint Installation support
 
@@ -160,6 +170,22 @@
 - (void)uninstall;
 
 @end
+
+
+@interface MASConstraint (Private)
+
+// TODO: describe
+- (MASConstraint * (^)(id))_valueOffset;
+
+// TODO: describe
+- (void)_setLayoutConstantWithValue:(NSValue *)value;
+
+// TODO: description
+// TODO: update docs for the methods above
+- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
+
+@end
+
 
 @protocol MASConstraintDelegate <NSObject>
 

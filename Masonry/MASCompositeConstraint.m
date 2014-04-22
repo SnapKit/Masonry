@@ -107,15 +107,27 @@
 
 #pragma mark - NSLayoutConstraint constant setters
 
-- (void)setValueOffset:(id)offset {
-    for (MASConstraint *constraint in self.childConstraints) {
-        constraint.valueOffset = offset;
-    }
-}
-
 - (void)setInsets:(MASEdgeInsets)insets {
     for (MASConstraint *constraint in self.childConstraints) {
         constraint.insets = insets;
+    }
+}
+
+- (void)setOffset:(CGFloat)offset {
+    for (MASConstraint *constraint in self.childConstraints) {
+        constraint.offset = offset;
+    }
+}
+
+- (void)setSizeOffset:(CGSize)sizeOffset {
+    for (MASConstraint *constraint in self.childConstraints) {
+        constraint.sizeOffset = sizeOffset;
+    }
+}
+
+- (void)setCenterOffset:(CGPoint)centerOffset {
+    for (MASConstraint *constraint in self.childConstraints) {
+        constraint.centerOffset = centerOffset;
     }
 }
 
