@@ -78,7 +78,7 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))equalTo;
@@ -86,7 +86,7 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))greaterThanOrEqualTo;
@@ -94,7 +94,7 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationLessThanOrEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))lessThanOrEqualTo;
@@ -174,14 +174,27 @@
 
 @interface MASConstraint (Private)
 
-// TODO: describe
+/**
+ *  Modifies the NSLayoutConstraint constant based on a value type,
+ *  see _setLayoutConstantWithValue: for details
+ */
 - (MASConstraint * (^)(id))_valueOffset;
 
-// TODO: describe
+/**
+ *  Based on a provided value type, is equal to calling:
+ *  NSNumber - setOffset:
+ *  NSValue with CGPoint - setPointOffset:
+ *  NSValue with CGSize - setSizeOffset:
+ *  NSValue with MASEdgeInsets - setInsets:
+ */
 - (void)_setLayoutConstantWithValue:(NSValue *)value;
 
-// TODO: description
-// TODO: update docs for the methods above
+/**
+ *	Sets the constraint relation to given NSLayoutRelation
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSValue, NSArray
+ *  see readme for more details.
+ */
 - (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
 
 @end

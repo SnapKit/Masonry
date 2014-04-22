@@ -68,8 +68,10 @@
 #define MAS_NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
 #define MAS_NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (MAS_NSUINT_BIT - howmuch)))
 
-// TODO: description
-
+/**
+ *  Given a scalar or struct value, wraps it in NSValue
+ *  Based on EXPObjectify: https://github.com/specta/expecta
+ */
 static inline id _MASBoxValue(const char *type, ...) {
     va_list v;
     va_start(v, type);
