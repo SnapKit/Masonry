@@ -32,6 +32,12 @@
 }
 
 - (NSArray *)install {
+    if (self.removeExisting) {
+        NSArray *installedConstraints = [MASViewConstraint installedConstraintsForView:self.view];
+        for (MASConstraint *constraint in installedConstraints) {
+            [constraint uninstall];
+        }
+    }
     NSArray *constraints = self.constraints.copy;
     for (MASConstraint *constraint in constraints) {
         constraint.updateExisting = self.updateExisting;

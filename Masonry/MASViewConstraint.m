@@ -10,6 +10,29 @@
 #import "MASCompositeConstraint.h"
 #import "MASLayoutConstraint.h"
 #import "View+MASAdditions.h"
+#import <objc/runtime.h>
+
+@interface MAS_VIEW (MASConstraints)
+
+@property (nonatomic, readonly) NSMutableSet *mas_installedConstraints;
+
+@end
+
+@implementation MAS_VIEW (MASConstraints)
+
+static char kInstalledConstraintsKey;
+
+- (NSMutableSet *)mas_installedConstraints {
+    NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
+    if (!constraints) {
+        constraints = [NSMutableSet set];
+        objc_setAssociatedObject(self, &kInstalledConstraintsKey, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return constraints;
+}
+
+@end
+
 
 @interface MASViewConstraint ()
 
@@ -51,7 +74,13 @@
     return constraint;
 }
 
-#pragma mark - private
+#pragma mark - Public
+
++ (NSArray *)installedConstraintsForView:(MAS_VIEW *)view {
+    return [view.mas_installedConstraints allObjects];
+}
+
+#pragma mark - Private
 
 - (void)setLayoutConstant:(CGFloat)layoutConstant {
     _layoutConstant = layoutConstant;
@@ -344,6 +373,8 @@
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
     }
+    
+    [firstLayoutItem.mas_installedConstraints addObject:self];
 }
 
 - (MASLayoutConstraint *)layoutConstraintSimiliarTo:(MASLayoutConstraint *)layoutConstraint {
@@ -369,6 +400,7 @@
     [self.installedView removeConstraint:self.layoutConstraint];
     self.layoutConstraint = nil;
     self.installedView = nil;
+    [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
 
 @end

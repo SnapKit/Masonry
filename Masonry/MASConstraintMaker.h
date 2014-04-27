@@ -80,6 +80,11 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, assign) BOOL updateExisting;
 
 /**
+ *  Whether or not to remove existing constraints prior to installing
+ */
+@property (nonatomic, assign) BOOL removeExisting;
+
+/**
  *	initialises the maker with a default view
  *
  *	@param	view	any MASConstrait are created with this view as the first item

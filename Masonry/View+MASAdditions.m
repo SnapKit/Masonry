@@ -26,6 +26,14 @@
     return [constraintMaker install];
 }
 
+- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    constraintMaker.removeExisting = YES;
+    block(constraintMaker);
+    return [constraintMaker install];
+}
+
 #pragma mark - NSLayoutAttribute properties
 
 - (MASViewAttribute *)mas_left {

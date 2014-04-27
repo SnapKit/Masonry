@@ -29,4 +29,13 @@
     return constraints;
 }
 
+- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block {
+    NSMutableArray *constraints = [NSMutableArray array];
+    for (MAS_VIEW *view in self) {
+        NSAssert([view isKindOfClass:[MAS_VIEW class]], @"All objects in the array must be views");
+        [constraints addObjectsFromArray:[view mas_remakeConstraints:block]];
+    }
+    return constraints;
+}
+
 @end
