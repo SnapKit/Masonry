@@ -8,8 +8,6 @@
 
 #import "MASUtilities.h"
 
-@protocol MASConstraintDelegate;
-
 /**
  *	Enables Constraints to be created with chainable syntax
  *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
@@ -150,16 +148,6 @@
 #endif
 
 /**
- *  Whether or not to check for an existing constraint instead of adding constraint
- */
-@property (nonatomic, assign) BOOL updateExisting;
-
-/**
- *	Usually MASConstraintMaker but could be a parent MASConstraint
- */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
-
-/**
  *	Creates a NSLayoutConstraint and adds it to the appropriate view.
  */
 - (void)install;
@@ -168,45 +156,6 @@
  *	Removes previously installed NSLayoutConstraint
  */
 - (void)uninstall;
-
-@end
-
-
-@interface MASConstraint (Private)
-
-/**
- *  Modifies the NSLayoutConstraint constant based on a value type,
- *  see _setLayoutConstantWithValue: for details
- */
-- (MASConstraint * (^)(id))_valueOffset;
-
-/**
- *  Based on a provided value type, is equal to calling:
- *  NSNumber - setOffset:
- *  NSValue with CGPoint - setPointOffset:
- *  NSValue with CGSize - setSizeOffset:
- *  NSValue with MASEdgeInsets - setInsets:
- */
-- (void)_setLayoutConstantWithValue:(NSValue *)value;
-
-/**
- *	Sets the constraint relation to given NSLayoutRelation
- *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSValue, NSArray
- *  see readme for more details.
- */
-- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
-
-@end
-
-
-@protocol MASConstraintDelegate <NSObject>
-
-/**
- *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example 
- *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
- */
-- (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 
 @end
 
@@ -235,12 +184,27 @@
 #endif
 
 
-@interface MASConstraint (AutocompletionSupport)
+@interface MASConstraint (AutoboxingSupport)
 
+/**
+ *  Modifies the NSLayoutConstraint constant based on a value type
+ */
+- (MASConstraint * (^)(id))_valueOffset;
+
+/**
+ *	Sets the constraint relation to given NSLayoutRelation
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSValue, NSArray
+ *  see readme for more details.
+ */
+- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
+
+/**
+ *  Dummy methods to aid autocompletion
+ */
 - (MASConstraint * (^)(id attr))mas_equalTo;
 - (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo;
 - (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo;
 - (MASConstraint * (^)(id offset))mas_offset;
 
 @end
-

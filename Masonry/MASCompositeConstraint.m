@@ -7,6 +7,7 @@
 //
 
 #import "MASCompositeConstraint.h"
+#import "MASConstraint+Private.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 

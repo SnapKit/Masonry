@@ -6,6 +6,7 @@
 //
 
 #import "MASConstraint.h"
+#import "MASConstraint+Private.h"
 
 #define methodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
@@ -97,14 +98,14 @@
 - (MASConstraint * (^)(id))_valueOffset {
     return ^id(id offset) {
         NSAssert([offset isKindOfClass:NSValue.class], @"expected an NSValue offset, got: %@", offset);
-        [self _setLayoutConstantWithValue:offset];
+        [self setLayoutConstantWithValue:offset];
         return self;
     };
 }
 
 #pragma mark - NSLayoutConstraint constant setter
 
-- (void)_setLayoutConstantWithValue:(NSValue *)value {
+- (void)setLayoutConstantWithValue:(NSValue *)value {
     if ([value isKindOfClass:NSNumber.class]) {
         self.offset = [(NSNumber *)value doubleValue];
     } else if (strcmp(value.objCType, @encode(CGPoint)) == 0) {

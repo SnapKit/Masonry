@@ -7,6 +7,7 @@
 //
 
 #import "MASViewConstraint.h"
+#import "MASConstraint+Private.h"
 #import "MASConstraint.h"
 #import "View+MASAdditions.h"
 #import "MASConstraintDelegateMock.h"

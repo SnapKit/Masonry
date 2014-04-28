@@ -7,6 +7,7 @@
 //
 
 #import "MASViewConstraint.h"
+#import "MASConstraint+Private.h"
 #import "MASCompositeConstraint.h"
 #import "MASLayoutConstraint.h"
 #import "View+MASAdditions.h"
@@ -78,7 +79,7 @@
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSValue.class]) {
-        [self _setLayoutConstantWithValue:secondViewAttribute];
+        [self setLayoutConstantWithValue:secondViewAttribute];
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {

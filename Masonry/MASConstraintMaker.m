@@ -9,6 +9,7 @@
 #import "MASConstraintMaker.h"
 #import "MASViewConstraint.h"
 #import "MASCompositeConstraint.h"
+#import "MASConstraint+Private.h"
 #import "MASViewAttribute.h"
 #import "View+MASAdditions.h"
 
