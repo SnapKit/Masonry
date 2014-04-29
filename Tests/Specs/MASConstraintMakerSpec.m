@@ -172,6 +172,28 @@ SpecBegin(MASConstraintMaker) {
     expect(constraint2.constant).to.equal(20);
 }
 
+- (void)testRemoveConstraints {
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+    
+    maker.left.equalTo(newView).offset(10);
+    maker.right.equalTo(newView).offset(20);
+    maker.width.equalTo(newView).offset(30);
+    [maker install];
+    
+    expect(superview.constraints).to.haveCountOf(3);
+    expect([MASViewConstraint installedConstraintsForView:view]).to.haveCountOf(3);
+    
+    maker.removeExisting = YES;
+    maker.height.equalTo(newView).offset(100);
+    [maker install];
+    
+    expect(superview.constraints).to.haveCountOf(1);
+    expect([MASViewConstraint installedConstraintsForView:view]).to.haveCountOf(1);
+    NSLayoutConstraint *constraint1 = superview.constraints[0];
+    expect(constraint1.constant).to.equal(100);
+}
+
 - (void)testCreateNewViewAttributes {
     expect(maker.left).notTo.beIdenticalTo(maker.left);
     expect(maker.right).notTo.beIdenticalTo(maker.right);

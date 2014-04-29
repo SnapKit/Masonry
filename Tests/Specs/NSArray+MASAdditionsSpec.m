@@ -52,4 +52,11 @@ SpecBegin(NSArray_MASAdditions)
     }];
 }
 
+- (void)testShouldSetRemoveExistingForArray {
+    NSArray *views = @[ MAS_VIEW.new ];
+    [views mas_remakeConstraints:^(MASConstraintMaker *make) {
+        expect(make.removeExisting).to.beTruthy();
+    }];
+}
+
 SpecEnd

@@ -28,4 +28,13 @@ SpecBegin(View_MASAdditions)
     expect(newView.translatesAutoresizingMaskIntoConstraints).to.beFalsy();
 }
 
+- (void)testSetRemoveExisting {
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [newView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        expect(make.removeExisting).to.beTruthy();
+    }];
+    
+    expect(newView.translatesAutoresizingMaskIntoConstraints).to.beFalsy();
+}
+
 SpecEnd
