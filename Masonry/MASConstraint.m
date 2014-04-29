@@ -30,13 +30,31 @@
     };
 }
 
+- (MASConstraint * (^)(id))mas_equalTo {
+    return ^id(id attribute) {
+        return self.equalToWithRelation(attribute, NSLayoutRelationEqual);
+    };
+}
+
 - (MASConstraint * (^)(id))greaterThanOrEqualTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
     };
 }
 
+- (MASConstraint * (^)(id))mas_greaterThanOrEqualTo {
+    return ^id(id attribute) {
+        return self.equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
+    };
+}
+
 - (MASConstraint * (^)(id))lessThanOrEqualTo {
+    return ^id(id attribute) {
+        return self.equalToWithRelation(attribute, NSLayoutRelationLessThanOrEqual);
+    };
+}
+
+- (MASConstraint * (^)(id))mas_lessThanOrEqualTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationLessThanOrEqual);
     };
@@ -103,6 +121,11 @@
     };
 }
 
+- (MASConstraint * (^)(id offset))mas_offset {
+    // Will never be called due to macro
+    return nil;
+}
+
 #pragma mark - NSLayoutConstraint constant setter
 
 - (void)setLayoutConstantWithValue:(NSValue *)value {
@@ -130,16 +153,6 @@
 - (MASConstraint *)with {
     return self;
 }
-
-#pragma mark - Autocompletion dummies
-
-- (MASConstraint * (^)(id attr))mas_equalTo { return nil; }
-
-- (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo { return nil; }
-
-- (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo { return nil; }
-
-- (MASConstraint * (^)(id offset))mas_offset { return nil; }
 
 #pragma mark - Abstract
 

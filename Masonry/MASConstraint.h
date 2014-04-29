@@ -192,11 +192,16 @@
 @interface MASConstraint (AutoboxingSupport)
 
 /**
- *  Dummy methods to aid autocompletion
+ *  Aliases to corresponding relation methods (for shorthand macros)
+ *  Also needed to aid autocompletion
  */
 - (MASConstraint * (^)(id attr))mas_equalTo;
 - (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo;
 - (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo;
+
+/**
+ *  A dummy method to aid autocompletion
+ */
 - (MASConstraint * (^)(id offset))mas_offset;
 
 @end
