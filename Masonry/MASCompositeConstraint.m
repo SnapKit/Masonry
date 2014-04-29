@@ -69,12 +69,12 @@
     };
 }
 
-#pragma mark - NSLayoutRelation proxies
+#pragma mark - NSLayoutRelation proxy
 
-- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
+- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation {
     return ^id(id attr, NSLayoutRelation relation) {
         for (MASConstraint *constraint in self.childConstraints.copy) {
-            constraint._equalToWithRelation(attr, relation);
+            constraint.equalToWithRelation(attr, relation);
         }
         return self;
     };

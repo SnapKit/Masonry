@@ -26,19 +26,19 @@
 
 - (MASConstraint * (^)(id))equalTo {
     return ^id(id attribute) {
-        return self._equalToWithRelation(attribute, NSLayoutRelationEqual);
+        return self.equalToWithRelation(attribute, NSLayoutRelationEqual);
     };
 }
 
 - (MASConstraint * (^)(id))greaterThanOrEqualTo {
     return ^id(id attribute) {
-        return self._equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
+        return self.equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
     };
 }
 
 - (MASConstraint * (^)(id))lessThanOrEqualTo {
     return ^id(id attribute) {
-        return self._equalToWithRelation(attribute, NSLayoutRelationLessThanOrEqual);
+        return self.equalToWithRelation(attribute, NSLayoutRelationLessThanOrEqual);
     };
 }
 
@@ -95,8 +95,8 @@
     };
 }
 
-- (MASConstraint * (^)(id))_valueOffset {
-    return ^id(id offset) {
+- (MASConstraint * (^)(NSValue *value))valueOffset {
+    return ^id(NSValue *offset) {
         NSAssert([offset isKindOfClass:NSValue.class], @"expected an NSValue offset, got: %@", offset);
         [self setLayoutConstantWithValue:offset];
         return self;
@@ -149,7 +149,7 @@
 
 - (MASConstraint * (^)(MASLayoutPriority priority))priority { methodNotImplemented(); }
 
-- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation { methodNotImplemented(); }
+- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation { methodNotImplemented(); }
 
 - (MASConstraint * (^)(id key))key { methodNotImplemented(); }
 

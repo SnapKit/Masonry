@@ -44,6 +44,11 @@
 - (MASConstraint * (^)(CGFloat offset))offset;
 
 /**
+ *  Modifies the NSLayoutConstraint constant based on a value type
+ */
+- (MASConstraint * (^)(NSValue *value))valueOffset;
+
+/**
  *	Sets the NSLayoutConstraint multiplier property
  */
 - (MASConstraint * (^)(CGFloat multiplier))multipliedBy;
@@ -166,11 +171,11 @@
  *  Defining MAS_SHORTHAND_GLOBALS will turn on auto-boxing for default syntax.
  *  A potential drawback of this is that the unprefixed macros will appear in global scope.
  */
-#define mas_equalTo(...)                 _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationEqual)
-#define mas_greaterThanOrEqualTo(...)    _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationGreaterThanOrEqual)
-#define mas_lessThanOrEqualTo(...)       _equalToWithRelation(MASBoxValue((__VA_ARGS__)), NSLayoutRelationLessThanOrEqual)
+#define mas_equalTo(...)                 equalTo(MASBoxValue((__VA_ARGS__)))
+#define mas_greaterThanOrEqualTo(...)    greaterThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
+#define mas_lessThanOrEqualTo(...)       lessThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
 
-#define mas_offset(...)                  _valueOffset(MASBoxValue((__VA_ARGS__)))
+#define mas_offset(...)                  valueOffset(MASBoxValue((__VA_ARGS__)))
 
 
 #ifdef MAS_SHORTHAND_GLOBALS
@@ -185,19 +190,6 @@
 
 
 @interface MASConstraint (AutoboxingSupport)
-
-/**
- *  Modifies the NSLayoutConstraint constant based on a value type
- */
-- (MASConstraint * (^)(id))_valueOffset;
-
-/**
- *	Sets the constraint relation to given NSLayoutRelation
- *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSValue, NSArray
- *  see readme for more details.
- */
-- (MASConstraint * (^)(id attr, NSLayoutRelation relation))_equalToWithRelation;
 
 /**
  *  Dummy methods to aid autocompletion

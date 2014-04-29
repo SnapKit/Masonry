@@ -126,7 +126,7 @@
 
 #pragma mark - NSLayoutRelation proxy
 
-- (MASConstraint * (^)(id, NSLayoutRelation))_equalToWithRelation {
+- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation {
     return ^id(id attribute, NSLayoutRelation relation) {
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");

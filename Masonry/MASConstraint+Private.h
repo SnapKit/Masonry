@@ -35,6 +35,19 @@
 @end
 
 
+@interface MASConstraint (Abstract)
+
+/**
+ *	Sets the constraint relation to given NSLayoutRelation
+ *  returns a block which accepts one of the following:
+ *    MASViewAttribute, UIView, NSValue, NSArray
+ *  see readme for more details.
+ */
+- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation;
+
+@end
+
+
 @protocol MASConstraintDelegate <NSObject>
 
 /**
