@@ -7,6 +7,7 @@
 //
 
 #import "MASViewConstraint.h"
+#import "MASConstraint+Private.h"
 #import "MASConstraint.h"
 #import "View+MASAdditions.h"
 #import "MASConstraintDelegateMock.h"
@@ -114,6 +115,72 @@ SpecBegin(MASViewConstraint) {
     expect(constraint.firstViewAttribute.layoutAttribute).to.equal(constraint.secondViewAttribute.layoutAttribute);
 }
 
+- (void)testRelationAcceptsNumber {
+    constraint.equalTo(@42);
+    
+    expect(constraint.secondViewAttribute.view).to.beNil();
+    expect(constraint.layoutConstant).to.equal(42);
+}
+
+- (void)testRelationAcceptsValueWithCGPoint {
+    CGPoint point = CGPointMake(10, 20);
+    NSValue *value = [NSValue value:&point withObjCType:@encode(CGPoint)];
+    
+    MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
+    centerX.equalTo(value);
+    expect(centerX.layoutConstant).to.equal(10);
+    
+    MASViewConstraint *centerY = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerY];
+    centerY.equalTo(value);
+    expect(centerY.layoutConstant).to.equal(20);
+    
+    MASViewConstraint *width = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_width];
+    width.equalTo(value);
+    expect(width.layoutConstant).to.equal(0);
+}
+
+- (void)testRelationAcceptsValueWithCGSize {
+    CGSize size = CGSizeMake(30, 40);
+    NSValue *value = [NSValue value:&size withObjCType:@encode(CGSize)];
+    
+    MASViewConstraint *width = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_width];
+    width.equalTo(value);
+    expect(width.layoutConstant).to.equal(30);
+
+    MASViewConstraint *height = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_height];
+    height.equalTo(value);
+    expect(height.layoutConstant).to.equal(40);
+    
+    MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
+    centerX.equalTo(value);
+    expect(centerX.layoutConstant).to.equal(0);
+}
+
+- (void)testRelationAcceptsValueWithEdgeInsets {
+    MASEdgeInsets insets = (MASEdgeInsets){10, 20, 30, 40};
+    NSValue *value = [NSValue value:&insets withObjCType:@encode(MASEdgeInsets)];
+    
+    MASViewConstraint *top = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_top];
+    top.equalTo(value);
+    expect(top.layoutConstant).to.equal(10);
+    
+    MASViewConstraint *left = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_left];
+    left.equalTo(value);
+    expect(left.layoutConstant).to.equal(20);
+
+    MASViewConstraint *bottom = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_bottom];
+    bottom.equalTo(value);
+    expect(bottom.layoutConstant).to.equal(-30);
+
+    MASViewConstraint *right = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_right];
+    right.equalTo(value);
+    expect(right.layoutConstant).to.equal(-40);
+    
+    MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
+    centerX.equalTo(value);
+    expect(centerX.layoutConstant).to.equal(0);
+}
+
 
 - (void)testRelationCreatesCompositeWithArrayOfViews {
     NSArray *views = @[MAS_VIEW.new, MAS_VIEW.new, MAS_VIEW.new];
@@ -156,6 +223,59 @@ SpecBegin(MASViewConstraint) {
         constraint.equalTo(@{});
     }).to.raise(@"NSInternalInconsistencyException");
 }
+
+
+- (void)testRelationAcceptsAutoboxedScalar {
+    constraint.mas_equalTo(42);
+    expect(constraint.layoutConstant).to.equal(42);
+}
+
+- (void)testRelationAcceptsAutoboxedCGPoint {
+    MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
+    centerX.mas_equalTo(CGPointMake(10, 20));
+    expect(centerX.layoutConstant).to.equal(10);
+    
+    MASViewConstraint *centerY = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerY];
+    centerY.mas_equalTo(CGPointMake(10, 20));
+    expect(centerY.layoutConstant).to.equal(20);
+}
+
+- (void)testRelationAcceptsAutoboxedCGSize {
+    MASViewConstraint *width = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_width];
+    width.mas_equalTo(CGSizeMake(30, 40));
+    expect(width.layoutConstant).to.equal(30);
+    
+    MASViewConstraint *height = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_height];
+    height.mas_equalTo(CGSizeMake(30, 40));
+    expect(height.layoutConstant).to.equal(40);
+}
+
+- (void)testRelationAcceptsAutoboxedEdgeInsets {
+    MASEdgeInsets insets = (MASEdgeInsets){10, 20, 30, 40};
+    
+    MASViewConstraint *top = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_top];
+    top.mas_equalTo(insets);
+    expect(top.layoutConstant).to.equal(10);
+    
+    MASViewConstraint *left = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_left];
+    left.mas_equalTo(insets);
+    expect(left.layoutConstant).to.equal(20);
+    
+    MASViewConstraint *bottom = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_bottom];
+    bottom.mas_equalTo(insets);
+    expect(bottom.layoutConstant).to.equal(-30);
+    
+    MASViewConstraint *right = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_right];
+    right.mas_equalTo(insets);
+    expect(right.layoutConstant).to.equal(-40);
+}
+
+- (void)testRelationAutoboxingComplainsWithUnsupportedArgument {
+    expect(^{
+        constraint.mas_equalTo(@{});
+    }).to.raise(@"NSInternalInconsistencyException");
+}
+
 
 - (void)testPriorityHigh {
     constraint.equalTo(otherView);
@@ -273,6 +393,57 @@ SpecBegin(MASViewConstraint) {
     expect(height.layoutConstant).to.equal(55);
 }
 
+
+- (void)testAutoboxedConstantUpdateOffset {
+    constraint.mas_offset(42);
+    expect(constraint.layoutConstant).to.equal(42);
+}
+
+- (void)testAutoboxedConstantUpdateSidesOffset {
+    MASEdgeInsets insets = (MASEdgeInsets){10, 20, 30, 40};
+    
+    MASViewConstraint *centerY = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerY];
+    centerY.mas_offset(insets);
+    expect(centerY.layoutConstant).to.equal(0);
+    
+    MASViewConstraint *top = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_top];
+    top.mas_offset(insets);
+    expect(top.layoutConstant).to.equal(10);
+    
+    MASViewConstraint *left = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_left];
+    left.mas_offset(insets);
+    expect(left.layoutConstant).to.equal(20);
+    
+    MASViewConstraint *bottom = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_bottom];
+    bottom.mas_offset(insets);
+    expect(bottom.layoutConstant).to.equal(-30);
+    
+    MASViewConstraint *right = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_right];
+    right.mas_offset(insets);
+    expect(right.layoutConstant).to.equal(-40);
+}
+
+- (void)testAutoboxedConstantUpdateCenterOffset {
+    MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
+    centerX.mas_offset(CGPointMake(-20, -10));
+    expect(centerX.layoutConstant).to.equal(-20);
+    
+    MASViewConstraint *centerY = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerY];
+    centerY.mas_offset(CGPointMake(-20, -10));
+    expect(centerY.layoutConstant).to.equal(-10);
+}
+
+- (void)testAutoboxedConstantUpdateSizeOffset {
+    MASViewConstraint *width = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_width];
+    width.mas_offset(CGSizeMake(-40, 55));
+    expect(width.layoutConstant).to.equal(-40);
+    
+    MASViewConstraint *height = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_height];
+    height.mas_offset(CGSizeMake(-40, 55));
+    expect(height.layoutConstant).to.equal(55);
+}
+
+
 - (void)testInstallLayoutConstraintOnCommit {
     MASViewAttribute *secondViewAttribute = otherView.mas_height;
     constraint.equalTo(secondViewAttribute);
@@ -312,8 +483,7 @@ SpecBegin(MASViewConstraint) {
     expect(superview.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
 }
 
-
-- (void)testInstallSizeAsConstant {
+- (void)testInstallWidthAsConstant {
     constraint.equalTo(@10);
     [constraint install];
 

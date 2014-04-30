@@ -35,11 +35,11 @@
         make.right.equalTo(@-20);
     }];
     
+    // auto-boxing macros allow you to simply use scalars and structs, they will be wrapped automatically
+    
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(@50);
-        make.centerX.equalTo(@0);
-        make.width.equalTo(@200);
-        make.height.equalTo(@100);
+        make.center.equalTo(CGPointMake(0, 50));
+        make.size.equalTo(CGSizeMake(200, 100));
     }];
     
     return self;

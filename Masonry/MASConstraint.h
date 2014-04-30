@@ -8,8 +8,6 @@
 
 #import "MASUtilities.h"
 
-@protocol MASConstraintDelegate;
-
 /**
  *	Enables Constraints to be created with chainable syntax
  *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
@@ -21,7 +19,7 @@
 
 /**
  *	Modifies the NSLayoutConstraint constant,
- *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following 
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
 - (MASConstraint * (^)(MASEdgeInsets insets))insets;
@@ -44,6 +42,11 @@
  *	Modifies the NSLayoutConstraint constant
  */
 - (MASConstraint * (^)(CGFloat offset))offset;
+
+/**
+ *  Modifies the NSLayoutConstraint constant based on a value type
+ */
+- (MASConstraint * (^)(NSValue *value))valueOffset;
 
 /**
  *	Sets the NSLayoutConstraint multiplier property
@@ -78,7 +81,7 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))equalTo;
@@ -86,7 +89,7 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))greaterThanOrEqualTo;
@@ -94,13 +97,13 @@
 /**
  *	Sets the constraint relation to NSLayoutRelationLessThanOrEqual
  *  returns a block which accepts one of the following:
- *    MASViewAttribute, UIView, NSNumber, NSArray
+ *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))lessThanOrEqualTo;
 
 /**
- *	optional semantic property which has no effect but improves the readability of constraint
+ *	Optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)with;
 
@@ -150,16 +153,6 @@
 #endif
 
 /**
- *  Whether or not to check for an existing constraint instead of adding constraint
- */
-@property (nonatomic, assign) BOOL updateExisting;
-
-/**
- *	Usually MASConstraintMaker but could be a parent MASConstraint
- */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
-
-/**
  *	Creates a NSLayoutConstraint and adds it to the appropriate view.
  */
 - (void)install;
@@ -171,12 +164,44 @@
 
 @end
 
-@protocol MASConstraintDelegate <NSObject>
 
 /**
- *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example 
- *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
+ *  Convenience auto-boxing macros for MASConstraint methods.
+ *
+ *  Defining MAS_SHORTHAND_GLOBALS will turn on auto-boxing for default syntax.
+ *  A potential drawback of this is that the unprefixed macros will appear in global scope.
  */
-- (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
+#define mas_equalTo(...)                 equalTo(MASBoxValue((__VA_ARGS__)))
+#define mas_greaterThanOrEqualTo(...)    greaterThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
+#define mas_lessThanOrEqualTo(...)       lessThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
+
+#define mas_offset(...)                  valueOffset(MASBoxValue((__VA_ARGS__)))
+
+
+#ifdef MAS_SHORTHAND_GLOBALS
+
+#define equalTo(...)                     mas_equalTo(__VA_ARGS__)
+#define greaterThanOrEqualTo(...)        mas_greaterThanOrEqualTo(__VA_ARGS__)
+#define lessThanOrEqualTo(...)           mas_lessThanOrEqualTo(__VA_ARGS__)
+
+#define offset(...)                      mas_offset(__VA_ARGS__)
+
+#endif
+
+
+@interface MASConstraint (AutoboxingSupport)
+
+/**
+ *  Aliases to corresponding relation methods (for shorthand macros)
+ *  Also needed to aid autocompletion
+ */
+- (MASConstraint * (^)(id attr))mas_equalTo;
+- (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo;
+- (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo;
+
+/**
+ *  A dummy method to aid autocompletion
+ */
+- (MASConstraint * (^)(id offset))mas_offset;
 
 @end
