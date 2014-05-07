@@ -295,7 +295,7 @@ static char kInstalledConstraintsKey;
 
     MASLayoutConstraint *existingConstraint = nil;
     if (self.updateExisting) {
-        existingConstraint = [self layoutConstraintSimiliarTo:layoutConstraint];
+        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
     }
     if (existingConstraint) {
         // just update the constant
@@ -309,7 +309,7 @@ static char kInstalledConstraintsKey;
     [firstLayoutItem.mas_installedConstraints addObject:self];
 }
 
-- (MASLayoutConstraint *)layoutConstraintSimiliarTo:(MASLayoutConstraint *)layoutConstraint {
+- (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
     // check if any constraints are the same apart from the only mutable property constant
 
     // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
@@ -320,6 +320,7 @@ static char kInstalledConstraintsKey;
         if (existingConstraint.secondItem != layoutConstraint.secondItem) continue;
         if (existingConstraint.firstAttribute != layoutConstraint.firstAttribute) continue;
         if (existingConstraint.secondAttribute != layoutConstraint.secondAttribute) continue;
+        if (existingConstraint.relation != layoutConstraint.relation) continue;
         if (existingConstraint.multiplier != layoutConstraint.multiplier) continue;
         if (existingConstraint.priority != layoutConstraint.priority) continue;
 
