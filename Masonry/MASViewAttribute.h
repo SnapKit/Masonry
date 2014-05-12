@@ -17,7 +17,7 @@
 /**
  *  The view which the reciever relates to
  */
-@property (nonatomic, weak, readonly) MAS_VIEW *view;
+@property (nonatomic, unsafe_unretained, readonly) MAS_VIEW *view;
 
 /**
  *  The attribute which the reciever relates to
