@@ -27,7 +27,7 @@ If you want the unprefixed version you need to add `MAS_SHORTHAND_GLOBALS` befor
 
 https://github.com/cloudkite/Masonry/pull/62
 
-#### Added ability to chain view attributes
+#### - Added ability to chain view attributes
 
 Composites are great for defining multiple attributes at once. The following example makes top, left, bottom, right equal to `superview`.
 
