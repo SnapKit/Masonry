@@ -152,4 +152,25 @@ SpecBegin(MASCompositeConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
+
+- (void)testAttributeChainingShouldCallDelegate {
+    NSArray *children = @[
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_left],
+        [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_right]
+    ];
+    composite = [[MASCompositeConstraint alloc] initWithChildren:children];
+    composite.delegate = delegate;
+    expect(composite.childConstraints.count).to.equal(2);
+    
+    MASConstraint *result = (id)composite.and.bottom;
+    expect(result).to.beIdenticalTo(composite);
+    expect(delegate.chainedConstraints).to.equal(@[composite]);
+    expect(composite.childConstraints.count).to.equal(3);
+    
+    MASViewConstraint *newChild = composite.childConstraints[2];
+    
+    expect(newChild.firstViewAttribute.layoutAttribute).to.equal(@(NSLayoutAttributeBottom));
+    expect(newChild.delegate).to.beIdenticalTo(composite);
+}
+
 SpecEnd

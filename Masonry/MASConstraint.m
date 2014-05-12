@@ -8,7 +8,7 @@
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"
 
-#define methodNotImplemented() \
+#define MASMethodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \
                                  userInfo:nil]
@@ -154,58 +154,88 @@
     return self;
 }
 
+- (MASConstraint *)and {
+    return self;
+}
+
+#pragma mark - Chaining
+
+- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    MASMethodNotImplemented();
+}
+
+- (MASConstraint *)left {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeft];
+}
+
+- (MASConstraint *)top {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeTop];
+}
+
+- (MASConstraint *)right {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeRight];
+}
+
+- (MASConstraint *)bottom {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBottom];
+}
+
+- (MASConstraint *)leading {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeading];
+}
+
+- (MASConstraint *)trailing {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeTrailing];
+}
+
+- (MASConstraint *)width {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeWidth];
+}
+
+- (MASConstraint *)height {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeHeight];
+}
+
+- (MASConstraint *)centerX {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeCenterX];
+}
+
+- (MASConstraint *)centerY {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeCenterY];
+}
+
+- (MASConstraint *)baseline {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
+}
+
 #pragma mark - Abstract
 
-- (MASConstraint * (^)(CGFloat multiplier))multipliedBy { methodNotImplemented(); }
+- (MASConstraint * (^)(CGFloat multiplier))multipliedBy { MASMethodNotImplemented(); }
 
-- (MASConstraint * (^)(CGFloat divider))dividedBy { methodNotImplemented(); }
+- (MASConstraint * (^)(CGFloat divider))dividedBy { MASMethodNotImplemented(); }
 
-- (MASConstraint * (^)(MASLayoutPriority priority))priority { methodNotImplemented(); }
+- (MASConstraint * (^)(MASLayoutPriority priority))priority { MASMethodNotImplemented(); }
 
-- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation { methodNotImplemented(); }
+- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation { MASMethodNotImplemented(); }
 
-- (MASConstraint *)and { methodNotImplemented(); }
+- (MASConstraint * (^)(id key))key { MASMethodNotImplemented(); }
 
-- (MASConstraint *)left { methodNotImplemented(); }
+- (void)setInsets:(MASEdgeInsets)insets { MASMethodNotImplemented(); }
 
-- (MASConstraint *)top { methodNotImplemented(); }
+- (void)setSizeOffset:(CGSize)sizeOffset { MASMethodNotImplemented(); }
 
-- (MASConstraint *)right { methodNotImplemented(); }
+- (void)setCenterOffset:(CGPoint)centerOffset { MASMethodNotImplemented(); }
 
-- (MASConstraint *)bottom { methodNotImplemented(); }
-
-- (MASConstraint *)leading { methodNotImplemented(); }
-
-- (MASConstraint *)trailing { methodNotImplemented(); }
-
-- (MASConstraint *)width { methodNotImplemented(); }
-
-- (MASConstraint *)height { methodNotImplemented(); }
-
-- (MASConstraint *)centerX { methodNotImplemented(); }
-
-- (MASConstraint *)centerY { methodNotImplemented(); }
-
-- (MASConstraint *)baseline { methodNotImplemented(); }
-
-- (MASConstraint * (^)(id key))key { methodNotImplemented(); }
-
-- (void)setInsets:(MASEdgeInsets)insets { methodNotImplemented(); }
-
-- (void)setSizeOffset:(CGSize)sizeOffset { methodNotImplemented(); }
-
-- (void)setCenterOffset:(CGPoint)centerOffset { methodNotImplemented(); }
-
-- (void)setOffset:(CGFloat)offset { methodNotImplemented(); }
+- (void)setOffset:(CGFloat)offset { MASMethodNotImplemented(); }
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 
-- (MASConstraint *)animator { methodNotImplemented(); }
+- (MASConstraint *)animator { MASMethodNotImplemented(); }
 
 #endif
 
-- (void)install { methodNotImplemented(); }
+- (void)install { MASMethodNotImplemented(); }
 
-- (void)uninstall { methodNotImplemented(); }
+- (void)uninstall { MASMethodNotImplemented(); }
 
 @end

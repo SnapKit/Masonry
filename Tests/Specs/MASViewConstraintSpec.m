@@ -509,4 +509,19 @@ SpecBegin(MASViewConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
+- (void)testAttributeChainingShouldNotHaveRelation {
+    MASViewAttribute *secondViewAttribute = otherView.mas_top;
+    constraint.lessThanOrEqualTo(secondViewAttribute);
+    
+    expect(^{
+        id result = constraint.bottom;
+    }).to.raise(@"NSInternalInconsistencyException");
+}
+
+- (void)testAttributeChainingShouldCallDelegate {
+    MASViewConstraint *result = (id)constraint.and.bottom;
+    expect(result.firstViewAttribute.layoutAttribute).to.equal(@(NSLayoutAttributeBottom));
+    expect(delegate.chainedConstraints).to.equal(@[constraint]);
+}
+
 SpecEnd

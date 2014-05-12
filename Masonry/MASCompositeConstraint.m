@@ -87,65 +87,11 @@
     };
 }
 
-#pragma mark - Semantic properties
-
-- (MASConstraint *)with {
-    return self;
-}
-
-- (MASConstraint *)and {
-    return self;
-}
-
 #pragma mark - attribute chaining
 
 - (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
     [self constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
     return self;
-}
-
-- (MASConstraint *)left {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeft];
-}
-
-- (MASConstraint *)top {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeTop];
-}
-
-- (MASConstraint *)right {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeRight];
-}
-
-- (MASConstraint *)bottom {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBottom];
-}
-
-- (MASConstraint *)leading {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeading];
-}
-
-- (MASConstraint *)trailing {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeTrailing];
-}
-
-- (MASConstraint *)width {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeWidth];
-}
-
-- (MASConstraint *)height {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeHeight];
-}
-
-- (MASConstraint *)centerX {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeCenterX];
-}
-
-- (MASConstraint *)centerY {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeCenterY];
-}
-
-- (MASConstraint *)baseline {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
 }
 
 #pragma mark - Animator proxy

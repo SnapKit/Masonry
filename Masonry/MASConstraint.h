@@ -223,6 +223,4 @@
  */
 - (MASConstraint * (^)(id offset))mas_offset;
 
-- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
-
 @end

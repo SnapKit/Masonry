@@ -11,5 +11,6 @@
 @interface MASConstraintDelegateMock : NSObject <MASConstraintDelegate>
 
 @property (nonatomic, strong) NSMutableArray *constraints;
+@property (nonatomic, strong) NSMutableArray *chainedConstraints;
 
 @end
