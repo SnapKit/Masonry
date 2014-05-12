@@ -178,6 +178,24 @@ static char kInstalledConstraintsKey;
     };
 }
 
+#pragma mark - Semantic properties
+
+- (MASConstraint *)with {
+    return self;
+}
+
+- (MASConstraint *)and {
+    return self;
+}
+
+#pragma mark - attribute chaining
+
+- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    NSAssert(!self.hasLayoutRelation, @"Attributes should be chained before defining the constraint relation");
+
+    return [self.delegate constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
+}
+
 #pragma mark - Animator proxy
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE

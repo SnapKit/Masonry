@@ -45,6 +45,11 @@
  */
 - (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation;
 
+/**
+ *	Override to set a custom chaining behaviour
+ */
+- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
+
 @end
 
 
@@ -55,5 +60,7 @@
  *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
  */
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
+
+- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 @end

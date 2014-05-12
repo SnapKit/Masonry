@@ -38,6 +38,13 @@
     [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
+- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    MASConstraint *newConstraint = [self.delegate constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
+    newConstraint.delegate = self;
+    [self.childConstraints addObject:newConstraint];
+    return newConstraint;
+}
+
 #pragma mark - NSLayoutConstraint multiplier proxies 
 
 - (MASConstraint * (^)(CGFloat))multipliedBy {
@@ -78,6 +85,13 @@
         }
         return self;
     };
+}
+
+#pragma mark - attribute chaining
+
+- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    [self constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
+    return self;
 }
 
 #pragma mark - Animator proxy
