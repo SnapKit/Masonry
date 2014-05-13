@@ -1,0 +1,17 @@
+PODS:
+  - Expecta (0.2.3)
+  - Masonry (0.4.0)
+
+DEPENDENCIES:
+  - Expecta
+  - Masonry (from `./`)
+
+EXTERNAL SOURCES:
+  Masonry:
+    :path: ./
+
+SPEC CHECKSUMS:
+  Expecta: 2434bb2e2b3b1814280ec5d9a11359433d035975
+  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
+
+COCOAPODS: 0.32.1

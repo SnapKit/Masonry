@@ -13,7 +13,6 @@ profile
 *.moved-aside
 # Desktop Servies
 .DS_Store
-Podfile.lock
 /Pods/
 script/env.sh
 
