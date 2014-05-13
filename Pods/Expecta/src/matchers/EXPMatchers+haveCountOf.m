@@ -1,14 +1,15 @@
 #import "EXPMatchers+haveCountOf.h"
 
 EXPMatcherImplementationBegin(haveCountOf, (NSUInteger expected)) {
-  BOOL actualIsCompatible = [actual isKindOfClass:[NSString class]] || [actual respondsToSelector:@selector(count)];
+  BOOL actualIsStringy = [actual isKindOfClass:[NSString class]] || [actual isKindOfClass:[NSAttributedString class]];
+  BOOL actualIsCompatible = actualIsStringy || [actual respondsToSelector:@selector(count)];
 
   prerequisite(^BOOL{
     return actualIsCompatible;
   });
 
   NSUInteger (^count)(id) = ^(id actual) {
-    if([actual isKindOfClass:[NSString class]]) {
+    if(actualIsStringy) {
       return [actual length];
   } else {
       return [actual count];
@@ -23,12 +24,12 @@ EXPMatcherImplementationBegin(haveCountOf, (NSUInteger expected)) {
   });
 
   failureMessageForTo(^NSString *{
-    if(!actualIsCompatible) return [NSString stringWithFormat:@"%@ is not an instance of NSString, NSArray, NSSet, NSOrderedSet, or NSDictionary", EXPDescribeObject(actual)];
+    if(!actualIsCompatible) return [NSString stringWithFormat:@"%@ is not an instance of NSString, NSAttributedString, NSArray, NSSet, NSOrderedSet, or NSDictionary", EXPDescribeObject(actual)];
     return [NSString stringWithFormat:@"expected %@ to have a count of %zi but got %zi", EXPDescribeObject(actual), expected, count(actual)];
   });
 
   failureMessageForNotTo(^NSString *{
-    if(!actualIsCompatible) return [NSString stringWithFormat:@"%@ is not an instance of NSString, NSArray, NSSet, NSOrderedSet, or NSDictionary", EXPDescribeObject(actual)];
+    if(!actualIsCompatible) return [NSString stringWithFormat:@"%@ is not an instance of NSString, NSAttributedString, NSArray, NSSet, NSOrderedSet, or NSDictionary", EXPDescribeObject(actual)];
     return [NSString stringWithFormat:@"expected %@ not to have a count of %zi", EXPDescribeObject(actual), expected];
   });
 }
