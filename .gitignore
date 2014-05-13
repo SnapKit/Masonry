@@ -13,7 +13,6 @@ profile
 *.moved-aside
 # Desktop Servies
 .DS_Store
-/Pods/
 script/env.sh
 
 /Masonry.xcworkspace/xcshareddata/Masonry.xccheckout
