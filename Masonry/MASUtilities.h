@@ -88,13 +88,6 @@ static inline id _MASBoxValue(const char *type, ...) {
     } else if (strcmp(type, @encode(MASEdgeInsets)) == 0) {
         MASEdgeInsets actual = (MASEdgeInsets)va_arg(v, MASEdgeInsets);
         obj = [NSValue value:&actual withObjCType:type];
-    } else if (strcmp(type, @encode(char)) == 0) {
-        char actual = (char)va_arg(v, int);
-        obj = [NSNumber numberWithChar:actual];
-    } else if(strcmp(type, @encode(_Bool)) == 0) {
-        _Static_assert(sizeof(_Bool) <= sizeof(int), "Expected _Bool to be subject to vararg type promotion");
-        _Bool actual = (_Bool)va_arg(v, int);
-        obj = [NSNumber numberWithBool:actual];
     } else if (strcmp(type, @encode(double)) == 0) {
         double actual = (double)va_arg(v, double);
         obj = [NSNumber numberWithDouble:actual];
@@ -113,6 +106,12 @@ static inline id _MASBoxValue(const char *type, ...) {
     } else if (strcmp(type, @encode(short)) == 0) {
         short actual = (short)va_arg(v, int);
         obj = [NSNumber numberWithShort:actual];
+    } else if (strcmp(type, @encode(char)) == 0) {
+        char actual = (char)va_arg(v, int);
+        obj = [NSNumber numberWithChar:actual];
+    } else if (strcmp(type, @encode(bool)) == 0) {
+        bool actual = (bool)va_arg(v, int);
+        obj = [NSNumber numberWithBool:actual];
     } else if (strcmp(type, @encode(unsigned char)) == 0) {
         unsigned char actual = (unsigned char)va_arg(v, unsigned int);
         obj = [NSNumber numberWithUnsignedChar:actual];
