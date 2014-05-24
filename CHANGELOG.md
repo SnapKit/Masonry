@@ -1,3 +1,10 @@
+v0.5.1
+======
+
+#### - Fixed compilation error when using objective-c++ ([nickynick](https://github.com/nickynick))
+
+https://github.com/cloudkite/Masonry/pull/69
+
 v0.5.0
 ======
 
