@@ -53,7 +53,10 @@ MAS_ATTR_FORWARD(height);
 MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
-MAS_ATTR_FORWARD(attribute);
+
+- (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
+    return [self mas_attribute];
+}
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
