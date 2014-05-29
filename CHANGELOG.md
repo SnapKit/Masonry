@@ -1,3 +1,10 @@
+v0.5.2
+======
+
+#### - Fixed compilation warning with Shorthand view Additions
+
+https://github.com/cloudkite/Masonry/issues/71
+
 v0.5.1
 ======
 
