@@ -65,7 +65,7 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - NSCoping
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone __unused *)zone {
     MASViewConstraint *constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:self.firstViewAttribute];
     constraint.layoutConstant = self.layoutConstant;
     constraint.layoutRelation = self.layoutRelation;
