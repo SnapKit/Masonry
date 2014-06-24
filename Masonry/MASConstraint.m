@@ -160,7 +160,7 @@
 
 #pragma mark - Chaining
 
-- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute __unused)layoutAttribute {
     MASMethodNotImplemented();
 }
 
@@ -220,13 +220,13 @@
 
 - (MASConstraint * (^)(id key))key { MASMethodNotImplemented(); }
 
-- (void)setInsets:(MASEdgeInsets)insets { MASMethodNotImplemented(); }
+- (void)setInsets:(MASEdgeInsets __unused)insets { MASMethodNotImplemented(); }
 
-- (void)setSizeOffset:(CGSize)sizeOffset { MASMethodNotImplemented(); }
+- (void)setSizeOffset:(CGSize __unused)sizeOffset { MASMethodNotImplemented(); }
 
-- (void)setCenterOffset:(CGPoint)centerOffset { MASMethodNotImplemented(); }
+- (void)setCenterOffset:(CGPoint __unused)centerOffset { MASMethodNotImplemented(); }
 
-- (void)setOffset:(CGFloat)offset { MASMethodNotImplemented(); }
+- (void)setOffset:(CGFloat __unused)offset { MASMethodNotImplemented(); }
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 
