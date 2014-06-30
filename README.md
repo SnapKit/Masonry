@@ -256,8 +256,6 @@ Alternatively if you are only updating the constant value of the constraint you 
 // this method can get called multiple times in response to setNeedsUpdateConstraints
 // which can be called by UIKit internally or in your code if you need to trigger an update to your constraints
 - (void)updateConstraints {
-    [super updateConstraints];
-
     [self.growingButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
         make.width.equalTo(@(self.buttonSize.width)).priorityLow();
@@ -265,7 +263,9 @@ Alternatively if you are only updating the constant value of the constraint you 
         make.width.lessThanOrEqualTo(self);
         make.height.lessThanOrEqualTo(self);
     }];
-}
+    
+    //according to apple super should be called at end of method
+    [super updateConstraints];
 ```
 
 ### 3. mas_remakeConstraints
