@@ -112,7 +112,7 @@ static inline id _MASBoxValue(const char *type, ...) {
         unsigned char actual = (unsigned char)va_arg(v, unsigned int);
         obj = [NSNumber numberWithUnsignedChar:actual];
     } else if (strcmp(type, @encode(unsigned int)) == 0) {
-        unsigned int actual = (int)va_arg(v, unsigned int);
+        unsigned int actual = (unsigned int)va_arg(v, unsigned int);
         obj = [NSNumber numberWithUnsignedInt:actual];
     } else if (strcmp(type, @encode(unsigned long)) == 0) {
         unsigned long actual = (unsigned long)va_arg(v, unsigned long);
