@@ -26,7 +26,7 @@
 - (id)init {
     self = [super init];
     if (!self) return nil;
-
+    
     UIScrollView *scrollView = UIScrollView.new;
     self.scrollView = scrollView;
     scrollView.backgroundColor = [UIColor grayColor];
@@ -35,25 +35,28 @@
         make.edges.equalTo(self);
     }];
     
-    // We create a dummy contentView that will hold everything (necessary to use scrollRectToVisible later)
+    [self generateContent];
+
+    return self;
+}
+
+- (void)generateContent {
     UIView* contentView = UIView.new;
     [self.scrollView addSubview:contentView];
+    
     [contentView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.scrollView); // let the UIScrollView knonw where the edge is the contentView
-		// the size of UIScrollView's contentView must be able to caculated by the constraints. here set the width;
-		// the height will be set bellow.
-        make.width.equalTo(self.width);
+        make.edges.equalTo(self.scrollView);
+        make.width.equalTo(self.scrollView);
     }];
     
     UIView *lastView;
     CGFloat height = 25;
-
+    
     for (int i = 0; i < 10; i++) {
         UIView *view = UIView.new;
         view.backgroundColor = [self randomColor];
         [contentView addSubview:view];
-
-        // Tap
+        
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
         [view addGestureRecognizer:singleTap];
         
@@ -63,16 +66,14 @@
             make.width.equalTo(contentView.width);
             make.height.equalTo(@(height));
         }];
-
+        
         height += 25;
         lastView = view;
     }
-	
-	[contentView makeConstraints:^(MASConstraintMaker *make) {
-		make.bottom.equalTo(lastView.bottom);
-	}];
     
-    return self;
+    [contentView makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(lastView.bottom);
+    }];
 }
 
 - (UIColor *)randomColor {
