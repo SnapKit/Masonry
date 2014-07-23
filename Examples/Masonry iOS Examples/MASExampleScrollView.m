@@ -39,8 +39,10 @@
     UIView* contentView = UIView.new;
     [self.scrollView addSubview:contentView];
     [contentView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.scrollView);
-        make.width.equalTo(self.scrollView.width);
+        make.edges.equalTo(self.scrollView); // let the UIScrollView knonw where the edge is the contentView
+		// the size of UIScrollView's contentView must be able to caculated by the constraints. here set the width;
+		// the height will be set bellow.
+        make.width.equalTo(self.width);
     }];
     
     UIView *lastView;
@@ -65,15 +67,11 @@
         height += 25;
         lastView = view;
     }
-
-    // dummy view, which determines the size of the contentView size and therefore the scrollView contentSize
-    UIView *sizingView = UIView.new;
-    [scrollView addSubview:sizingView];
-    [sizingView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(lastView.bottom);
-        make.bottom.equalTo(contentView.bottom);
-    }];
-
+	
+	[contentView makeConstraints:^(MASConstraintMaker *make) {
+		make.bottom.equalTo(lastView.bottom);
+	}];
+    
     return self;
 }
 
