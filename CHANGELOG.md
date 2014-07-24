@@ -1,3 +1,11 @@
+v0.5.3
+======
+
+#### - Fixed compilation errors on xcode6 beta
+
+https://github.com/Masonry/Masonry/pull/84
+
+
 v0.5.2
 ======
 
