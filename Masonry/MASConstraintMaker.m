@@ -75,8 +75,9 @@
 }
 
 - (MASConstraint *)addConstraintWithAttributes:(MASAttribute)attrs {
+#if !NS_BLOCK_ASSERTIONS
     MASAttribute anyAttribute = MASAttributeLeft | MASAttributeRight | MASAttributeTop | MASAttributeBottom | MASAttributeLeading | MASAttributeTrailing | MASAttributeWidth | MASAttributeHeight | MASAttributeCenterX | MASAttributeCenterY | MASAttributeBaseline;
-    
+#endif
     NSAssert((attrs & anyAttribute) != 0, @"You didn't pass any attribute to make.attributes(...)");
     
     NSMutableArray *attributes = [NSMutableArray array];
