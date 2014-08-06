@@ -277,15 +277,12 @@ Alternatively if you are only updating the constant value of the constraint you 
 ```obj-c
 - (void)changeButtonPosition {
     [self.button mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(self.buttonSize.width));
-        make.height.equalTo(@(self.buttonSize.height));
+        make.size.equalTo(self.buttonSize);
         
         if (topLeft) {
-        	make.top.equalTo(@10);
-        	make.left.equalTo(@10);
+        	make.top.and.left.offset(10);
         } else {
-        	make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
-        	make.right.equalTo(self.view.mas_right).with.offset(-10);
+        	make.bottom.and.right.offset(-10);
         }
     }];
 }
