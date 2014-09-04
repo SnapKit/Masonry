@@ -47,7 +47,7 @@
         make.height.equalTo(@(100));
         
         if (self.topLeft) {
-            make.left.equalTo(self.topLeft).with.offset(10);
+            make.left.equalTo(self.left).with.offset(10);
             make.top.equalTo(self.top).with.offset(10);
         }
         else {
