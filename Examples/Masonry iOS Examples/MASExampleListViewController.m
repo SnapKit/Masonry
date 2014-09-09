@@ -60,8 +60,12 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleArrayView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
                                               viewClass:MASExampleAttributeChainingView.class],
-        [[MASExampleLayoutGuideViewController alloc] init],
     ];
+    
+    if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
+    {
+        self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleLayoutGuideViewController alloc] init]];
+    }
     
     return self;
 }

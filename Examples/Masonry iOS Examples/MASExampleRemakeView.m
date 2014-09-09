@@ -33,10 +33,12 @@
     
     self.topLeft = YES;
     
-    // make sure updateConstraints gets called
-    [self setNeedsUpdateConstraints];
-    
     return self;
+}
+
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
 }
 
 // this is Apple's recommended place for adding/updating constraints
