@@ -31,10 +31,12 @@
 
     self.buttonSize = CGSizeMake(100, 100);
 
-    // make sure updateConstraints gets called
-    [self setNeedsUpdateConstraints];
-
     return self;
+}
+
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
 }
 
 // this is Apple's recommended place for adding/updating constraints
