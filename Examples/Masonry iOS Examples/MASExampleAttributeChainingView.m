@@ -38,7 +38,7 @@
 
     [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         // chain attributes
-        make.top.and.left.greaterThanOrEqualTo(superview).insets(padding);
+        make.top.and.left.equalTo(superview).insets(padding);
 
         // which is the equivalent of
 //        make.top.greaterThanOrEqualTo(superview).insets(padding);
