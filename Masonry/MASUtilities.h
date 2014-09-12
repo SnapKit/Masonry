@@ -13,11 +13,11 @@
     #define MASEdgeInsets UIEdgeInsets
 
     enum {
-        MASLayoutPriorityRequired = UILayoutPriorityRequired,
-        MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh,
+        MASLayoutPriorityRequired = 1000,
+        MASLayoutPriorityDefaultHigh = 750,
         MASLayoutPriorityDefaultMedium = 500,
-        MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow,
-        MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel,
+        MASLayoutPriorityDefaultLow = 250,
+        MASLayoutPriorityFittingSizeLevel = 0,
     };
     typedef float MASLayoutPriority;
 
@@ -28,14 +28,14 @@
     #define MASEdgeInsets NSEdgeInsets
 
     enum {
-        MASLayoutPriorityRequired = NSLayoutPriorityRequired,
-        MASLayoutPriorityDefaultHigh = NSLayoutPriorityDefaultHigh,
-        MASLayoutPriorityDragThatCanResizeWindow = NSLayoutPriorityDragThatCanResizeWindow,
+        MASLayoutPriorityRequired = 1000,
+        MASLayoutPriorityDefaultHigh = 750,
+        MASLayoutPriorityDragThatCanResizeWindow = 510,
         MASLayoutPriorityDefaultMedium = 501,
-        MASLayoutPriorityWindowSizeStayPut = NSLayoutPriorityWindowSizeStayPut,
-        MASLayoutPriorityDragThatCannotResizeWindow = NSLayoutPriorityDragThatCannotResizeWindow,
-        MASLayoutPriorityDefaultLow = NSLayoutPriorityDefaultLow,
-        MASLayoutPriorityFittingSizeCompression = NSLayoutPriorityFittingSizeCompression,
+        MASLayoutPriorityWindowSizeStayPut = 500,
+        MASLayoutPriorityDragThatCannotResizeWindow = 490,
+        MASLayoutPriorityDefaultLow = 250,
+        MASLayoutPriorityFittingSizeCompression = 50,
     };
     typedef float MASLayoutPriority;
 
