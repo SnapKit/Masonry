@@ -102,8 +102,20 @@ static char kInstalledConstraintsKey;
     self.hasLayoutRelation = YES;
 }
 
+- (BOOL)supportsActiveProperty {
+    return [self.layoutConstraint respondsToSelector:@selector(isActive)];
+}
+
+- (BOOL)isActive {
+    BOOL active = YES;
+#ifdef __IPHONE_8_0
+    active = [self supportsActiveProperty] && [self.layoutConstraint isActive];
+#endif
+    return active;
+}
+
 - (BOOL)hasBeenInstalled {
-    return self.layoutConstraint != nil;
+    return (self.layoutConstraint != nil) && [self isActive];
 }
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
@@ -273,9 +285,20 @@ static char kInstalledConstraintsKey;
 #pragma mark - MASConstraint
 
 - (void)install {
-    NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
+    if (self.hasBeenInstalled) {
+        return;
+    }
     
     MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
+
+#ifdef __IPHONE_8_0
+    if ([self supportsActiveProperty] && self.layoutConstraint) {
+        self.layoutConstraint.active = YES;
+        [firstLayoutItem.mas_installedConstraints addObject:self];
+        return;
+    }
+#endif
+    
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
@@ -348,24 +371,18 @@ static char kInstalledConstraintsKey;
 }
 
 - (void)uninstall {
-    [self.installedView removeConstraint:self.layoutConstraint];
-    self.layoutConstraint = nil;
-    self.installedView = nil;
+#ifdef __IPHONE_8_0
+    if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
+        self.layoutConstraint.active = NO;
+    } else
+#endif
+    {
+        [self.installedView removeConstraint:self.layoutConstraint];
+        self.layoutConstraint = nil;
+        self.installedView = nil;
+    }
+    
     [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
-
-#if defined(__IPHONE_8_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0)
-- (void)activate
-{
-    NSAssert(self.hasBeenInstalled, @"Can't activate constraint that is not installed yet.");
-    self.layoutConstraint.active = YES;
-}
-
-- (void)deactivate
-{
-    NSAssert(self.hasBeenInstalled, @"Can't deactivate constraint that is not installed yet.");
-    self.layoutConstraint.active = NO;
-}
-#endif
 
 @end

@@ -182,18 +182,6 @@
  */
 - (void)uninstall;
 
-#if defined(__IPHONE_8_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0)
-/**
- *  Activates an NSLayoutConstraint.
- */
-- (void)activate;
-
-/**
- *  Deactivates previously installed NSLayoutConstraint.
- */
-- (void)deactivate;
-#endif
-
 @end
 
 
