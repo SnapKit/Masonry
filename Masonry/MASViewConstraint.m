@@ -12,6 +12,7 @@
 #import "MASLayoutConstraint.h"
 #import "View+MASAdditions.h"
 #import <objc/runtime.h>
+#import <Availability.h>
 
 @interface MAS_VIEW (MASConstraints)
 

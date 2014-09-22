@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
-#import <Availability.h>
 #import "MASUtilities.h"
 
 /**
