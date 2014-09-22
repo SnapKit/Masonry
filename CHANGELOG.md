@@ -1,11 +1,11 @@
-v0.6.0
+v0.5.4
 ======
 
-#### - [iOS 8] Added `activate` & `deactivate` methods
+#### - Improved support of iOS 8
 
-They use iOS 8's `active` property from `NSLayoutConstraint`, which allows to deactivate constraint. This allows to avoid using of `uninstall` and `install` methods, which leads to an overhead while searching closest common superview.
+As of iOS 8 there is `active` property of `NSLayoutConstraint` available, which allows to (de)activate constraint without searching closest common superview.
 
-In order to use these methods, deployment version should be iOS 8+.
+#### - Added support of iPhone 6 and iPhone 6+ to test project
 
 v0.5.3
 ======
