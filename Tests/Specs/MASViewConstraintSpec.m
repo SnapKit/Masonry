@@ -509,7 +509,7 @@ SpecBegin(MASViewConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+#if defined(__IPHONE_8_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0)
 - (void)testDeactivateConstraint {
     MASViewAttribute *secondViewAttribute = otherView.mas_height;
     constraint.equalTo(secondViewAttribute);

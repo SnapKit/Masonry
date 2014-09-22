@@ -354,7 +354,7 @@ static char kInstalledConstraintsKey;
     [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+#if defined(__IPHONE_8_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0)
 - (void)activate
 {
     NSAssert(self.hasBeenInstalled, @"Can't activate constraint that is not installed yet.");

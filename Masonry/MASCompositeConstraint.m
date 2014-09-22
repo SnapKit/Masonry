@@ -162,7 +162,7 @@
     }
 }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+#if defined(__IPHONE_8_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0)
 - (void)activate
 {
     for (MASConstraint *constraint in self.childConstraints) {
