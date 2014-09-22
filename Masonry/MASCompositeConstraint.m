@@ -162,4 +162,20 @@
     }
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+- (void)activate
+{
+    for (MASConstraint *constraint in self.childConstraints) {
+        [constraint activate];
+    }
+}
+
+- (void)deactivate
+{
+    for (MASConstraint *constraint in self.childConstraints) {
+        [constraint deactivate];
+    }
+}
+#endif
+
 @end

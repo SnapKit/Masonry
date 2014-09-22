@@ -238,4 +238,10 @@
 
 - (void)uninstall { MASMethodNotImplemented(); }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+- (void)activate { MASMethodNotImplemented(); }
+
+- (void)deactivate { MASMethodNotImplemented(); }
+#endif
+
 @end

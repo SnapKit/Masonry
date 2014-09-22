@@ -509,12 +509,40 @@ SpecBegin(MASViewConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+- (void)testDeactivateConstraint {
+    MASViewAttribute *secondViewAttribute = otherView.mas_height;
+    constraint.equalTo(secondViewAttribute);
+    [constraint install];
+    
+    expect(superview.constraints).to.haveCountOf(1);
+    expect(superview.constraints[0]).to.equal(constraint.layoutConstraint);
+    expect([superview.constraints[0] isActive]).to.beTruthy();
+    
+    [constraint deactivate];
+    expect(superview.constraints).to.haveCountOf(0);
+}
+
+- (void)testActivateConstraint {
+    MASViewAttribute *secondViewAttribute = otherView.mas_height;
+    constraint.equalTo(secondViewAttribute);
+    [constraint install];
+    expect(superview.constraints).to.haveCountOf(1);
+    [constraint deactivate];
+    expect(superview.constraints).to.haveCountOf(0);
+    
+    [constraint activate];
+    expect(superview.constraints).to.haveCountOf(1);
+    expect(superview.constraints[0]).to.equal(constraint.layoutConstraint);
+}
+#endif
+
 - (void)testAttributeChainingShouldNotHaveRelation {
     MASViewAttribute *secondViewAttribute = otherView.mas_top;
     constraint.lessThanOrEqualTo(secondViewAttribute);
     
     expect(^{
-        id result = constraint.bottom;
+        __unused id result = constraint.bottom;
     }).to.raise(@"NSInternalInconsistencyException");
 }
 

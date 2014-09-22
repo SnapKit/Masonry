@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 cloudling. All rights reserved.
 //
 
+#import <Availability.h>
 #import "MASUtilities.h"
 
 /**
@@ -180,6 +181,18 @@
  *	Removes previously installed NSLayoutConstraint
  */
 - (void)uninstall;
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+/**
+ *  Activates an NSLayoutConstraint.
+ */
+- (void)activate;
+
+/**
+ *  Deactivates previously installed NSLayoutConstraint.
+ */
+- (void)deactivate;
+#endif
 
 @end
 
