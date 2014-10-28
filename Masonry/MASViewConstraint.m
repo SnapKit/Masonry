@@ -113,7 +113,7 @@ static char kInstalledConstraintsKey;
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
-    } else {
+    } else if (secondViewAttribute && [secondViewAttribute isKindOfClass:[NSString class]]) {
         NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
     }
 }
