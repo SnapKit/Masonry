@@ -17,6 +17,7 @@
 #import "MASExampleUpdateView.h"
 #import "MASExampleRemakeView.h"
 #import "MASExampleScrollView.h"
+#import "MASExampleTableView.h"
 #import "MASExampleLayoutGuideViewController.h"
 #import "MASExampleArrayView.h"
 #import "MASExampleAttributeChainingView.h"
@@ -56,10 +57,12 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleLabelView.class],
         [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
                                               viewClass:MASExampleScrollView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"UITableView"
+                                              viewClass:MASExampleTableView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Array"
                                               viewClass:MASExampleArrayView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
-                                              viewClass:MASExampleAttributeChainingView.class],
+                                              viewClass:MASExampleAttributeChainingView.class]
     ];
     
     if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
