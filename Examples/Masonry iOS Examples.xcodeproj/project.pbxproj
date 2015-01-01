@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		114413091924B6EE008E702E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 114413081924B6EE008E702E /* Default-568h@2x.png */; };
+		1B27C69B1A54F53D0041415A /* MASCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B27C6981A54F53D0041415A /* MASCustomTableViewCell.m */; };
+		1B27C69C1A54F53D0041415A /* MASExampleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B27C69A1A54F53D0041415A /* MASExampleTableView.m */; };
 		3DB1CAD5184538E200E91FC5 /* MASExampleArrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */; };
 		4BEB55B61957394E008C862B /* MASExampleRemakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB55B51957394E008C862B /* MASExampleRemakeView.m */; };
 		6C87DADA5AB046D9A3181A65 /* libPods-Masonry iOS Examples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC1B8303EED42A2B01B94B1 /* libPods-Masonry iOS Examples.a */; };
@@ -33,6 +35,10 @@
 
 /* Begin PBXFileReference section */
 		114413081924B6EE008E702E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1B27C6971A54F53D0041415A /* MASCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCustomTableViewCell.h; sourceTree = "<group>"; };
+		1B27C6981A54F53D0041415A /* MASCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCustomTableViewCell.m; sourceTree = "<group>"; };
+		1B27C6991A54F53D0041415A /* MASExampleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleTableView.h; sourceTree = "<group>"; };
+		1B27C69A1A54F53D0041415A /* MASExampleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleTableView.m; sourceTree = "<group>"; };
 		3DB1CAD3184538E200E91FC5 /* MASExampleArrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleArrayView.h; sourceTree = "<group>"; };
 		3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleArrayView.m; sourceTree = "<group>"; };
 		4BEB55B41957394E008C862B /* MASExampleRemakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleRemakeView.h; sourceTree = "<group>"; };
@@ -90,6 +96,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B27C6961A54F53D0041415A /* MASExampleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1B27C6971A54F53D0041415A /* MASCustomTableViewCell.h */,
+				1B27C6981A54F53D0041415A /* MASCustomTableViewCell.m */,
+				1B27C6991A54F53D0041415A /* MASExampleTableView.h */,
+				1B27C69A1A54F53D0041415A /* MASExampleTableView.m */,
+			);
+			path = MASExampleTableView;
+			sourceTree = "<group>";
+		};
 		DD52F21E179CAD57005CD195 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +181,7 @@
 				4BEB55B51957394E008C862B /* MASExampleRemakeView.m */,
 				DD9B4D33183CC980002BF408 /* MASExampleScrollView.h */,
 				DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */,
+				1B27C6961A54F53D0041415A /* MASExampleTableView */,
 				3DB1CAD3184538E200E91FC5 /* MASExampleArrayView.h */,
 				3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */,
 				DD32C3FB18E8BFF6001F6AD2 /* MASExampleAttributeChainingView.h */,
@@ -285,8 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD175E6A182639FB0099129A /* MASExampleUpdateView.m in Sources */,
+				1B27C69B1A54F53D0041415A /* MASCustomTableViewCell.m in Sources */,
 				DD52F237179CAD57005CD195 /* main.m in Sources */,
 				3DB1CAD5184538E200E91FC5 /* MASExampleArrayView.m in Sources */,
+				1B27C69C1A54F53D0041415A /* MASExampleTableView.m in Sources */,
 				DD52F23B179CAD57005CD195 /* MASAppDelegate.m in Sources */,
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,
 				DD653E4A1843E61500D1EC5A /* MASExampleLayoutGuideViewController.m in Sources */,
