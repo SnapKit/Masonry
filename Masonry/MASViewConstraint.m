@@ -110,7 +110,10 @@ static char kInstalledConstraintsKey;
 - (BOOL)isActive {
     BOOL active = YES;
 #ifdef __IPHONE_8_0
-    active = [self supportsActiveProperty] && [self.layoutConstraint isActive];
+    if ([self supportsActiveProperty])
+    {
+        active = [self.layoutConstraint isActive];
+    }
 #endif
     return active;
 }
@@ -285,20 +288,39 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - MASConstraint
 
+- (void)activate {
+#if defined(__IPHONE_8_0)
+    if ([self supportsActiveProperty] && self.layoutConstraint) {
+        if (self.hasBeenInstalled) {
+            return;
+        }
+        self.layoutConstraint.active = YES;
+        [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
+    } else
+#endif
+    {
+        [self install];
+    }
+}
+
+- (void)deactivate {
+#if defined(__IPHONE_8_0)
+    if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
+        self.layoutConstraint.active = NO;
+        [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
+    } else
+#endif
+    {
+        [self uninstall];
+    }
+}
+
 - (void)install {
     if (self.hasBeenInstalled) {
         return;
     }
     
     MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
-
-#ifdef __IPHONE_8_0
-    if ([self supportsActiveProperty] && self.layoutConstraint) {
-        self.layoutConstraint.active = YES;
-        [firstLayoutItem.mas_installedConstraints addObject:self];
-        return;
-    }
-#endif
     
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
@@ -372,16 +394,9 @@ static char kInstalledConstraintsKey;
 }
 
 - (void)uninstall {
-#ifdef __IPHONE_8_0
-    if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
-        self.layoutConstraint.active = NO;
-    } else
-#endif
-    {
-        [self.installedView removeConstraint:self.layoutConstraint];
-        self.layoutConstraint = nil;
-        self.installedView = nil;
-    }
+    [self.installedView removeConstraint:self.layoutConstraint];
+    self.layoutConstraint = nil;
+    self.installedView = nil;
     
     [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }

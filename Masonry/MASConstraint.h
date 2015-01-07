@@ -108,12 +108,12 @@
 - (MASConstraint *)with;
 
 /**
- *	optional semantic property which has no effect but improves the readability of constraint
+ *	Optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)and;
 
 /**
- *	creates a new MASCompositeConstraint with the called attribute and reciever
+ *	Creates a new MASCompositeConstraint with the called attribute and reciever
  */
 - (MASConstraint *)left;
 - (MASConstraint *)top;
@@ -170,6 +170,17 @@
  */
 @property (nonatomic, copy, readonly) MASConstraint *animator;
 #endif
+
+/**
+ *  Activates an NSLayoutConstraint if it's supported by an OS. 
+ *  Invokes install otherwise.
+ */
+- (void)activate;
+
+/**
+ *  Deactivates previously installed/activated NSLayoutConstraint.
+ */
+- (void)deactivate;
 
 /**
  *	Creates a NSLayoutConstraint and adds it to the appropriate view.
