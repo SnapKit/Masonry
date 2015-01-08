@@ -152,8 +152,7 @@ SpecBegin(MASCompositeConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
-- (void)testActivateDeactivate
-{
+- (void)testActivateDeactivate {
     NSArray *children = @[
                           [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_leading],
                           [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_trailing]

@@ -109,12 +109,10 @@ static char kInstalledConstraintsKey;
 
 - (BOOL)isActive {
     BOOL active = YES;
-#ifdef __IPHONE_8_0
-    if ([self supportsActiveProperty])
-    {
+    if ([self supportsActiveProperty]) {
         active = [self.layoutConstraint isActive];
     }
-#endif
+
     return active;
 }
 
@@ -289,28 +287,22 @@ static char kInstalledConstraintsKey;
 #pragma mark - MASConstraint
 
 - (void)activate {
-#if defined(__IPHONE_8_0)
     if ([self supportsActiveProperty] && self.layoutConstraint) {
         if (self.hasBeenInstalled) {
             return;
         }
         self.layoutConstraint.active = YES;
         [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
-    } else
-#endif
-    {
+    } else {
         [self install];
     }
 }
 
 - (void)deactivate {
-#if defined(__IPHONE_8_0)
     if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
         self.layoutConstraint.active = NO;
         [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
-    } else
-#endif
-    {
+    } else {
         [self uninstall];
     }
 }
