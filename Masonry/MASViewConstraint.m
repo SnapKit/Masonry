@@ -298,7 +298,7 @@ static char kInstalledConstraintsKey;
 }
 
 - (void)deactivate {
-    if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
+    if ([self supportsActiveProperty]) {
         self.layoutConstraint.active = NO;
         [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
     } else {
