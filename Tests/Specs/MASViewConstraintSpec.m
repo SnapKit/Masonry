@@ -514,7 +514,7 @@ SpecBegin(MASViewConstraint) {
     constraint.lessThanOrEqualTo(secondViewAttribute);
     
     expect(^{
-        id result = constraint.bottom;
+        __unused id result = constraint.bottom;
     }).to.raise(@"NSInternalInconsistencyException");
 }
 

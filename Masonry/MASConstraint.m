@@ -234,6 +234,10 @@
 
 #endif
 
+- (void)activate { MASMethodNotImplemented(); }
+
+- (void)deactivate { MASMethodNotImplemented(); }
+
 - (void)install { MASMethodNotImplemented(); }
 
 - (void)uninstall { MASMethodNotImplemented(); }

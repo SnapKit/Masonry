@@ -110,10 +110,10 @@
         [description appendFormat:@" * %g", self.multiplier];
     }
     
-    if (self.constant) {
-        if (self.secondAttribute == NSLayoutAttributeNotAnAttribute) {
-            [description appendFormat:@" %g", self.constant];
-        } else {
+    if (self.secondAttribute == NSLayoutAttributeNotAnAttribute) {
+        [description appendFormat:@" %g", self.constant];
+    } else {
+        if (self.constant) {
             [description appendFormat:@" %@ %g", (self.constant < 0 ? @"-" : @"+"), ABS(self.constant)];
         }
     }

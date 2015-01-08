@@ -102,8 +102,21 @@ static char kInstalledConstraintsKey;
     self.hasLayoutRelation = YES;
 }
 
+- (BOOL)supportsActiveProperty {
+    return [self.layoutConstraint respondsToSelector:@selector(isActive)];
+}
+
+- (BOOL)isActive {
+    BOOL active = YES;
+    if ([self supportsActiveProperty]) {
+        active = [self.layoutConstraint isActive];
+    }
+
+    return active;
+}
+
 - (BOOL)hasBeenInstalled {
-    return self.layoutConstraint != nil;
+    return (self.layoutConstraint != nil) && [self isActive];
 }
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
@@ -272,10 +285,34 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - MASConstraint
 
+- (void)activate {
+    if ([self supportsActiveProperty] && self.layoutConstraint) {
+        if (self.hasBeenInstalled) {
+            return;
+        }
+        self.layoutConstraint.active = YES;
+        [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
+    } else {
+        [self install];
+    }
+}
+
+- (void)deactivate {
+    if ([self.layoutConstraint respondsToSelector:@selector(setActive:)]) {
+        self.layoutConstraint.active = NO;
+        [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
+    } else {
+        [self uninstall];
+    }
+}
+
 - (void)install {
-    NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
+    if (self.hasBeenInstalled) {
+        return;
+    }
     
     MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
+    
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
     MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
@@ -351,6 +388,7 @@ static char kInstalledConstraintsKey;
     [self.installedView removeConstraint:self.layoutConstraint];
     self.layoutConstraint = nil;
     self.installedView = nil;
+    
     [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
 
