@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		114413091924B6EE008E702E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 114413081924B6EE008E702E /* Default-568h@2x.png */; };
+		27A27D461A6CF0C400D34F52 /* MASExampleAspectFitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */; };
 		3C02224919D0C4EC00507321 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C02224819D0C4EC00507321 /* Images.xcassets */; };
 		3DB1CAD5184538E200E91FC5 /* MASExampleArrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */; };
 		4BEB55B61957394E008C862B /* MASExampleRemakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB55B51957394E008C862B /* MASExampleRemakeView.m */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		114413081924B6EE008E702E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27A27D441A6CF0C400D34F52 /* MASExampleAspectFitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAspectFitView.h; sourceTree = "<group>"; };
+		27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAspectFitView.m; sourceTree = "<group>"; };
 		3C02224819D0C4EC00507321 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DB1CAD3184538E200E91FC5 /* MASExampleArrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleArrayView.h; sourceTree = "<group>"; };
 		3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleArrayView.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				DD52F24A179CADC0005CD195 /* MASExampleConstantsView.m */,
 				DD52F24D179CADC0005CD195 /* MASExampleSidesView.h */,
 				DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */,
+				27A27D441A6CF0C400D34F52 /* MASExampleAspectFitView.h */,
+				27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */,
 				DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */,
 				DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */,
 				DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */,
@@ -295,6 +300,7 @@
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,
 				DD653E4A1843E61500D1EC5A /* MASExampleLayoutGuideViewController.m in Sources */,
 				DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */,
+				27A27D461A6CF0C400D34F52 /* MASExampleAspectFitView.m in Sources */,
 				DD52F252179CADC0005CD195 /* MASExampleConstantsView.m in Sources */,
 				DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */,
 				DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */,
