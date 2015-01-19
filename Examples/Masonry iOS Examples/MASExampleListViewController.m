@@ -20,6 +20,7 @@
 #import "MASExampleLayoutGuideViewController.h"
 #import "MASExampleArrayView.h"
 #import "MASExampleAttributeChainingView.h"
+#import "MASExampleAspectFitView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -48,6 +49,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleConstantsView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Composite Edges"
                                               viewClass:MASExampleSidesView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Aspect Fit"
+                                              viewClass:MASExampleAspectFitView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
                                               viewClass:MASExampleAnimatedView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Debugging Helpers"
