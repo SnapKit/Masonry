@@ -165,7 +165,7 @@ make.left.equalTo(@[view1, @100, view3.right]);
 
 ## Learn to prioritize
 
-> `.prority` allows you to specify an exact priority
+> `.priority` allows you to specify an exact priority
 
 > `.priorityHigh` equivalent to **UILayoutPriorityDefaultHigh**
 
