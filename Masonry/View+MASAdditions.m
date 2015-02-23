@@ -87,6 +87,42 @@
     };
 }
 
+#if TARGET_OS_IPHONE
+
+- (MASViewAttribute *)mas_leftMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeftMargin];
+}
+
+- (MASViewAttribute *)mas_rightMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeRightMargin];
+}
+
+- (MASViewAttribute *)mas_topMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeTopMargin];
+}
+
+- (MASViewAttribute *)mas_bottomMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeBottomMargin];
+}
+
+- (MASViewAttribute *)mas_leadingMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeadingMargin];
+}
+
+- (MASViewAttribute *)mas_trailingMargin {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeTrailingMargin];
+}
+
+- (MASViewAttribute *)mas_centerXWithinMargins {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeCenterXWithinMargins];
+}
+
+- (MASViewAttribute *)mas_centerYWithinMargins {
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeCenterYWithinMargins];
+}
+
+#endif
+
 #pragma mark - associated properties
 
 - (id)mas_key {
