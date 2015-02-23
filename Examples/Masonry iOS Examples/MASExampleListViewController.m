@@ -21,6 +21,7 @@
 #import "MASExampleArrayView.h"
 #import "MASExampleAttributeChainingView.h"
 #import "MASExampleAspectFitView.h"
+#import "MASExampleMarginView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -63,6 +64,9 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleArrayView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
                                               viewClass:MASExampleAttributeChainingView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Margins"
+                                              viewClass:MASExampleMarginView.class],
+
     ];
     
     if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
