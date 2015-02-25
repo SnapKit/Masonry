@@ -43,6 +43,18 @@
             @(NSLayoutAttributeCenterX)  : @"centerX",
             @(NSLayoutAttributeCenterY)  : @"centerY",
             @(NSLayoutAttributeBaseline) : @"baseline",
+            
+#if TARGET_OS_IPHONE
+            @(NSLayoutAttributeLeftMargin)           : @"leftMargin",
+            @(NSLayoutAttributeRightMargin)          : @"rightMargin",
+            @(NSLayoutAttributeTopMargin)            : @"topMargin",
+            @(NSLayoutAttributeBottomMargin)         : @"bottomMargin",
+            @(NSLayoutAttributeLeadingMargin)        : @"leadingMargin",
+            @(NSLayoutAttributeTrailingMargin)       : @"trailingMargin",
+            @(NSLayoutAttributeCenterXWithinMargins) : @"centerXWithinMargins",
+            @(NSLayoutAttributeCenterYWithinMargins) : @"centerYWithinMargins",
+#endif
+            
         };
     
     });
