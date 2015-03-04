@@ -235,6 +235,7 @@ static char kInstalledConstraintsKey;
     NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
     switch (layoutAttribute) {
         case NSLayoutAttributeLeft:
+        case NSLayoutAttributeLeading:
             self.layoutConstant = insets.left;
             break;
         case NSLayoutAttributeTop:
@@ -244,6 +245,7 @@ static char kInstalledConstraintsKey;
             self.layoutConstant = -insets.bottom;
             break;
         case NSLayoutAttributeRight:
+        case NSLayoutAttributeTrailing:
             self.layoutConstant = -insets.right;
             break;
         default:

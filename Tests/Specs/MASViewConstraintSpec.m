@@ -168,6 +168,10 @@ SpecBegin(MASViewConstraint) {
     left.equalTo(value);
     expect(left.layoutConstant).to.equal(20);
 
+    MASViewConstraint *leading = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_leading];
+    leading.equalTo(value);
+    expect(leading.layoutConstant).to.equal(20);
+
     MASViewConstraint *bottom = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_bottom];
     bottom.equalTo(value);
     expect(bottom.layoutConstant).to.equal(-30);
@@ -175,6 +179,10 @@ SpecBegin(MASViewConstraint) {
     MASViewConstraint *right = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_right];
     right.equalTo(value);
     expect(right.layoutConstant).to.equal(-40);
+
+    MASViewConstraint *trailing = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_trailing];
+    trailing.equalTo(value);
+    expect(trailing.layoutConstant).to.equal(-40);
     
     MASViewConstraint *centerX = [[MASViewConstraint alloc] initWithFirstViewAttribute:otherView.mas_centerX];
     centerX.equalTo(value);
