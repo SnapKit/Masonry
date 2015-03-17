@@ -361,9 +361,8 @@ static char kInstalledConstraintsKey;
     } else {
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
+        [firstLayoutItem.mas_installedConstraints addObject:self];
     }
-    
-    [firstLayoutItem.mas_installedConstraints addObject:self];
 }
 
 - (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
