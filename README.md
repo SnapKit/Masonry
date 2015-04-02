@@ -1,4 +1,4 @@
-#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://img.shields.io/coveralls/Masonry/Masonry.svg)](https://coveralls.io/r/Masonry/Masonry)
+#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://img.shields.io/coveralls/Masonry/Masonry.svg?style=flat-square)](https://coveralls.io/r/Masonry/Masonry)
 
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OS X.
@@ -165,7 +165,7 @@ make.left.equalTo(@[view1, @100, view3.right]);
 
 ## Learn to prioritize
 
-> `.prority` allows you to specify an exact priority
+> `.priority` allows you to specify an exact priority
 
 > `.priorityHigh` equivalent to **UILayoutPriorityDefaultHigh**
 

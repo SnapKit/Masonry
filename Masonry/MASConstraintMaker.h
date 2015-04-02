@@ -21,6 +21,20 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     MASAttributeCenterX = 1 << NSLayoutAttributeCenterX,
     MASAttributeCenterY = 1 << NSLayoutAttributeCenterY,
     MASAttributeBaseline = 1 << NSLayoutAttributeBaseline,
+    
+#if TARGET_OS_IPHONE
+    
+    MASAttributeLeftMargin = 1 << NSLayoutAttributeLeftMargin,
+    MASAttributeRightMargin = 1 << NSLayoutAttributeRightMargin,
+    MASAttributeTopMargin = 1 << NSLayoutAttributeTopMargin,
+    MASAttributeBottomMargin = 1 << NSLayoutAttributeBottomMargin,
+    MASAttributeLeadingMargin = 1 << NSLayoutAttributeLeadingMargin,
+    MASAttributeTrailingMargin = 1 << NSLayoutAttributeTrailingMargin,
+    MASAttributeCenterXWithinMargins = 1 << NSLayoutAttributeCenterXWithinMargins,
+    MASAttributeCenterYWithinMargins = 1 << NSLayoutAttributeCenterYWithinMargins,
+
+#endif
+    
 };
 
 /**
@@ -45,6 +59,19 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, strong, readonly) MASConstraint *centerX;
 @property (nonatomic, strong, readonly) MASConstraint *centerY;
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
+
+#if TARGET_OS_IPHONE
+
+@property (nonatomic, strong, readonly) MASConstraint *leftMargin;
+@property (nonatomic, strong, readonly) MASConstraint *rightMargin;
+@property (nonatomic, strong, readonly) MASConstraint *topMargin;
+@property (nonatomic, strong, readonly) MASConstraint *bottomMargin;
+@property (nonatomic, strong, readonly) MASConstraint *leadingMargin;
+@property (nonatomic, strong, readonly) MASConstraint *trailingMargin;
+@property (nonatomic, strong, readonly) MASConstraint *centerXWithinMargins;
+@property (nonatomic, strong, readonly) MASConstraint *centerYWithinMargins;
+
+#endif
 
 /**
  *  Returns a block which creates a new MASCompositeConstraint with the first item set

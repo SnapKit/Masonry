@@ -32,6 +32,19 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
+#if TARGET_OS_IPHONE
+
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_rightMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_leadingMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_trailingMargin;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_centerXWithinMargins;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_centerYWithinMargins;
+
+#endif
+
 /**
  *	a key to associate with this view
  */
