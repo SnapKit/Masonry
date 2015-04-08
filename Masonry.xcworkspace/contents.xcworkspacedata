@@ -1,79 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:Masonry"
-      name = "Masonry">
-      <FileRef
-         location = "group:Masonry.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASConstraint.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASConstraint.m">
-      </FileRef>
-      <FileRef
-         location = "group:MASConstraint+Private.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASCompositeConstraint.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASCompositeConstraint.m">
-      </FileRef>
-      <FileRef
-         location = "group:MASConstraintMaker.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASConstraintMaker.m">
-      </FileRef>
-      <FileRef
-         location = "group:MASLayoutConstraint.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASLayoutConstraint.m">
-      </FileRef>
-      <FileRef
-         location = "group:MASUtilities.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASViewAttribute.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASViewAttribute.m">
-      </FileRef>
-      <FileRef
-         location = "group:MASViewConstraint.h">
-      </FileRef>
-      <FileRef
-         location = "group:MASViewConstraint.m">
-      </FileRef>
-      <FileRef
-         location = "group:NSLayoutConstraint+MASDebugAdditions.h">
-      </FileRef>
-      <FileRef
-         location = "group:NSLayoutConstraint+MASDebugAdditions.m">
-      </FileRef>
-      <FileRef
-         location = "group:NSArray+MASAdditions.h">
-      </FileRef>
-      <FileRef
-         location = "group:NSArray+MASAdditions.m">
-      </FileRef>
-      <FileRef
-         location = "group:NSArray+MASShorthandAdditions.h">
-      </FileRef>
-      <FileRef
-         location = "group:View+MASAdditions.h">
-      </FileRef>
-      <FileRef
-         location = "group:View+MASAdditions.m">
-      </FileRef>
-      <FileRef
-         location = "group:View+MASShorthandAdditions.h">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:Examples/../Masonry.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:Examples/Masonry iOS Examples.xcodeproj">
    </FileRef>

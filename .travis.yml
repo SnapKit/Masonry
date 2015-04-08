@@ -7,6 +7,8 @@ before_install:
 
 script:
   - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator8.1 clean build test ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator8.1 clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO
+  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry OSX' -configuration Debug clean build
 
 after_success:
   - ./script/coveralls.sh
