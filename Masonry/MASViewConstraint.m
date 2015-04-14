@@ -218,6 +218,10 @@ static char kInstalledConstraintsKey;
     return self;
 }
 
+- (void)disableAnimator {
+    self.useAnimator = NO;
+}
+
 #endif
 
 #pragma mark - debug helpers
