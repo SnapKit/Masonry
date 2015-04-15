@@ -1,4 +1,4 @@
-#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://img.shields.io/coveralls/Masonry/Masonry.svg?style=flat-square)](https://coveralls.io/r/Masonry/Masonry)
+#Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry)
 
 **Masonry is being deprecated, going forward we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it supports Swift and provides better type safety with a simpler API**.
 
