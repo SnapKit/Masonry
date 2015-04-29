@@ -14,74 +14,74 @@
     self = [super init];
     if (!self) return nil;
 
-    UIView *view1 = UIView.new;
-    view1.backgroundColor = UIColor.greenColor;
-    view1.layer.borderColor = UIColor.blackColor.CGColor;
-    view1.layer.borderWidth = 2;
-    [self addSubview:view1];
+    UIView *greenView = UIView.new;
+    greenView.backgroundColor = UIColor.greenColor;
+    greenView.layer.borderColor = UIColor.blackColor.CGColor;
+    greenView.layer.borderWidth = 2;
+    [self addSubview:greenView];
 
-    UIView *view2 = UIView.new;
-    view2.backgroundColor = UIColor.redColor;
-    view2.layer.borderColor = UIColor.blackColor.CGColor;
-    view2.layer.borderWidth = 2;
-    [self addSubview:view2];
+    UIView *redView = UIView.new;
+    redView.backgroundColor = UIColor.redColor;
+    redView.layer.borderColor = UIColor.blackColor.CGColor;
+    redView.layer.borderWidth = 2;
+    [self addSubview:redView];
 
-    UILabel *view3 = UILabel.new;
-    view3.backgroundColor = UIColor.blueColor;
-    view3.numberOfLines = 3;
-    view3.textAlignment = NSTextAlignmentCenter;
-    view3.font = [UIFont systemFontOfSize:24];
-    view3.textColor = UIColor.whiteColor;
-    view3.text = @"this should look broken! check your console!";
-    view3.layer.borderColor = UIColor.blackColor.CGColor;
-    view3.layer.borderWidth = 2;
-    [self addSubview:view3];
+    UILabel *blueView = UILabel.new;
+    blueView.backgroundColor = UIColor.blueColor;
+    blueView.numberOfLines = 3;
+    blueView.textAlignment = NSTextAlignmentCenter;
+    blueView.font = [UIFont systemFontOfSize:24];
+    blueView.textColor = UIColor.whiteColor;
+    blueView.text = @"this should look broken! check your console!";
+    blueView.layer.borderColor = UIColor.blackColor.CGColor;
+    blueView.layer.borderWidth = 2;
+    [self addSubview:blueView];
 
     UIView *superview = self;
     int padding = 10;
 
     //you can attach debug keys to views like so:
-//    view1.mas_key = @"view1";
-//    view2.mas_key = @"view2";
-//    view3.mas_key = @"view3";
+//    greenView.mas_key = @"greenView";
+//    redView.mas_key = @"redView";
+//    blueView.mas_key = @"blueView";
 //    superview.mas_key = @"superview";
 
     //OR you can attach keys automagically like so:
-    MASAttachKeys(view1, view2, view3, superview);
+    MASAttachKeys(greenView, redView, blueView, superview);
 
-    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
         //you can also attach debug keys to constaints
         make.edges.equalTo(@1).key(@"ConflictingConstraint"); //composite constraint keys will be indexed
         make.height.greaterThanOrEqualTo(@5000).key(@"ConstantConstraint");
 
-        make.top.equalTo(view1.mas_bottom).offset(padding);
+        make.top.equalTo(greenView.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding).key(@"BottomConstraint");
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.height.equalTo(view1.mas_height);
-        make.height.equalTo(view2.mas_height).key(@340954); //anything can be a key
+        make.height.equalTo(greenView.mas_height);
+        make.height.equalTo(redView.mas_height).key(@340954); //anything can be a key
     }];
     
-    [view1 makeConstraints:^(MASConstraintMaker *make) {
+    [greenView makeConstraints:^(MASConstraintMaker *make) {
         make.top.greaterThanOrEqualTo(superview.top).offset(padding);
         make.left.equalTo(superview.left).offset(padding);
-        make.bottom.equalTo(view3.top).offset(-padding);
-        make.right.equalTo(view2.left).offset(-padding);
-        make.width.equalTo(view2.width);
+        make.bottom.equalTo(blueView.top).offset(-padding);
+        make.right.equalTo(redView.left).offset(-padding);
+        make.width.equalTo(redView.width);
 
-        make.height.equalTo(view2.height);
-        make.height.equalTo(view3.height);
+        make.height.equalTo(redView.height);
+        make.height.equalTo(blueView.height);
     }];
 
     //with is semantic and option
-    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).with.offset(padding);
-        make.left.equalTo(view1.mas_right).offset(padding);
-        make.bottom.equalTo(view3.mas_top).offset(-padding);
+        make.left.equalTo(greenView.mas_right).offset(padding);
+        make.bottom.equalTo(blueView.mas_top).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.width.equalTo(view1.mas_width);
+        make.width.equalTo(greenView.mas_width);
 
-        make.height.equalTo(@[view1, view3]);
+        make.height.equalTo(@[greenView, blueView]);
     }];
     
     return self;
