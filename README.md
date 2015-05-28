@@ -1,6 +1,6 @@
 #Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-**Masonry is being deprecated into a bugfix only state as more developers will be moving to Swift. Going forward we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it supports Swift and provides better type safety with a simpler API**.
+**Masonry is in a bugfix only state as more developers will be moving to Swift. Going forward we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it supports Swift and provides better type safety with a simpler API**.
 
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OS X.
