@@ -53,8 +53,10 @@
 		3AED06201AD5A1400053CC65 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05DC1AD5A0470053CC65 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AED06211AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05ED1AD5A0470053CC65 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AED06221AD5A1400053CC65 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05DE1AD5A0470053CC65 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4473548D1B39F772004DACCB /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */; };
+		4473548D1B39F772004DACCB /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4473548E1B39F772004DACCB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */; };
+		447354921B3A18B3004DACCB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */; };
+		447354931B3A18B9004DACCB /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,6 +206,7 @@
 				3AED061E1AD5A1400053CC65 /* MASUtilities.h in Headers */,
 				3AED061F1AD5A1400053CC65 /* NSArray+MASAdditions.h in Headers */,
 				3AED06201AD5A1400053CC65 /* MASCompositeConstraint.h in Headers */,
+				447354931B3A18B9004DACCB /* ViewController+MASAdditions.h in Headers */,
 				3AED06221AD5A1400053CC65 /* MASConstraint.h in Headers */,
 				3AED061D1AD5A1400053CC65 /* MASConstraint+Private.h in Headers */,
 				3AED06211AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
@@ -326,6 +329,7 @@
 				3AED060D1AD5A1400053CC65 /* MASConstraint.m in Sources */,
 				3AED060E1AD5A1400053CC65 /* MASViewConstraint.m in Sources */,
 				3AED060F1AD5A1400053CC65 /* MASCompositeConstraint.m in Sources */,
+				447354921B3A18B3004DACCB /* ViewController+MASAdditions.m in Sources */,
 				3AED06101AD5A1400053CC65 /* MASConstraintMaker.m in Sources */,
 				3AED06111AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3AED06121AD5A1400053CC65 /* View+MASAdditions.m in Sources */,

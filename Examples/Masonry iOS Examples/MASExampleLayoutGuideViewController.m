@@ -40,20 +40,15 @@
     bottomView.layer.borderWidth = 2;
     [self.view addSubview:bottomView];
 
-    // TODO find way that avoids casting
-    // layoutGuides are actually UIView subclasses so can be used in Masonry
-    // However casting to UIView is not ideal if Apple decides to change underlying implementation of layoutGuides this will break
     [topView makeConstraints:^(MASConstraintMaker *make) {
-        UIView *topLayoutGuide = (id)self.topLayoutGuide;
-        make.top.equalTo(topLayoutGuide.bottom);
+        make.top.equalTo(self.mas_topLayoutGuide);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
         make.height.equalTo(@40);
     }];
-
+    
     [bottomView makeConstraints:^(MASConstraintMaker *make) {
-        UIView *bottomLayoutGuide = (id)self.bottomLayoutGuide;
-        make.bottom.equalTo(bottomLayoutGuide.top);
+        make.bottom.equalTo(self.mas_bottomLayoutGuide);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
         make.height.equalTo(@40);

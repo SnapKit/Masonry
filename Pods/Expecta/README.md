@@ -1,144 +1,185 @@
 #Expecta
 
-A Matcher Framework for Objective-C/Cocoa
+[![Build Status](http://img.shields.io/travis/specta/expecta/master.svg?style=flat)](https://travis-ci.org/specta/expecta)
+[![Pod Version](http://img.shields.io/cocoapods/v/Expecta.svg?style=flat)](http://cocoadocs.org/docsets/Expecta/)
+[![Pod Platform](http://img.shields.io/cocoapods/p/Expecta.svg?style=flat)](http://cocoadocs.org/docsets/Expecta/)
+[![Pod License](http://img.shields.io/cocoapods/l/Expecta.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-## NOTICE
+A matcher framework for Objective-C and Cocoa.
 
-Expecta 0.3.x removes support for Garbage Collected targets, as support for these has been removed from Xcode 5.1 and greater. If you need Garbage Collection support, please continue to use Expecta 0.2.4. The minimum deployment targets have also been raised to iOS 5.x and OS X 10.7 or greater.
-
-Expecta 0.2.x and later has a new syntax that is slightly different from Expecta 0.1.x. For example `expect(x).toEqual(y)` should now be written as `expect(x).to.equal(y)`. You can do `#define EXP_OLD_SYNTAX` before importing `Expecta.h` to enable backward-compatiblity mode, but keep in mind that the old syntax is deprecated.
-
-## INTRODUCTION
+## Introduction
 
 The main advantage of using Expecta over other matcher frameworks is that you do not have to specify the data types. Also, the syntax of Expecta matchers is much more readable and does not suffer from parenthesitis.
 
-**OCHamcrest**
-
 ```objective-c
-assertThat(@"foo", is(equalTo(@"foo")));
-assertThatUnsignedInteger(foo, isNot(equalToUnsignedInteger(1)));
-assertThatBool([bar isBar], is(equalToBool(YES)));
-assertThatDouble(baz, is(equalToDouble(3.14159)));
-``` vs. **Expecta **
-
-```objective -
-    c expect(@"foo").to.equal(
-        @"foo"); // `to` is a syntatic sugar and can be safely omitted.
+expect(@"foo").to.equal(@"foo"); // `to` is a syntactic sugar and can be safely omitted.
 expect(foo).notTo.equal(1);
 expect([bar isBar]).to.equal(YES);
 expect(baz).to.equal(3.14159);
 ```
 
-## SETUP
+Expecta is framework-agnostic: it works well with XCTest and XCTest-compatible test frameworks such as [Specta](http://github.com/petejkim/specta/).
 
-Use [CocoaPods](https://github.com/CocoaPods/CocoaPods)
 
-```ruby
-target :MyApp do
-#your app dependencies
-end
+## Setup
 
-target :MyAppTests do
-  pod 'Expecta',     '~> 0.2.4'   # expecta matchers
-#pod 'Specta', '~> 0.1.11' #specta bdd framework
-end
-```
+You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [CocoaPods](http://github.com/CocoaPods/CocoaPods) or [completely manually](#setting-up-manually).
 
-or
+### Carthage
 
-1. Clone from Github.
-2. Run `rake` in project root to build.
-3. Copy and add all header files in `products` folder to the Spec/Test target in your Xcode project.
-4. For **OS X projects**, copy and add `libExpecta-macosx.a` in `products` folder to the Spec/Test target in your Xcode project.
-   For **iOS projects**, copy and add `libExpecta-ios-universal.a` in `products` folder to the Spec/Test target in your Xcode project.
-5. Add `-ObjC` to the "Other Linker Flags" build setting for the Spec/Test target in your Xcode project.
-6. Add the following to your test code.
+1. Add Expecta to your project's `Cartfile.private`:
 
-```objective-c
-// #define EXP_OLD_SYNTAX // enable backward-compatibility
-#define EXP_SHORTHAND
-#import "Expecta.h"
-```
+	```ruby
+	github "specta/expecta" "master"
+	```
 
-If `EXP_SHORTHAND` is not defined, expectations must be written with `EXP_expect` instead of `expect`.
+2. Run `carthage update` in your project directory.
+3. Drag the appropriate **Expecta.framework** for your platform (located in `Carthage/Build/`) into your application’s Xcode project, and add it to your test target(s).
 
-Expecta is framework-agnostic. It works well with OCUnit (SenTestingKit) and OCUnit-compatible test frameworks such as [Specta](http://github.com/petejkim/specta/), [GHUnit](http://github.com/gabriel/gh-unit/) and [GTMUnit](http://code.google.com/p/google-toolbox-for-mac/). Expecta also supports [Cedar](http://pivotal.github.com/cedar/).
+### CocoaPods
 
-## BUILT-IN MATCHERS
+1. Add Expecta to your project's `Podfile`:
 
->`expect(x).to.equal(y);` compares objects or primitives x and y and passes if they are identical (==) or equivalent (isEqual:).
->
->`expect(x).to.beIdenticalTo(y);` compares objects x and y and passes if they are identical and have the same memory address.
->
->`expect(x).to.beNil();` passes if x is nil.
->
->`expect(x).to.beTruthy();` passes if x evaluates to true (non-zero).
->
->`expect(x).to.beFalsy();` passes if x evaluates to false (zero).
->
->`expect(x).to.contain(y);` passes if an instance of NSArray or NSString x contains y.
->
->`expect(x).to.beSupersetOf(y);` passes if an instance of NSArray, NSSet, NSDictionary or NSOrderedSet x contains all elements of y.
->
->`expect(x).to.haveCountOf(y);` passes if an instance of NSArray, NSSet, NSDictionary or NSString x has a count or length of y.
->
->`expect(x).to.beEmpty();` passes if an instance of NSArray, NSSet, NSDictionary or NSString x has a count or length of 0.
->
->`expect(x).to.beInstanceOf([Foo class]);` passes if x is an instance of a class Foo.
->
->`expect(x).to.beKindOf([Foo class]);` passes if x is an instance of a class Foo or if x is an instance of any class that inherits from the class Foo.
->
->`expect([Foo class]).to.beSubclassOf([Bar class]);` passes if the class Foo is a subclass of the class Bar or if it is identical to the class Bar. Use beKindOf() for class clusters.
->
->`expect(x).to.beLessThan(y);` passes if `x` is less than `y`.
->
->`expect(x).to.beLessThanOrEqualTo(y);` passes if `x` is less than or equal to `y`.
->
->`expect(x).to.beGreaterThan(y);` passes if `x` is greater than `y`.
->
->`expect(x).to.beGreaterThanOrEqualTo(y);` passes if `x` is greater than or equal to `y`.
->
->`expect(x).to.beInTheRangeOf(y,z);` passes if `x` is in the range of `y` and `z`.
->
->`expect(x).to.beCloseTo(y);` passes if `x` is close to `y`.
->
->`expect(x).to.beCloseToWithin(y, z);` passes if `x` is close to `y` within `z`.
->
->`expect(^{ /* code */ }).to.raise(@"ExceptionName");` passes if a given block of code raises an exception named `ExceptionName`.
->
->`expect(^{ /* code */ }).to.raiseAny();` passes if a given block of code raises any exception.
->
->`expect(x).to.conformTo(y);` passes if `x` conforms to the protocol `y`.
->
->`expect(x).to.respondTo(y);` passes if `x` responds to the selector `y`.
->
->`expect(^{ /* code */ }).to.notify(@"NotificationName");` passes if a given block of code generates an NSNotification named `NotificationName`.
->
->`expect(^{ /* code */ }).to.notify(notification);` passes if a given block of code generates an NSNotification equal to the passed `notification`.
->
->`expect(x).to.beginWith(y);` passes if an instance of NSString, NSArray, or NSOrderedSet `x` begins with `y`. Also aliased by `startWith`
->
->`expect(x).to.endWith(y);` passes if an instance of NSString, NSArray, or NSOrderedSet `x` ends with `y`.
+	```ruby
+	target :MyApp do
+	# Your app's dependencies
+	end
 
-**Please contribute more matchers.**
+	target :MyAppTests do
+	  pod 'Expecta', '~> 0.2.4'
+	end
+	```
+	
+2. Run `pod update` or `pod install` in your project directory.
 
-## INVERTING MATCHERS
+### Setting Up Manually
+
+1. Clone Expecta from Github.
+2. Run `rake` in your project directory to build the frameworks and libraries.
+3. Add a Cocoa or Cocoa Touch Unit Testing Bundle target to your Xcode project if you don't already have one.
+4. For **OS X projects**, copy and add `Expecta.framework` in the `Products/osx` folder to your project's test target.
+
+   For **iOS projects**, copy and add `Expecta.framework` in the `Products/ios` folder to your project's test target.
+   
+   You can also use `libExpecta.a` if you prefer to link Expecta as a static library — iOS 7.x and below require this.
+   
+6. Add `-ObjC` and `-all_load` to the **Other Linker Flags** build setting for the test target in your Xcode project.
+7. You can now use Expecta in your test classes by adding the following import:
+
+	```objective-c
+	@import Expecta; // If you're using Expecta.framework
+	
+	// OR
+	
+	#import <Expecta/Expecta.h> // If you're using the static library, or the framework
+	```
+
+## Built-in Matchers
+
+> `expect(x).to.equal(y);` compares objects or primitives x and y and passes if they are identical (==) or equivalent isEqual:).
+
+> `expect(x).to.beIdenticalTo(y);` compares objects x and y and passes if they are identical and have the same memory address.
+
+> `expect(x).to.beNil();` passes if x is nil.
+
+> `expect(x).to.beTruthy();` passes if x evaluates to true (non-zero).
+
+> `expect(x).to.beFalsy();` passes if x evaluates to false (zero).
+
+> `expect(x).to.contain(y);` passes if an instance of NSArray or NSString x contains y.
+
+> `expect(x).to.beSupersetOf(y);` passes if an instance of NSArray, NSSet, NSDictionary or NSOrderedSet x contains all elements of y.
+
+> `expect(x).to.haveCountOf(y);` passes if an instance of NSArray, NSSet, NSDictionary or NSString x has a count or length of y.
+
+> `expect(x).to.beEmpty();` passes if an instance of NSArray, NSSet, NSDictionary or NSString x has a count or length of .
+
+> `expect(x).to.beInstanceOf([Foo class]);` passes if x is an instance of a class Foo.
+
+> `expect(x).to.beKindOf([Foo class]);` passes if x is an instance of a class Foo or if x is an instance of any class that inherits from the class Foo.
+
+> `expect([Foo class]).to.beSubclassOf([Bar class]);` passes if the class Foo is a subclass of the class Bar or if it is identical to the class Bar. Use beKindOf() for class clusters.
+
+> `expect(x).to.beLessThan(y);` passes if `x` is less than `y`.
+
+> `expect(x).to.beLessThanOrEqualTo(y);` passes if `x` is less than or equal to `y`.
+
+> `expect(x).to.beGreaterThan(y);` passes if `x` is greater than `y`.
+
+> `expect(x).to.beGreaterThanOrEqualTo(y);` passes if `x` is greater than or equal to `y`.
+
+> `expect(x).to.beInTheRangeOf(y,z);` passes if `x` is in the range of `y` and `z`.
+
+> `expect(x).to.beCloseTo(y);` passes if `x` is close to `y`.
+
+> `expect(x).to.beCloseToWithin(y, z);` passes if `x` is close to `y` within `z`.
+
+> `expect(^{ /* code */ }).to.raise(@"ExceptionName");` passes if a given block of code raises an exception named `ExceptionName`.
+
+> `expect(^{ /* code */ }).to.raiseAny();` passes if a given block of code raises any exception.
+
+> `expect(x).to.conformTo(y);` passes if `x` conforms to the protocol `y`.
+
+> `expect(x).to.respondTo(y);` passes if `x` responds to the selector `y`.
+
+> `expect(^{ /* code */ }).to.notify(@"NotificationName");` passes if a given block of code generates an NSNotification amed `NotificationName`.
+
+> `expect(^{ /* code */ }).to.notify(notification);` passes if a given block of code generates an NSNotification equal to the passed `notification`.
+
+> `expect(x).to.beginWith(y);` passes if an instance of NSString, NSArray, or NSOrderedSet `x` begins with `y`. Also liased by `startWith`
+
+> `expect(x).to.endWith(y);` passes if an instance of NSString, NSArray, or NSOrderedSet `x` ends with `y`.
+
+> `expect(x).to.match(y);` passes if an instance of NSString `x` matches regular expression (given as NSString) `y` one or more times.
+
+## Inverting Matchers
 
 Every matcher's criteria can be inverted by prepending `.notTo` or `.toNot`:
 
 >`expect(x).notTo.equal(y);` compares objects or primitives x and y and passes if they are *not* equivalent.
 
-## ASYNCHRONOUS TESTING
+## Asynchronous Testing
 
-Every matcher can be made to perform asynchronous testing by prepending `.will` or `.willNot`:
+Every matcher can be made to perform asynchronous testing by prepending `.will`, `.willNot` or `after(...)`:
 
->`expect(x).will.beNil();` passes if x becomes nil before the timeout.
+>`expect(x).will.beNil();` passes if x becomes nil before the default timeout.
 >
->`expect(x).willNot.beNil();` passes if x becomes non-nil before the timeout.
+>`expect(x).willNot.beNil();` passes if x becomes non-nil before the default timeout.
+>
+>`expect(x).after(3).to.beNil();` passes if x becoms nil after 3.0 seconds.
+>
+>`expect(x).after(2.5).notTo.equal(42);` passes if x doesn't equal 42 after 2.5 seconds.
 
-Default timeout is 1.0 second. This setting can be changed by calling `[Expecta setAsynchronousTestTimeout:x]`, where x is the desired timeout.
+The default timeout is 1.0 second and is used for all matchers if not otherwise specified. This setting can be changed by calling `[Expecta setAsynchronousTestTimeout:x]`, where `x` is the desired timeout in seconds.
 
-## WRITING NEW MATCHERS
+```objective-c
+describe(@"Foo", ^{
+  beforeAll(^{
+    // All asynchronous matching using `will` and `willNot`
+    // will have a timeout of 2.0 seconds
+    [Expecta setAsynchronousTestTimeout:2];
+  });
+
+  it(@"will not be nil", ^{
+    // Test case where default timeout is used
+    expect(foo).willNot.beNil();
+  });
+
+  it(@"should equal 42 after 3 seconds", ^{
+    // Signle case where timeout differs from the default
+    expect(foo).after(3).to.equal(42);
+  });
+});
+```
+
+## Forced Failing
+
+You can fail a test by using the `failure` attribute. This can be used to test branching.
+
+> `failure(@"This should not happen");` outright fails a test.
+
+
+## Writing New Matchers
 
 Writing a new matcher is easy with special macros provided by Expecta. Take a look at how `.beKindOf()` matcher is defined:
 
@@ -205,7 +246,7 @@ EXPMatcherImplementationBegin(beKindOf, (Class expected)) {
 EXPMatcherImplementationEnd
 ```
 
-## DYNAMIC PREDICATE MATCHERS
+## Dynamic Predicate Matchers
 
 It is possible to add predicate matchers by simply defining the matcher interface, with the matcher implementation being handled at runtime by delegating to the predicate method on your object.
 
@@ -241,38 +282,12 @@ You can now write your assertion as follows:
 expect(lightSwitch).isTurnedOn();
 ```
 
-## CONTRIBUTION
-
-You can find the public Tracker project [here](https://www.pivotaltracker.com/projects/323267).
-
-### CONTRIBUTION GUIDELINES
+## Contribution Guidelines
 
 * Please use only spaces and indent 2 spaces at a time.
 * Please prefix instance variable names with a single underscore (`_`).
 * Please prefix custom classes and functions defined in the global scope with `EXP`.
 
-## CREDITS
+## License
 
-Expecta is brought to you by [Peter Jihoon Kim](http://github.com/petejkim) and the [Specta team](https://github.com/specta?tab=members).
-
-### CONTRIBUTORS
-
-* [Alan Rogers](https://github.com/alanjrogers)
-* [Andrew Kitchen](https://github.com/akitchen)
-* [Blake Watters](https://github.com/blakewatters)
-* [Christopher Pickslay](https://github.com/twobitlabs)
-* [Chris Devereux](https://github.com/chrisdevereux)
-* [David Hart](https://github.com/TrahDivad)
-* [Jacob Gorban](https://github.com/apparentsoft)
-* [Jon Cooper](https://github.com/joncooper)
-* [Justin Spahr-Summers](https://github.com/jspahrsummers)
-* [Kurtis Seebaldt](https://github.com/kseebaldt)
-* [Luke Redpath](https://github.com/lukeredpath)
-* [Nicholas Hutchinson](https://github.com/nickhutchinson)
-* [Rob Rix](https://github.com/robrix)
-* [Samuel Giddins](https://github.com/segiddins)
-* [Zack Waugh](https://github.com/zachwaugh)
-
-## LICENSE
-
-Expecta is licensed under the [MIT License](http://github.com/petejkim/expecta/raw/master/LICENSE).
+Copyright (c) 2012-2015 [Specta Team](https://github.com/specta?tab=members). This software is licensed under the [MIT License](http://github.com/specta/specta/raw/master/LICENSE).
