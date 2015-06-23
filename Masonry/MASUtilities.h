@@ -12,6 +12,7 @@
 
     #import <UIKit/UIKit.h>
     #define MAS_VIEW UIView
+    #define MAS_VIEW_CONTROLLER UIViewController
     #define MASEdgeInsets UIEdgeInsets
 
     typedef UILayoutPriority MASLayoutPriority;
