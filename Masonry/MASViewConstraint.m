@@ -313,17 +313,16 @@ static char kInstalledConstraintsKey;
         return;
     }
     
-    MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
-    
+    MAS_VIEW *firstLayoutItem = self.firstViewAttribute.item;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
-    MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
+    MAS_VIEW *secondLayoutItem = self.secondViewAttribute.item;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
 
     // alignment attributes must have a secondViewAttribute
     // therefore we assume that is refering to superview
     // eg make.left.equalTo(@10)
     if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
-        secondLayoutItem = firstLayoutItem.superview;
+        secondLayoutItem = self.firstViewAttribute.view.superview;
         secondLayoutAttribute = firstLayoutAttribute;
     }
     
@@ -339,14 +338,16 @@ static char kInstalledConstraintsKey;
     layoutConstraint.priority = self.layoutPriority;
     layoutConstraint.mas_key = self.mas_key;
     
-    if (secondLayoutItem) {
-        MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
+    if (self.secondViewAttribute.view) {
+        MAS_VIEW *closestCommonSuperview = [self.firstViewAttribute.view mas_closestCommonSuperview:self.secondViewAttribute.view];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
-                 firstLayoutItem, secondLayoutItem);
+                 self.firstViewAttribute.view, self.secondViewAttribute.view);
         self.installedView = closestCommonSuperview;
+    } else if (self.firstViewAttribute.isSizeAttribute) {
+        self.installedView = self.firstViewAttribute.view;
     } else {
-        self.installedView = firstLayoutItem;
+        self.installedView = self.firstViewAttribute.view.superview;
     }
 
 

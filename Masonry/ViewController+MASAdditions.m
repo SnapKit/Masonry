@@ -13,11 +13,11 @@
 @implementation MAS_VIEW_CONTROLLER (MASAdditions)
 
 - (MASViewAttribute *)mas_topLayoutGuide {
-    return [[MASViewAttribute alloc] initWithView:(UIView *)self.topLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    return [[MASViewAttribute alloc] initWithView:self.view item:self.topLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }
 
 - (MASViewAttribute *)mas_bottomLayoutGuide {
-    return [[MASViewAttribute alloc] initWithView:(UIView *)self.bottomLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+    return [[MASViewAttribute alloc] initWithView:self.view item:self.bottomLayoutGuide layoutAttribute:NSLayoutAttributeTop];
 }
 
 @end
