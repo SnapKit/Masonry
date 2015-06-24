@@ -339,12 +339,14 @@ static char kInstalledConstraintsKey;
     layoutConstraint.priority = self.layoutPriority;
     layoutConstraint.mas_key = self.mas_key;
     
-    if (secondLayoutItem) {
+    if ([secondLayoutItem isKindOfClass:[MAS_VIEW class]]) {
         MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
                  firstLayoutItem, secondLayoutItem);
         self.installedView = closestCommonSuperview;
+    } else if (firstLayoutItem.superview) {
+        self.installedView = firstLayoutItem.superview;
     } else {
         self.installedView = firstLayoutItem;
     }

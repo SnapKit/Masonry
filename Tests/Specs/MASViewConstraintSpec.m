@@ -501,7 +501,7 @@ SpecBegin(MASViewConstraint) {
     expect(constraint.layoutConstraint.secondItem).to.beNil();
     expect(constraint.layoutConstraint.relation).to.equal(NSLayoutRelationEqual);
     expect(constraint.layoutConstraint.constant).to.equal(10);
-    expect(constraint.firstViewAttribute.view.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
+    expect(constraint.firstViewAttribute.view.superview.constraints[0]).to.beIdenticalTo(constraint.layoutConstraint);
 }
 
 
