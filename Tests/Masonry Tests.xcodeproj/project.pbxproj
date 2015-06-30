@@ -10,6 +10,7 @@
 		03674DA26B0749DA89CBB9C4 /* libPods-MasonryTestsLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47918AE732004ACDA52EF295 /* libPods-MasonryTestsLoader.a */; };
 		1ABDF84BB7EB4FD087045E36 /* libPods-Masonry iOS Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF4FBEAC97D4EA5ABA1D512 /* libPods-Masonry iOS Tests.a */; };
 		3D21C42B1845D0CA001D5F97 /* NSArray+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D21C42A1845D0C0001D5F97 /* NSArray+MASAdditionsSpec.m */; };
+		447354911B3A1818004DACCB /* ViewController+MASAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473548F1B3A17B4004DACCB /* ViewController+MASAdditionsSpec.m */; };
 		DD717A0218442A6400FAA7A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD717A0118442A6400FAA7A8 /* Foundation.framework */; };
 		DD717A0418442A6400FAA7A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD717A0318442A6400FAA7A8 /* CoreGraphics.framework */; };
 		DD717A0618442A6400FAA7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD717A0518442A6400FAA7A8 /* UIKit.framework */; };
@@ -42,10 +43,12 @@
 
 /* Begin PBXFileReference section */
 		1CF4FBEAC97D4EA5ABA1D512 /* libPods-Masonry iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20CC4ABE19D3EE262A136582 /* Pods-Masonry iOS Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Masonry iOS Tests/Pods-Masonry iOS Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3D21C42A1845D0C0001D5F97 /* NSArray+MASAdditionsSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditionsSpec.m"; sourceTree = "<group>"; };
-		45C16F881B9D4015B954BF80 /* Pods-MasonryTestsLoader.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryTestsLoader.xcconfig"; path = "../Pods/Pods-MasonryTestsLoader.xcconfig"; sourceTree = "<group>"; };
+		4473548F1B3A17B4004DACCB /* ViewController+MASAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditionsSpec.m"; sourceTree = "<group>"; };
 		47918AE732004ACDA52EF295 /* libPods-MasonryTestsLoader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MasonryTestsLoader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAC34C8A79354B5585E9257B /* Pods-Masonry iOS Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Tests.xcconfig"; path = "../Pods/Pods-Masonry iOS Tests.xcconfig"; sourceTree = "<group>"; };
+		B3C285A8F21659F8AC931CFE /* Pods-MasonryTestsLoader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryTestsLoader.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MasonryTestsLoader/Pods-MasonryTestsLoader.release.xcconfig"; sourceTree = "<group>"; };
+		D7C49E3BFEC39EF9CC752050 /* Pods-Masonry iOS Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Tests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Masonry iOS Tests/Pods-Masonry iOS Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD7179FE18442A6400FAA7A8 /* MasonryTestsLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasonryTestsLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD717A0118442A6400FAA7A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD717A0318442A6400FAA7A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -72,6 +75,7 @@
 		DD717A611844303200FAA7A8 /* MasonryTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MasonryTests-Prefix.pch"; sourceTree = "<group>"; };
 		DD717A621844303200FAA7A8 /* XCTest+Spec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTest+Spec.h"; sourceTree = "<group>"; };
 		DD717A651844358800FAA7A8 /* NSObject+MASSubscriptSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MASSubscriptSupport.h"; sourceTree = "<group>"; };
+		FA30CDC14969096518121CA2 /* Pods-MasonryTestsLoader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryTestsLoader.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MasonryTestsLoader/Pods-MasonryTestsLoader.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39E4168F51AD67BA390486D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7C49E3BFEC39EF9CC752050 /* Pods-Masonry iOS Tests.debug.xcconfig */,
+				20CC4ABE19D3EE262A136582 /* Pods-Masonry iOS Tests.release.xcconfig */,
+				FA30CDC14969096518121CA2 /* Pods-MasonryTestsLoader.debug.xcconfig */,
+				B3C285A8F21659F8AC931CFE /* Pods-MasonryTestsLoader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DD7179F318442A1F00FAA7A8 = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +122,7 @@
 				DD717A5E18442F3900FAA7A8 /* Supporting Files */,
 				DD717A0018442A6400FAA7A8 /* Frameworks */,
 				DD7179FF18442A6400FAA7A8 /* Products */,
-				DAC34C8A79354B5585E9257B /* Pods-Masonry iOS Tests.xcconfig */,
-				45C16F881B9D4015B954BF80 /* Pods-MasonryTestsLoader.xcconfig */,
+				39E4168F51AD67BA390486D7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +173,7 @@
 				DD717A4D18442EC600FAA7A8 /* MASViewConstraintSpec.m */,
 				DD717A4E18442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m */,
 				DD717A5018442EC600FAA7A8 /* View+MASAdditionsSpec.m */,
+				4473548F1B3A17B4004DACCB /* ViewController+MASAdditionsSpec.m */,
 				3D21C42A1845D0C0001D5F97 /* NSArray+MASAdditionsSpec.m */,
 			);
 			path = Specs;
@@ -312,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-MasonryTestsLoader-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-MasonryTestsLoader/Pods-MasonryTestsLoader-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC72D687A4114D04BBA75896 /* Copy Pods Resources */ = {
@@ -327,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-Masonry iOS Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Masonry iOS Tests/Pods-Masonry iOS Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -351,6 +366,7 @@
 				DD717A5618442EC600FAA7A8 /* NSLayoutConstraint+MASDebugAdditionsSpec.m in Sources */,
 				DD717A5718442EC600FAA7A8 /* View+MASAdditionsSpec.m in Sources */,
 				DD717A631844303200FAA7A8 /* GcovTestObserver.m in Sources */,
+				447354911B3A1818004DACCB /* ViewController+MASAdditionsSpec.m in Sources */,
 				3D21C42B1845D0CA001D5F97 /* NSArray+MASAdditionsSpec.m in Sources */,
 				DD717A5418442EC600FAA7A8 /* MASViewAttributeSpec.m in Sources */,
 				DD717A5218442EC600FAA7A8 /* MASConstraintDelegateMock.m in Sources */,
@@ -394,7 +410,7 @@
 		};
 		DD717A2918442A6400FAA7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45C16F881B9D4015B954BF80 /* Pods-MasonryTestsLoader.xcconfig */;
+			baseConfigurationReference = FA30CDC14969096518121CA2 /* Pods-MasonryTestsLoader.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -448,7 +464,7 @@
 		};
 		DD717A2A18442A6400FAA7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45C16F881B9D4015B954BF80 /* Pods-MasonryTestsLoader.xcconfig */;
+			baseConfigurationReference = B3C285A8F21659F8AC931CFE /* Pods-MasonryTestsLoader.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -496,7 +512,7 @@
 		};
 		DD717A4218442ADD00FAA7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC34C8A79354B5585E9257B /* Pods-Masonry iOS Tests.xcconfig */;
+			baseConfigurationReference = D7C49E3BFEC39EF9CC752050 /* Pods-Masonry iOS Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -547,7 +563,7 @@
 		};
 		DD717A4318442ADD00FAA7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC34C8A79354B5585E9257B /* Pods-Masonry iOS Tests.xcconfig */;
+			baseConfigurationReference = 20CC4ABE19D3EE262A136582 /* Pods-Masonry iOS Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";

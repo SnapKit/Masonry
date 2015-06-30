@@ -17,6 +17,7 @@ FOUNDATION_EXPORT const unsigned char MasonryVersionString[];
 #import "MASUtilities.h"
 #import "View+MASAdditions.h"
 #import "View+MASShorthandAdditions.h"
+#import "ViewController+MASAdditions.h"
 #import "NSArray+MASAdditions.h"
 #import "NSArray+MASShorthandAdditions.h"
 #import "MASConstraint.h"
