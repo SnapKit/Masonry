@@ -1,6 +1,6 @@
 //
 //  NSArray+MASAdditions.h
-//  
+//
 //
 //  Created by Daniel Hammond on 11/26/13.
 //
@@ -9,6 +9,11 @@
 #import "MASUtilities.h"
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
+
+typedef NS_ENUM(NSUInteger, AxisType) {
+    AxisTypeHorizon,
+    AxisTypeVertical
+};
 
 @interface NSArray (MASAdditions)
 
@@ -20,7 +25,7 @@
  *
  *  @return Array of created MASConstraints
  */
-- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_makeConstraints:(void (^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -31,7 +36,7 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_updateConstraints:(void (^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -42,6 +47,24 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_remakeConstraints:(void (^)(MASConstraintMaker *make))block;
+
+/**
+ *  distribute with fixed spaceing
+ *
+ *  @param axisType     horizon/vertical
+ *  @param paddingSpace space
+ *  @param leadSpacing  head/tail
+ */
+- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedSpacing:(CGFloat)paddingSpace withLeadSpacing:(CGFloat)leadSpacing;
+
+/**
+ *  distribute with fixed item size
+ *
+ *  @param axisType    horizon/vertical
+ *  @param itemLength  item size
+ *  @param leadSpacing head/tail
+ */
+- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedItemLength:(CGFloat)itemLength withLeadSpacing:(CGFloat)leadSpacing;
 
 @end
