@@ -22,6 +22,7 @@
 #import "MASExampleAttributeChainingView.h"
 #import "MASExampleAspectFitView.h"
 #import "MASExampleMarginView.h"
+#import "MASExampleDistributeView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -66,6 +67,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleAttributeChainingView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Margins"
                                               viewClass:MASExampleMarginView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Views Distribute"
+                                              viewClass:MASExampleDistributeView.class],
 
     ];
     

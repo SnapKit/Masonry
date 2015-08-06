@@ -10,9 +10,9 @@
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
 
-typedef NS_ENUM(NSUInteger, AxisType) {
-    AxisTypeHorizon,
-    AxisTypeVertical
+typedef NS_ENUM(NSUInteger, MASAxisType) {
+    MASAxisTypeHorizon,
+    MASAxisTypeVertical
 };
 
 @interface NSArray (MASAdditions)
@@ -54,17 +54,19 @@ typedef NS_ENUM(NSUInteger, AxisType) {
  *
  *  @param axisType     horizon/vertical
  *  @param paddingSpace space
- *  @param leadSpacing  head/tail
+ *  @param leadSpacing  head
+ *  @param tailSpacing  tail
  */
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedSpacing:(CGFloat)paddingSpace withLeadSpacing:(CGFloat)leadSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)paddingSpace leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 /**
  *  distribute with fixed item size
  *
  *  @param axisType    horizon/vertical
  *  @param itemLength  item size
- *  @param leadSpacing head/tail
+ *  @param leadSpacing head
+ *  @param tailSpacing  tail
  */
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedItemLength:(CGFloat)itemLength withLeadSpacing:(CGFloat)leadSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)itemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 @end

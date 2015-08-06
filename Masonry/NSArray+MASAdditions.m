@@ -38,27 +38,29 @@
     return constraints;
 }
 
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedSpacing:(CGFloat)paddingSpace withLeadSpacing:(CGFloat)leadSpacing {
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)paddingSpace leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
     if (self.count < 2) {
+        NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
-    if (axisType == AxisTypeHorizon) {
+    if (axisType == MASAxisTypeHorizon) {
         MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    make.left.equalTo(prev.mas_right).offset(paddingSpace);
                     make.width.equalTo(prev);
+                    make.left.equalTo(prev.mas_right).offset(paddingSpace);
+                    if (i == (CGFloat)self.count - 1) {//last one
+                        make.right.equalTo(tempSuperView).offset(-tailSpacing);
+                    }
                 }
-                else {
+                else {//first one
                     make.left.equalTo(tempSuperView).offset(leadSpacing);
                 }
-                if (i == (CGFloat)self.count - 1) {
-                    make.right.equalTo(tempSuperView).offset(-leadSpacing);
-                }
+                
             }];
             prev = v;
         }
@@ -69,28 +71,30 @@
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    make.top.equalTo(prev.mas_bottom).offset(paddingSpace);
                     make.height.equalTo(prev);
+                    make.top.equalTo(prev.mas_bottom).offset(paddingSpace);
+                    if (i == (CGFloat)self.count - 1) {//last one
+                        make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
+                    }                    
                 }
-                else {
+                else {//first one
                     make.top.equalTo(tempSuperView).offset(leadSpacing);
                 }
-                if (i == (CGFloat)self.count - 1) {
-                    make.bottom.equalTo(tempSuperView).offset(-leadSpacing);
-                }
+                
             }];
             prev = v;
         }
     }
 }
 
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedItemLength:(CGFloat)itemLength withLeadSpacing:(CGFloat)leadSpacing {
-    if (self.count < 2) {//一个不需要均匀分布
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)itemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
+    if (self.count < 2) {
+        NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
-    if (axisType == AxisTypeHorizon) {
+    if (axisType == MASAxisTypeHorizon) {
         MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = [self objectAtIndex:i];
@@ -98,14 +102,16 @@
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
                     make.width.equalTo(@(itemLength));
-                    make.right.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
+                    if (i == (CGFloat)self.count - 1) {//last one
+                        make.right.equalTo(tempSuperView).offset(-tailSpacing);
+                    }
+                    else {
+                        make.right.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
+                    }
                 }
-                else {
+                else {//first one
                     make.left.equalTo(tempSuperView).offset(leadSpacing);
                     make.width.equalTo(@(itemLength));
-                }
-                if (i == (CGFloat)self.count - 1) {
-                    make.right.equalTo(tempSuperView).offset(-leadSpacing);
                 }
             }];
             prev = v;
@@ -119,14 +125,16 @@
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
                     make.height.equalTo(@(itemLength));
-                    make.bottom.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
+                    if (i == (CGFloat)self.count - 1) {//last one
+                        make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
+                    }
+                    else {
+                        make.bottom.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
+                    }
                 }
-                else {
+                else {//first one
                     make.top.equalTo(tempSuperView).offset(leadSpacing);
                     make.height.equalTo(@(itemLength));
-                }
-                if (i == (CGFloat)self.count - 1) {
-                    make.bottom.equalTo(tempSuperView).offset(-leadSpacing);
                 }
             }];
             prev = v;
