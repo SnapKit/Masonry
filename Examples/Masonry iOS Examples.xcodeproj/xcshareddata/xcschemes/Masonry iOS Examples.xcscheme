@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AED05B61AD59FD40053CC65"
-               BuildableName = "Masonry.framework"
+               BlueprintIdentifier = "DD52F1A9179CA93B005CD195"
+               BuildableName = "libMasonry.a"
                BlueprintName = "Masonry iOS"
                ReferencedContainer = "container:../Masonry.xcodeproj">
             </BuildableReference>
@@ -62,8 +62,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DD52F226179CAD57005CD195"
@@ -81,8 +80,7 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DD52F226179CAD57005CD195"

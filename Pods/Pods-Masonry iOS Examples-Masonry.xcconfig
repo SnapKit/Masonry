@@ -1,0 +1,1 @@
+PODS_MASONRY_IOS_EXAMPLES_MASONRY_OTHER_LDFLAGS = -framework Foundation -framework UIKit

@@ -108,12 +108,12 @@
 - (MASConstraint *)with;
 
 /**
- *	Optional semantic property which has no effect but improves the readability of constraint
+ *	optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)and;
 
 /**
- *	Creates a new MASCompositeConstraint with the called attribute and reciever
+ *	creates a new MASCompositeConstraint with the called attribute and reciever
  */
 - (MASConstraint *)left;
 - (MASConstraint *)top;
@@ -126,20 +126,6 @@
 - (MASConstraint *)centerX;
 - (MASConstraint *)centerY;
 - (MASConstraint *)baseline;
-
-#if TARGET_OS_IPHONE
-
-- (MASConstraint *)leftMargin;
-- (MASConstraint *)rightMargin;
-- (MASConstraint *)topMargin;
-- (MASConstraint *)bottomMargin;
-- (MASConstraint *)leadingMargin;
-- (MASConstraint *)trailingMargin;
-- (MASConstraint *)centerXWithinMargins;
-- (MASConstraint *)centerYWithinMargins;
-
-#endif
-
 
 /**
  *	Sets the constraint debug name
@@ -184,17 +170,6 @@
  */
 @property (nonatomic, copy, readonly) MASConstraint *animator;
 #endif
-
-/**
- *  Activates an NSLayoutConstraint if it's supported by an OS. 
- *  Invokes install otherwise.
- */
-- (void)activate;
-
-/**
- *  Deactivates previously installed/activated NSLayoutConstraint.
- */
-- (void)deactivate;
 
 /**
  *	Creates a NSLayoutConstraint and adds it to the appropriate view.

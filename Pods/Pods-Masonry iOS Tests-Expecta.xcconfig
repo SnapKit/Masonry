@@ -1,0 +1,1 @@
+PODS_MASONRY_IOS_TESTS_EXPECTA_OTHER_LDFLAGS = -framework Foundation
