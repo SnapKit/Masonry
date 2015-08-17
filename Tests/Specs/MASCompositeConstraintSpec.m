@@ -152,6 +152,26 @@ SpecBegin(MASCompositeConstraint) {
     expect(superview.constraints).to.haveCountOf(0);
 }
 
+- (void)testActivateDeactivate {
+    NSArray *children = @[
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_leading],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_trailing]
+                          ];
+    composite = [[MASCompositeConstraint alloc] initWithChildren:children];
+    composite.delegate = delegate;
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [superview addSubview:newView];
+    
+    //first equality statement
+    composite.equalTo(newView);
+    [composite install];
+    
+    expect(superview.constraints).to.haveCountOf(2);
+    [composite deactivate];
+    expect(superview.constraints).to.haveCountOf(0);
+    [composite activate];
+    expect(superview.constraints).to.haveCountOf(2);
+}
 
 - (void)testAttributeChainingShouldCallDelegate {
     NSArray *children = @[

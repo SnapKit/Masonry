@@ -20,6 +20,8 @@
 #import "MASExampleLayoutGuideViewController.h"
 #import "MASExampleArrayView.h"
 #import "MASExampleAttributeChainingView.h"
+#import "MASExampleAspectFitView.h"
+#import "MASExampleMarginView.h"
 
 static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
@@ -48,6 +50,8 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleConstantsView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Composite Edges"
                                               viewClass:MASExampleSidesView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Aspect Fit"
+                                              viewClass:MASExampleAspectFitView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
                                               viewClass:MASExampleAnimatedView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Debugging Helpers"
@@ -60,6 +64,9 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
                                               viewClass:MASExampleArrayView.class],
         [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
                                               viewClass:MASExampleAttributeChainingView.class],
+        [[MASExampleViewController alloc] initWithTitle:@"Margins"
+                                              viewClass:MASExampleMarginView.class],
+
     ];
     
     if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])

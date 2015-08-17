@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		114413091924B6EE008E702E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 114413081924B6EE008E702E /* Default-568h@2x.png */; };
+		27A27D461A6CF0C400D34F52 /* MASExampleAspectFitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */; };
+		3C02224919D0C4EC00507321 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C02224819D0C4EC00507321 /* Images.xcassets */; };
 		3DB1CAD5184538E200E91FC5 /* MASExampleArrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */; };
+		44C0E6AF1A9B9C55003C70CF /* MASExampleMarginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C0E6AE1A9B9C55003C70CF /* MASExampleMarginView.m */; };
 		4BEB55B61957394E008C862B /* MASExampleRemakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB55B51957394E008C862B /* MASExampleRemakeView.m */; };
 		6C87DADA5AB046D9A3181A65 /* libPods-Masonry iOS Examples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC1B8303EED42A2B01B94B1 /* libPods-Masonry iOS Examples.a */; };
 		DD175E6A182639FB0099129A /* MASExampleUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD175E69182639FB0099129A /* MASExampleUpdateView.m */; };
@@ -33,11 +36,17 @@
 
 /* Begin PBXFileReference section */
 		114413081924B6EE008E702E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27A27D441A6CF0C400D34F52 /* MASExampleAspectFitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAspectFitView.h; sourceTree = "<group>"; };
+		27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAspectFitView.m; sourceTree = "<group>"; };
+		321AA59CF7B045B6D503D2E5 /* Pods-Masonry iOS Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Examples.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Masonry iOS Examples/Pods-Masonry iOS Examples.release.xcconfig"; sourceTree = "<group>"; };
+		3C02224819D0C4EC00507321 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DB1CAD3184538E200E91FC5 /* MASExampleArrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleArrayView.h; sourceTree = "<group>"; };
 		3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleArrayView.m; sourceTree = "<group>"; };
+		44C0E6AD1A9B9C55003C70CF /* MASExampleMarginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleMarginView.h; sourceTree = "<group>"; };
+		44C0E6AE1A9B9C55003C70CF /* MASExampleMarginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleMarginView.m; sourceTree = "<group>"; };
 		4BEB55B41957394E008C862B /* MASExampleRemakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleRemakeView.h; sourceTree = "<group>"; };
 		4BEB55B51957394E008C862B /* MASExampleRemakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleRemakeView.m; sourceTree = "<group>"; };
-		B086DD7D31DD4B49ADC08504 /* Pods-Masonry iOS Examples.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Examples.xcconfig"; path = "../Pods/Pods-Masonry iOS Examples.xcconfig"; sourceTree = "<group>"; };
+		50B25D0621957AEB87C3FCC2 /* Pods-Masonry iOS Examples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Masonry iOS Examples.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Masonry iOS Examples/Pods-Masonry iOS Examples.debug.xcconfig"; sourceTree = "<group>"; };
 		BDC1B8303EED42A2B01B94B1 /* libPods-Masonry iOS Examples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Masonry iOS Examples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD175E68182639FB0099129A /* MASExampleUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleUpdateView.h; sourceTree = "<group>"; };
 		DD175E69182639FB0099129A /* MASExampleUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleUpdateView.m; sourceTree = "<group>"; };
@@ -97,7 +106,7 @@
 				DD52F230179CAD57005CD195 /* Masonry iOS Examples */,
 				DD52F229179CAD57005CD195 /* Frameworks */,
 				DD52F228179CAD57005CD195 /* Products */,
-				B086DD7D31DD4B49ADC08504 /* Pods-Masonry iOS Examples.xcconfig */,
+				DF14AF6879B23556F891E1F7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +136,7 @@
 				DD52F23A179CAD57005CD195 /* MASAppDelegate.m */,
 				DD52F257179CADCB005CD195 /* Controllers */,
 				DD52F256179CADC4005CD195 /* Views */,
+				3C02224819D0C4EC00507321 /* Images.xcassets */,
 				DD52F231179CAD57005CD195 /* Supporting Files */,
 			);
 			path = "Masonry iOS Examples";
@@ -152,6 +162,8 @@
 				DD52F24A179CADC0005CD195 /* MASExampleConstantsView.m */,
 				DD52F24D179CADC0005CD195 /* MASExampleSidesView.h */,
 				DD52F24E179CADC0005CD195 /* MASExampleSidesView.m */,
+				27A27D441A6CF0C400D34F52 /* MASExampleAspectFitView.h */,
+				27A27D451A6CF0C400D34F52 /* MASExampleAspectFitView.m */,
 				DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */,
 				DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */,
 				DD7CC17417ACE990007A469E /* MASExampleDebuggingView.h */,
@@ -168,6 +180,8 @@
 				3DB1CAD4184538E200E91FC5 /* MASExampleArrayView.m */,
 				DD32C3FB18E8BFF6001F6AD2 /* MASExampleAttributeChainingView.h */,
 				DD32C3FC18E8BFF6001F6AD2 /* MASExampleAttributeChainingView.m */,
+				44C0E6AD1A9B9C55003C70CF /* MASExampleMarginView.h */,
+				44C0E6AE1A9B9C55003C70CF /* MASExampleMarginView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -183,6 +197,15 @@
 				DD653E491843E61500D1EC5A /* MASExampleLayoutGuideViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DF14AF6879B23556F891E1F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50B25D0621957AEB87C3FCC2 /* Pods-Masonry iOS Examples.debug.xcconfig */,
+				321AA59CF7B045B6D503D2E5 /* Pods-Masonry iOS Examples.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C02224919D0C4EC00507321 /* Images.xcassets in Resources */,
 				DD52F235179CAD57005CD195 /* InfoPlist.strings in Resources */,
 				114413091924B6EE008E702E /* Default-568h@2x.png in Resources */,
 			);
@@ -259,7 +283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-Masonry iOS Examples-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Masonry iOS Examples/Pods-Masonry iOS Examples-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		621F6A1FCAEF44F880874959 /* Check Pods Manifest.lock */ = {
@@ -289,8 +313,10 @@
 				3DB1CAD5184538E200E91FC5 /* MASExampleArrayView.m in Sources */,
 				DD52F23B179CAD57005CD195 /* MASAppDelegate.m in Sources */,
 				DD52F251179CADC0005CD195 /* MASExampleBasicView.m in Sources */,
+				44C0E6AF1A9B9C55003C70CF /* MASExampleMarginView.m in Sources */,
 				DD653E4A1843E61500D1EC5A /* MASExampleLayoutGuideViewController.m in Sources */,
 				DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */,
+				27A27D461A6CF0C400D34F52 /* MASExampleAspectFitView.m in Sources */,
 				DD52F252179CADC0005CD195 /* MASExampleConstantsView.m in Sources */,
 				DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */,
 				DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */,
@@ -377,8 +403,9 @@
 		};
 		DD52F245179CAD57005CD195 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B086DD7D31DD4B49ADC08504 /* Pods-Masonry iOS Examples.xcconfig */;
+			baseConfigurationReference = 50B25D0621957AEB87C3FCC2 /* Pods-Masonry iOS Examples.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
 				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";
@@ -389,8 +416,9 @@
 		};
 		DD52F246179CAD57005CD195 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B086DD7D31DD4B49ADC08504 /* Pods-Masonry iOS Examples.xcconfig */;
+			baseConfigurationReference = 321AA59CF7B045B6D503D2E5 /* Pods-Masonry iOS Examples.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
 				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";

@@ -102,8 +102,21 @@ static char kInstalledConstraintsKey;
     self.hasLayoutRelation = YES;
 }
 
+- (BOOL)supportsActiveProperty {
+    return [self.layoutConstraint respondsToSelector:@selector(isActive)];
+}
+
+- (BOOL)isActive {
+    BOOL active = YES;
+    if ([self supportsActiveProperty]) {
+        active = [self.layoutConstraint isActive];
+    }
+
+    return active;
+}
+
 - (BOOL)hasBeenInstalled {
-    return self.layoutConstraint != nil;
+    return (self.layoutConstraint != nil) && [self isActive];
 }
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
@@ -222,6 +235,7 @@ static char kInstalledConstraintsKey;
     NSLayoutAttribute layoutAttribute = self.firstViewAttribute.layoutAttribute;
     switch (layoutAttribute) {
         case NSLayoutAttributeLeft:
+        case NSLayoutAttributeLeading:
             self.layoutConstant = insets.left;
             break;
         case NSLayoutAttributeTop:
@@ -231,6 +245,7 @@ static char kInstalledConstraintsKey;
             self.layoutConstant = -insets.bottom;
             break;
         case NSLayoutAttributeRight:
+        case NSLayoutAttributeTrailing:
             self.layoutConstant = -insets.right;
             break;
         default:
@@ -272,19 +287,42 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - MASConstraint
 
+- (void)activate {
+    if ([self supportsActiveProperty] && self.layoutConstraint) {
+        if (self.hasBeenInstalled) {
+            return;
+        }
+        self.layoutConstraint.active = YES;
+        [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
+    } else {
+        [self install];
+    }
+}
+
+- (void)deactivate {
+    if ([self supportsActiveProperty]) {
+        self.layoutConstraint.active = NO;
+        [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
+    } else {
+        [self uninstall];
+    }
+}
+
 - (void)install {
-    NSAssert(!self.hasBeenInstalled, @"Cannot install constraint more than once");
+    if (self.hasBeenInstalled) {
+        return;
+    }
     
-    MAS_VIEW *firstLayoutItem = self.firstViewAttribute.view;
+    MAS_VIEW *firstLayoutItem = self.firstViewAttribute.item;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
-    MAS_VIEW *secondLayoutItem = self.secondViewAttribute.view;
+    MAS_VIEW *secondLayoutItem = self.secondViewAttribute.item;
     NSLayoutAttribute secondLayoutAttribute = self.secondViewAttribute.layoutAttribute;
 
     // alignment attributes must have a secondViewAttribute
     // therefore we assume that is refering to superview
     // eg make.left.equalTo(@10)
     if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
-        secondLayoutItem = firstLayoutItem.superview;
+        secondLayoutItem = self.firstViewAttribute.view.superview;
         secondLayoutAttribute = firstLayoutAttribute;
     }
     
@@ -300,14 +338,16 @@ static char kInstalledConstraintsKey;
     layoutConstraint.priority = self.layoutPriority;
     layoutConstraint.mas_key = self.mas_key;
     
-    if (secondLayoutItem) {
-        MAS_VIEW *closestCommonSuperview = [firstLayoutItem mas_closestCommonSuperview:secondLayoutItem];
+    if (self.secondViewAttribute.view) {
+        MAS_VIEW *closestCommonSuperview = [self.firstViewAttribute.view mas_closestCommonSuperview:self.secondViewAttribute.view];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
-                 firstLayoutItem, secondLayoutItem);
+                 self.firstViewAttribute.view, self.secondViewAttribute.view);
         self.installedView = closestCommonSuperview;
+    } else if (self.firstViewAttribute.isSizeAttribute) {
+        self.installedView = self.firstViewAttribute.view;
     } else {
-        self.installedView = firstLayoutItem;
+        self.installedView = self.firstViewAttribute.view.superview;
     }
 
 
@@ -322,9 +362,8 @@ static char kInstalledConstraintsKey;
     } else {
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
+        [firstLayoutItem.mas_installedConstraints addObject:self];
     }
-    
-    [firstLayoutItem.mas_installedConstraints addObject:self];
 }
 
 - (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
@@ -351,6 +390,7 @@ static char kInstalledConstraintsKey;
     [self.installedView removeConstraint:self.layoutConstraint];
     self.layoutConstraint = nil;
     self.installedView = nil;
+    
     [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
 

@@ -1,3 +1,12 @@
+v0.6.0
+======
+
+#### - Improved support of iOS 8
+
+As of iOS 8 there is `active` property of `NSLayoutConstraint` available, which allows to (de)activate constraint without searching closest common superview.
+
+#### - Added support of iPhone 6 and iPhone 6+ to test project
+
 v0.5.3
 ======
 

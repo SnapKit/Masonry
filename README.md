@@ -1,4 +1,6 @@
-#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://img.shields.io/coveralls/Masonry/Masonry.svg)](https://coveralls.io/r/Masonry/Masonry)
+#Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+**Masonry is in a bugfix only state as more developers will be moving to Swift. Going forward we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it supports Swift and provides better type safety with a simpler API**.
 
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OS X.
@@ -165,7 +167,7 @@ make.left.equalTo(@[view1, @100, view3.right]);
 
 ## Learn to prioritize
 
-> `.prority` allows you to specify an exact priority
+> `.priority` allows you to specify an exact priority
 
 > `.priorityHigh` equivalent to **UILayoutPriorityDefaultHigh**
 
@@ -263,7 +265,7 @@ Alternatively if you are only updating the constant value of the constraint you 
         make.width.lessThanOrEqualTo(self);
         make.height.lessThanOrEqualTo(self);
     }];
-    
+
     //according to apple super should be called at end of method
     [super updateConstraints];
 }
@@ -278,7 +280,7 @@ Alternatively if you are only updating the constant value of the constraint you 
 - (void)changeButtonPosition {
     [self.button mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.buttonSize);
-        
+
         if (topLeft) {
         	make.top.and.left.offset(10);
         } else {
@@ -344,9 +346,9 @@ Get busy Masoning
 Copy the included code snippets to ``~/Library/Developer/Xcode/UserData/CodeSnippets`` to write your masonry blocks at lightning speed!
 
 `mas_make` -> `[<view> mas_makeConstraints:^(MASConstraintMaker *make){<code>}];`
-    
+
 `mas_update` -> `[<view> mas_updateConstraints:^(MASConstraintMaker *make){<code>}];`
-    
+
 `mas_remake` -> `[<view> mas_remakeConstraints:^(MASConstraintMaker *make){<code>}];`
 
 ## Features
