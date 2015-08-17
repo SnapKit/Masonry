@@ -1,0 +1,5 @@
+#include "Pods-Masonry iOS Examples-Masonry.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/Masonry" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/Masonry"
+OTHER_LDFLAGS = -ObjC ${PODS_MASONRY_IOS_EXAMPLES_MASONRY_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
