@@ -149,18 +149,6 @@
 
 #pragma mark - MASConstraint
 
-- (void)activate {
-    for (MASConstraint *constraint in self.childConstraints) {
-        [constraint activate];
-    }
-}
-
-- (void)deactivate {
-    for (MASConstraint *constraint in self.childConstraints) {
-        [constraint deactivate];
-    }
-}
-
 - (void)install {
     for (MASConstraint *constraint in self.childConstraints) {
         constraint.updateExisting = self.updateExisting;

@@ -22,23 +22,23 @@
     self = [super init];
     if (!self) return nil;
 
-    UIView *greenView = UIView.new;
-    greenView.backgroundColor = UIColor.greenColor;
-    greenView.layer.borderColor = UIColor.blackColor.CGColor;
-    greenView.layer.borderWidth = 2;
-    [self addSubview:greenView];
+    UIView *view1 = UIView.new;
+    view1.backgroundColor = UIColor.greenColor;
+    view1.layer.borderColor = UIColor.blackColor.CGColor;
+    view1.layer.borderWidth = 2;
+    [self addSubview:view1];
 
-    UIView *redView = UIView.new;
-    redView.backgroundColor = UIColor.redColor;
-    redView.layer.borderColor = UIColor.blackColor.CGColor;
-    redView.layer.borderWidth = 2;
-    [self addSubview:redView];
+    UIView *view2 = UIView.new;
+    view2.backgroundColor = UIColor.redColor;
+    view2.layer.borderColor = UIColor.blackColor.CGColor;
+    view2.layer.borderWidth = 2;
+    [self addSubview:view2];
 
-    UIView *blueView = UIView.new;
-    blueView.backgroundColor = UIColor.blueColor;
-    blueView.layer.borderColor = UIColor.blackColor.CGColor;
-    blueView.layer.borderWidth = 2;
-    [self addSubview:blueView];
+    UIView *view3 = UIView.new;
+    view3.backgroundColor = UIColor.blueColor;
+    view3.layer.borderColor = UIColor.blackColor.CGColor;
+    view3.layer.borderWidth = 2;
+    [self addSubview:view3];
 
     UIView *superview = self;
     int padding = self.padding = 10;
@@ -46,34 +46,34 @@
 
     self.animatableConstraints = NSMutableArray.new;
 
-    [greenView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
-            make.bottom.equalTo(blueView.mas_top).offset(-padding),
+            make.bottom.equalTo(view3.mas_top).offset(-padding),
         ]];
 
-        make.size.equalTo(redView);
-        make.height.equalTo(blueView.mas_height);
+        make.size.equalTo(view2);
+        make.height.equalTo(view3.mas_height);
     }];
 
-    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
-            make.left.equalTo(greenView.mas_right).offset(padding),
-            make.bottom.equalTo(blueView.mas_top).offset(-padding),
+            make.left.equalTo(view1.mas_right).offset(padding),
+            make.bottom.equalTo(view3.mas_top).offset(-padding),
         ]];
 
-        make.size.equalTo(greenView);
-        make.height.equalTo(blueView.mas_height);
+        make.size.equalTo(view1);
+        make.height.equalTo(view3.mas_height);
     }];
 
-    [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
         [self.animatableConstraints addObjectsFromArray:@[
             make.edges.equalTo(superview).insets(paddingInsets).priorityLow(),
         ]];
 
-        make.height.equalTo(greenView.mas_height);
-        make.height.equalTo(redView.mas_height);
+        make.height.equalTo(view1.mas_height);
+        make.height.equalTo(view2.mas_height);
     }];
 
     return self;
