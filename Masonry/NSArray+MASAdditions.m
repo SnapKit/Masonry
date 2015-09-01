@@ -100,7 +100,7 @@
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
+                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(itemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                     make.width.equalTo(@(itemLength));
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
@@ -123,7 +123,7 @@
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
+                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(itemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                     make.height.equalTo(@(itemLength));
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);

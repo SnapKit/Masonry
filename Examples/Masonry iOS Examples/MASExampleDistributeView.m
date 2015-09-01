@@ -41,14 +41,14 @@
             }];
             break;
         case 2:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:200 tailSpacing:30];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(@60);
                 make.height.equalTo(@60);
             }];
             break;
         case 3:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:30 tailSpacing:200];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(@0);
                 make.width.equalTo(@60);
