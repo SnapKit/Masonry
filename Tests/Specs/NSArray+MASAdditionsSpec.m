@@ -69,7 +69,7 @@ SpecBegin(NSArray_MASAdditions)
     [superView addSubview:subject2];
     NSArray *views = @[ subject1];
     expect(^{
-        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
+        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
     }).to.raiseAny();
     
 }
@@ -84,7 +84,7 @@ SpecBegin(NSArray_MASAdditions)
     [superView addSubview:subject2];
     NSArray *views = @[ subject1];
     expect(^{
-        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
+        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
     }).to.raiseAny();
     
 }
@@ -103,7 +103,7 @@ SpecBegin(NSArray_MASAdditions)
     
     NSArray *views = @[ subject1,subject2,subject3 ];
 
-    [views mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
+    [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
     
     //left view
     NSArray *arr1 = [MASViewConstraint installedConstraintsForView:subject1];
@@ -132,7 +132,7 @@ SpecBegin(NSArray_MASAdditions)
     
     NSArray *views = @[ subject1,subject2,subject3 ];
    
-    [views mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30.0 leadSpacing:5.0 tailSpacing:5.0];
+    [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30.0 leadSpacing:5.0 tailSpacing:5.0];
     
     //left view
     NSArray *arr1 = [MASViewConstraint installedConstraintsForView:subject1];

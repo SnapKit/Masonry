@@ -11,7 +11,7 @@
 #import "MASViewAttribute.h"
 
 typedef NS_ENUM(NSUInteger, MASAxisType) {
-    MASAxisTypeHorizon,
+    MASAxisTypeHorizontal,
     MASAxisTypeVertical
 };
 
@@ -50,23 +50,23 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
 - (NSArray *)mas_remakeConstraints:(void (^)(MASConstraintMaker *make))block;
 
 /**
- *  distribute with fixed spaceing
+ *  distribute with fixed spacing
  *
- *  @param axisType     horizon/vertical
- *  @param paddingSpace space
- *  @param leadSpacing  head
- *  @param tailSpacing  tail
+ *  @param axisType     which axis to distribute items along
+ *  @param fixedSpacing the spacing between each item
+ *  @param leadSpacing  the spacing before the first item and the container
+ *  @param tailSpacing  the spacing after the last item and the container
  */
-- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)paddingSpace leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)fixedSpacing leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 /**
  *  distribute with fixed item size
  *
- *  @param axisType    horizon/vertical
- *  @param itemLength  item size
- *  @param leadSpacing head
- *  @param tailSpacing  tail
+ *  @param axisType        which axis to distribute items along
+ *  @param fixedItemLength the fixed length of each item
+ *  @param leadSpacing     the spacing before the first item and the container
+ *  @param tailSpacing     the spacing after the last item and the container
  */
-- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)itemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 @end

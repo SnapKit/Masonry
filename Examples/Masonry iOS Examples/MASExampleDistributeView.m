@@ -27,7 +27,7 @@
     unsigned int type  = arc4random()%4;
     switch (type) {
         case 0:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(@60);
                 make.height.equalTo(@60);
@@ -41,7 +41,7 @@
             }];
             break;
         case 2:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:200 tailSpacing:30];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:200 tailSpacing:30];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(@60);
                 make.height.equalTo(@60);
