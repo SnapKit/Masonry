@@ -1,6 +1,6 @@
 //
 //  NSArray+MASAdditions.h
-//  
+//
 //
 //  Created by Daniel Hammond on 11/26/13.
 //
@@ -9,6 +9,11 @@
 #import "MASUtilities.h"
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
+
+typedef NS_ENUM(NSUInteger, MASAxisType) {
+    MASAxisTypeHorizontal,
+    MASAxisTypeVertical
+};
 
 @interface NSArray (MASAdditions)
 
@@ -20,7 +25,7 @@
  *
  *  @return Array of created MASConstraints
  */
-- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_makeConstraints:(void (^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -31,7 +36,7 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_updateConstraints:(void (^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -42,6 +47,26 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_remakeConstraints:(void (^)(MASConstraintMaker *make))block;
+
+/**
+ *  distribute with fixed spacing
+ *
+ *  @param axisType     which axis to distribute items along
+ *  @param fixedSpacing the spacing between each item
+ *  @param leadSpacing  the spacing before the first item and the container
+ *  @param tailSpacing  the spacing after the last item and the container
+ */
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)fixedSpacing leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+
+/**
+ *  distribute with fixed item size
+ *
+ *  @param axisType        which axis to distribute items along
+ *  @param fixedItemLength the fixed length of each item
+ *  @param leadSpacing     the spacing before the first item and the container
+ *  @param tailSpacing     the spacing after the last item and the container
+ */
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 @end
