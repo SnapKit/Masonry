@@ -26,6 +26,14 @@
     return [constraintMaker install];
 }
 
+- (NSArray *)mas_replaceConstraints:(void(^)(MASConstraintMaker *))block {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    constraintMaker.replaceExisting = YES;
+    block(constraintMaker);
+    return [constraintMaker install];
+}
+
 - (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];

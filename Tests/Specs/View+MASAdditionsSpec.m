@@ -28,6 +28,14 @@ SpecBegin(View_MASAdditions)
     expect(newView.translatesAutoresizingMaskIntoConstraints).to.beFalsy();
 }
 
+- (void)testSetReplaceExisting {
+    MAS_VIEW *newView = MAS_VIEW.new;
+    [newView mas_replaceConstraints:^(MASConstraintMaker *make) {
+        expect(make.replaceExisting).to.beTruthy();
+    }];
+    
+    expect(newView.translatesAutoresizingMaskIntoConstraints).to.beFalsy();
+}
 - (void)testSetRemoveExisting {
     MAS_VIEW *newView = MAS_VIEW.new;
     [newView mas_remakeConstraints:^(MASConstraintMaker *make) {

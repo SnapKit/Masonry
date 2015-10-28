@@ -360,10 +360,34 @@ static char kInstalledConstraintsKey;
         existingConstraint.constant = layoutConstraint.constant;
         self.layoutConstraint = existingConstraint;
     } else {
+        if (self.replaceExisting) {
+            // try to find all constraint with same first item and atrribute, and remove it.
+            do {
+                existingConstraint = [self layoutFirstConstraintSimilarTo:layoutConstraint];
+                if (existingConstraint) {
+                    [self.installedView removeConstraint:existingConstraint];
+                }
+            }while(existingConstraint);
+        }
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
         [firstLayoutItem.mas_installedConstraints addObject:self];
     }
+}
+
+- (MASLayoutConstraint *)layoutFirstConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
+    // check if any constraints are the same first item and attribute.
+    
+    // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
+    // and they are likely to be added first.
+    for (NSLayoutConstraint *existingConstraint in self.installedView.constraints.reverseObjectEnumerator) {
+        if (![existingConstraint isKindOfClass:MASLayoutConstraint.class]) continue;
+        if (existingConstraint.firstItem != layoutConstraint.firstItem) continue;
+        if (existingConstraint.firstAttribute != layoutConstraint.firstAttribute) continue;
+        
+        return (id)existingConstraint;
+    }
+    return nil;
 }
 
 - (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
