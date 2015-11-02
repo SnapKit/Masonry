@@ -107,6 +107,11 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, assign) BOOL updateExisting;
 
 /**
+ * Whether or not to check for the existing constraint of the first item
+ */
+@property (nonatomic, assign) BOOL replaceExisting;
+
+/**
  *  Whether or not to remove existing constraints prior to installing
  */
 @property (nonatomic, assign) BOOL removeExisting;

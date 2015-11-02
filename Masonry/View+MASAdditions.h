@@ -83,6 +83,13 @@
 /**
  *  Creates a MASConstraintMaker with the callee view.
  *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
+ *  If all existing constraint with the same first item and attribute exists then it will be uninstall before adding new constraint.
+ */
+- (NSArray *)mas_replaceConstraints:(void(^)(MASConstraintMaker *))block;
+
+/**
+ *  Creates a MASConstraintMaker with the callee view.
+ *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
  *  All constraints previously installed for the view will be removed.
  *
  *  @param block scope within which you can build up the constraints which you wish to apply to the view.
