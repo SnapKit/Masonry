@@ -329,6 +329,50 @@ Will attempt to recover by breaking constraint
 
 For an example of how to set this up take a look at the **Masonry iOS Examples** project in the Masonry workspace.
 
+## Where should I create my constraints?
+
+```objc
+@implementation DIYCustomView
+
+- (id)init {
+    self = [super init];
+    if (!self) return nil;
+
+    // --- Create your views here ---
+    self.button = [UIButton new];
+
+    return self;
+}
+
+// tell UIKit that you are using AutoLayout
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
+// this is Apple's recommended place for adding/updating constraints
+- (void)updateConstraints {
+
+    // --- remake/update constraints here
+    [self.button remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.buttonSize.width));
+        make.height.equalTo(@(self.buttonSize.height));
+    }];
+    
+    //according to apple super should be called at end of method
+    [super updateConstraints];
+}
+
+- (void)didTapButton:(UIButton *)button {
+    // --- Do your changes ie change variables that affect your layout etc ---
+    self.buttonSize = CGSize(200, 200);
+
+    // tell constraints they need updating
+    [self setNeedsUpdateConstraints];
+}
+
+@end
+```
+
 ## Installation
 Use the [orsome](http://www.youtube.com/watch?v=YaIZF8uUTtk) [CocoaPods](http://github.com/CocoaPods/CocoaPods).
 
