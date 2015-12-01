@@ -339,7 +339,7 @@ For an example of how to set this up take a look at the **Masonry iOS Examples**
     if (!self) return nil;
 
     // --- Create your views here ---
-    self.button = [UIButton new];
+    self.button = [[UIButton alloc] init];
 
     return self;
 }
