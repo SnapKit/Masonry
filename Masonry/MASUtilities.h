@@ -49,13 +49,15 @@
  *
  *  MASAttachKeys(view1, view2);
  */
-#define MASAttachKeys(...)                                                    \
-    NSDictionary *keyPairs = NSDictionaryOfVariableBindings(__VA_ARGS__);     \
-    for (id key in keyPairs.allKeys) {                                        \
-        id obj = keyPairs[key];                                               \
-        NSAssert([obj respondsToSelector:@selector(setMas_key:)],             \
-                 @"Cannot attach mas_key to %@", obj);                        \
-        [obj setMas_key:key];                                                 \
+#define MASAttachKeys(...)                                                        \
+    {                                                                             \
+        NSDictionary *keyPairs = NSDictionaryOfVariableBindings(__VA_ARGS__);     \
+        for (id key in keyPairs.allKeys) {                                        \
+            id obj = keyPairs[key];                                               \
+            NSAssert([obj respondsToSelector:@selector(setMas_key:)],             \
+                     @"Cannot attach mas_key to %@", obj);                        \
+            [obj setMas_key:key];                                                 \
+        }                                                                         \
     }
 
 /**
