@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#if TARGET_OS_IPHONE
+
+
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
+    #define TARGET_OS_IPHONE_AND_OS_TV 1
 
     #import <UIKit/UIKit.h>
     #define MAS_VIEW UIView
