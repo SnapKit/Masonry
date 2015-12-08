@@ -63,6 +63,18 @@
  */
 - (MASConstraint * (^)(MASLayoutPriority priority))priority;
 
+#if TARGET_OS_IPHONE
+/**
+ * Sets the device flag for this constraint
+ **/
+- (MASConstraint * (^)(MASDevice device))device;
+
+/**
+ *  Modifies the NSLayoutConstraint constant based on a value type
+ */
+- (MASConstraint * (^)(NSValue *value))valueDevice;
+#endif
+
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityLow
  */
@@ -111,6 +123,7 @@
  *	Optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)and;
+
 
 /**
  *	Creates a new MASCompositeConstraint with the called attribute and reciever
@@ -175,6 +188,13 @@
  */
 - (void)setOffset:(CGFloat)offset;
 
+#if TARGET_OS_IPHONE
+/**
+ *	Modifies the NSLayoutConstraint constant
+ */
+- (void)setDevice:(MASDevice)device;
+#endif
+
 
 // NSLayoutConstraint Installation support
 
@@ -230,6 +250,13 @@
 
 #define offset(...)                      mas_offset(__VA_ARGS__)
 
+#if TARGET_OS_IPHONE
+
+#define mas_device(...)                  valueDevice(MASBoxValue((__VA_ARGS__)))
+#define device(...)                      mas_device(__VA_ARGS__)
+
+#endif
+
 #endif
 
 
@@ -244,8 +271,13 @@
 - (MASConstraint * (^)(id attr))mas_lessThanOrEqualTo;
 
 /**
- *  A dummy method to aid autocompletion
+ *  Dummy methods to aid autocompletion
  */
+#if TARGET_OS_IPHONE
+
+- (MASConstraint * (^)(id device))mas_device;
+
+#endif
 - (MASConstraint * (^)(id offset))mas_offset;
 
 @end

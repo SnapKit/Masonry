@@ -22,6 +22,20 @@
     static const MASLayoutPriority MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow;
     static const MASLayoutPriority MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel;
 
+    typedef NSUInteger MASDevice;
+    static const MASDevice MASDeviceiPhone4OrLess = 1;
+    static const MASDevice MASDeviceiPhone5 = 2;
+    static const MASDevice MASDeviceiPhone6 = 4;
+    static const MASDevice MASDeviceiPhone6Plus = 8;
+
+    static const MASDevice MASDeviceiPad1, MASDeviceiPad2, MASDeviceiPad3, MASDeviceiPad4, MASDeviceiPadMini1, MASDeviceiPadMini2, MASDeviceiPadMini3, MASDeviceiPadMini4, MASDeviceiPadAir1, MASDeviceiPadAir2 = 16;
+    static const MASDevice MASDeviceiPadPro = 32;
+
+    static const MASDevice MASDeviceiPhoneAll = 1 | 2 | 4 | 8;
+    static const MASDevice MASDeviceiPadAll = 16 | 32;
+    static const MASDevice MASDeviceAll = 1 | 2 | 4 | 8 | 16 | 32;
+
+
 #elif TARGET_OS_MAC
 
     #import <AppKit/AppKit.h>

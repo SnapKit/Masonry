@@ -48,6 +48,10 @@ static char kInstalledConstraintsKey;
 @property (nonatomic, strong) id mas_key;
 @property (nonatomic, assign) BOOL useAnimator;
 
+#if TARGET_OS_IPHONE
+@property (nonatomic, assign) MASDevice layoutDevice;
+#endif
+
 @end
 
 @implementation MASViewConstraint
@@ -59,6 +63,10 @@ static char kInstalledConstraintsKey;
     _firstViewAttribute = firstViewAttribute;
     self.layoutPriority = MASLayoutPriorityRequired;
     self.layoutMultiplier = 1;
+    
+#if TARGET_OS_IPHONE
+    self.layoutDevice = MASDeviceAll;
+#endif
     
     return self;
 }
@@ -72,6 +80,13 @@ static char kInstalledConstraintsKey;
     constraint.layoutPriority = self.layoutPriority;
     constraint.layoutMultiplier = self.layoutMultiplier;
     constraint.delegate = self.delegate;
+    
+#if TARGET_OS_IPHONE
+    
+    constraint.layoutDevice = self.layoutDevice;
+    
+#endif
+    
     return constraint;
 }
 
@@ -285,6 +300,14 @@ static char kInstalledConstraintsKey;
     }
 }
 
+#if TARGET_OS_IPHONE
+
+- (void)setDevice:(MASDevice)device {
+    self.layoutDevice = device;
+}
+
+#endif
+
 #pragma mark - MASConstraint
 
 - (void)activate {
@@ -312,6 +335,63 @@ static char kInstalledConstraintsKey;
     if (self.hasBeenInstalled) {
         return;
     }
+    
+#if TARGET_OS_IPHONE
+    
+    static MASDevice deviceMinor;
+    static CGFloat maxScreenDimension;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        maxScreenDimension = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        
+        switch(UI_USER_INTERFACE_IDIOM()) {
+            case UIUserInterfaceIdiomPhone:
+                if(maxScreenDimension < 568.0f) {
+                    deviceMinor = MASDeviceiPhone4OrLess;
+                }
+                else if(maxScreenDimension == 568.0f) {
+                    deviceMinor = MASDeviceiPhone5;
+                }
+                else if(maxScreenDimension == 667.0f) {
+                    deviceMinor = MASDeviceiPhone6;
+                }
+                else if(maxScreenDimension == 736.0f) {
+                    deviceMinor = MASDeviceiPhone6Plus;
+                }
+                else {
+                    NSAssert(NO, @"unknown device detected");
+                    return;
+                }
+                
+                break;
+                
+            case UIUserInterfaceIdiomPad:
+                if(maxScreenDimension == 1024.0f) {
+                    deviceMinor = MASDeviceiPad1;
+                }
+                else if(maxScreenDimension == 1366.0f) {
+                    deviceMinor = MASDeviceiPadPro;
+                }
+                else {
+                    NSAssert(NO, @"unknown device detected");
+                    return;
+                }
+                
+                break;
+                
+            default:
+                NSAssert(NO, @"unknown device detected");
+                return;
+        }
+
+    });
+    
+    if((self.layoutDevice & deviceMinor) != deviceMinor) {
+        return;
+    }
+    
+#endif
     
     MAS_VIEW *firstLayoutItem = self.firstViewAttribute.item;
     NSLayoutAttribute firstLayoutAttribute = self.firstViewAttribute.layoutAttribute;
