@@ -28,7 +28,7 @@
     static const MASDevice MASDeviceiPhone6 = 4;
     static const MASDevice MASDeviceiPhone6Plus = 8;
 
-    static const MASDevice MASDeviceiPad1, MASDeviceiPad2, MASDeviceiPad3, MASDeviceiPad4, MASDeviceiPadMini1, MASDeviceiPadMini2, MASDeviceiPadMini3, MASDeviceiPadMini4, MASDeviceiPadAir1, MASDeviceiPadAir2 = 16;
+    static const MASDevice MASDeviceiPadRegular = 16;
     static const MASDevice MASDeviceiPadPro = 32;
 
     static const MASDevice MASDeviceiPhoneAll = 1 | 2 | 4 | 8;

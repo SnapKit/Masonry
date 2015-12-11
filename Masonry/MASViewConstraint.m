@@ -368,7 +368,7 @@ static char kInstalledConstraintsKey;
                 
             case UIUserInterfaceIdiomPad:
                 if(maxScreenDimension == 1024.0f) {
-                    deviceMinor = MASDeviceiPad1;
+                    deviceMinor = MASDeviceiPadRegular;
                 }
                 else if(maxScreenDimension == 1366.0f) {
                     deviceMinor = MASDeviceiPadPro;
