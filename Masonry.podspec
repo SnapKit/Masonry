@@ -16,9 +16,19 @@ Pod::Spec.new do |s|
     Masonry supports iOS and Mac OSX.
   }
 
+  pch_AF = <<-EOS
+    #ifndef TARGET_OS_IOS
+        #define TARGET_OS_IOS TARGET_OS_IPHONE
+    #endif
+    #ifndef TARGET_OS_TV
+        #define TARGET_OS_TV 0
+    #endif
+  EOS
+
   s.source_files = 'Masonry/*.{h,m}'
 
   s.ios.frameworks = 'Foundation', 'UIKit'
+  s.tvos.frameworks = 'Foundation', 'UIKit'
   s.osx.frameworks = 'Foundation', 'AppKit'
 
   s.ios.deployment_target = '6.0' # minimum SDK with autolayout
