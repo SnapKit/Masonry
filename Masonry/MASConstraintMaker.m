@@ -78,7 +78,7 @@
     __unused MASAttribute anyAttribute = (MASAttributeLeft | MASAttributeRight | MASAttributeTop | MASAttributeBottom | MASAttributeLeading
                                           | MASAttributeTrailing | MASAttributeWidth | MASAttributeHeight | MASAttributeCenterX
                                           | MASAttributeCenterY | MASAttributeBaseline
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
                                           | MASAttributeLeftMargin | MASAttributeRightMargin | MASAttributeTopMargin | MASAttributeBottomMargin
                                           | MASAttributeLeadingMargin | MASAttributeTrailingMargin | MASAttributeCenterXWithinMargins
                                           | MASAttributeCenterYWithinMargins
@@ -101,7 +101,7 @@
     if (attrs & MASAttributeCenterY) [attributes addObject:self.view.mas_centerY];
     if (attrs & MASAttributeBaseline) [attributes addObject:self.view.mas_baseline];
     
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
     
     if (attrs & MASAttributeLeftMargin) [attributes addObject:self.view.mas_leftMargin];
     if (attrs & MASAttributeRightMargin) [attributes addObject:self.view.mas_rightMargin];
@@ -182,7 +182,7 @@
     };
 }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASConstraint *)leftMargin {
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeftMargin];

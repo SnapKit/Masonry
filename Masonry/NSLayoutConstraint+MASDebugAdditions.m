@@ -44,7 +44,7 @@
             @(NSLayoutAttributeCenterY)  : @"centerY",
             @(NSLayoutAttributeBaseline) : @"baseline",
             
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
             @(NSLayoutAttributeLeftMargin)           : @"leftMargin",
             @(NSLayoutAttributeRightMargin)          : @"rightMargin",
             @(NSLayoutAttributeTopMargin)            : @"topMargin",
@@ -66,7 +66,7 @@
     static dispatch_once_t once;
     static NSDictionary *descriptionMap;
     dispatch_once(&once, ^{
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
         descriptionMap = @{
             @(MASLayoutPriorityDefaultHigh)      : @"high",
             @(MASLayoutPriorityDefaultLow)       : @"low",

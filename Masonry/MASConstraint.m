@@ -208,7 +208,7 @@
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
 }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASConstraint *)leftMargin {
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeftMargin];
@@ -264,7 +264,7 @@
 
 - (void)setOffset:(CGFloat __unused)offset { MASMethodNotImplemented(); }
 
-#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+#if TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_OS_TV)
 
 - (MASConstraint *)animator { MASMethodNotImplemented(); }
 

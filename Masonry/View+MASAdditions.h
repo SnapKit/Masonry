@@ -32,7 +32,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_rightMargin;

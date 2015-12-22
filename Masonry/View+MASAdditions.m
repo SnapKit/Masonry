@@ -87,7 +87,7 @@
     };
 }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASViewAttribute *)mas_leftMargin {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeftMargin];

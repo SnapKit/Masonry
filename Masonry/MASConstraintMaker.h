@@ -22,7 +22,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     MASAttributeCenterY = 1 << NSLayoutAttributeCenterY,
     MASAttributeBaseline = 1 << NSLayoutAttributeBaseline,
     
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
     
     MASAttributeLeftMargin = 1 << NSLayoutAttributeLeftMargin,
     MASAttributeRightMargin = 1 << NSLayoutAttributeRightMargin,
@@ -60,7 +60,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, strong, readonly) MASConstraint *centerY;
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 @property (nonatomic, strong, readonly) MASConstraint *leftMargin;
 @property (nonatomic, strong, readonly) MASConstraint *rightMargin;

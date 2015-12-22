@@ -86,7 +86,7 @@ static char kInstalledConstraintsKey;
 - (void)setLayoutConstant:(CGFloat)layoutConstant {
     _layoutConstant = layoutConstant;
 
-#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+#if TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_OS_TV)
     if (self.useAnimator) {
         [self.layoutConstraint.animator setConstant:layoutConstant];
     } else {
@@ -211,7 +211,7 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - Animator proxy
 
-#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+#if TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_OS_TV)
 
 - (MASConstraint *)animator {
     self.useAnimator = YES;
