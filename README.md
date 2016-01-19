@@ -267,7 +267,7 @@ Alternatively if you are only updating the constant value of the constraint you 
     }];
 
     //according to apple super should be called at end of method
-    [super updateConstraints];
+    [super updateViewConstraints];
 }
 ```
 
