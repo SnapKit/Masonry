@@ -113,6 +113,33 @@
     };
 }
 
+#if TARGET_OS_IPHONE
+
+- (MASConstraint * (^)(MASDevice))device {
+    return ^id(MASDevice device){
+        self.device = device;
+        return self;
+    };
+}
+
+- (MASConstraint * (^)(NSValue *value))valueDevice {
+    return ^id(NSValue *device) {
+        NSAssert([device isKindOfClass:NSValue.class], @"expected an NSValue device, got: %@", device);
+        
+        //setLayoutConstantWithValue cannot be called because it will make this value the offset
+        self.device = [(NSNumber *)device unsignedIntegerValue];
+        
+        return self;
+    };
+}
+
+- (MASConstraint * (^)(id device))mas_device {
+    // Will never be called due to macro
+    return nil;
+}
+
+#endif
+
 - (MASConstraint * (^)(NSValue *value))valueOffset {
     return ^id(NSValue *offset) {
         NSAssert([offset isKindOfClass:NSValue.class], @"expected an NSValue offset, got: %@", offset);
@@ -157,6 +184,7 @@
 - (MASConstraint *)and {
     return self;
 }
+
 
 #pragma mark - Chaining
 
@@ -261,6 +289,12 @@
 - (void)setSizeOffset:(CGSize __unused)sizeOffset { MASMethodNotImplemented(); }
 
 - (void)setCenterOffset:(CGPoint __unused)centerOffset { MASMethodNotImplemented(); }
+
+#if TARGET_OS_IPHONE
+
+- (void)setDevice:(MASDevice __unused)devicedevice { MASMethodNotImplemented(); }
+
+#endif
 
 - (void)setOffset:(CGFloat __unused)offset { MASMethodNotImplemented(); }
 
