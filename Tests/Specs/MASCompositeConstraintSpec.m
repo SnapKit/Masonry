@@ -182,7 +182,7 @@ SpecBegin(MASCompositeConstraint) {
     composite.delegate = delegate;
     expect(composite.childConstraints.count).to.equal(2);
     
-    MASConstraint *result = (id)composite.and.bottom;
+    MASConstraint *result = (id)composite.with.bottom;
     expect(result).to.beIdenticalTo(composite);
     expect(delegate.chainedConstraints).to.equal(@[composite]);
     expect(composite.childConstraints.count).to.equal(3);

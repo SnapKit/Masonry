@@ -527,7 +527,7 @@ SpecBegin(MASViewConstraint) {
 }
 
 - (void)testAttributeChainingShouldCallDelegate {
-    MASViewConstraint *result = (id)constraint.and.bottom;
+    MASViewConstraint *result = (id)constraint.with.bottom;
     expect(result.firstViewAttribute.layoutAttribute).to.equal(@(NSLayoutAttributeBottom));
     expect(delegate.chainedConstraints).to.equal(@[constraint]);
 }
