@@ -108,11 +108,6 @@
 - (MASConstraint *)with;
 
 /**
- *	Optional semantic property which has no effect but improves the readability of constraint
- */
-- (MASConstraint *)and;
-
-/**
  *	Creates a new MASCompositeConstraint with the called attribute and reciever
  */
 - (MASConstraint *)left;
