@@ -13,7 +13,6 @@ FOUNDATION_EXPORT double MasonryVersionNumber;
 
 //! Project version string for Masonry.
 FOUNDATION_EXPORT const unsigned char MasonryVersionString[];
-// 就这一条数据。。。。
 
 
 #import "MASUtilities.h"
