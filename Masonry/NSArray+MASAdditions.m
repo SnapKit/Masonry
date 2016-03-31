@@ -53,7 +53,7 @@
                 if (prev) {
                     make.width.equalTo(prev);
                     make.left.equalTo(prev.mas_right).offset(fixedSpacing);
-                    if (i == (CGFloat)self.count - 1) {//last one
+                    if (i == self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
                     }
                 }
@@ -73,7 +73,7 @@
                 if (prev) {
                     make.height.equalTo(prev);
                     make.top.equalTo(prev.mas_bottom).offset(fixedSpacing);
-                    if (i == (CGFloat)self.count - 1) {//last one
+                    if (i == self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
                     }                    
                 }
@@ -102,7 +102,7 @@
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                     make.width.equalTo(@(fixedItemLength));
-                    if (i == (CGFloat)self.count - 1) {//last one
+                    if (i == self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
                     }
                     else {
@@ -125,7 +125,7 @@
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                     make.height.equalTo(@(fixedItemLength));
-                    if (i == (CGFloat)self.count - 1) {//last one
+                    if (i == self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
                     }
                     else {
