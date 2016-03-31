@@ -288,7 +288,7 @@ static char kInstalledConstraintsKey;
 #pragma mark - MASConstraint
 
 - (void)activate {
-    [self installedView];
+    [self install];
 }
 
 - (void)deactivate {
