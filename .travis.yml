@@ -1,6 +1,6 @@
 ---
 language: objective-c
-
+osx_image: xcode7.3
 before_install:
   - sudo easy_install cpp-coveralls
   - export LANG=en_US.UTF-8
