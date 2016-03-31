@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'Masonry'
-  s.version  = '0.6.4'
+  s.version  = '1.0.0'
   s.license  = 'MIT'
   s.summary  = 'Harness the power of Auto Layout NSLayoutConstraints with a simplified, chainable and expressive syntax.'
   s.homepage = 'https://github.com/cloudkite/Masonry'
