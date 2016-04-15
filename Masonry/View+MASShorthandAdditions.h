@@ -29,6 +29,13 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *(^attribute)(NSLayoutAttribute attr);
 
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+@property (nonatomic, strong, readonly) MASViewAttribute *firstBaseline;
+@property (nonatomic, strong, readonly) MASViewAttribute *lastBaseline;
+
+#endif
+
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
 @property (nonatomic, strong, readonly) MASViewAttribute *leftMargin;
@@ -66,6 +73,13 @@ MAS_ATTR_FORWARD(height);
 MAS_ATTR_FORWARD(centerX);
 MAS_ATTR_FORWARD(centerY);
 MAS_ATTR_FORWARD(baseline);
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+MAS_ATTR_FORWARD(firstBaseline);
+MAS_ATTR_FORWARD(lastBaseline);
+
+#endif
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 

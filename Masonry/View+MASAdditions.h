@@ -32,6 +32,13 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_firstBaseline;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_lastBaseline;
+
+#endif
+
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;

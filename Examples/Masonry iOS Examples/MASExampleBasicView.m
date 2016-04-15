@@ -46,6 +46,7 @@
 
         make.height.equalTo(redView.height);
         make.height.equalTo(blueView.height);
+        
     }];
 
     //with is semantic and option

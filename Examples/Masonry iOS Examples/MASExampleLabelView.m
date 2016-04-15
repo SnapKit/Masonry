@@ -45,7 +45,7 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     }];
 
     [self.shortLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.longLabel.centerY);
+        make.firstBaseline.equalTo(self.longLabel.centerY);
         make.right.equalTo(self.right).insets(kPadding);
     }];
 

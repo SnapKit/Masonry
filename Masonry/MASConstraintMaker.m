@@ -78,6 +78,9 @@
     __unused MASAttribute anyAttribute = (MASAttributeLeft | MASAttributeRight | MASAttributeTop | MASAttributeBottom | MASAttributeLeading
                                           | MASAttributeTrailing | MASAttributeWidth | MASAttributeHeight | MASAttributeCenterX
                                           | MASAttributeCenterY | MASAttributeBaseline
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+                                          | MASAttributeFirstBaseline | MASAttributeLastBaseline
+#endif
 #if TARGET_OS_IPHONE || TARGET_OS_TV
                                           | MASAttributeLeftMargin | MASAttributeRightMargin | MASAttributeTopMargin | MASAttributeBottomMargin
                                           | MASAttributeLeadingMargin | MASAttributeTrailingMargin | MASAttributeCenterXWithinMargins
@@ -100,6 +103,13 @@
     if (attrs & MASAttributeCenterX) [attributes addObject:self.view.mas_centerX];
     if (attrs & MASAttributeCenterY) [attributes addObject:self.view.mas_centerY];
     if (attrs & MASAttributeBaseline) [attributes addObject:self.view.mas_baseline];
+    
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+    
+    if (attrs & MASAttributeFirstBaseline) [attributes addObject:self.view.mas_firstBaseline];
+    if (attrs & MASAttributeLastBaseline) [attributes addObject:self.view.mas_lastBaseline];
+    
+#endif
     
 #if TARGET_OS_IPHONE || TARGET_OS_TV
     
@@ -181,6 +191,19 @@
         return [self addConstraintWithAttributes:attrs];
     };
 }
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+- (MASConstraint *)firstBaseline {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeFirstBaseline];
+}
+
+- (MASConstraint *)lastBaseline {
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLastBaseline];
+}
+
+#endif
+
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
