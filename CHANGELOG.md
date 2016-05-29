@@ -1,3 +1,22 @@
+v1.0.1
+======
+
+#### - Added support for first/last baselines
+
+Two additional attributes `NSLayoutAttributeFirstBaseline` and `NSLayoutAttributeLastBaseline` are now supported
+
+v1.0.0
+======
+
+#### - Officially v1.0.0
+
+Fixes some issues with install/uninstall vs activate/deactivate and modernises the project files
+
+v0.6.4
+======
+
+#### - Add support for tvOS
+
 v0.6.3
 ======
 
