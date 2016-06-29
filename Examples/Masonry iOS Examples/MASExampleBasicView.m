@@ -14,57 +14,58 @@
     self = [super init];
     if (!self) return nil;
     
-    UIView *view1 = UIView.new;
-    view1.backgroundColor = UIColor.greenColor;
-    view1.layer.borderColor = UIColor.blackColor.CGColor;
-    view1.layer.borderWidth = 2;
-    [self addSubview:view1];
+    UIView *greenView = UIView.new;
+    greenView.backgroundColor = UIColor.greenColor;
+    greenView.layer.borderColor = UIColor.blackColor.CGColor;
+    greenView.layer.borderWidth = 2;
+    [self addSubview:greenView];
     
-    UIView *view2 = UIView.new;
-    view2.backgroundColor = UIColor.redColor;
-    view2.layer.borderColor = UIColor.blackColor.CGColor;
-    view2.layer.borderWidth = 2;
-    [self addSubview:view2];
+    UIView *redView = UIView.new;
+    redView.backgroundColor = UIColor.redColor;
+    redView.layer.borderColor = UIColor.blackColor.CGColor;
+    redView.layer.borderWidth = 2;
+    [self addSubview:redView];
     
-    UIView *view3 = UIView.new;
-    view3.backgroundColor = UIColor.blueColor;
-    view3.layer.borderColor = UIColor.blackColor.CGColor;
-    view3.layer.borderWidth = 2;
-    [self addSubview:view3];
+    UIView *blueView = UIView.new;
+    blueView.backgroundColor = UIColor.blueColor;
+    blueView.layer.borderColor = UIColor.blackColor.CGColor;
+    blueView.layer.borderWidth = 2;
+    [self addSubview:blueView];
     
     UIView *superview = self;
     int padding = 10;
 
     //if you want to use Masonry without the mas_ prefix
     //define MAS_SHORTHAND before importing Masonry.h see Masonry iOS Examples-Prefix.pch
-    [view1 makeConstraints:^(MASConstraintMaker *make) {
+    [greenView makeConstraints:^(MASConstraintMaker *make) {
         make.top.greaterThanOrEqualTo(superview.top).offset(padding);
         make.left.equalTo(superview.left).offset(padding);
-        make.bottom.equalTo(view3.top).offset(-padding);
-        make.right.equalTo(view2.left).offset(-padding);
-        make.width.equalTo(view2.width);
+        make.bottom.equalTo(blueView.top).offset(-padding);
+        make.right.equalTo(redView.left).offset(-padding);
+        make.width.equalTo(redView.width);
 
-        make.height.equalTo(view2.height);
-        make.height.equalTo(view3.height);
+        make.height.equalTo(redView.height);
+        make.height.equalTo(blueView.height);
+        
     }];
 
     //with is semantic and option
-    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview.mas_top).with.offset(padding); //with with
-        make.left.equalTo(view1.mas_right).offset(padding); //without with
-        make.bottom.equalTo(view3.mas_top).offset(-padding);
+        make.left.equalTo(greenView.mas_right).offset(padding); //without with
+        make.bottom.equalTo(blueView.mas_top).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.width.equalTo(view1.mas_width);
+        make.width.equalTo(greenView.mas_width);
         
-        make.height.equalTo(@[view1, view3]); //can pass array of views
+        make.height.equalTo(@[greenView, blueView]); //can pass array of views
     }];
     
-    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(view1.mas_bottom).offset(padding);
+    [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(greenView.mas_bottom).offset(padding);
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
-        make.height.equalTo(@[view1.mas_height, view2.mas_height]); //can pass array of attributes
+        make.height.equalTo(@[greenView.mas_height, redView.mas_height]); //can pass array of attributes
     }];
 
     return self;

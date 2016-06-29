@@ -14,29 +14,29 @@
     self = [super init];
     if (!self) return nil;
 
-    UIView *view1 = UIView.new;
-    view1.backgroundColor = UIColor.greenColor;
-    view1.layer.borderColor = UIColor.blackColor.CGColor;
-    view1.layer.borderWidth = 2;
-    [self addSubview:view1];
+    UIView *greenView = UIView.new;
+    greenView.backgroundColor = UIColor.greenColor;
+    greenView.layer.borderColor = UIColor.blackColor.CGColor;
+    greenView.layer.borderWidth = 2;
+    [self addSubview:greenView];
 
-    UIView *view2 = UIView.new;
-    view2.backgroundColor = UIColor.redColor;
-    view2.layer.borderColor = UIColor.blackColor.CGColor;
-    view2.layer.borderWidth = 2;
-    [self addSubview:view2];
+    UIView *redView = UIView.new;
+    redView.backgroundColor = UIColor.redColor;
+    redView.layer.borderColor = UIColor.blackColor.CGColor;
+    redView.layer.borderWidth = 2;
+    [self addSubview:redView];
 
-    UIView *view3 = UIView.new;
-    view3.backgroundColor = UIColor.blueColor;
-    view3.layer.borderColor = UIColor.blackColor.CGColor;
-    view3.layer.borderWidth = 2;
-    [self addSubview:view3];
+    UIView *blueView = UIView.new;
+    blueView.backgroundColor = UIColor.blueColor;
+    blueView.layer.borderColor = UIColor.blackColor.CGColor;
+    blueView.layer.borderWidth = 2;
+    [self addSubview:blueView];
 
     UIView *superview = self;
     UIEdgeInsets padding = UIEdgeInsetsMake(15, 10, 15, 10);
 
 
-    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [greenView mas_makeConstraints:^(MASConstraintMaker *make) {
         // chain attributes
         make.top.and.left.equalTo(superview).insets(padding);
 
@@ -44,31 +44,31 @@
 //        make.top.greaterThanOrEqualTo(superview).insets(padding);
 //        make.left.greaterThanOrEqualTo(superview).insets(padding);
 
-        make.bottom.equalTo(view3.mas_top).insets(padding);
-        make.right.equalTo(view2.mas_left).insets(padding);
-        make.width.equalTo(view2.mas_width);
+        make.bottom.equalTo(blueView.mas_top).insets(padding);
+        make.right.equalTo(redView.mas_left).insets(padding);
+        make.width.equalTo(redView.mas_width);
 
-        make.height.equalTo(@[view2, view3]);
+        make.height.equalTo(@[redView, blueView]);
     }];
 
-    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
         // chain attributes
         make.top.and.right.equalTo(superview).insets(padding);
 
-        make.left.equalTo(view1.mas_right).insets(padding);
-        make.bottom.equalTo(view3.mas_top).insets(padding);
-        make.width.equalTo(view1.mas_width);
+        make.left.equalTo(greenView.mas_right).insets(padding);
+        make.bottom.equalTo(blueView.mas_top).insets(padding);
+        make.width.equalTo(greenView.mas_width);
 
-        make.height.equalTo(@[view1, view3]);
+        make.height.equalTo(@[greenView, blueView]);
     }];
 
-    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(view1.mas_bottom).insets(padding);
+    [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(greenView.mas_bottom).insets(padding);
 
         // chain attributes
         make.left.right.and.bottom.equalTo(superview).insets(padding);
 
-        make.height.equalTo(@[view1, view2]);
+        make.height.equalTo(@[greenView, redView]);
     }];
 
     return self;

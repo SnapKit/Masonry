@@ -1,3 +1,55 @@
+v1.0.1
+======
+
+#### - Added support for first/last baselines
+
+Two additional attributes `NSLayoutAttributeFirstBaseline` and `NSLayoutAttributeLastBaseline` are now supported
+
+v1.0.0
+======
+
+#### - Officially v1.0.0
+
+Fixes some issues with install/uninstall vs activate/deactivate and modernises the project files
+
+v0.6.4
+======
+
+#### - Add support for tvOS
+
+v0.6.3
+======
+
+#### - Add support for view distribution ([pingyourid](https://github.com/pingyourid))
+
+https://github.com/SnapKit/Masonry/pull/225
+
+v0.6.2
+======
+
+#### - Add support for iOS 8 margin attributes ([CraigSiemens](https://github.com/CraigSiemens))
+
+https://github.com/SnapKit/Masonry/pull/163
+
+#### - Add support for leading and trailing insets ([montehurd](https://github.com/montehurd))
+
+https://github.com/SnapKit/Masonry/pull/168
+
+#### - Add support for Cartage ([erichoracek](https://github.com/erichoracek))
+
+https://github.com/SnapKit/Masonry/pull/182
+
+#### - Fix memory usage of updateConstraints
+
+v0.6.1
+======
+
+#### - Fix unused variable warning when compiled with NSAssert turned off
+
+#### - Add aspect fit example ([kouky](https://github.com/kouky))
+
+https://github.com/SnapKit/Masonry/pull/148
+
 v0.6.0
 ======
 

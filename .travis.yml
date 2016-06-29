@@ -1,14 +1,16 @@
 ---
 language: objective-c
-
+osx_image: xcode7.3
 before_install:
   - sudo easy_install cpp-coveralls
+  - gem install xcpretty -N
   - export LANG=en_US.UTF-8
 
 script:
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator8.1 clean build test ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator8.1 clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO
-  - xctool -workspace 'Masonry.xcworkspace' -scheme 'Masonry OSX' -configuration Debug clean build
+  - set -o pipefail
+  - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator clean test ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty -c
+  - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS' -configuration Debug -sdk iphonesimulator clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry OSX' -configuration Debug clean build | xcpretty -c
 
 after_success:
   - ./script/coveralls.sh

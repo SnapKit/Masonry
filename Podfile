@@ -1,6 +1,6 @@
 workspace 'Masonry'
 
-platform :ios, '6.0'
+platform :ios, '8.0'
 
 xcodeproj 'Examples/Masonry iOS Examples'
 target 'Masonry iOS Examples', :exclusive => true do
@@ -20,12 +20,12 @@ end
 # add settings needed to generate test coverage data
 post_install do |installer|
 
-  COV_TARGET_NAME = "Pods-MasonryTestsLoader-Masonry"
+  COV_TARGET_NAME = "Pods-MasonryTestsLoader"
   EXPORT_ENV_PHASE_NAME = "Export Environment Vars"
   EXPORT_ENV_PHASE_SCRIPT = "export | egrep '( BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' > $SRCROOT/../script/env.sh"
   
   # find target
-  classy_pods_target = installer.project.targets.find{ |target| target.name == COV_TARGET_NAME }
+  classy_pods_target = installer.pods_project.targets.find{ |target| target.name == COV_TARGET_NAME }
   unless classy_pods_target
    raise ::Pod::Informative, "Failed to find '" << COV_TARGET_NAME << "' target"
   end

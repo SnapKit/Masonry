@@ -53,6 +53,10 @@
 		3AED06201AD5A1400053CC65 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05DC1AD5A0470053CC65 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AED06211AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05ED1AD5A0470053CC65 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AED06221AD5A1400053CC65 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05DE1AD5A0470053CC65 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4473548D1B39F772004DACCB /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4473548E1B39F772004DACCB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */; };
+		447354921B3A18B3004DACCB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */; };
+		447354931B3A18B9004DACCB /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +86,8 @@
 		3AED05F01AD5A0470053CC65 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		3AED05F11AD5A0470053CC65 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		3AED06271AD5A1400053CC65 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,8 @@
 				3AED05EF1AD5A0470053CC65 /* View+MASAdditions.h */,
 				3AED05F01AD5A0470053CC65 /* View+MASAdditions.m */,
 				3AED05F11AD5A0470053CC65 /* View+MASShorthandAdditions.h */,
+				4473548B1B39F772004DACCB /* ViewController+MASAdditions.h */,
+				4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */,
 				3AED05EA1AD5A0470053CC65 /* NSArray+MASAdditions.h */,
 				3AED05EB1AD5A0470053CC65 /* NSArray+MASAdditions.m */,
 				3AED05EC1AD5A0470053CC65 /* NSArray+MASShorthandAdditions.h */,
@@ -167,6 +175,7 @@
 			files = (
 				3AED06051AD5A0470053CC65 /* View+MASAdditions.h in Headers */,
 				3AED06071AD5A0470053CC65 /* View+MASShorthandAdditions.h in Headers */,
+				4473548D1B39F772004DACCB /* ViewController+MASAdditions.h in Headers */,
 				3AED05FC1AD5A0470053CC65 /* MASViewAttribute.h in Headers */,
 				3AED05BD1AD59FD40053CC65 /* Masonry.h in Headers */,
 				3AED05F91AD5A0470053CC65 /* MASLayoutConstraint.h in Headers */,
@@ -197,6 +206,7 @@
 				3AED061E1AD5A1400053CC65 /* MASUtilities.h in Headers */,
 				3AED061F1AD5A1400053CC65 /* NSArray+MASAdditions.h in Headers */,
 				3AED06201AD5A1400053CC65 /* MASCompositeConstraint.h in Headers */,
+				447354931B3A18B9004DACCB /* ViewController+MASAdditions.h in Headers */,
 				3AED06221AD5A1400053CC65 /* MASConstraint.h in Headers */,
 				3AED061D1AD5A1400053CC65 /* MASConstraint+Private.h in Headers */,
 				3AED06211AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
@@ -248,7 +258,7 @@
 		3AED05AE1AD59FD40053CC65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Jonas Budelmann";
 				TargetAttributes = {
 					3AED05B61AD59FD40053CC65 = {
@@ -298,6 +308,7 @@
 			files = (
 				3AED06011AD5A0470053CC65 /* NSArray+MASAdditions.m in Sources */,
 				3AED05FD1AD5A0470053CC65 /* MASViewAttribute.m in Sources */,
+				4473548E1B39F772004DACCB /* ViewController+MASAdditions.m in Sources */,
 				3AED05FA1AD5A0470053CC65 /* MASLayoutConstraint.m in Sources */,
 				3AED05F51AD5A0470053CC65 /* MASConstraint.m in Sources */,
 				3AED05FF1AD5A0470053CC65 /* MASViewConstraint.m in Sources */,
@@ -318,6 +329,7 @@
 				3AED060D1AD5A1400053CC65 /* MASConstraint.m in Sources */,
 				3AED060E1AD5A1400053CC65 /* MASViewConstraint.m in Sources */,
 				3AED060F1AD5A1400053CC65 /* MASCompositeConstraint.m in Sources */,
+				447354921B3A18B3004DACCB /* ViewController+MASAdditions.m in Sources */,
 				3AED06101AD5A1400053CC65 /* MASConstraintMaker.m in Sources */,
 				3AED06111AD5A1400053CC65 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3AED06121AD5A1400053CC65 /* View+MASAdditions.m in Sources */,
@@ -331,6 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -349,6 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -378,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -425,6 +440,7 @@
 				INFOPLIST_FILE = Masonry/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Masonry;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -441,6 +457,7 @@
 				INFOPLIST_FILE = Masonry/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Masonry;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -450,6 +467,7 @@
 		3AED06251AD5A1400053CC65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -458,6 +476,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Masonry;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -467,6 +486,7 @@
 		3AED06261AD5A1400053CC65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -475,6 +495,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Masonry;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

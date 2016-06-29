@@ -18,7 +18,7 @@
 @implementation MASExampleAspectFitView
 
 // Designated initializer
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:CGRectZero];
     
@@ -79,12 +79,6 @@
     }
     
     return self;
-}
-
-// Override previous designated initializer
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    return [self init];
 }
 
 @end
