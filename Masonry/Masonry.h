@@ -27,3 +27,6 @@ FOUNDATION_EXPORT const unsigned char MasonryVersionString[];
 #import "MASConstraintMaker.h"
 #import "MASLayoutConstraint.h"
 #import "NSLayoutConstraint+MASDebugAdditions.h"
+
+// Made In China
+#import "MASConstraintMaker+Forbearance.h"
