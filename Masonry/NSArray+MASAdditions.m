@@ -99,7 +99,7 @@
             MAS_VIEW *v = self[i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.lessThanOrEqualTo(tempSuperView.mas_width).dividedBy(self.count);
-                make.width.equalTo(@(maximumItemLength)).with.priorityLow();
+                make.width.equalTo(@(maximumItemLength)).with.priorityHigh();
                 if (prev) {
                     make.width.equalTo(prev.mas_width);
                     if (i == self.count - 1) {//last one
@@ -109,7 +109,8 @@
                         offset -= offsetDiff;
                         make.right.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset).with.priorityLow();
                     }
-                    make.left.equalTo(prev.mas_right).with.offset(offsetDiff);
+                    make.left.greaterThanOrEqualTo(prev.mas_right);
+                    make.left.equalTo(prev.mas_right).with.offset(offsetDiff).with.priorityLow();
                 }
                 else {//first one
                     make.left.equalTo(tempSuperView).offset(leadSpacing);
@@ -123,7 +124,7 @@
             MAS_VIEW *v = self[i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.lessThanOrEqualTo(tempSuperView.mas_height).dividedBy(self.count);
-                make.height.equalTo(@(maximumItemLength)).with.priorityLow();
+                make.height.equalTo(@(maximumItemLength)).with.priorityHigh();
                 if (prev) {
                     make.height.equalTo(prev.mas_height);
                     if (i == self.count - 1) {//last one
@@ -133,7 +134,8 @@
                         offset -= offsetDiff;
                         make.bottom.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset).with.priorityLow();
                     }
-                    make.top.equalTo(prev.mas_bottom).with.offset(offsetDiff);
+                    make.top.greaterThanOrEqualTo(prev.mas_bottom);
+                    make.top.equalTo(prev.mas_bottom).with.offset(offsetDiff).with.priorityLow();
                 }
                 else {//first one
                     make.top.equalTo(tempSuperView).offset(leadSpacing);
