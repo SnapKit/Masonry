@@ -84,7 +84,7 @@ SpecBegin(NSArray_MASAdditions)
     [superView addSubview:subject2];
     NSArray *views = @[ subject1];
     expect(^{
-        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:10.0 leadSpacing:5.0 tailSpacing:5.0];
+        [views mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:10.0 leadSpacing:5.0 tailSpacing:5.0];
     }).to.raiseAny();
     
 }
