@@ -69,4 +69,14 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  */
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
+/**
+ *  distribute with adaptive item size by defining a maximum one
+ *
+ *  @param axisType          which axis to distribute items along
+ *  @param maximumItemLength the maximum length of each item
+ *  @param leadSpacing       the spacing before the first item and the container
+ *  @param tailSpacing       the spacing after the last item and the container
+ */
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withMaximumItemLength:(CGFloat)maximumItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+
 @end
