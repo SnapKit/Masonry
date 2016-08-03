@@ -174,6 +174,10 @@
         NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
+    if (warpCount < 1) {
+        NSAssert(false, @"warp count need to bigger than zero");
+        return;
+    }
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     
@@ -199,11 +203,11 @@
                 make.top.equalTo(tempSuperView).offset(topSpacing);
             }
             // 最后一行
-            else if (currentRow == rowCount - 1) {
+            if (currentRow == rowCount - 1) {
                 make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
             }
             // 中间的若干行
-            else {
+            if (currentRow != 0 && currentRow != rowCount - 1){
                 CGFloat offset = (1-(currentRow/((CGFloat)rowCount-1)))*(fixedItemHeight+topSpacing)-currentRow*bottomSpacing/(((CGFloat)rowCount-1));
                 make.bottom.equalTo(tempSuperView).multipliedBy(currentRow/((CGFloat)rowCount-1)).offset(offset);
             }
@@ -213,11 +217,11 @@
                 make.left.equalTo(tempSuperView).offset(leadSpacing);
             }
             // 最后一列
-            else if (currentColumn == warpCount - 1) {
+            if (currentColumn == warpCount - 1) {
                 make.right.equalTo(tempSuperView).offset(-tailSpacing);
             }
             // 中间若干列
-            else {
+            if (currentColumn != 0 && currentColumn != warpCount - 1) {
                 CGFloat offset = (1-(currentColumn/((CGFloat)warpCount-1)))*(fixedItemWidth+leadSpacing)-currentColumn*tailSpacing/(((CGFloat)warpCount-1));
                 make.right.equalTo(tempSuperView).multipliedBy(currentColumn/((CGFloat)warpCount-1)).offset(offset);
             }
@@ -226,7 +230,6 @@
     }
 }
 
-
 - (void)mas_distributeSudokuViewsWithFixedLineSpacing:(CGFloat)fixedLineSpacing
                                 fixedInteritemSpacing:(CGFloat)fixedInteritemSpacing
                                             warpCount:(NSInteger)warpCount
@@ -234,65 +237,9 @@
                                         bottomSpacing:(CGFloat)bottomSpacing
                                           leadSpacing:(CGFloat)leadSpacing
                                           tailSpacing:(CGFloat)tailSpacing {
-    if (self.count < 2) {
-        NSAssert(self.count>1,@"views to distribute need to bigger than one");
-        return;
-    }
-    
-    MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
-    
-    NSInteger rowCount = self.count % warpCount == 0 ? self.count / warpCount : self.count / warpCount + 1;
-    
-    MAS_VIEW *prev;
-    for (int i = 0; i < self.count; i++) {
-        
-        MAS_VIEW *v = self[i];
-        
-        // 当前行
-        NSInteger currentRow = i / warpCount;
-        // 当前列
-        NSInteger currentColumn = i % warpCount;
-        
-        [v mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            // 固定宽度
-            if (prev) {
-                make.width.equalTo(prev);
-                make.height.equalTo(prev);
-            }
-            
-            // 第一行
-            if (currentRow == 0) {
-                make.top.equalTo(tempSuperView).offset(topSpacing);
-            }
-            // 最后一行
-            else if (currentRow == rowCount - 1) {
-                make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
-                make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
-            }
-            // 中间的若干行
-            else {
-                make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
-            }
-            
-            // 第一列
-            if (currentColumn == 0) {
-                make.left.equalTo(tempSuperView).offset(leadSpacing);
-            }
-            // 最后一列
-            else if (currentColumn == warpCount - 1) {
-                make.left.equalTo(prev.mas_right).offset(fixedInteritemSpacing);
-                make.right.equalTo(tempSuperView).offset(-tailSpacing);
-            }
-            // 中间若干列
-            else {
-                make.left.equalTo(prev.mas_right).offset(fixedInteritemSpacing);
-            }
-        }];
-        prev = v;
-    }
-}
 
+    [self mas_distributeSudokuViewsWithFixedItemWidth:0 fixedItemHeight:0 fixedLineSpacing:fixedLineSpacing fixedInteritemSpacing:fixedInteritemSpacing warpCount:warpCount topSpacing:topSpacing bottomSpacing:bottomSpacing leadSpacing:leadSpacing tailSpacing:tailSpacing];
+}
 
 - (void)mas_distributeSudokuViewsWithFixedItemWidth:(CGFloat)fixedItemWidth
                                     fixedItemHeight:(CGFloat)fixedItemHeight
@@ -307,6 +254,15 @@
         NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
+    if (warpCount < 1) {
+        NSAssert(false, @"warp count need to bigger than zero");
+        return;
+    }
+//    if (warpCount > self.count) {
+//        NSAssert(false, @"warp count need to lesser than array.count");
+//        return;
+//    }
+    
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     
@@ -316,16 +272,12 @@
     for (int i = 0; i < self.count; i++) {
         
         MAS_VIEW *v = self[i];
-        
-        // 当前行
         NSInteger currentRow = i / warpCount;
-        // 当前列
         NSInteger currentColumn = i % warpCount;
         
         [v mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            // 固定宽度
             if (prev) {
+                // 固定宽度
                 make.width.equalTo(prev);
                 make.height.equalTo(prev);
             }
@@ -344,12 +296,15 @@
                 make.top.equalTo(tempSuperView).offset(topSpacing);
             }
             // 最后一行
-            else if (currentRow == rowCount - 1) {
-                make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
+            if (currentRow == rowCount - 1) {
+                // 如果只有一行
+                if (currentRow != 0 && i-warpCount >= 0) {
+                    make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
+                }
                 make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
             }
             // 中间的若干行
-            else {
+            if (currentRow != 0 && currentRow != rowCount - 1) {
                 make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
             }
             
@@ -358,12 +313,15 @@
                 make.left.equalTo(tempSuperView).offset(leadSpacing);
             }
             // 最后一列
-            else if (currentColumn == warpCount - 1) {
-                make.left.equalTo(prev.mas_right).offset(fixedInteritemSpacing);
+            if (currentColumn == warpCount - 1) {
+                // 如果只有一列
+                if (currentColumn != 0) {
+                    make.left.equalTo(prev.mas_right).offset(fixedInteritemSpacing);
+                }
                 make.right.equalTo(tempSuperView).offset(-tailSpacing);
             }
             // 中间若干列
-            else {
+            if (currentColumn != 0 && currentColumn != warpCount - 1) {
                 make.left.equalTo(prev.mas_right).offset(fixedInteritemSpacing);
             }
         }];
