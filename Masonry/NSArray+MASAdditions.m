@@ -331,8 +331,13 @@
                 make.height.equalTo(prev);
             }
             else {
-                make.width.equalTo(@(fixedItemWidth));
-                make.height.equalTo(@(fixedItemHeight));
+                // 如果写的item高宽分别是0，则表示自适应
+                if (fixedItemWidth) {
+                    make.width.equalTo(@(fixedItemWidth));
+                }
+                if (fixedItemHeight) {
+                    make.height.equalTo(@(fixedItemHeight));
+                }
             }
             
             // 第一行

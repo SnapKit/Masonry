@@ -114,8 +114,8 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *  九宫格布局 固定ItemSize 固定ItemSpacing
  *  可由九宫格的内容控制SuperView的大小
  *
- *  @param fixedItemWidth        固定宽度
- *  @param fixedItemHeight       固定高度
+ *  @param fixedItemWidth        固定宽度，如果设置成0，则表示自适应，If set it to 0, indicates the adaptive.
+ *  @param fixedItemHeight       固定高度，如果设置成0，则表示自适应，If set it to 0, indicates the adaptive.
  *  @param fixedLineSpacing      行间距
  *  @param fixedInteritemSpacing 列间距
  *  @param warpCount             折行点
