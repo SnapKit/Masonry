@@ -195,11 +195,11 @@
             make.height.equalTo(@(fixedItemHeight));
             
             // 第一行
-            if (i < warpCount) {
+            if (currentRow == 0) {
                 make.top.equalTo(tempSuperView).offset(topSpacing);
             }
             // 最后一行
-            else if (self.count - i + 1 < warpCount) {
+            else if (currentRow == rowCount - 1) {
                 make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
             }
             // 中间的若干行
@@ -241,7 +241,7 @@
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     
-    // NSInteger rowCount = self.count % warpCount == 0 ? self.count / warpCount : self.count / warpCount + 1;
+    NSInteger rowCount = self.count % warpCount == 0 ? self.count / warpCount : self.count / warpCount + 1;
     
     MAS_VIEW *prev;
     for (int i = 0; i < self.count; i++) {
@@ -249,7 +249,7 @@
         MAS_VIEW *v = self[i];
         
         // 当前行
-        // NSInteger currentRow = i / warpCount;
+        NSInteger currentRow = i / warpCount;
         // 当前列
         NSInteger currentColumn = i % warpCount;
         
@@ -262,12 +262,11 @@
             }
             
             // 第一行
-            if (i < warpCount) {
+            if (currentRow == 0) {
                 make.top.equalTo(tempSuperView).offset(topSpacing);
             }
             // 最后一行
-            else if (self.count - i + 1 < warpCount) {
-                // self[currentRow * rowCount + currentColumn]
+            else if (currentRow == rowCount - 1) {
                 make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
                 make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
             }
@@ -311,7 +310,7 @@
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     
-    // NSInteger rowCount = self.count % warpCount == 0 ? self.count / warpCount : self.count / warpCount + 1;
+    NSInteger rowCount = self.count % warpCount == 0 ? self.count / warpCount : self.count / warpCount + 1;
     
     MAS_VIEW *prev;
     for (int i = 0; i < self.count; i++) {
@@ -319,7 +318,7 @@
         MAS_VIEW *v = self[i];
         
         // 当前行
-        // NSInteger currentRow = i / warpCount;
+        NSInteger currentRow = i / warpCount;
         // 当前列
         NSInteger currentColumn = i % warpCount;
         
@@ -341,11 +340,11 @@
             }
             
             // 第一行
-            if (i < warpCount) {
+            if (currentRow == 0) {
                 make.top.equalTo(tempSuperView).offset(topSpacing);
             }
             // 最后一行
-            else if (self.count - i + 1 < warpCount) {
+            else if (currentRow == rowCount - 1) {
                 make.top.equalTo(((MAS_VIEW *)self[i-warpCount]).mas_bottom).offset(fixedLineSpacing);
                 make.bottom.equalTo(tempSuperView).offset(-bottomSpacing);
             }
