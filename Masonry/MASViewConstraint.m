@@ -175,6 +175,7 @@ static char kInstalledConstraintsKey;
             NSMutableArray *children = NSMutableArray.new;
             for (id attr in attribute) {
                 MASViewConstraint *viewConstraint = [self copy];
+                viewConstraint.layoutRelation = relation;
                 viewConstraint.secondViewAttribute = attr;
                 [children addObject:viewConstraint];
             }
