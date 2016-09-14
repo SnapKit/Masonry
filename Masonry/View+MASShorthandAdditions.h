@@ -94,7 +94,7 @@ MAS_ATTR_FORWARD(centerYWithinMargins);
 
 #endif
 
-- (MASViewAttribute *(NS_NOESCAPE ^)(NSLayoutAttribute))attribute {
+- (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
     return [self mas_attribute];
 }
 
