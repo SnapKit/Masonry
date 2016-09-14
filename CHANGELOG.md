@@ -1,3 +1,12 @@
+v1.0.2
+======
+
+* Bug fix for array greaterThanOrEqualTo or lessthanOrEqualTo attributes ([#377](https://github.com/SnapKit/Masonry/pull/377))
+* Bug fix for Podfile so examples work again ([#374](https://github.com/SnapKit/Masonry/pull/374))
+* Improve view distribution performance ([#374](https://github.com/SnapKit/Masonry/pull/362))
+* Unshare pod schemes ([#374](https://github.com/SnapKit/Masonry/pull/352))
+
+
 v1.0.1
 ======
 
