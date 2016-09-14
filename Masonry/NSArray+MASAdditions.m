@@ -99,19 +99,18 @@
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = self[i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.equalTo(@(fixedItemLength));
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
-                    make.width.equalTo(@(fixedItemLength));
                     if (i == self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
                     }
                     else {
+                        CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                         make.right.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
                     }
                 }
                 else {//first one
                     make.left.equalTo(tempSuperView).offset(leadSpacing);
-                    make.width.equalTo(@(fixedItemLength));
                 }
             }];
             prev = v;
@@ -122,19 +121,18 @@
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = self[i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@(fixedItemLength));
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
-                    make.height.equalTo(@(fixedItemLength));
                     if (i == self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
                     }
                     else {
+                        CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
                         make.bottom.equalTo(tempSuperView).multipliedBy(i/((CGFloat)self.count-1)).with.offset(offset);
                     }
                 }
                 else {//first one
                     make.top.equalTo(tempSuperView).offset(leadSpacing);
-                    make.height.equalTo(@(fixedItemLength));
                 }
             }];
             prev = v;
