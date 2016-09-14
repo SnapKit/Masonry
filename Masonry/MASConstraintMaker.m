@@ -22,7 +22,7 @@
 
 @implementation MASConstraintMaker
 
-- (id)initWithView:(MAS_VIEW *)view {
+- (instancetype)initWithView:(MAS_VIEW *)view {
     self = [super init];
     if (!self) return nil;
     

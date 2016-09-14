@@ -34,7 +34,7 @@
  *
  *	@return	a new view constraint
  */
-- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
 
 /**
  *  Returns all MASViewConstraints installed with this view as a first item.

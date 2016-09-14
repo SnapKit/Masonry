@@ -18,7 +18,7 @@
 
 @implementation MASCompositeConstraint
 
-- (id)initWithChildren:(NSArray *)children {
+- (instancetype)initWithChildren:(NSArray *)children {
     self = [super init];
     if (!self) return nil;
 

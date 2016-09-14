@@ -32,12 +32,12 @@
 /**
  *  Convenience initializer.
  */
-- (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *  The designated initializer.
  */
-- (id)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *	Determine whether the layoutAttribute is a size attribute

@@ -21,6 +21,6 @@
  *
  *	@return	a composite constraint
  */
-- (id)initWithChildren:(NSArray *)children;
+- (instancetype)initWithChildren:(NSArray *)children;
 
 @end

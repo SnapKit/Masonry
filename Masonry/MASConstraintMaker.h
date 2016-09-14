@@ -124,7 +124,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
  *
  *	@return	a new MASConstraintMaker
  */
-- (id)initWithView:(MAS_VIEW *)view;
+- (instancetype)initWithView:(MAS_VIEW *)view;
 
 /**
  *	Calls install method on any MASConstraints which have been created by this maker
