@@ -53,7 +53,7 @@ SpecBegin(NSLayoutConstraint_MASDebugAdditions)
     }];
 
 
-    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:left[0] %@:newView1.left == %@:newView2.left>", MAS_VIEW.class, MAS_VIEW.class];
+    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:left[0] %@:newView1.left >= %@:newView2.left>", MAS_VIEW.class, MAS_VIEW.class];
     expect([superview.constraints[0] description]).to.equal(description);
 }
 
