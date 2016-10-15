@@ -92,6 +92,13 @@
     };
 }
 
+- (MASConstraint * (^)(CGFloat))inset {
+    return ^id(CGFloat inset){
+        self.inset = inset;
+        return self;
+    };
+}
+
 - (MASConstraint * (^)(CGSize))sizeOffset {
     return ^id(CGSize offset) {
         self.sizeOffset = offset;
@@ -268,6 +275,8 @@
 - (MASConstraint * (^)(id key))key { MASMethodNotImplemented(); }
 
 - (void)setInsets:(MASEdgeInsets __unused)insets { MASMethodNotImplemented(); }
+
+- (void)setInset:(CGFloat __unused)inset { MASMethodNotImplemented(); }
 
 - (void)setSizeOffset:(CGSize __unused)sizeOffset { MASMethodNotImplemented(); }
 

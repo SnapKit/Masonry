@@ -254,6 +254,10 @@ static char kInstalledConstraintsKey;
     }
 }
 
+- (void)setInset:(CGFloat)inset {
+    [self setInsets:(MASEdgeInsets){.top = inset, .left = inset, .bottom = inset, .right = inset}];
+}
+
 - (void)setOffset:(CGFloat)offset {
     self.layoutConstant = offset;
 }

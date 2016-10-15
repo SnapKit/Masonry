@@ -129,6 +129,12 @@
     }
 }
 
+- (void)setInset:(CGFloat)inset {
+    for (MASConstraint *constraint in self.childConstraints) {
+        constraint.inset = inset;
+    }
+}
+
 - (void)setOffset:(CGFloat)offset {
     for (MASConstraint *constraint in self.childConstraints) {
         constraint.offset = offset;

@@ -133,6 +133,28 @@ SpecBegin(MASCompositeConstraint) {
     expect([children[5] layoutConstant]).to.equal(0);
 };
 
+- (void)testModifyInsetOnAppropriateChildren {
+    NSArray *children = @[
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_right],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_top],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_bottom],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_left],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_baseline],
+                          [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_width],
+                          ];
+    composite = [[MASCompositeConstraint alloc] initWithChildren:children];
+    composite.delegate = delegate;
+    
+    composite.with.inset(1);
+    
+    expect([children[0] layoutConstant]).to.equal(-1);
+    expect([children[1] layoutConstant]).to.equal(1);
+    expect([children[2] layoutConstant]).to.equal(-1);
+    expect([children[3] layoutConstant]).to.equal(1);
+    expect([children[4] layoutConstant]).to.equal(0);
+    expect([children[5] layoutConstant]).to.equal(0);
+};
+
 - (void)testUninstall {
     NSArray *children = @[
         [[MASViewConstraint alloc] initWithFirstViewAttribute:view.mas_leading],
