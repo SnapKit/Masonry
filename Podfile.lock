@@ -1,6 +1,6 @@
 PODS:
-  - Expecta (1.0.0)
-  - Masonry (1.0.0)
+  - Expecta (1.0.5)
+  - Masonry (1.0.2)
 
 DEPENDENCIES:
   - Expecta
@@ -11,7 +11,9 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
-  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: a30c350a250a8af6afde1caabae52ede1d76714b
+
+COCOAPODS: 1.0.1

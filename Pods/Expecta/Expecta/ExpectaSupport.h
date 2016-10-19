@@ -53,6 +53,7 @@ EXPFixCategoriesBug(EXPMatcher##matcherName##Matcher); \
 #define _EXPMatcherImplementationEnd \
     } \
     [self applyMatcher:matcher to:&actual]; \
+    [[[NSThread currentThread] threadDictionary] removeObjectForKey:@"EXP_currentMatcher"]; \
   } copy]; \
   _EXP_release(matcher); \
   return _EXP_autorelease(matcherBlock); \

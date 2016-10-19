@@ -21,7 +21,7 @@ expect(baz).to.equal(3.14159);
 Expecta is framework-agnostic: it works well with XCTest and XCTest-compatible test frameworks such as [Specta](http://github.com/petejkim/specta/).
 
 
-## Setup
+## Installation
 
 You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [CocoaPods](http://github.com/CocoaPods/CocoaPods) or [completely manually](#setting-up-manually).
 
@@ -46,10 +46,10 @@ You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [C
 	end
 
 	target :MyAppTests do
-	  pod 'Expecta', '~> 0.2.4'
+	  pod 'Expecta', '~> 1.0.0'
 	end
 	```
-	
+
 2. Run `pod update` or `pod install` in your project directory.
 
 ### Setting Up Manually
@@ -60,17 +60,17 @@ You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [C
 4. For **OS X projects**, copy and add `Expecta.framework` in the `Products/osx` folder to your project's test target.
 
    For **iOS projects**, copy and add `Expecta.framework` in the `Products/ios` folder to your project's test target.
-   
+
    You can also use `libExpecta.a` if you prefer to link Expecta as a static library — iOS 7.x and below require this.
-   
+
 6. Add `-ObjC` and `-all_load` to the **Other Linker Flags** build setting for the test target in your Xcode project.
 7. You can now use Expecta in your test classes by adding the following import:
 
 	```objective-c
 	@import Expecta; // If you're using Expecta.framework
-	
+
 	// OR
-	
+
 	#import <Expecta/Expecta.h> // If you're using the static library, or the framework
 	```
 

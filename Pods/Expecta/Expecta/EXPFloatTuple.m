@@ -1,6 +1,9 @@
 #import "EXPFloatTuple.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
 @implementation EXPFloatTuple
+#pragma clang diagnostic pop
 
 @synthesize values = _values, size = _size;
 
