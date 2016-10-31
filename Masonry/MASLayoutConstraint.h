@@ -14,9 +14,13 @@
  */
 @interface MASLayoutConstraint : NSLayoutConstraint
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	a key to associate with this constraint
  */
 @property (nonatomic, strong) id mas_key;
+
+NS_ASSUME_NONNULL_END
 
 @end

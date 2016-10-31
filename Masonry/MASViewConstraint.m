@@ -54,7 +54,7 @@ static char kInstalledConstraintsKey;
 
 - (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
-    if (!self) return nil;
+    if (!self) return self;
     
     _firstViewAttribute = firstViewAttribute;
     self.layoutPriority = MASLayoutPriorityRequired;

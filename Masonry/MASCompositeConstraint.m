@@ -20,7 +20,7 @@
 
 - (instancetype)initWithChildren:(NSArray *)children {
     self = [super init];
-    if (!self) return nil;
+    if (!self) return self;
 
     _childConstraints = [children mutableCopy];
     for (MASConstraint *constraint in _childConstraints) {

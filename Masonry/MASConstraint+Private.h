@@ -13,6 +13,8 @@
 
 @interface MASConstraint ()
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Whether or not to check for an existing constraint instead of adding constraint
  */
@@ -21,7 +23,7 @@
 /**
  *	Usually MASConstraintMaker but could be a parent MASConstraint
  */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
+@property (nullable, nonatomic, weak) id<MASConstraintDelegate> delegate;
 
 /**
  *  Based on a provided value type, is equal to calling:
@@ -32,10 +34,14 @@
  */
 - (void)setLayoutConstantWithValue:(NSValue *)value;
 
+NS_ASSUME_NONNULL_END
+
 @end
 
 
 @interface MASConstraint (Abstract)
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *	Sets the constraint relation to given NSLayoutRelation
@@ -50,10 +56,14 @@
  */
 - (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
+NS_ASSUME_NONNULL_END
+
 @end
 
 
 @protocol MASConstraintDelegate <NSObject>
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example
@@ -61,6 +71,8 @@
  */
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 
-- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (MASConstraint *)constraint:(nullable MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
+
+NS_ASSUME_NONNULL_END
 
 @end

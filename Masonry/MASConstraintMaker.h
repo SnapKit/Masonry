@@ -47,6 +47,8 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
  */
 @interface MASConstraintMaker : NSObject
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	The following properties return a new MASViewConstraint
  *  with the first item set to the makers associated view and the appropriate MASViewAttribute
@@ -134,5 +136,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 - (NSArray *)install;
 
 - (MASConstraint * (^)(dispatch_block_t))group;
+
+NS_ASSUME_NONNULL_END
 
 @end

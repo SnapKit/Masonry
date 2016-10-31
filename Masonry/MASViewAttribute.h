@@ -14,15 +14,17 @@
  */
 @interface MASViewAttribute : NSObject
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  The view which the reciever relates to. Can be nil if item is not a view.
  */
-@property (nonatomic, weak, readonly) MAS_VIEW *view;
+@property (nullable, nonatomic, weak, readonly) MAS_VIEW *view;
 
 /**
  *  The item which the reciever relates to.
  */
-@property (nonatomic, weak, readonly) id item;
+@property (nullable, nonatomic, weak, readonly) id item;
 
 /**
  *  The attribute which the reciever relates to
@@ -32,12 +34,12 @@
 /**
  *  Convenience initializer.
  */
-- (instancetype)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(nullable MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *  The designated initializer.
  */
-- (instancetype)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(nullable MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *	Determine whether the layoutAttribute is a size attribute
@@ -45,5 +47,7 @@
  *	@return	YES if layoutAttribute is equal to NSLayoutAttributeWidth or NSLayoutAttributeHeight
  */
 - (BOOL)isSizeAttribute;
+
+NS_ASSUME_NONNULL_END
 
 @end
