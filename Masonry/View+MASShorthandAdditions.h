@@ -36,7 +36,7 @@
 
 #endif
 
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
 
 @property (nonatomic, strong, readonly) MASViewAttribute *leftMargin;
 @property (nonatomic, strong, readonly) MASViewAttribute *rightMargin;
@@ -81,7 +81,7 @@ MAS_ATTR_FORWARD(lastBaseline);
 
 #endif
 
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
 
 MAS_ATTR_FORWARD(leftMargin);
 MAS_ATTR_FORWARD(rightMargin);

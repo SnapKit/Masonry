@@ -49,7 +49,7 @@
             @(NSLayoutAttributeLastBaseline) : @"lastBaseline",
 #endif
             
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
             @(NSLayoutAttributeLeftMargin)           : @"leftMargin",
             @(NSLayoutAttributeRightMargin)          : @"rightMargin",
             @(NSLayoutAttributeTopMargin)            : @"topMargin",
