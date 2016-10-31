@@ -21,7 +21,14 @@ EXPMatcherImplementationBegin(_equal, (id expected)) {
   });
 
   failureMessageForTo(^NSString *{
-    return [NSString stringWithFormat:@"expected: %@, got: %@", EXPDescribeObject(expected), EXPDescribeObject(actual)];
+    NSString *expectedDescription = EXPDescribeObject(expected);
+    NSString *actualDescription = EXPDescribeObject(actual);
+
+    if (![expectedDescription isEqualToString:actualDescription]) {
+      return [NSString stringWithFormat:@"expected: %@, got: %@", EXPDescribeObject(expected), EXPDescribeObject(actual)];
+    } else {
+      return [NSString stringWithFormat:@"expected (%@): %@, got (%@): %@", NSStringFromClass([expected class]), EXPDescribeObject(expected), NSStringFromClass([actual class]), EXPDescribeObject(actual)];
+    }
   });
 
   failureMessageForNotTo(^NSString *{
