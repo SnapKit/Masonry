@@ -69,4 +69,75 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  */
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
+
+/**
+ *  九宫格布局 固定ItemSize 可变ItemSpacing
+ *
+ *  @param fixedItemWidth  固定宽度
+ *  @param fixedItemHeight 固定高度
+ *  @param warpCount       折行点
+ *  @param topSpacing      顶间距
+ *  @param bottomSpacing   底间距
+ *  @param leadSpacing     左间距
+ *  @param tailSpacing     右间距
+ */
+- (void)mas_distributeSudokuViewsWithFixedItemWidth:(CGFloat)fixedItemWidth
+                                    fixedItemHeight:(CGFloat)fixedItemHeight
+                                          warpCount:(NSInteger)warpCount
+                                         topSpacing:(CGFloat)topSpacing
+                                      bottomSpacing:(CGFloat)bottomSpacing
+                                        leadSpacing:(CGFloat)leadSpacing
+                                        tailSpacing:(CGFloat)tailSpacing;
+
+
+/**
+ *  九宫格布局 可变ItemSize 固定ItemSpacing
+ *
+ *  @param fixedLineSpacing      行间距
+ *  @param fixedInteritemSpacing 列间距
+ *  @param warpCount             折行点
+ *  @param topSpacing            顶间距
+ *  @param bottomSpacing         底间距
+ *  @param leadSpacing           左间距
+ *  @param tailSpacing           右间距
+ */
+- (void)mas_distributeSudokuViewsWithFixedLineSpacing:(CGFloat)fixedLineSpacing
+                                fixedInteritemSpacing:(CGFloat)fixedInteritemSpacing
+                                            warpCount:(NSInteger)warpCount
+                                           topSpacing:(CGFloat)topSpacing
+                                        bottomSpacing:(CGFloat)bottomSpacing
+                                          leadSpacing:(CGFloat)leadSpacing
+                                          tailSpacing:(CGFloat)tailSpacing;
+
+
+/**
+ *  九宫格布局 固定ItemSize 固定ItemSpacing
+ *  可由九宫格的内容控制SuperView的大小
+ *  如果warpCount > self.count，该方法将会用空白的View填充到superview中
+ *
+ *  Sudoku Layout, has fixed item size, and fix item space
+ *  If warp count greater than self.count, It's fill empty view to superview
+ *
+ *  @param fixedItemWidth        固定宽度，如果设置成0，则表示自适应，If set it to zero, indicates the adaptive.
+ *  @param fixedItemHeight       固定高度，如果设置成0，则表示自适应，If set it to zero, indicates the adaptive.
+ *  @param fixedLineSpacing      行间距
+ *  @param fixedInteritemSpacing 列间距
+ *  @param warpCount             折行点
+ *  @param topSpacing            顶间距
+ *  @param bottomSpacing         底间距
+ *  @param leadSpacing           左间距
+ *  @param tailSpacing           右间距
+ *
+ *  @return 一般情况下会return self.copy 但是如果warpCount大于self.count，将会return一个填充过的数组，让你可以循环调用removeFromSuperview;
+ *  @return If warpCount greater than self.count , It's return a fill empty array, you can enumerate to removeFromSuperview;
+ */
+- (NSArray *)mas_distributeSudokuViewsWithFixedItemWidth:(CGFloat)fixedItemWidth
+                                         fixedItemHeight:(CGFloat)fixedItemHeight
+                                        fixedLineSpacing:(CGFloat)fixedLineSpacing
+                                   fixedInteritemSpacing:(CGFloat)fixedInteritemSpacing
+                                               warpCount:(NSInteger)warpCount
+                                              topSpacing:(CGFloat)topSpacing
+                                           bottomSpacing:(CGFloat)bottomSpacing
+                                             leadSpacing:(CGFloat)leadSpacing
+                                             tailSpacing:(CGFloat)tailSpacing;
 @end
