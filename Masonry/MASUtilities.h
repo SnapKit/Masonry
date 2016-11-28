@@ -18,11 +18,11 @@
     #define MASEdgeInsets UIEdgeInsets
 
     typedef UILayoutPriority MASLayoutPriority;
-    static const MASLayoutPriority MASLayoutPriorityRequired = UILayoutPriorityRequired;
-    static const MASLayoutPriority MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh;
+    static const MASLayoutPriority MASLayoutPriorityRequired = (int) UILayoutPriorityRequired;
+    static const MASLayoutPriority MASLayoutPriorityDefaultHigh = (int) UILayoutPriorityDefaultHigh;
     static const MASLayoutPriority MASLayoutPriorityDefaultMedium = 500;
-    static const MASLayoutPriority MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow;
-    static const MASLayoutPriority MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel;
+    static const MASLayoutPriority MASLayoutPriorityDefaultLow = (int) UILayoutPriorityDefaultLow;
+    static const MASLayoutPriority MASLayoutPriorityFittingSizeLevel = (int) UILayoutPriorityFittingSizeLevel;
 
 #elif TARGET_OS_MAC
 
