@@ -17,7 +17,7 @@
 /**
  *  The view which the reciever relates to. Can be nil if item is not a view.
  */
-@property (nonatomic, weak, readonly) MAS_VIEW *view;
+@property (nonatomic, unsafe_unretained, readonly) MAS_VIEW *view;
 
 /**
  *  The item which the reciever relates to.

@@ -15,7 +15,7 @@
 
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
-@property (nonatomic, weak) MAS_VIEW *view;
+@property (nonatomic, unsafe_unretained) MAS_VIEW *view;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end

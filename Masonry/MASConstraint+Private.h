@@ -21,7 +21,7 @@
 /**
  *	Usually MASConstraintMaker but could be a parent MASConstraint
  */
-@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<MASConstraintDelegate> delegate;
 
 /**
  *  Based on a provided value type, is equal to calling:
