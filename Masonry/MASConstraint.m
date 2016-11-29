@@ -161,10 +161,6 @@
     return self;
 }
 
-- (MASConstraint *)and {
-    return self;
-}
-
 #pragma mark - Chaining
 
 - (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute __unused)layoutAttribute {
