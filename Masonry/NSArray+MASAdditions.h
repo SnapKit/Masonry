@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
 };
 
 @interface NSArray (MASAdditions)
-
+- (void)test;
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
  *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing on each view
