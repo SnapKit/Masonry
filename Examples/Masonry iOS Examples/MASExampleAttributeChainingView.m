@@ -41,8 +41,8 @@
         make.top.and.left.equalTo(superview).insets(padding);
 
         // which is the equivalent of
-//        make.top.greaterThanOrEqualTo(superview).insets(padding);
-//        make.left.greaterThanOrEqualTo(superview).insets(padding);
+        // make.top.lessThanOrEqualTo(superview).insets(padding);
+        // make.left.lessThanOrEqualTo(superview).insets(padding);
 
         make.bottom.equalTo(blueView.mas_top).insets(padding);
         make.right.equalTo(redView.mas_left).insets(padding);
