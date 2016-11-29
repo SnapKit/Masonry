@@ -13,6 +13,9 @@ FOUNDATION_EXPORT double MasonryVersionNumber;
 
 //! Project version string for Masonry.
 FOUNDATION_EXPORT const unsigned char MasonryVersionString[];
+// git newBranch
+// 给点amazing
+
 
 #import "MASUtilities.h"
 #import "View+MASAdditions.h"
