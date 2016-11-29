@@ -248,6 +248,22 @@
     return [self addConstraintWithAttributes:MASAttributeTop | MASAttributeLeft | MASAttributeRight | MASAttributeBottom];
 }
 
+- (MASConstraint *)edgesWithoutTop {
+    return [self addConstraintWithAttributes:MASAttributeLeft | MASAttributeRight | MASAttributeBottom];
+}
+
+- (MASConstraint *)edgesWithoutLeft {
+    return [self addConstraintWithAttributes:MASAttributeTop | MASAttributeRight | MASAttributeBottom];
+}
+
+- (MASConstraint *)edgesWithoutRight {
+    return [self addConstraintWithAttributes:MASAttributeTop | MASAttributeLeft | MASAttributeBottom];
+}
+
+- (MASConstraint *)edgesWithoutBottom {
+    return [self addConstraintWithAttributes:MASAttributeTop | MASAttributeLeft | MASAttributeRight];
+}
+
 - (MASConstraint *)size {
     return [self addConstraintWithAttributes:MASAttributeWidth | MASAttributeHeight];
 }

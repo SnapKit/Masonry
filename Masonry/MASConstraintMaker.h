@@ -102,6 +102,34 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, strong, readonly) MASConstraint *edges;
 
 /**
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
+ *  which generates the appropriate MASViewConstraint children (left, bottom, right)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *edgesWithoutTop;
+
+/**
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
+ *  which generates the appropriate MASViewConstraint children (top, bottom, right)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *edgesWithoutLeft;
+
+/**
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
+ *  which generates the appropriate MASViewConstraint children (top, left, bottom)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *edgesWithoutRight;
+
+/**
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
+ *  which generates the appropriate MASViewConstraint children (top, left, right)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *edgesWithoutBottom;
+
+/**
  *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeSize
  *  which generates the appropriate MASViewConstraint children (width, height)
  *  with the first item set to the makers associated view
