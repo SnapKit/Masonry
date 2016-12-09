@@ -349,23 +349,23 @@ static char kInstalledConstraintsKey;
     }
 
 
-    MASLayoutConstraint *existingConstraint = nil;
     if (self.updateExisting) {
-        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
-    }
-    
-    if (existingConstraint) {
-        // just update the constant
-        existingConstraint.constant = layoutConstraint.constant;
-        self.layoutConstraint = existingConstraint;
-    } else {
-        if (self.updateExisting) {
+        MASLayoutConstraint *existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
+        if (existingConstraint) {
+            // just update constant
+            existingConstraint.constant = layoutConstraint.constant;
+            self.layoutConstraint = existingConstraint;
+        } else {
             existingConstraint = [self layoutConstraintRoughSimilarTo:layoutConstraint];
             if (existingConstraint) {
                 [self.installedView removeConstraint:existingConstraint];
+            } else {
+                [firstLayoutItem.mas_installedConstraints addObject:self];
             }
+            [self.installedView addConstraint:layoutConstraint];
+            self.layoutConstraint = layoutConstraint;
         }
-        
+    } else {
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
         [firstLayoutItem.mas_installedConstraints addObject:self];
