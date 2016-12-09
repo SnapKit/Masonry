@@ -351,16 +351,19 @@ static char kInstalledConstraintsKey;
 
     MASLayoutConstraint *existingConstraint = nil;
     if (self.updateExisting) {
-        existingConstraint = [self layoutConstraintCompleteSimilarTo:layoutConstraint];
+        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
     }
+    
     if (existingConstraint) {
         // just update the constant
         existingConstraint.constant = layoutConstraint.constant;
         self.layoutConstraint = existingConstraint;
     } else {
-        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
-        if (existingConstraint) {
-            [self.installedView removeConstraint:existingConstraint];
+        if (self.updateExisting) {
+            existingConstraint = [self layoutConstraintRoughSimilarTo:layoutConstraint];
+            if (existingConstraint) {
+                [self.installedView removeConstraint:existingConstraint];
+            }
         }
         
         [self.installedView addConstraint:layoutConstraint];
@@ -369,7 +372,7 @@ static char kInstalledConstraintsKey;
     }
 }
 
-- (MASLayoutConstraint *)layoutConstraintCompleteSimilarTo:(MASLayoutConstraint *)layoutConstraint {
+- (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
     // check if any constraints are the same apart from the only mutable property constant
 
     // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
@@ -389,7 +392,7 @@ static char kInstalledConstraintsKey;
     return nil;
 }
 
-- (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
+- (MASLayoutConstraint *)layoutConstraintRoughSimilarTo:(MASLayoutConstraint *)layoutConstraint {
     for (NSLayoutConstraint *existingConstraint in self.installedView.constraints.reverseObjectEnumerator) {
         if (![existingConstraint isKindOfClass:MASLayoutConstraint.class]) continue;
         if (existingConstraint.firstItem != layoutConstraint.firstItem) continue;
