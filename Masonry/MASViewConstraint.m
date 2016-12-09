@@ -351,20 +351,25 @@ static char kInstalledConstraintsKey;
 
     MASLayoutConstraint *existingConstraint = nil;
     if (self.updateExisting) {
-        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
+        existingConstraint = [self layoutConstraintCompleteSimilarTo:layoutConstraint];
     }
     if (existingConstraint) {
         // just update the constant
         existingConstraint.constant = layoutConstraint.constant;
         self.layoutConstraint = existingConstraint;
     } else {
+        existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
+        if (existingConstraint) {
+            [self.installedView removeConstraint:existingConstraint];
+        }
+        
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
         [firstLayoutItem.mas_installedConstraints addObject:self];
     }
 }
 
-- (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
+- (MASLayoutConstraint *)layoutConstraintCompleteSimilarTo:(MASLayoutConstraint *)layoutConstraint {
     // check if any constraints are the same apart from the only mutable property constant
 
     // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
@@ -379,6 +384,18 @@ static char kInstalledConstraintsKey;
         if (existingConstraint.multiplier != layoutConstraint.multiplier) continue;
         if (existingConstraint.priority != layoutConstraint.priority) continue;
 
+        return (id)existingConstraint;
+    }
+    return nil;
+}
+
+- (MASLayoutConstraint *)layoutConstraintSimilarTo:(MASLayoutConstraint *)layoutConstraint {
+    for (NSLayoutConstraint *existingConstraint in self.installedView.constraints.reverseObjectEnumerator) {
+        if (![existingConstraint isKindOfClass:MASLayoutConstraint.class]) continue;
+        if (existingConstraint.firstItem != layoutConstraint.firstItem) continue;
+        if (existingConstraint.firstAttribute != layoutConstraint.firstAttribute) continue;
+        if (existingConstraint.priority != layoutConstraint.priority) continue;
+        
         return (id)existingConstraint;
     }
     return nil;
