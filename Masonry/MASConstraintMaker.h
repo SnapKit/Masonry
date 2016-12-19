@@ -1,5 +1,5 @@
 //
-//  MASConstraintBuilder.h
+//  MASConstraintMaker.h
 //  Masonry
 //
 //  Created by Jonas Budelmann on 20/07/13.
