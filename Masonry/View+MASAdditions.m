@@ -7,6 +7,7 @@
 //
 
 #import "View+MASAdditions.h"
+#import "MASViewConstraint.h"
 #import <objc/runtime.h>
 
 @implementation MAS_VIEW (MASAdditions)
@@ -32,6 +33,13 @@
     constraintMaker.removeExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
+}
+
+- (void)mas_removeExistingConstraints {
+    NSArray *installedConstraints = [MASViewConstraint installedConstraintsForView:self];
+    for (MASConstraint *constraint in installedConstraints) {
+        [constraint uninstall];
+    }
 }
 
 #pragma mark - NSLayoutAttribute properties

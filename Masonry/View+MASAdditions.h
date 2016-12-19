@@ -98,4 +98,9 @@
  */
 - (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
+/**
+ *  Removes all constraints previously installed on the callee view.
+ */
+- (void)mas_removeExistingConstraints;
+
 @end

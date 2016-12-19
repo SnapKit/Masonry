@@ -38,6 +38,13 @@
     return constraints;
 }
 
+- (void)mas_removeExistingConstraints {
+    for (MAS_VIEW *view in self) {
+        NSAssert([view isKindOfClass:[MAS_VIEW class]], @"All objects in the array must be views");
+        [view mas_removeExistingConstraints];
+    }
+}
+
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)fixedSpacing leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
     if (self.count < 2) {
         NSAssert(self.count>1,@"views to distribute need to bigger than one");
