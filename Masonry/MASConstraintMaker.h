@@ -128,7 +128,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 /**
  *	initialises the maker with a default view
  *
- *	@param	view	any MASConstrait are created with this view as the first item
+ *	@param	view	any MASConstraint are created with this view as the first item
  *
  *	@return	a new MASConstraintMaker
  */
