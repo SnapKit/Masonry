@@ -14,5 +14,6 @@ profile
 # Desktop Servies
 .DS_Store
 script/env.sh
+DerivedData/
 
 /Masonry.xcworkspace/xcshareddata/Masonry.xccheckout
