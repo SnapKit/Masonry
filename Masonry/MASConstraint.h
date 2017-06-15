@@ -73,17 +73,17 @@
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityLow
  */
-- (MASConstraint * (^)())priorityLow;
+- (MASConstraint * (^)(void))priorityLow;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityMedium
  */
-- (MASConstraint * (^)())priorityMedium;
+- (MASConstraint * (^)(void))priorityMedium;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityHigh
  */
-- (MASConstraint * (^)())priorityHigh;
+- (MASConstraint * (^)(void))priorityHigh;
 
 /**
  *	Sets the constraint relation to NSLayoutRelationEqual
