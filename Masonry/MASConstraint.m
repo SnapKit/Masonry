@@ -62,21 +62,21 @@
 
 #pragma mark - MASLayoutPriority proxies
 
-- (MASConstraint * (^)())priorityLow {
+- (MASConstraint * (^)(void))priorityLow {
     return ^id{
         self.priority(MASLayoutPriorityDefaultLow);
         return self;
     };
 }
 
-- (MASConstraint * (^)())priorityMedium {
+- (MASConstraint * (^)(void))priorityMedium {
     return ^id{
         self.priority(MASLayoutPriorityDefaultMedium);
         return self;
     };
 }
 
-- (MASConstraint * (^)())priorityHigh {
+- (MASConstraint * (^)(void))priorityHigh {
     return ^id{
         self.priority(MASLayoutPriorityDefaultHigh);
         return self;
