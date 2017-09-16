@@ -49,6 +49,15 @@
 
 #endif
 
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0));
+
+#endif
+
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
@@ -91,6 +100,15 @@ MAS_ATTR_FORWARD(leadingMargin);
 MAS_ATTR_FORWARD(trailingMargin);
 MAS_ATTR_FORWARD(centerXWithinMargins);
 MAS_ATTR_FORWARD(centerYWithinMargins);
+
+#endif
+
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+
+MAS_ATTR_FORWARD(safeAreaLayoutGuideTop);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideBottom);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideLeft);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideRight);
 
 #endif
 
