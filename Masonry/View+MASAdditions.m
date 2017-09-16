@@ -134,6 +134,22 @@
 
 #endif
 
+- (MASViewAttribute *)mas_safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0)) {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0)) {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0)) {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0)) {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0)) {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+}
+
 #pragma mark - associated properties
 
 - (id)mas_key {
