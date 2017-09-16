@@ -134,19 +134,19 @@
 
 #endif
 
-- (MASViewAttribute *)mas_safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0)) {
+- (MASViewAttribute *)mas_safeAreaLayoutGuide {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0)) {
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0)) {
+- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0)) {
+- (MASViewAttribute *)mas_safeAreaLayoutGuideLeft {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0)) {
+- (MASViewAttribute *)mas_safeAreaLayoutGuideRight {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
 }
 
