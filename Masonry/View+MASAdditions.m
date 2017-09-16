@@ -134,6 +134,8 @@
 
 #endif
 
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuide {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }
@@ -149,6 +151,8 @@
 - (MASViewAttribute *)mas_safeAreaLayoutGuideRight {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
 }
+
+#endif
 
 #pragma mark - associated properties
 

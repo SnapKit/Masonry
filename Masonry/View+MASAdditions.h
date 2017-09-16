@@ -52,11 +52,15 @@
 
 #endif
 
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0));
+
+#endif
 
 /**
  *	a key to associate with this view

@@ -49,11 +49,14 @@
 
 #endif
 
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0));
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0));
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0));
+
+#endif
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
@@ -100,11 +103,14 @@ MAS_ATTR_FORWARD(centerYWithinMargins);
 
 #endif
 
-MAS_ATTR_FORWARD(safeAreaLayoutGuide);
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
 MAS_ATTR_FORWARD(safeAreaLayoutGuideTop);
 MAS_ATTR_FORWARD(safeAreaLayoutGuideBottom);
 MAS_ATTR_FORWARD(safeAreaLayoutGuideLeft);
 MAS_ATTR_FORWARD(safeAreaLayoutGuideRight);
+
+#endif
 
 - (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
     return [self mas_attribute];
