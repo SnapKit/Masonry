@@ -94,6 +94,12 @@ MAS_ATTR_FORWARD(centerYWithinMargins);
 
 #endif
 
+MAS_ATTR_FORWARD(safeAreaLayoutGuide);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideTop);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideBottom);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideLeft);
+MAS_ATTR_FORWARD(safeAreaLayoutGuideRight);
+
 - (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
     return [self mas_attribute];
 }
