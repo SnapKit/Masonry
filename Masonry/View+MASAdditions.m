@@ -134,6 +134,26 @@
 
 #endif
 
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuide {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideLeft {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
+}
+- (MASViewAttribute *)mas_safeAreaLayoutGuideRight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+}
+
+#endif
+
 #pragma mark - associated properties
 
 - (id)mas_key {
