@@ -389,11 +389,17 @@ Get busy Masoning
 
 Copy the included code snippets to ``~/Library/Developer/Xcode/UserData/CodeSnippets`` to write your masonry blocks at lightning speed!
 
-`mas_make` -> `[<view> mas_makeConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_make` -> ` [<#view#> mas_makeConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
-`mas_update` -> `[<view> mas_updateConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_update` -> ` [<#view#> mas_updateConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
-`mas_remake` -> `[<view> mas_remakeConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_remake` -> ` [<#view#> mas_remakeConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
 ## Features
 * Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!
