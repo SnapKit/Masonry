@@ -1,5 +1,5 @@
 //
-//  MASConstraintBuilder.m
+//  MASConstraintMaker.m
 //  Masonry
 //
 //  Created by Jonas Budelmann on 20/07/13.
