@@ -134,7 +134,7 @@
 
 #endif
 
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || (__TV_OS_VERSION_MIN_REQUIRED >= 110000)
 
 - (MASViewAttribute *)mas_safeAreaLayoutGuide {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];

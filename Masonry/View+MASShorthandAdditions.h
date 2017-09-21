@@ -49,12 +49,12 @@
 
 #endif
 
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || (__TV_OS_VERSION_MIN_REQUIRED >= 110000)
 
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop;
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom;
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft;
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight;
 
 #endif
 
@@ -103,7 +103,7 @@ MAS_ATTR_FORWARD(centerYWithinMargins);
 
 #endif
 
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || (__TV_OS_VERSION_MIN_REQUIRED >= 110000)
 
 MAS_ATTR_FORWARD(safeAreaLayoutGuideTop);
 MAS_ATTR_FORWARD(safeAreaLayoutGuideBottom);
