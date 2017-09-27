@@ -32,6 +32,7 @@
 		DD9B4D35183CC980002BF408 /* MASExampleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9B4D34183CC980002BF408 /* MASExampleScrollView.m */; };
 		DDDF60CC181915E300BF7B8B /* MASExampleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */; };
 		DDF3875C179D648D00178773 /* MASExampleAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */; };
+		DFBACE591F7B76E40047F15A /* MASExampleSafeAreaLayoutGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBACE581F7B76E40047F15A /* MASExampleSafeAreaLayoutGuideViewController.m */; };
 		DFBACE5D1F7B86860047F15A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBACE5C1F7B86860047F15A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,8 @@
 		DDDF60CB181915E300BF7B8B /* MASExampleLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleLabelView.m; sourceTree = "<group>"; };
 		DDF3875A179D648D00178773 /* MASExampleAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASExampleAnimatedView.h; sourceTree = "<group>"; };
 		DDF3875B179D648D00178773 /* MASExampleAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASExampleAnimatedView.m; sourceTree = "<group>"; };
+		DFBACE571F7B76E30047F15A /* MASExampleSafeAreaLayoutGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASExampleSafeAreaLayoutGuideViewController.h; sourceTree = "<group>"; };
+		DFBACE581F7B76E40047F15A /* MASExampleSafeAreaLayoutGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASExampleSafeAreaLayoutGuideViewController.m; sourceTree = "<group>"; };
 		DFBACE5C1F7B86860047F15A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +203,8 @@
 				DD52F250179CADC0005CD195 /* MASExampleViewController.m */,
 				DD653E481843E61500D1EC5A /* MASExampleLayoutGuideViewController.h */,
 				DD653E491843E61500D1EC5A /* MASExampleLayoutGuideViewController.m */,
+				DFBACE571F7B76E30047F15A /* MASExampleSafeAreaLayoutGuideViewController.h */,
+				DFBACE581F7B76E40047F15A /* MASExampleSafeAreaLayoutGuideViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				27A27D461A6CF0C400D34F52 /* MASExampleAspectFitView.m in Sources */,
 				DD52F252179CADC0005CD195 /* MASExampleConstantsView.m in Sources */,
 				DD52F253179CADC0005CD195 /* MASExampleListViewController.m in Sources */,
+				DFBACE591F7B76E40047F15A /* MASExampleSafeAreaLayoutGuideViewController.m in Sources */,
 				DD52F254179CADC0005CD195 /* MASExampleSidesView.m in Sources */,
 				DD32C3FD18E8BFF6001F6AD2 /* MASExampleAttributeChainingView.m in Sources */,
 				DD52F255179CADC0005CD195 /* MASExampleViewController.m in Sources */,
@@ -409,7 +415,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,7 +454,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +468,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
 				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Masonry iOS Examples";
 				WRAPPER_EXTENSION = app;
@@ -478,7 +481,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Masonry iOS Examples/Masonry iOS Examples-Prefix.pch";
 				INFOPLIST_FILE = "Masonry iOS Examples/Masonry iOS Examples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Masonry iOS Examples";
 				WRAPPER_EXTENSION = app;
