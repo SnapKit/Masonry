@@ -136,6 +136,54 @@
 
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || (__TV_OS_VERSION_MIN_REQUIRED >= 110000)
 
+#pragma mark - safeAreaLayoutGuide
+
+- (MASViewAttribute *)mas_safeArea {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeNotAnAttribute];
+}
+
+- (MASViewAttribute *)mas_safeAreaLeading {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeading];
+}
+
+- (MASViewAttribute *)mas_safeAreaTrailing {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTrailing];
+}
+
+- (MASViewAttribute *)mas_safeAreaLeft {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
+}
+
+- (MASViewAttribute *)mas_safeAreaRight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+}
+
+- (MASViewAttribute *)mas_safeAreaTop {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+}
+
+- (MASViewAttribute *)mas_safeAreaBottom {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+
+- (MASViewAttribute *)mas_safeAreaWidth {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeWidth];
+}
+
+- (MASViewAttribute *)mas_safeAreaHeight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeHeight];
+}
+
+- (MASViewAttribute *)mas_safeAreaCenterX {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterX];
+}
+
+- (MASViewAttribute *)mas_safeAreaCenterY {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterY];
+}
+
+#pragma mark - DEPRECATED
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuide {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }

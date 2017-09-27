@@ -125,7 +125,12 @@ static char kInstalledConstraintsKey;
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
-        _secondViewAttribute = secondViewAttribute;
+        MASViewAttribute *attr = secondViewAttribute;
+        if (attr.layoutAttribute == NSLayoutAttributeNotAnAttribute) {
+            _secondViewAttribute = [[MASViewAttribute alloc] initWithView:attr.view item:attr.item layoutAttribute:self.firstViewAttribute.layoutAttribute];;
+        } else {
+            _secondViewAttribute = secondViewAttribute;
+        }
     } else {
         NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
     }
