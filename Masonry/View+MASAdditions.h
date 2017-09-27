@@ -54,24 +54,18 @@
 
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || (__TV_OS_VERSION_MIN_REQUIRED >= 110000)
 
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeArea;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuide;
 
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLeading;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaTrailing;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLeft;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaRight;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaTop;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaBottom;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaWidth;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaHeight;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaCenterX;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaCenterY;
-
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuide DEPRECATED_ATTRIBUTE;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideTop DEPRECATED_ATTRIBUTE;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideBottom DEPRECATED_ATTRIBUTE;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideLeft DEPRECATED_ATTRIBUTE;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideRight DEPRECATED_ATTRIBUTE;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideLeading;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideTrailing;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideLeft;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideRight;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideTop;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideBottom;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideWidth;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideHeight;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterX;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterY;
 
 #endif
 

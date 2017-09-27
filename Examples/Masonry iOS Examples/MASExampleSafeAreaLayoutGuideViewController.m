@@ -54,66 +54,66 @@
     const CGFloat size = 50.0;
     
     [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view.mas_safeArea).inset(10.0);
+        make.edges.equalTo(self.view.mas_safeAreaLayoutGuide).inset(10.0);
     }];
     
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view.mas_safeArea);
-        make.width.height.equalTo(self.view.mas_safeArea).sizeOffset(CGSizeMake(- 40.0, - 40.0));
+        make.center.equalTo(self.view.mas_safeAreaLayoutGuide);
+        make.width.height.equalTo(self.view.mas_safeAreaLayoutGuide).sizeOffset(CGSizeMake(- 40.0, - 40.0));
     }];
     
     [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view.mas_safeArea);
-        make.width.equalTo(self.view.mas_safeArea).sizeOffset(CGSizeMake(- 60.0, - 60.0));
-        make.height.equalTo(self.view.mas_safeArea).sizeOffset(CGSizeMake(- 60.0, - 60.0));
+        make.center.equalTo(self.view.mas_safeAreaLayoutGuide);
+        make.width.equalTo(self.view.mas_safeAreaLayoutGuide).sizeOffset(CGSizeMake(- 60.0, - 60.0));
+        make.height.equalTo(self.view.mas_safeAreaLayoutGuide).sizeOffset(CGSizeMake(- 60.0, - 60.0));
     }];
     
     [leftTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.view.mas_safeArea);
+        make.left.top.equalTo(self.view.mas_safeAreaLayoutGuide);
         make.width.height.equalTo(@(size));
     }];
     
     [rightTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_safeAreaRight);
-        make.top.equalTo(self.view.mas_safeAreaTop);
+        make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
         make.width.height.equalTo(@(size));
     }];
     
     [leftBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_safeAreaLeft);
-        make.bottom.equalTo(self.view.mas_safeAreaBottom);
+        make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
         make.width.height.equalTo(@(size));
     }];
     
     [rightBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.equalTo(self.view.mas_safeArea);
+        make.right.bottom.equalTo(self.view.mas_safeAreaLayoutGuide);
         make.width.height.equalTo(@(size));
     }];
     
     [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerY.equalTo(self.view.mas_safeArea);
+        make.left.centerY.equalTo(self.view.mas_safeAreaLayoutGuide);
         make.width.height.equalTo(@(size));
     }];
     
     [rightView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_safeAreaRight);
-        make.centerY.equalTo(self.view.mas_safeAreaCenterY);
+        make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
+        make.centerY.equalTo(self.view.mas_safeAreaLayoutGuideCenterY);
         make.width.height.equalTo(@(size));
     }];
     
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_safeAreaTop);
-        make.centerX.equalTo(self.view.mas_safeAreaCenterX);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        make.centerX.equalTo(self.view.mas_safeAreaLayoutGuideCenterX);
         make.width.height.equalTo(@(size));
     }];
     
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.centerX.equalTo(self.view.mas_safeArea);
+        make.bottom.centerX.equalTo(self.view.mas_safeAreaLayoutGuide);
         make.width.height.equalTo(@(size));
     }];
     
     [centerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view.mas_safeArea);
+        make.center.equalTo(self.view.mas_safeAreaLayoutGuide);
         make.width.height.equalTo(@(size));
     }];
 }
