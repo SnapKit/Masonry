@@ -17,13 +17,12 @@
 /**
  *	following properties return a new MASViewAttribute with appropriate UILayoutGuide and NSLayoutAttribute
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuide;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuide;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideTop;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideBottom;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideTop;
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideBottom;
-
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuide NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuide NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideTop NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideBottom NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideTop NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideBottom NS_DEPRECATED_IOS(8.0, 11.0);
 
 @end
 
