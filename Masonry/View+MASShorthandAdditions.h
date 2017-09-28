@@ -63,6 +63,7 @@
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (void)removeExistingConstraints;
 
 @end
 
@@ -133,6 +134,9 @@ MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterY, NS_AVAILABLE_IOS(11.0));
     return [self mas_remakeConstraints:block];
 }
 
+- (void)removeExistingConstraints {
+    [self mas_removeExistingConstraints];
+}
 @end
 
 #endif

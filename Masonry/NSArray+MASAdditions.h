@@ -50,6 +50,11 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
 - (NSArray *)mas_remakeConstraints:(void (NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
+ *  Removes all constraints previously installed on each view in the callee.
+ */
+- (void)mas_removeExistingConstraints;
+
+/**
  *  distribute with fixed spacing
  *
  *  @param axisType     which axis to distribute items along
