@@ -200,6 +200,11 @@
  *  Whether or not to go through the animator proxy when modifying the constraint
  */
 @property (nonatomic, copy, readonly) MASConstraint *animator;
+
+/**
+ *  Disable use of the animator proxy.  To re-enable, simply use the animator property again.
+ */
+- (void)disableAnimator;
 #endif
 
 /**

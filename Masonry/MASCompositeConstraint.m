@@ -106,6 +106,12 @@
     return self;
 }
 
+- (void)disableAnimator {
+    for (MASConstraint *constraint in self.childConstraints) {
+        [constraint disableAnimator];
+    }
+}
+
 #endif
 
 #pragma mark - debug helpers

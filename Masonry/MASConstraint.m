@@ -283,6 +283,7 @@
 #if TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_OS_TV)
 
 - (MASConstraint *)animator { MASMethodNotImplemented(); }
+- (void)disableAnimator { MASMethodNotImplemented(); }
 
 #endif
 
