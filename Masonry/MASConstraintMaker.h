@@ -21,13 +21,9 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     MASAttributeCenterX = 1 << NSLayoutAttributeCenterX,
     MASAttributeCenterY = 1 << NSLayoutAttributeCenterY,
     MASAttributeBaseline = 1 << NSLayoutAttributeBaseline,
-    
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-    
+
     MASAttributeFirstBaseline = 1 << NSLayoutAttributeFirstBaseline,
     MASAttributeLastBaseline = 1 << NSLayoutAttributeLastBaseline,
-    
-#endif
     
 #if TARGET_OS_IPHONE || TARGET_OS_TV
     
@@ -67,12 +63,8 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, strong, readonly) MASConstraint *centerY;
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
 
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-
 @property (nonatomic, strong, readonly) MASConstraint *firstBaseline;
 @property (nonatomic, strong, readonly) MASConstraint *lastBaseline;
-
-#endif
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
