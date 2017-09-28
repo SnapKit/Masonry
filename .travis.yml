@@ -1,6 +1,6 @@
 ---
 language: objective-c
-osx_image: xcode8
+osx_image: xcode9
 before_install:
   - sudo easy_install cpp-coveralls
   - gem install xcpretty -N
