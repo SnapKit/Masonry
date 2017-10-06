@@ -14,6 +14,8 @@
  */
 @interface MASCompositeConstraint : MASConstraint
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	Creates a composite with a predefined array of children
  *
@@ -21,6 +23,8 @@
  *
  *	@return	a composite constraint
  */
-- (id)initWithChildren:(NSArray *)children;
+- (instancetype)initWithChildren:(NSArray *)children;
+
+NS_ASSUME_NONNULL_END
 
 @end

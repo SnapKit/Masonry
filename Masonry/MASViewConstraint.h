@@ -17,6 +17,8 @@
  */
 @interface MASViewConstraint : MASConstraint <NSCopying>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	First item/view and first attribute of the NSLayoutConstraint
  */
@@ -34,7 +36,7 @@
  *
  *	@return	a new view constraint
  */
-- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
 
 /**
  *  Returns all MASViewConstraints installed with this view as a first item.
@@ -44,5 +46,7 @@
  *  @return An array of MASViewConstraints.
  */
 + (NSArray *)installedConstraintsForView:(MAS_VIEW *)view;
+
+NS_ASSUME_NONNULL_END
 
 @end

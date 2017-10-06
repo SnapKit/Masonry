@@ -16,6 +16,8 @@
  */
 @interface MAS_VIEW (MASShorthandAdditions)
 
+NS_ASSUME_NONNULL_BEGIN
+
 @property (nonatomic, strong, readonly) MASViewAttribute *left;
 @property (nonatomic, strong, readonly) MASViewAttribute *top;
 @property (nonatomic, strong, readonly) MASViewAttribute *right;
@@ -63,6 +65,8 @@
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
 - (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+
+NS_ASSUME_NONNULL_END
 
 @end
 

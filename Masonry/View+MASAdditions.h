@@ -16,6 +16,8 @@
  */
 @interface MAS_VIEW (MASAdditions)
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	following properties return a new MASViewAttribute with current view and appropriate NSLayoutAttribute
  */
@@ -72,7 +74,7 @@
  *
  *	@return	returns nil if common superview could not be found
  */
-- (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
+- (nullable instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
 
 /**
  *  Creates a MASConstraintMaker with the callee view.
@@ -105,5 +107,7 @@
  *  @return Array of created/updated MASConstraints
  */
 - (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
+
+NS_ASSUME_NONNULL_END
 
 @end

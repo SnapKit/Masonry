@@ -17,6 +17,8 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
 
 @interface NSArray (MASAdditions)
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
  *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing on each view
@@ -68,5 +70,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *  @param tailSpacing     the spacing after the last item and the container
  */
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+
+NS_ASSUME_NONNULL_END
 
 @end

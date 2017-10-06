@@ -52,9 +52,9 @@ static char kInstalledConstraintsKey;
 
 @implementation MASViewConstraint
 
-- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
-    if (!self) return nil;
+    if (!self) return self;
     
     _firstViewAttribute = firstViewAttribute;
     self.layoutPriority = MASLayoutPriorityRequired;
@@ -65,7 +65,7 @@ static char kInstalledConstraintsKey;
 
 #pragma mark - NSCoping
 
-- (id)copyWithZone:(NSZone __unused *)zone {
+- (instancetype)copyWithZone:(NSZone __unused *)zone {
     MASViewConstraint *constraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:self.firstViewAttribute];
     constraint.layoutConstant = self.layoutConstant;
     constraint.layoutRelation = self.layoutRelation;

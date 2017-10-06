@@ -10,14 +10,14 @@
 
 @implementation MASViewAttribute
 
-- (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute {
+- (instancetype)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute {
     self = [self initWithView:view item:view layoutAttribute:layoutAttribute];
     return self;
 }
 
-- (id)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute {
+- (instancetype)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute {
     self = [super init];
-    if (!self) return nil;
+    if (!self) return self;
     
     _view = view;
     _item = item;

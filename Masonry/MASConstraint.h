@@ -15,6 +15,8 @@
  */
 @interface MASConstraint : NSObject
 
+NS_ASSUME_NONNULL_BEGIN
+
 // Chaining Support
 
 /**
@@ -223,6 +225,8 @@
  */
 - (void)uninstall;
 
+NS_ASSUME_NONNULL_END
+
 @end
 
 
@@ -252,6 +256,8 @@
 
 @interface MASConstraint (AutoboxingSupport)
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Aliases to corresponding relation methods (for shorthand macros)
  *  Also needed to aid autocompletion
@@ -264,5 +270,7 @@
  *  A dummy method to aid autocompletion
  */
 - (MASConstraint * (^)(id offset))mas_offset;
+
+NS_ASSUME_NONNULL_END
 
 @end
