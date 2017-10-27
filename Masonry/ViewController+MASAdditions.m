@@ -35,6 +35,21 @@
     return [[MASViewAttribute alloc] initWithView:self.view item:self.bottomLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
 }
 
+- (MASViewAttribute *)mas_safeAreaLayoutTopGuide {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self.view item:self.view.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+    } else {
+        return [[MASViewAttribute alloc] initWithView:self.view item:self.topLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    }
+}
+- (MASViewAttribute *)mas_safeAreaLayoutBottomGuide {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self.view item:self.view.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    } else {
+        return [[MASViewAttribute alloc] initWithView:self.view item:self.bottomLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+    }
+}
+
 #pragma clang diagnostic pop
 
 @end
