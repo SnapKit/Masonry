@@ -35,6 +35,13 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_firstBaseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_lastBaseline;
 
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLeft;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaTop;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaRight;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaBottom;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLeading;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaTrealing;
+
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;
@@ -57,6 +64,11 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideHeight NS_AVAILABLE_IOS(11.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterX NS_AVAILABLE_IOS(11.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterY NS_AVAILABLE_IOS(11.0);
+
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topMarginOrSafeArea;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomMarginOrSafeArea;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMarginOrSafeArea;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_rightMarginOrSafeArea;
 
 #endif
 

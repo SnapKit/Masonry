@@ -94,6 +94,55 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
+
+- (MASViewAttribute *)mas_safeAreaLeft {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideLeft;
+    } else {
+        return self.mas_left;
+    }
+}
+
+- (MASViewAttribute *)mas_safeAreaTop {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideTop;
+    } else {
+        return self.mas_top;
+    }
+}
+
+- (MASViewAttribute *)mas_safeAreaRight {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideRight;
+    } else {
+        return self.mas_right;
+    }
+}
+
+- (MASViewAttribute *)mas_safeAreaBottom {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideBottom;
+    } else {
+        return self.mas_bottom;
+    }
+}
+
+- (MASViewAttribute *)mas_safeAreaLeading {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideLeading;
+    } else {
+        return self.mas_leading;
+    }
+}
+
+- (MASViewAttribute *)mas_safeAreaTrealing {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideTrailing;
+    } else {
+        return self.mas_trailing;
+    }
+}
+
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASViewAttribute *)mas_leftMargin {
@@ -170,6 +219,38 @@
 
 - (MASViewAttribute *)mas_safeAreaLayoutGuideCenterY {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterY];
+}
+
+- (MASViewAttribute *)mas_topMarginOrSafeArea {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideTop;
+    } else {
+        return self.mas_topMargin;
+    }
+}
+
+- (MASViewAttribute *)mas_bottomMarginOrSafeArea {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideBottom;
+    } else {
+        return self.mas_bottomMargin;
+    }
+}
+
+- (MASViewAttribute *)mas_leftMarginOrSafeArea {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideLeft;
+    } else {
+        return self.mas_leftMargin;
+    }
+}
+
+- (MASViewAttribute *)mas_rightMarginOrSafeArea {
+    if (@available(iOS 11.0, *)) {
+        return self.mas_safeAreaLayoutGuideRight;
+    } else {
+        return self.mas_rightMargin;
+    }
 }
 
 #endif
