@@ -80,7 +80,7 @@ Or even shorter
 
 ```obj-c
 [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(superview).with.insets(padding);
+    make.edges.equalTo(superview).with.inset(padding);
 }];
 ```
 
