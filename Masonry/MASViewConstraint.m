@@ -163,10 +163,17 @@ static char kInstalledConstraintsKey;
 
 - (MASConstraint * (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
-        NSAssert(!self.hasBeenInstalled,
-                 @"Cannot modify constraint priority after it has been installed");
-        
-        self.layoutPriority = priority;
+        if (!self.hasBeenInstalled) {
+            self.layoutPriority = priority;
+        } else {
+            NSAssert(priority != UILayoutPriorityRequired
+                     && self.layoutConstraint.priority != UILayoutPriorityRequired,
+                     @"the priority cannot be changed from/to NSLayoutPriorityRequired");
+            if (priority != UILayoutPriorityRequired
+                && self.layoutConstraint.priority != UILayoutPriorityRequired){
+                self.layoutConstraint.priority = priority;
+            }
+        }
         return self;
     };
 }
@@ -359,8 +366,20 @@ static char kInstalledConstraintsKey;
         existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
     }
     if (existingConstraint) {
-        // just update the constant
+        // update the constant
         existingConstraint.constant = layoutConstraint.constant;
+        
+        // update the priority if possible
+        if (existingConstraint.priority != layoutConstraint.priority) {
+            NSAssert(existingConstraint.priority != UILayoutPriorityRequired
+                     && layoutConstraint.priority != UILayoutPriorityRequired,
+                     @"the priority cannot be changed from/to NSLayoutPriorityRequired");
+            if (existingConstraint.priority != UILayoutPriorityRequired
+                && layoutConstraint.priority != UILayoutPriorityRequired){
+                existingConstraint.priority = layoutConstraint.priority;
+            }
+        }
+        
         self.layoutConstraint = existingConstraint;
     } else {
         [self.installedView addConstraint:layoutConstraint];
@@ -382,7 +401,6 @@ static char kInstalledConstraintsKey;
         if (existingConstraint.secondAttribute != layoutConstraint.secondAttribute) continue;
         if (existingConstraint.relation != layoutConstraint.relation) continue;
         if (existingConstraint.multiplier != layoutConstraint.multiplier) continue;
-        if (existingConstraint.priority != layoutConstraint.priority) continue;
 
         return (id)existingConstraint;
     }
