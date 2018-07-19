@@ -1,7 +1,8 @@
 ---
 language: objective-c
-osx_image: xcode9
+osx_image: xcode9.4
 before_install:
+  - curl https://bootstrap.pypa.io/get-pip.py | python
   - sudo easy_install cpp-coveralls
   - gem install xcpretty -N
   - export LANG=en_US.UTF-8
