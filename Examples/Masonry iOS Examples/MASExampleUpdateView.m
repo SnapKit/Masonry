@@ -44,8 +44,8 @@
 
     [self.growingButton updateConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
-        make.width.equalTo(@(self.buttonSize.width)).priorityLow();
-        make.height.equalTo(@(self.buttonSize.height)).priorityLow();
+        make.width.equalTo(@(self.buttonSize.width)).priorityHigh();
+        make.height.equalTo(@(self.buttonSize.height)).priorityHigh();
         make.width.lessThanOrEqualTo(self);
         make.height.lessThanOrEqualTo(self);
     }];
