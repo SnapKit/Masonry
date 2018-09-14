@@ -15,15 +15,22 @@
 SpecBegin(NSLayoutConstraint_MASDebugAdditions)
 
 - (void)testDisplayViewKey {
-    MAS_VIEW *newView = MAS_VIEW.new;
-    newView.mas_key = @"newView";
+    MAS_VIEW *newView1 = MAS_VIEW.new;
+    newView1.mas_key = @"newView1";
+    MAS_VIEW *newView2 = MAS_VIEW.new;
+    newView2.accessibilityLabel = @"newView2";
 
-    MASLayoutConstraint *layoutConstraint = [MASLayoutConstraint constraintWithItem:newView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:300];
+    MASLayoutConstraint *layoutConstraint1 = [MASLayoutConstraint constraintWithItem:newView1 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:300];
+    MASLayoutConstraint *layoutConstraint2 = [MASLayoutConstraint constraintWithItem:newView2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:300];
 
-    layoutConstraint.priority = MASLayoutPriorityDefaultLow;
+    layoutConstraint1.priority = MASLayoutPriorityDefaultLow;
+    layoutConstraint2.priority = MASLayoutPriorityDefaultLow;
 
-    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView.width >= 300 ^low>", layoutConstraint, MAS_VIEW.class];
-    expect([layoutConstraint description]).to.equal(description);
+    NSString *description1 = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView1.width >= 300 ^low>", layoutConstraint1, MAS_VIEW.class];
+    expect([layoutConstraint1 description]).to.equal(description1);
+    
+    NSString *description2 = [NSString stringWithFormat:@"<MASLayoutConstraint:%p %@:newView2.width >= 300 ^low>", layoutConstraint2, MAS_VIEW.class];
+    expect([layoutConstraint2 description]).to.equal(description2);
 }
 
 - (void)testDisplayLayoutConstraintKey {
