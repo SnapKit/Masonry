@@ -184,23 +184,20 @@
     objc_setAssociatedObject(self, @selector(mas_key), key, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-#pragma mark - heirachy
+#pragma mark - hierarchy
 
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
-    MAS_VIEW *closestCommonSuperview = nil;
-
-    MAS_VIEW *secondViewSuperview = view;
-    while (!closestCommonSuperview && secondViewSuperview) {
-        MAS_VIEW *firstViewSuperview = self;
-        while (!closestCommonSuperview && firstViewSuperview) {
-            if (secondViewSuperview == firstViewSuperview) {
-                closestCommonSuperview = secondViewSuperview;
-            }
-            firstViewSuperview = firstViewSuperview.superview;
-        }
-        secondViewSuperview = secondViewSuperview.superview;
+    if (!view) {
+        return nil;
     }
-    return closestCommonSuperview;
+    MAS_VIEW *firstViewSuperview = self;
+    MAS_VIEW *secondViewSuperview = view;
+    
+    while (firstViewSuperview != secondViewSuperview) {
+        firstViewSuperview = firstViewSuperview == nil ? view : firstViewSuperview.superview;
+        secondViewSuperview = secondViewSuperview == nil ? self : secondViewSuperview.superview;
+    }
+    return firstViewSuperview;
 }
 
 @end
