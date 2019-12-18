@@ -1,16 +1,16 @@
 # Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Pod Version](https://img.shields.io/cocoapods/v/Masonry.svg?style=flat)
 
-**Masonry is still actively maintained, we are committed to fixing bugs and merging good quality PRs from the wider community. However if you're using Swift in your project, we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it provides better type safety with a simpler API.**
+**Masonry is still being actively maintained, we are committed to fixing bugs and merging good quality PRs from the wider community. However, if you're using Swift in your project, we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it provides better type safety with a simpler API.**
 
-Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
+Masonry is a light-weight layout framework that wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OS X.
 
-For examples take a look at the **Masonry iOS Examples** project in the Masonry workspace. You will need to run `pod install` after downloading.
+For example, take a look at the **Masonry iOS Examples** project in the Masonry workspace. You will need to run `pod install` after downloading.
 
 ## What's wrong with NSLayoutConstraints?
 
-Under the hood Auto Layout is a powerful and flexible way of organising and laying out your views. However creating constraints from code is verbose and not very descriptive.
-Imagine a simple example in which you want to have a view fill its superview but inset by 10 pixels on every side
+Under the hood, Auto Layout is a powerful and flexible way of organising and laying out your views. However, creating constraints from code is verbose and not very descriptive.
+Imagine a simple example in which you want to have a view fill its superview but inset by 10 pixels on every side.
 ```obj-c
 UIView *superview = self.view;
 
@@ -58,13 +58,13 @@ UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 
  ]];
 ```
-Even with such a simple example the code needed is quite verbose and quickly becomes unreadable when you have more than 2 or 3 views.
-Another option is to use Visual Format Language (VFL), which is a bit less long winded.
-However the ASCII type syntax has its own pitfalls and its also a bit harder to animate as `NSLayoutConstraint constraintsWithVisualFormat:` returns an array.
+Even with such a simple example, the code needed is quite verbose and quickly becomes unreadable when you have more than 2 or 3 views.
+Another option is to use Visual Format Language (VFL), which is a bit less long-winded.
+However, the ASCII type syntax has its own pitfalls and its also a bit harder to animate as `NSLayoutConstraint constraintsWithVisualFormat:` returns an array.
 
 ## Prepare to meet your Maker!
 
-Heres the same constraints created using MASConstraintMaker
+Here's the same constraints created using MASConstraintMaker
 
 ```obj-c
 UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -226,11 +226,11 @@ make.top.equalTo(otherView);
 
 ## Hold on for dear life
 
-Sometimes you need modify existing constraints in order to animate or remove/replace constraints.
-In Masonry there are a few different approaches to updating constraints.
+Sometimes you need to modify existing constraints in order to animate or remove/replace constraints.
+In Masonry, there are a few different approaches to updating constraints.
 
 #### 1. References
-You can hold on to a reference of a particular constraint by assigning the result of a constraint make expression to a local variable or a class property.
+You can hold on to a reference of a particular constraint by assigning the result of a constraint to make expression to a local variable or a class property.
 You could also reference multiple constraints by storing them away in an array.
 
 ```obj-c
@@ -402,11 +402,11 @@ Copy the included code snippets to ``~/Library/Developer/Xcode/UserData/CodeSnip
  }];`
 
 ## Features
-* Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!
+* Not limited to the subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!
 * Great debug support, give your views and constraints meaningful names.
 * Constraints read like sentences.
 * No crazy macro magic. Masonry won't pollute the global namespace with macros.
-* Not string or dictionary based and hence you get compile time checking.
+* Not string or dictionary-based and hence you get compile-time checking.
 
 ## TODO
 * Eye candy
