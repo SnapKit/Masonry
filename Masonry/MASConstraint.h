@@ -94,6 +94,13 @@
 - (MASConstraint * (^)(id attr))equalTo;
 
 /**
+*    Sets the constraint relation to NSLayoutRelationEqual in the superview
+*  returns a block which accepts one of the following:
+*  see readme for more details.
+*/
+- (MASConstraint * (^)(void))equalToSuperview;
+
+/**
  *	Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual
  *  returns a block which accepts one of the following:
  *    MASViewAttribute, UIView, NSValue, NSArray
@@ -102,12 +109,27 @@
 - (MASConstraint * (^)(id attr))greaterThanOrEqualTo;
 
 /**
+ *    Sets the constraint relation to NSLayoutRelationGreaterThanOrEqual in the superview
+ *  returns a block which accepts one of the following:
+ *  see readme for more details.
+ */
+- (MASConstraint * (^)(void))greaterThanOrEqualToSuperview;
+
+/**
  *	Sets the constraint relation to NSLayoutRelationLessThanOrEqual
  *  returns a block which accepts one of the following:
  *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
 - (MASConstraint * (^)(id attr))lessThanOrEqualTo;
+
+/**
+ *    Sets the constraint relation to NSLayoutRelationLessThanOrEqual in the superview
+ *  returns a block which accepts one of the following:
+ *  see readme for more details.
+ */
+- (MASConstraint * (^)(void))lessThanOrEqualToSuperview;
+
 
 /**
  *	Optional semantic property which has no effect but improves the readability of constraint
