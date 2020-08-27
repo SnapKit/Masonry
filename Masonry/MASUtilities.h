@@ -14,6 +14,9 @@
 
     #import <UIKit/UIKit.h>
     #define MAS_VIEW UIView
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 90000
+        #define MAS_LAYOUT_GUIDE UILayoutGuide
+    #endif
     #define MAS_VIEW_CONTROLLER UIViewController
     #define MASEdgeInsets UIEdgeInsets
 
@@ -28,6 +31,9 @@
 
     #import <AppKit/AppKit.h>
     #define MAS_VIEW NSView
+    #if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101100
+        #define MAS_LAYOUT_GUIDE NSLayoutGuide
+    #endif
     #define MASEdgeInsets NSEdgeInsets
 
     typedef NSLayoutPriority MASLayoutPriority;
