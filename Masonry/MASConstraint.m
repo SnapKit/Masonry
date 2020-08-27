@@ -7,6 +7,7 @@
 
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"
+#import "MASViewConstraint.h"
 
 #define MASMethodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
@@ -30,6 +31,12 @@
     };
 }
 
+- (MASConstraint * (^)(void))equalToSuperview {
+    return ^id (void){
+        return self.equalTo(self.superview);
+    };
+}
+
 - (MASConstraint * (^)(id))mas_equalTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationEqual);
@@ -42,6 +49,12 @@
     };
 }
 
+- (MASConstraint * (^)(void))greaterThanOrEqualToSuperview {
+    return ^id (void){
+        return self.greaterThanOrEqualTo(self.superview);
+    };
+}
+
 - (MASConstraint * (^)(id))mas_greaterThanOrEqualTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
@@ -51,6 +64,12 @@
 - (MASConstraint * (^)(id))lessThanOrEqualTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationLessThanOrEqual);
+    };
+}
+
+- (MASConstraint * (^)(void))lessThanOrEqualToSuperview {
+    return ^id (void){
+        return self.lessThanOrEqualTo(self.superview);
     };
 }
 
@@ -257,6 +276,48 @@
 }
 
 #endif
+
+#pragma mark - Private
+- (MAS_VIEW *)superview{
+    if ([self isKindOfClass:[MASViewConstraint class]]) {
+        MASViewConstraint *viewConstraint = (MASViewConstraint *)self;
+#ifdef MAS_LAYOUT_GUIDE
+        if ([viewConstraint.firstViewAttribute.item isKindOfClass:MAS_LAYOUT_GUIDE.class]) {
+            MAS_LAYOUT_GUIDE *layout = viewConstraint.firstViewAttribute.item;
+            if (layout.owningView == viewConstraint.firstViewAttribute.view) {
+                return layout.owningView;
+            }
+        }
+#endif
+        MAS_VIEW *superView = viewConstraint.firstViewAttribute.view.superview;
+        if (superView) {
+            return superView;
+        }
+    }
+    if ([self respondsToSelector:@selector(delegate)]) {
+        id delegate = [self performSelector:@selector(delegate)];
+        if (delegate) {
+#ifdef MAS_LAYOUT_GUIDE
+            if ([delegate performSelector:@selector(item)]) {
+                id item = [delegate performSelector:@selector(item)];
+                if ([item isKindOfClass:MAS_LAYOUT_GUIDE.class]) {
+                    MAS_LAYOUT_GUIDE *layout = item;
+                    if (layout.owningView) {
+                        return layout.owningView;
+                    }
+                }
+            }
+#endif
+            if ([delegate performSelector:@selector(view)]) {
+                MAS_VIEW *selfView = [delegate performSelector:@selector(view)];
+                if (selfView.superview) {
+                    return selfView.superview;
+                }
+            }
+        }
+    }
+    return nil;
+}
 
 #pragma mark - Abstract
 

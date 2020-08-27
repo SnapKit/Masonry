@@ -34,6 +34,31 @@ static char kInstalledConstraintsKey;
 
 @end
 
+#ifdef MAS_LAYOUT_GUIDE
+
+@interface MAS_LAYOUT_GUIDE (MASConstraints)
+
+@property (nonatomic, readonly) NSMutableSet *mas_installedConstraints;
+
+@end
+
+@implementation MAS_LAYOUT_GUIDE (MASConstraints)
+
+static char kInstalledConstraintsKey;
+
+- (NSMutableSet *)mas_installedConstraints {
+    NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
+    if (!constraints) {
+        constraints = [NSMutableSet set];
+        objc_setAssociatedObject(self, &kInstalledConstraintsKey, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return constraints;
+}
+
+@end
+
+#endif
+
 
 @interface MASViewConstraint ()
 
@@ -124,14 +149,21 @@ static char kInstalledConstraintsKey;
         [self setLayoutConstantWithValue:secondViewAttribute];
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
-    } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
+    }
+    #ifdef MAS_LAYOUT_GUIDE
+        else if ([secondViewAttribute isKindOfClass:MAS_LAYOUT_GUIDE.class]) {
+            id attr = secondViewAttribute;
+            _secondViewAttribute = [[MASViewAttribute alloc] initWithView:nil item:attr layoutAttribute:self.firstViewAttribute.layoutAttribute];
+        }
+    #endif
+    else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         MASViewAttribute *attr = secondViewAttribute;
         if (attr.layoutAttribute == NSLayoutAttributeNotAnAttribute) {
             _secondViewAttribute = [[MASViewAttribute alloc] initWithView:attr.view item:attr.item layoutAttribute:self.firstViewAttribute.layoutAttribute];;
         } else {
             _secondViewAttribute = secondViewAttribute;
         }
-    } else {
+    }else {
         NSAssert(NO, @"attempting to add unsupported attribute: %@", secondViewAttribute);
     }
 }
@@ -347,7 +379,16 @@ static char kInstalledConstraintsKey;
                  @"couldn't find a common superview for %@ and %@",
                  self.firstViewAttribute.view, self.secondViewAttribute.view);
         self.installedView = closestCommonSuperview;
-    } else if (self.firstViewAttribute.isSizeAttribute) {
+    }
+    #ifdef MAS_LAYOUT_GUIDE
+        else if ([self.secondViewAttribute.item isKindOfClass:[MAS_LAYOUT_GUIDE class]]) {
+            MAS_VIEW *owningView = ((MAS_LAYOUT_GUIDE *)self.secondViewAttribute.item).owningView;
+            NSAssert(owningView,
+                     @"couldn't find a common owningView for %@", self.secondViewAttribute.item);
+            self.installedView = owningView;
+        }
+    #endif
+    else if (self.firstViewAttribute.isSizeAttribute) {
         self.installedView = self.firstViewAttribute.view;
     } else {
         self.installedView = self.firstViewAttribute.view.superview;
