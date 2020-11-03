@@ -9,7 +9,7 @@
 #import "NSArray+MASAdditions.h"
 #import "View+MASAdditions.h"
 
-#ifdef MAS_SHORTHAND
+
 
 @implementation NSArray (MASAdditions)
 
@@ -162,4 +162,4 @@
 }
 
 @end
-#endif
+
