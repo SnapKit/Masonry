@@ -20,7 +20,7 @@
     if (!self) return nil;
     
     _view = view;
-    _item = item;
+    _item = item?:view;
     _layoutAttribute = layoutAttribute;
     
     return self;

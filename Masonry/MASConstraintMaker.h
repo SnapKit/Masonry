@@ -40,12 +40,27 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     
 };
 
+@protocol MASLayoutConstraint <NSObject>
+
+@property (nonatomic, strong, readonly) MASConstraint *left;
+@property (nonatomic, strong, readonly) MASConstraint *top;
+@property (nonatomic, strong, readonly) MASConstraint *right;
+@property (nonatomic, strong, readonly) MASConstraint *bottom;
+@property (nonatomic, strong, readonly) MASConstraint *leading;
+@property (nonatomic, strong, readonly) MASConstraint *trailing;
+@property (nonatomic, strong, readonly) MASConstraint *width;
+@property (nonatomic, strong, readonly) MASConstraint *height;
+@property (nonatomic, strong, readonly) MASConstraint *centerX;
+@property (nonatomic, strong, readonly) MASConstraint *centerY;
+
+@end
+
 /**
  *  Provides factory methods for creating MASConstraints.
  *  Constraints are collected until they are ready to be installed
  *
  */
-@interface MASConstraintMaker : NSObject
+@interface MASConstraintMaker : NSObject <MASLayoutConstraint>
 
 /**
  *	The following properties return a new MASViewConstraint
@@ -125,6 +140,8 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
  *	@return	a new MASConstraintMaker
  */
 - (id)initWithView:(MAS_VIEW *)view;
+
+- (id)initWithView:(MAS_VIEW *)view item:(id)item;
 
 /**
  *	Calls install method on any MASConstraints which have been created by this maker

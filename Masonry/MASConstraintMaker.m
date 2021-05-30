@@ -16,6 +16,7 @@
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, weak) MAS_VIEW *view;
+@property (nonatomic, weak) id item;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
@@ -23,12 +24,17 @@
 @implementation MASConstraintMaker
 
 - (id)initWithView:(MAS_VIEW *)view {
+    return [self initWithView:view item:nil];
+}
+
+- (id)initWithView:(MAS_VIEW *)view item:(id)item {
     self = [super init];
     if (!self) return nil;
-    
+
     self.view = view;
+    self.item = item;
     self.constraints = NSMutableArray.new;
-    
+
     return self;
 }
 
@@ -57,7 +63,7 @@
 }
 
 - (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
-    MASViewAttribute *viewAttribute = [[MASViewAttribute alloc] initWithView:self.view layoutAttribute:layoutAttribute];
+    MASViewAttribute *viewAttribute = [[MASViewAttribute alloc] initWithView:self.view item:self.item layoutAttribute:layoutAttribute];
     MASViewConstraint *newConstraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:viewAttribute];
     if ([constraint isKindOfClass:MASViewConstraint.class]) {
         //replace with composite constraint

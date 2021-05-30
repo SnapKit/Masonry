@@ -35,6 +35,21 @@ static char kInstalledConstraintsKey;
 @end
 
 
+@interface MASLayoutGuide (MASConstraints)
+
+@property (nonatomic, readonly) NSMutableSet *mas_installedConstraints;
+
+@end
+
+@implementation MASLayoutGuide (MASConstraints)
+
+- (NSMutableSet *)mas_installedConstraints {
+    return self.owningView.mas_installedConstraints;
+}
+
+@end
+
+
 @interface MASViewConstraint ()
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
