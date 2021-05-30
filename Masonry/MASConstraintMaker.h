@@ -163,7 +163,7 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
  */
 - (id)initWithView:(MAS_VIEW *)view;
 
-- (id)initWithView:(MAS_VIEW *)view item:(id)item;
+- (id)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide API_AVAILABLE(macos(10.11), ios(9.0));
 
 /**
  *	Calls install method on any MASConstraints which have been created by this maker

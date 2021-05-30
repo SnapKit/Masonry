@@ -14,14 +14,14 @@
 
 - (NSArray *)mas_makeConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
     self.owningView.translatesAutoresizingMaskIntoConstraints = NO;
-    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self.owningView item:self];
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     block(constraintMaker);
     return [constraintMaker install];
 }
 
 - (NSArray *)mas_updateConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
     self.owningView.translatesAutoresizingMaskIntoConstraints = NO;
-    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self.owningView item:self];
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     constraintMaker.updateExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
@@ -29,7 +29,7 @@
 
 - (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
     self.owningView.translatesAutoresizingMaskIntoConstraints = NO;
-    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self.owningView item:self];
+    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     constraintMaker.removeExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];

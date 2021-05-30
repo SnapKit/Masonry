@@ -17,7 +17,7 @@
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, weak) MAS_VIEW *view;
-@property (nonatomic, weak) id item;
+@property (nullable, nonatomic, weak) MASLayoutGuide *item;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
@@ -25,15 +25,22 @@
 @implementation MASConstraintMaker
 
 - (id)initWithView:(MAS_VIEW *)view {
-    return [self initWithView:view item:nil];
-}
-
-- (id)initWithView:(MAS_VIEW *)view item:(id)item {
     self = [super init];
     if (!self) return nil;
 
     self.view = view;
-    self.item = item;
+    self.constraints = NSMutableArray.new;
+
+    return self;
+}
+
+- (id)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide {
+    NSAssert(layoutGuide.owningView != nil, @"layoutGuide's owningView must not be nil");
+    self = [super init];
+    if (!self) return nil;
+
+    self.view = layoutGuide.owningView;
+    self.item = layoutGuide;
     self.constraints = NSMutableArray.new;
 
     return self;
