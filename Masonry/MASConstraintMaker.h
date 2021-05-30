@@ -20,10 +20,11 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     MASAttributeHeight = 1 << NSLayoutAttributeHeight,
     MASAttributeCenterX = 1 << NSLayoutAttributeCenterX,
     MASAttributeCenterY = 1 << NSLayoutAttributeCenterY,
-    MASAttributeBaseline = 1 << NSLayoutAttributeBaseline,
 
     MASAttributeFirstBaseline = 1 << NSLayoutAttributeFirstBaseline,
     MASAttributeLastBaseline = 1 << NSLayoutAttributeLastBaseline,
+
+    MASAttributeBaseline = MASAttributeLastBaseline,
     
 #if TARGET_OS_IPHONE || TARGET_OS_TV
     

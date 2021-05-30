@@ -212,7 +212,7 @@
 }
 
 - (MASConstraint *)baseline {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
 - (MASConstraint *)firstBaseline {

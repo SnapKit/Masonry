@@ -77,7 +77,7 @@
 }
 
 - (MASViewAttribute *)mas_baseline {
-    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeBaseline];
+    return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
 - (MASViewAttribute *(^)(NSLayoutAttribute))mas_attribute

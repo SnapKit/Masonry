@@ -17,7 +17,7 @@
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, weak) MAS_VIEW *view;
-@property (nonatomic, weak) MASLayoutGuide *item;
+@property (nonatomic, weak) id item;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
@@ -185,7 +185,7 @@
 }
 
 - (MASConstraint *)baseline {
-    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeBaseline];
+    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
 - (MASConstraint *(^)(MASAttribute))attributes {
