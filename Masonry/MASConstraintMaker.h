@@ -53,6 +53,27 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 @property (nonatomic, strong, readonly) MASConstraint *centerX;
 @property (nonatomic, strong, readonly) MASConstraint *centerY;
 
+/**
+ *    Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
+ *  which generates the appropriate MASViewConstraint children (top, left, bottom, right)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *edges;
+
+/**
+ *    Creates a MASCompositeConstraint with type MASCompositeConstraintTypeSize
+ *  which generates the appropriate MASViewConstraint children (width, height)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *size;
+
+/**
+ *    Creates a MASCompositeConstraint with type MASCompositeConstraintTypeCenter
+ *  which generates the appropriate MASViewConstraint children (centerX, centerY)
+ *  with the first item set to the makers associated view
+ */
+@property (nonatomic, strong, readonly) MASConstraint *center;
+
 @end
 
 /**

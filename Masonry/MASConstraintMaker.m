@@ -12,11 +12,12 @@
 #import "MASConstraint+Private.h"
 #import "MASViewAttribute.h"
 #import "View+MASAdditions.h"
+#import "LayoutGuide+MASAdditions.h"
 
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, weak) MAS_VIEW *view;
-@property (nonatomic, weak) id item;
+@property (nonatomic, weak) MASLayoutGuide *item;
 @property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
@@ -95,17 +96,19 @@
     NSAssert((attrs & anyAttribute) != 0, @"You didn't pass any attribute to make.attributes(...)");
     
     NSMutableArray *attributes = [NSMutableArray array];
+
+#define layoutItem ((MAS_VIEW *)(self.item ?: self.view))
     
-    if (attrs & MASAttributeLeft) [attributes addObject:self.view.mas_left];
-    if (attrs & MASAttributeRight) [attributes addObject:self.view.mas_right];
-    if (attrs & MASAttributeTop) [attributes addObject:self.view.mas_top];
-    if (attrs & MASAttributeBottom) [attributes addObject:self.view.mas_bottom];
-    if (attrs & MASAttributeLeading) [attributes addObject:self.view.mas_leading];
-    if (attrs & MASAttributeTrailing) [attributes addObject:self.view.mas_trailing];
-    if (attrs & MASAttributeWidth) [attributes addObject:self.view.mas_width];
-    if (attrs & MASAttributeHeight) [attributes addObject:self.view.mas_height];
-    if (attrs & MASAttributeCenterX) [attributes addObject:self.view.mas_centerX];
-    if (attrs & MASAttributeCenterY) [attributes addObject:self.view.mas_centerY];
+    if (attrs & MASAttributeLeft) [attributes addObject:layoutItem.mas_left];
+    if (attrs & MASAttributeRight) [attributes addObject:layoutItem.mas_right];
+    if (attrs & MASAttributeTop) [attributes addObject:layoutItem.mas_top];
+    if (attrs & MASAttributeBottom) [attributes addObject:layoutItem.mas_bottom];
+    if (attrs & MASAttributeLeading) [attributes addObject:layoutItem.mas_leading];
+    if (attrs & MASAttributeTrailing) [attributes addObject:layoutItem.mas_trailing];
+    if (attrs & MASAttributeWidth) [attributes addObject:layoutItem.mas_width];
+    if (attrs & MASAttributeHeight) [attributes addObject:layoutItem.mas_height];
+    if (attrs & MASAttributeCenterX) [attributes addObject:layoutItem.mas_centerX];
+    if (attrs & MASAttributeCenterY) [attributes addObject:layoutItem.mas_centerY];
     if (attrs & MASAttributeBaseline) [attributes addObject:self.view.mas_baseline];
     if (attrs & MASAttributeFirstBaseline) [attributes addObject:self.view.mas_firstBaseline];
     if (attrs & MASAttributeLastBaseline) [attributes addObject:self.view.mas_lastBaseline];
