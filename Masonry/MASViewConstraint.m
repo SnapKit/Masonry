@@ -136,8 +136,8 @@ static char kInstalledConstraintsKey;
 
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSValue.class]) {
-        if ([_firstViewAttribute.item isKindOfClass:MASLayoutGuide.class]) {
-            _secondViewAttribute = [[MASViewAttribute alloc] initWithView:_firstViewAttribute.view
+        if ([self.firstViewAttribute.item isKindOfClass:MASLayoutGuide.class]) {
+            _secondViewAttribute = [[MASViewAttribute alloc] initWithView:self.firstViewAttribute.view
                                                           layoutAttribute:self.firstViewAttribute.layoutAttribute];
         } else {
             [self setLayoutConstantWithValue:secondViewAttribute];
