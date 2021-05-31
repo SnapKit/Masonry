@@ -35,7 +35,7 @@ SpecBegin(NSLayoutConstraint_MASDebugAdditions)
     MASLayoutConstraint *layoutConstraint = [MASLayoutConstraint constraintWithItem:newView1 attribute:NSLayoutAttributeBaseline relatedBy:NSLayoutRelationEqual toItem:newView2 attribute:NSLayoutAttributeTop multiplier:2 constant:300];
     layoutConstraint.mas_key = @"helloConstraint";
 
-    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.baseline == %@:newView2.top * 2 + 300>", MAS_VIEW.class, MAS_VIEW.class];
+    NSString *description = [NSString stringWithFormat:@"<MASLayoutConstraint:helloConstraint %@:newView1.lastBaseline == %@:newView2.top * 2 + 300>", MAS_VIEW.class, MAS_VIEW.class];
     expect([layoutConstraint description]).to.equal(description);
 }
 
