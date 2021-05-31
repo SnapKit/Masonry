@@ -47,16 +47,16 @@
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeading NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTrailing NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideWidth NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideHeight NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterX NS_AVAILABLE_IOS(11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterY NS_AVAILABLE_IOS(11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeading API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTrailing API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideWidth API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideHeight API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterX API_AVAILABLE(ios(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterY API_AVAILABLE(ios(11.0));
 
 #endif
 
@@ -65,16 +65,6 @@
 - (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
-
-#define MAS_ATTR_FORWARD(attr)  \
-- (MASViewAttribute *)attr {    \
-    return [self mas_##attr];   \
-}
-
-#define MAS_ATTR_FORWARD_AVAILABLE(attr, available)  \
-- (MASViewAttribute *)attr available {    \
-    return [self mas_##attr];   \
-}
 
 @implementation MAS_VIEW (MASShorthandAdditions)
 
@@ -104,16 +94,16 @@ MAS_ATTR_FORWARD(trailingMargin);
 MAS_ATTR_FORWARD(centerXWithinMargins);
 MAS_ATTR_FORWARD(centerYWithinMargins);
 
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideLeading, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideTrailing, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideLeft, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideRight, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideTop, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideBottom, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideWidth, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideHeight, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterX, NS_AVAILABLE_IOS(11.0));
-MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterY, NS_AVAILABLE_IOS(11.0));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideLeading, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideTrailing, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideLeft, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideRight, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideTop, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideBottom, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideWidth, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideHeight, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterX, API_AVAILABLE(ios(11.0)));
+MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterY, API_AVAILABLE(ios(11.0)));
 
 #endif
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1539A4A42665991900892F49 /* LayoutGuide+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1539A4A22665991900892F49 /* LayoutGuide+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15E414912663780600D3D1B6 /* LayoutGuide+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E4148F2663780600D3D1B6 /* LayoutGuide+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15E414922663780600D3D1B6 /* LayoutGuide+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E414902663780600D3D1B6 /* LayoutGuide+MASAdditions.m */; };
 		3AED05BD1AD59FD40053CC65 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED05BC1AD59FD40053CC65 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1539A4A22665991900892F49 /* LayoutGuide+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LayoutGuide+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		15E4148F2663780600D3D1B6 /* LayoutGuide+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LayoutGuide+MASAdditions.h"; sourceTree = "<group>"; };
 		15E414902663780600D3D1B6 /* LayoutGuide+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LayoutGuide+MASAdditions.m"; sourceTree = "<group>"; };
 		3AED05B71AD59FD40053CC65 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				4473548C1B39F772004DACCB /* ViewController+MASAdditions.m */,
 				15E4148F2663780600D3D1B6 /* LayoutGuide+MASAdditions.h */,
 				15E414902663780600D3D1B6 /* LayoutGuide+MASAdditions.m */,
+				1539A4A22665991900892F49 /* LayoutGuide+MASShorthandAdditions.h */,
 				3AED05EA1AD5A0470053CC65 /* NSArray+MASAdditions.h */,
 				3AED05EB1AD5A0470053CC65 /* NSArray+MASAdditions.m */,
 				3AED05EC1AD5A0470053CC65 /* NSArray+MASShorthandAdditions.h */,
@@ -149,6 +152,7 @@
 				3AED06071AD5A0470053CC65 /* View+MASShorthandAdditions.h in Headers */,
 				4473548D1B39F772004DACCB /* ViewController+MASAdditions.h in Headers */,
 				15E414912663780600D3D1B6 /* LayoutGuide+MASAdditions.h in Headers */,
+				1539A4A42665991900892F49 /* LayoutGuide+MASShorthandAdditions.h in Headers */,
 				3AED05FC1AD5A0470053CC65 /* MASViewAttribute.h in Headers */,
 				3AED05BD1AD59FD40053CC65 /* Masonry.h in Headers */,
 				3AED05F91AD5A0470053CC65 /* MASLayoutConstraint.h in Headers */,

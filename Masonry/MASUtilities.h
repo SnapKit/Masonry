@@ -136,3 +136,13 @@ static inline id _MASBoxValue(const char *type, ...) {
 }
 
 #define MASBoxValue(value) _MASBoxValue(@encode(__typeof__((value))), (value))
+
+#define MAS_ATTR_FORWARD(attr)  \
+- (MASViewAttribute *)attr {    \
+    return [self mas_##attr];   \
+}
+
+#define MAS_ATTR_FORWARD_AVAILABLE(attr, available)  \
+- (MASViewAttribute *)attr available {    \
+    return [self mas_##attr];   \
+}

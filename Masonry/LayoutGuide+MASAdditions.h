@@ -1,5 +1,5 @@
 //
-//  NSLayoutGuide+MASAdditions.h
+//  LayoutGuide+MASAdditions.h
 //  Masonry
 //
 //  Created by v on 2021/5/30.
@@ -25,6 +25,8 @@ API_AVAILABLE(macos(10.11), ios(9.0))
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_height;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerX;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerY;
+
+@property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
 /**
  *  Creates a MASConstraintMaker with the callee view.

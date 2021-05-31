@@ -1,5 +1,5 @@
 //
-//  NSLayoutGuide+MASAdditions.m
+//  LayoutGuide+MASAdditions.m
 //  Masonry
 //
 //  Created by v on 2021/5/30.
@@ -75,6 +75,12 @@
 
 - (MASViewAttribute *)mas_centerY {
     return [[MASViewAttribute alloc] initWithView:self.owningView item:self layoutAttribute:NSLayoutAttributeCenterY];
+}
+
+- (MASViewAttribute *(^)(NSLayoutAttribute))mas_attribute {
+    return ^(NSLayoutAttribute attr) {
+        return [[MASViewAttribute alloc] initWithView:self.owningView item:self layoutAttribute:attr];
+    };
 }
 
 @end
