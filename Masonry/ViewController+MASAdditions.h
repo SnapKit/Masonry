@@ -17,12 +17,12 @@
 /**
  *	following properties return a new MASViewAttribute with appropriate UILayoutGuide and NSLayoutAttribute
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuide NS_DEPRECATED_IOS(8.0, 11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuide NS_DEPRECATED_IOS(8.0, 11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideTop NS_DEPRECATED_IOS(8.0, 11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideBottom NS_DEPRECATED_IOS(8.0, 11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideTop NS_DEPRECATED_IOS(8.0, 11.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideBottom NS_DEPRECATED_IOS(8.0, 11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuide API_DEPRECATED("Use view.mas_safeAreaLayoutGuideTop instead of mas_topLayoutGuide", ios(8.0, 11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuide API_DEPRECATED("Use view.mas_safeAreaLayoutGuideBottom instead of mas_bottomLayoutGuide", ios(8.0, 11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideTop API_DEPRECATED("Use view.mas_top instead of mas_topLayoutGuideTop", ios(8.0, 11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_topLayoutGuideBottom API_DEPRECATED("Use view.mas_safeAreaLayoutGuideTop instead of mas_topLayoutGuideBottom", ios(8.0, 11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideTop API_DEPRECATED("Use view.mas_safeAreaLayoutGuideBottom instead of mas_bottomLayoutGuideTop", ios(8.0, 11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideBottom API_DEPRECATED("Use view.mas_bottom instead of mas_bottomLayoutGuideBottom", ios(8.0, 11.0));
 
 @end
 
