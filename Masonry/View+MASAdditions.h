@@ -72,7 +72,7 @@
  *
  *	@return	returns nil if common superview could not be found
  */
-- (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
+- (__kindof MAS_VIEW *)mas_closestCommonSuperview:(MAS_VIEW *)view;
 
 /**
  *  Creates a MASConstraintMaker with the callee view.

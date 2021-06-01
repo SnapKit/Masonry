@@ -185,20 +185,15 @@
 
 #pragma mark - heirachy
 
-- (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
-    MAS_VIEW *closestCommonSuperview = nil;
-
+- (__kindof MAS_VIEW *)mas_closestCommonSuperview:(MAS_VIEW *)view {
+    MAS_VIEW *closestCommonSuperview = self;
     MAS_VIEW *secondViewSuperview = view;
-    while (!closestCommonSuperview && secondViewSuperview) {
-        MAS_VIEW *firstViewSuperview = self;
-        while (!closestCommonSuperview && firstViewSuperview) {
-            if (secondViewSuperview == firstViewSuperview) {
-                closestCommonSuperview = secondViewSuperview;
-            }
-            firstViewSuperview = firstViewSuperview.superview;
-        }
-        secondViewSuperview = secondViewSuperview.superview;
+    // O(a+b)
+    while (closestCommonSuperview != secondViewSuperview) {
+        closestCommonSuperview = !closestCommonSuperview ? view : closestCommonSuperview.superview;
+        secondViewSuperview = !secondViewSuperview ? self : secondViewSuperview.superview;
     }
+
     return closestCommonSuperview;
 }
 
