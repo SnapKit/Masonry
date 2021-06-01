@@ -389,8 +389,13 @@ static char kInstalledConstraintsKey;
         existingConstraint.constant = layoutConstraint.constant;
         self.layoutConstraint = existingConstraint;
     } else {
-        [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
+        if ([self supportsActiveProperty]) {
+            layoutConstraint.active = YES;
+        } else {
+            [self.installedView addConstraint:layoutConstraint];
+        }
+
         [firstLayoutItem.mas_installedConstraints addObject:self];
     }
 }
@@ -418,15 +423,13 @@ static char kInstalledConstraintsKey;
 - (void)uninstall {
     if ([self supportsActiveProperty]) {
         self.layoutConstraint.active = NO;
-        [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
-        return;
+    } else {
+        [self.installedView removeConstraint:self.layoutConstraint];
     }
-    
-    [self.installedView removeConstraint:self.layoutConstraint];
+
+    [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
     self.layoutConstraint = nil;
     self.installedView = nil;
-    
-    [self.firstViewAttribute.view.mas_installedConstraints removeObject:self];
 }
 
 @end
