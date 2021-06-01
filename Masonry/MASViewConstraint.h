@@ -45,4 +45,6 @@
  */
 + (NSArray *)installedConstraintsForView:(MAS_VIEW *)view;
 
++ (NSArray *)installedConstraintsForLayoutGuide:(MASLayoutGuide *)layoutGuide API_AVAILABLE(macos(10.11), ios(9.0));
+
 @end

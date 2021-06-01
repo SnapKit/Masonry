@@ -43,8 +43,15 @@ static char kInstalledConstraintsKey;
 
 @implementation MASLayoutGuide (MASConstraints)
 
+static char kInstalledConstraintsKey;
+
 - (NSMutableSet *)mas_installedConstraints {
-    return self.owningView.mas_installedConstraints;
+    NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
+    if (!constraints) {
+        constraints = [NSMutableSet set];
+        objc_setAssociatedObject(self, &kInstalledConstraintsKey, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return constraints;
 }
 
 @end
@@ -94,6 +101,10 @@ static char kInstalledConstraintsKey;
 
 + (NSArray *)installedConstraintsForView:(MAS_VIEW *)view {
     return [view.mas_installedConstraints allObjects];
+}
+
++ (NSArray *)installedConstraintsForLayoutGuide:(MASLayoutGuide *)layoutGuide {
+    return [layoutGuide.mas_installedConstraints allObjects];
 }
 
 #pragma mark - Private

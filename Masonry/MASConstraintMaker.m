@@ -48,7 +48,13 @@
 
 - (NSArray *)install {
     if (self.removeExisting) {
-        NSArray *installedConstraints = [MASViewConstraint installedConstraintsForView:self.view];
+        NSArray *installedConstraints;
+        if ([self.item isKindOfClass:MASLayoutGuide.class]) {
+            installedConstraints = [MASViewConstraint installedConstraintsForLayoutGuide:self.item];
+        } else {
+            installedConstraints = [MASViewConstraint installedConstraintsForView:self.view];
+        }
+
         for (MASConstraint *constraint in installedConstraints) {
             [constraint uninstall];
         }
