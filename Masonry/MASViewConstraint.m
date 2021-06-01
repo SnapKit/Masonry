@@ -139,9 +139,9 @@ static char kInstalledConstraintsKey;
         if ([self.firstViewAttribute.item isKindOfClass:MASLayoutGuide.class]) {
             _secondViewAttribute = [[MASViewAttribute alloc] initWithView:self.firstViewAttribute.view
                                                           layoutAttribute:self.firstViewAttribute.layoutAttribute];
-        } else {
-            [self setLayoutConstantWithValue:secondViewAttribute];
         }
+
+        [self setLayoutConstantWithValue:secondViewAttribute];
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
