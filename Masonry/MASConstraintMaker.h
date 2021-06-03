@@ -41,6 +41,8 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
     
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol MASLayoutConstraint <NSObject>
 
 @property (nonatomic, strong, readonly) MASConstraint *left;
@@ -175,3 +177,5 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 - (MASConstraint * (^)(dispatch_block_t))group;
 
 @end
+
+NS_ASSUME_NONNULL_END

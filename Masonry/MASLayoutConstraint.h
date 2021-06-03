@@ -8,6 +8,8 @@
 
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	When you are debugging or printing the constraints attached to a view this subclass
  *  makes it easier to identify which constraints have been created via Masonry
@@ -20,3 +22,5 @@
 @property (nonatomic, strong) id mas_key;
 
 @end
+
+NS_ASSUME_NONNULL_END

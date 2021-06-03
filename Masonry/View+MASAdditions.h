@@ -10,6 +10,8 @@
 #import "MASConstraintMaker.h"
 #import "MASViewAttribute.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	Provides constraint maker block
  *  and convience methods for creating MASViewAttribute which are view + NSLayoutAttribute pairs
@@ -107,3 +109,5 @@
 - (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 @end
+
+NS_ASSUME_NONNULL_END

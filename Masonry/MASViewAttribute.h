@@ -8,6 +8,8 @@
 
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  An immutable tuple which stores the view and the related NSLayoutAttribute.
  *  Describes part of either the left or right hand side of a constraint equation
@@ -47,3 +49,5 @@
 - (BOOL)isSizeAttribute;
 
 @end
+
+NS_ASSUME_NONNULL_END

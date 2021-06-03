@@ -8,9 +8,9 @@
 
 #import "LayoutGuide+MASAdditions.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 #ifdef MAS_SHORTHAND
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *    Shorthand view additions without the 'mas_' prefixes,
@@ -38,6 +38,6 @@ API_AVAILABLE(macos(10.11), ios(9.0))
 
 @end
 
-#endif
-
 NS_ASSUME_NONNULL_END
+
+#endif

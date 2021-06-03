@@ -9,6 +9,8 @@
 #import "MASConstraint.h"
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	A group of MASConstraint objects
  */
@@ -24,3 +26,5 @@
 - (id)initWithChildren:(NSArray *)children;
 
 @end
+
+NS_ASSUME_NONNULL_END

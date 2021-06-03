@@ -10,6 +10,7 @@
 
 @protocol MASConstraintDelegate;
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MASConstraint ()
 
@@ -61,6 +62,8 @@
  */
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 
-- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (MASConstraint *)constraint:(MASConstraint * _Nullable)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 @end
+
+NS_ASSUME_NONNULL_END

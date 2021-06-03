@@ -8,6 +8,8 @@
 
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	Enables Constraints to be created with chainable syntax
  *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
@@ -266,3 +268,5 @@
 - (MASConstraint * (^)(id offset))mas_offset;
 
 @end
+
+NS_ASSUME_NONNULL_END

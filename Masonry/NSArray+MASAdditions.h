@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
     MASAxisTypeVertical
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSArray (MASAdditions)
 
 /**
@@ -70,3 +72,5 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 @end
+
+NS_ASSUME_NONNULL_END

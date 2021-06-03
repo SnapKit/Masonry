@@ -11,6 +11,8 @@
 #import "MASLayoutConstraint.h"
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  A single constraint.
  *  Contains the attributes neccessary for creating a NSLayoutConstraint and adding it to the appropriate view
@@ -48,3 +50,5 @@
 + (NSArray *)installedConstraintsForLayoutGuide:(MASLayoutGuide *)layoutGuide API_AVAILABLE(macos(10.11), ios(9.0));
 
 @end
+
+NS_ASSUME_NONNULL_END

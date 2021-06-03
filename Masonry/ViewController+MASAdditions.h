@@ -12,6 +12,8 @@
 
 #ifdef MAS_VIEW_CONTROLLER
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MAS_VIEW_CONTROLLER (MASAdditions)
 
 /**
@@ -25,5 +27,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomLayoutGuideBottom API_DEPRECATED("Use view.mas_bottom instead of mas_bottomLayoutGuideBottom", ios(8.0, 11.0));
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif

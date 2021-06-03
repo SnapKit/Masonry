@@ -10,6 +10,8 @@
 
 #ifdef MAS_SHORTHAND
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *	Shorthand array additions without the 'mas_' prefixes,
  *  only enabled if MAS_SHORTHAND is defined
@@ -21,5 +23,7 @@
 - (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif
