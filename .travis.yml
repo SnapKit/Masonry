@@ -4,8 +4,9 @@ osx_image: xcode12
 before_install:
   - curl -L https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python
   - sudo pip install cpp-coveralls
-  - gem install xcpretty -N
+  - gem install cocoapods xcpretty -N
   - export LANG=en_US.UTF-8
+  - pod install
 
 script:
   - set -o pipefail

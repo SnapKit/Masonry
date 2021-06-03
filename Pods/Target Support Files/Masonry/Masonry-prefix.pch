@@ -1,5 +1,9 @@
 #ifdef __OBJC__
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
 #else
 #ifndef FOUNDATION_EXPORT
 #if defined(__cplusplus)
