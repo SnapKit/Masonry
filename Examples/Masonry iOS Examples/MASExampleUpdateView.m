@@ -28,6 +28,13 @@
 
     [self.growingButton addTarget:self action:@selector(didTapGrowButton:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.growingButton];
+    [self.growingButton makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+        make.width.equalTo(@(self.buttonSize.width)).priorityLow();
+        make.height.equalTo(@(self.buttonSize.height)).priorityLow();
+        make.width.lessThanOrEqualTo(self);
+        make.height.lessThanOrEqualTo(self);
+    }];
 
     self.buttonSize = CGSizeMake(100, 100);
 
@@ -41,22 +48,17 @@
 
 // this is Apple's recommended place for adding/updating constraints
 - (void)updateConstraints {
-
-    [self.growingButton updateConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.width.equalTo(@(self.buttonSize.width)).priorityLow();
-        make.height.equalTo(@(self.buttonSize.height)).priorityLow();
-        make.width.lessThanOrEqualTo(self);
-        make.height.lessThanOrEqualTo(self);
-    }];
-    
     //according to apple super should be called at end of method
     [super updateConstraints];
 }
 
 - (void)didTapGrowButton:(UIButton *)button {
     self.buttonSize = CGSizeMake(self.buttonSize.width * 1.3, self.buttonSize.height * 1.3);
-
+    [self.growingButton updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.buttonSize.width)).priorityLow();
+        make.height.equalTo(@(self.buttonSize.height)).priorityLow();
+    }];
+    
     // tell constraints they need updating
     [self setNeedsUpdateConstraints];
 

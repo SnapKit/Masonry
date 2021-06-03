@@ -1,7 +1,8 @@
 #ifdef __OBJC__
+#import <TargetConditionals.h>
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 #import <UIKit/UIKit.h>
-#else
+#elif TARGET_OS_MAC
 #import <AppKit/AppKit.h>
 #endif
 #else
