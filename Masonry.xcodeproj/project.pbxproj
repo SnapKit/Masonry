@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1539A4A42665991900892F49 /* LayoutGuide+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1539A4A22665991900892F49 /* LayoutGuide+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		156873F32669345D00656904 /* MASUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 156873F22669345D00656904 /* MASUtilities.m */; };
 		15CD2E49266661C000E84D15 /* NSArray+MASShorthandAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CD2E48266661C000E84D15 /* NSArray+MASShorthandAdditions.m */; };
 		15CD2E4B2666620D00E84D15 /* LayoutGuide+MASShorthandAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CD2E4A2666620D00E84D15 /* LayoutGuide+MASShorthandAdditions.m */; };
 		15CD2E4D2666626100E84D15 /* View+MASShorthandAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CD2E4C2666626100E84D15 /* View+MASShorthandAdditions.m */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		1539A4A22665991900892F49 /* LayoutGuide+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LayoutGuide+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		156873F22669345D00656904 /* MASUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASUtilities.m; sourceTree = "<group>"; };
 		15CD2E48266661C000E84D15 /* NSArray+MASShorthandAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASShorthandAdditions.m"; sourceTree = "<group>"; };
 		15CD2E4A2666620D00E84D15 /* LayoutGuide+MASShorthandAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LayoutGuide+MASShorthandAdditions.m"; sourceTree = "<group>"; };
 		15CD2E4C2666626100E84D15 /* View+MASShorthandAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASShorthandAdditions.m"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				3AED05BC1AD59FD40053CC65 /* Masonry.h */,
 				3AED05E51AD5A0470053CC65 /* MASUtilities.h */,
+				156873F22669345D00656904 /* MASUtilities.m */,
 				3AED05EF1AD5A0470053CC65 /* View+MASAdditions.h */,
 				3AED05F01AD5A0470053CC65 /* View+MASAdditions.m */,
 				3AED05F11AD5A0470053CC65 /* View+MASShorthandAdditions.h */,
@@ -259,6 +262,7 @@
 				3AED05F81AD5A0470053CC65 /* MASConstraintMaker.m in Sources */,
 				3AED06041AD5A0470053CC65 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3AED06061AD5A0470053CC65 /* View+MASAdditions.m in Sources */,
+				156873F32669345D00656904 /* MASUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
