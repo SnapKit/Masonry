@@ -24,7 +24,7 @@
 
 @implementation MASConstraintMaker
 
-- (id)initWithView:(MAS_VIEW *)view {
+- (instancetype)initWithView:(MAS_VIEW *)view {
     self = [super init];
     if (!self) return nil;
 
@@ -34,7 +34,7 @@
     return self;
 }
 
-- (id)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide {
+- (instancetype)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide {
     NSAssert(layoutGuide.owningView != nil, @"layoutGuide's owningView must not be nil");
     self = [super init];
     if (!self) return nil;

@@ -74,7 +74,7 @@ static char kInstalledConstraintsKey;
 
 @implementation MASViewConstraint
 
-- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
     if (!self) return nil;
     

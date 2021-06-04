@@ -17,7 +17,7 @@
 
 #pragma mark - Init
 
-- (id)init {
+- (instancetype)init {
 	NSAssert(![self isMemberOfClass:[MASConstraint class]], @"MASConstraint is an abstract class, you should not instantiate it directly.");
 	return [super init];
 }

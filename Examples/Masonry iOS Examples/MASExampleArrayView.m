@@ -19,7 +19,7 @@ static CGFloat const kArrayExampleIncrement = 10.0;
 
 @implementation MASExampleArrayView
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
     

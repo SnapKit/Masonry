@@ -19,7 +19,7 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 
 @implementation MASExampleLabelView
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
 

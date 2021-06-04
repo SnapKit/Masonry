@@ -334,7 +334,7 @@ For an example of how to set this up take a look at the **Masonry iOS Examples**
 ```objc
 @implementation DIYCustomView
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
 

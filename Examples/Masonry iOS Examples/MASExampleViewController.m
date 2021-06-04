@@ -17,7 +17,7 @@
 
 @implementation MASExampleViewController
 
-- (id)initWithTitle:(NSString *)title viewClass:(Class)viewClass {
+- (instancetype)initWithTitle:(NSString *)title viewClass:(Class)viewClass {
     self = [super init];
     if (!self) return nil;
     

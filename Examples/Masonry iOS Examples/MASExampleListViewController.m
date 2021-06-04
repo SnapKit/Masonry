@@ -35,7 +35,7 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
 @implementation MASExampleListViewController
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
     

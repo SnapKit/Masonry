@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *	@return	a composite constraint
  */
-- (id)initWithChildren:(NSArray *)children;
+- (instancetype)initWithChildren:(NSArray *)children;
 
 @end
 
