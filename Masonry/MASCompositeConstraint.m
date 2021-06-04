@@ -19,12 +19,11 @@
 @implementation MASCompositeConstraint
 
 - (instancetype)initWithChildren:(NSArray *)children {
-    self = [super init];
-    if (!self) return nil;
-
-    _childConstraints = [children mutableCopy];
-    for (MASConstraint *constraint in _childConstraints) {
-        constraint.delegate = self;
+    if (self = [super init]) {
+        _childConstraints = [children mutableCopy];
+        for (MASConstraint *constraint in _childConstraints) {
+            constraint.delegate = self;
+        }
     }
 
     return self;

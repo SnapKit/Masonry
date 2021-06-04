@@ -73,13 +73,12 @@
 @implementation MASViewConstraint
 
 - (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
-    self = [super init];
-    if (!self) return nil;
-    
-    _firstViewAttribute = firstViewAttribute;
-    self.layoutPriority = MASLayoutPriorityRequired;
-    self.layoutMultiplier = 1;
-    
+    if (self = [super init]) {
+        _firstViewAttribute = firstViewAttribute;
+        self.layoutPriority = MASLayoutPriorityRequired;
+        self.layoutMultiplier = 1;
+    }
+
     return self;
 }
 

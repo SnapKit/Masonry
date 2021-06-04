@@ -163,9 +163,12 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *	@return	a new MASConstraintMaker
  */
-- (instancetype)initWithView:(MAS_VIEW *)view;
+- (instancetype)initWithView:(MAS_VIEW *)view NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide API_AVAILABLE(macos(10.11), ios(9.0));
+- (instancetype)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide NS_DESIGNATED_INITIALIZER API_AVAILABLE(macos(10.11), ios(9.0));
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 /**
  *	Calls install method on any MASConstraints which have been created by this maker

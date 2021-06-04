@@ -25,23 +25,21 @@
 @implementation MASConstraintMaker
 
 - (instancetype)initWithView:(MAS_VIEW *)view {
-    self = [super init];
-    if (!self) return nil;
-
-    self.view = view;
-    self.constraints = [NSMutableArray array];
+    if (self = [super init]) {
+        self.view = view;
+        self.constraints = [NSMutableArray array];
+    }
 
     return self;
 }
 
 - (instancetype)initWithLayoutGuide:(MASLayoutGuide *)layoutGuide {
     NSAssert(layoutGuide.owningView != nil, @"layoutGuide's owningView must not be nil");
-    self = [super init];
-    if (!self) return nil;
-
-    self.view = layoutGuide.owningView;
-    self.item = layoutGuide;
-    self.constraints = [NSMutableArray array];
+    if (self = [super init]) {
+        self.view = layoutGuide.owningView;
+        self.item = layoutGuide;
+        self.constraints = [NSMutableArray array];
+    }
 
     return self;
 }

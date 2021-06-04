@@ -36,7 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *	@return	a new view constraint
  */
-- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 /**
  *  Returns all MASViewConstraints installed with this view as a first item.
