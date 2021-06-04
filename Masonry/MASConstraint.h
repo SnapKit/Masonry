@@ -119,13 +119,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) MASConstraint *with;
 
 #ifndef __cplusplus
-
+#ifndef and
 /**
  *	Optional semantic property which has no effect but improves the readability of constraint
  *  `and` is defined in <iso646.h> in C or as an operator was built into C++
  */
 @property (nonatomic, readonly) MASConstraint *and;
-
+#endif
 #endif
 
 /**
