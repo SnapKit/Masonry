@@ -14,28 +14,12 @@
   },
   "description": "Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax.\nMasonry has its own layout DSL which provides a chainable way of describing your\nNSLayoutConstraints which results in layout code which is more concise and readable.\n    Masonry supports iOS and Mac OSX.",
   "source_files": "Masonry/*.{h,m}",
-  "ios": {
-    "frameworks": [
-      "Foundation",
-      "UIKit"
-    ]
-  },
-  "tvos": {
-    "frameworks": [
-      "Foundation",
-      "UIKit"
-    ]
-  },
-  "osx": {
-    "frameworks": [
-      "Foundation",
-      "AppKit"
-    ]
-  },
+  "private_header_files": "Masonry/MASConstraint+Private.h",
   "platforms": {
     "ios": "9.0",
     "osx": "10.11",
     "tvos": "9.0"
   },
-  "requires_arc": true
+  "requires_arc": true,
+  "static_framework": true
 }

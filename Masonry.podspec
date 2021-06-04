@@ -26,13 +26,10 @@ Pod::Spec.new do |s|
   EOS
 
   s.source_files = 'Masonry/*.{h,m}'
+  s.private_header_files = 'Masonry/MASConstraint+Private.h'
 
-  s.ios.frameworks = 'Foundation', 'UIKit'
-  s.tvos.frameworks = 'Foundation', 'UIKit'
-  s.osx.frameworks = 'Foundation', 'AppKit'
-
-  s.ios.deployment_target = '9.0' # minimum SDK with autolayout
-  s.osx.deployment_target = '10.11' # minimum SDK with autolayout
-  s.tvos.deployment_target = '9.0' # minimum SDK with autolayout
+  # minimum SDK with autolayout
+  s.platforms = { :ios => "9.0", :osx => "10.11", :tvos => "9.0" }
   s.requires_arc = true
+  s.static_framework = true
 end

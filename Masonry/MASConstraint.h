@@ -8,6 +8,8 @@
 
 #import "MASUtilities.h"
 
+@protocol MASConstraintDelegate;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -205,6 +207,11 @@ NS_ASSUME_NONNULL_BEGIN
 #endif
 
 /**
+ *    Usually MASConstraintMaker but could be a parent MASConstraint
+ */
+@property (nonatomic, weak) id<MASConstraintDelegate> delegate;
+
+/**
  *  Activates an NSLayoutConstraint if it's supported by an OS. 
  *  Invokes install otherwise.
  */
@@ -266,6 +273,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  A dummy method to aid autocompletion
  */
 @property (nonatomic, copy, readonly) MASConstraint * (^mas_offset)(id offset);
+
+@end
+
+
+@protocol MASConstraintDelegate <NSObject>
+
+/**
+ *    Notifies the delegate when the constraint needs to be replaced with another constraint. For example
+ *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
+ */
+- (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
+
+- (MASConstraint *)constraint:(MASConstraint * _Nullable)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 @end
 

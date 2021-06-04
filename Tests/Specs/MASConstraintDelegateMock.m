@@ -7,7 +7,6 @@
 //
 
 #import "MASConstraintDelegateMock.h"
-#import "MASViewConstraint.h"
 
 @implementation MASConstraintDelegateMock
 
