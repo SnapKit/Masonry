@@ -1,16 +1,15 @@
 ---
 language: objective-c
-osx_image: xcode12
+osx_image: xcode12.5
 before_install:
   - curl -L https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python
   - sudo pip install cpp-coveralls
-  - gem install cocoapods xcpretty -N
+  - gem install xcpretty -N
   - export LANG=en_US.UTF-8
-  - pod install
 
 script:
   - set -o pipefail
-  - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.0' clean test ARCHS=x86_64 VALID_ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty -c
+  - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' clean test ARCHS=x86_64 VALID_ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty -c
   - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry' -configuration Debug -sdk iphonesimulator clean build ARCHS=x86_64 VALID_ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO | xcpretty -c
   - xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry' -configuration Debug -sdk macosx clean build | xcpretty -c
 
