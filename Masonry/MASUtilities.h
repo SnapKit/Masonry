@@ -69,8 +69,6 @@
 #define MAS_NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
 #define MAS_NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (MAS_NSUINT_BIT - howmuch)))
 
-#define MAS_DISCARDABLE_RESULT __attribute__((warn_unused_result))
-
 #define MAS_ATTR_FORWARD(attr)  \
 - (MASViewAttribute *)attr {    \
     return [self mas_##attr];   \
