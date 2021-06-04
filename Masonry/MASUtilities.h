@@ -69,6 +69,8 @@
 #define MAS_NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
 #define MAS_NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (MAS_NSUINT_BIT - howmuch)))
 
+#define MAS_DISCARDABLE_RESULT __attribute__((warn_unused_result))
+
 #define MAS_ATTR_FORWARD(attr)  \
 - (MASViewAttribute *)attr {    \
     return [self mas_##attr];   \
@@ -85,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Given a scalar or struct value, wraps it in NSValue
  *  Based on EXPObjectify: https://github.com/specta/expecta
  */
-FOUNDATION_EXTERN id _Nullable _MASBoxValue(const char *type, ...);
+FOUNDATION_EXPORT id _Nullable _MASBoxValue(const char *type, ...);
 
 NS_ASSUME_NONNULL_END
 

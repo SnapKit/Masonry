@@ -18,53 +18,54 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MAS_VIEW (MASShorthandAdditions)
 
-@property (nonatomic, strong, readonly) MASViewAttribute *left;
-@property (nonatomic, strong, readonly) MASViewAttribute *top;
-@property (nonatomic, strong, readonly) MASViewAttribute *right;
-@property (nonatomic, strong, readonly) MASViewAttribute *bottom;
-@property (nonatomic, strong, readonly) MASViewAttribute *leading;
-@property (nonatomic, strong, readonly) MASViewAttribute *trailing;
-@property (nonatomic, strong, readonly) MASViewAttribute *width;
-@property (nonatomic, strong, readonly) MASViewAttribute *height;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerX;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerY;
-@property (nonatomic, strong, readonly) MASViewAttribute *baseline;
-@property (nonatomic, strong, readonly) MASViewAttribute *(^attribute)(NSLayoutAttribute attr);
+@property (nonatomic, readonly) MASViewAttribute *left;
+@property (nonatomic, readonly) MASViewAttribute *top;
+@property (nonatomic, readonly) MASViewAttribute *right;
+@property (nonatomic, readonly) MASViewAttribute *bottom;
+@property (nonatomic, readonly) MASViewAttribute *leading;
+@property (nonatomic, readonly) MASViewAttribute *trailing;
+@property (nonatomic, readonly) MASViewAttribute *width;
+@property (nonatomic, readonly) MASViewAttribute *height;
+@property (nonatomic, readonly) MASViewAttribute *centerX;
+@property (nonatomic, readonly) MASViewAttribute *centerY;
+@property (nonatomic, readonly) MASViewAttribute *baseline;
 
-@property (nonatomic, strong, readonly) MASViewAttribute *firstBaseline;
-@property (nonatomic, strong, readonly) MASViewAttribute *lastBaseline;
+@property (nonatomic, copy, readonly) MASViewAttribute * (^attribute)(NSLayoutAttribute attr);
+
+@property (nonatomic, readonly) MASViewAttribute *firstBaseline;
+@property (nonatomic, readonly) MASViewAttribute *lastBaseline;
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
-@property (nonatomic, strong, readonly) MASViewAttribute *leftMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *rightMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *topMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *bottomMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *leadingMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *trailingMargin;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerXWithinMargins;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerYWithinMargins;
+@property (nonatomic, readonly) MASViewAttribute *leftMargin;
+@property (nonatomic, readonly) MASViewAttribute *rightMargin;
+@property (nonatomic, readonly) MASViewAttribute *topMargin;
+@property (nonatomic, readonly) MASViewAttribute *bottomMargin;
+@property (nonatomic, readonly) MASViewAttribute *leadingMargin;
+@property (nonatomic, readonly) MASViewAttribute *trailingMargin;
+@property (nonatomic, readonly) MASViewAttribute *centerXWithinMargins;
+@property (nonatomic, readonly) MASViewAttribute *centerYWithinMargins;
 
 #endif
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeading API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTrailing API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideWidth API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideHeight API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterX API_AVAILABLE(ios(11.0));
-@property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterY API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideLeading API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideTrailing API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideWidth API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideHeight API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideCenterX API_AVAILABLE(ios(11.0));
+@property (nonatomic, readonly) MASViewAttribute *safeAreaLayoutGuideCenterY API_AVAILABLE(ios(11.0));
 
 #endif
 
-- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
 
 @end
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Whether or not to check for an existing constraint instead of adding constraint
  */
-@property (nonatomic, assign) BOOL updateExisting;
+@property (nonatomic) BOOL updateExisting;
 
 /**
  *	Usually MASConstraintMaker but could be a parent MASConstraint
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
  *    MASViewAttribute, UIView, NSValue, NSArray
  *  see readme for more details.
  */
-- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation;
+@property (nonatomic, copy, readonly) MASConstraint * (^equalToWithRelation)(id, NSLayoutRelation);
 
 /**
  *	Override to set a custom chaining behaviour

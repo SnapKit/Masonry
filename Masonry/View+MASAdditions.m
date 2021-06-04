@@ -11,14 +11,14 @@
 
 @implementation MAS_VIEW (MASAdditions)
 
-- (NSArray *)mas_makeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *))block {
+- (NSArray *)mas_makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     block(constraintMaker);
     return [constraintMaker install];
 }
 
-- (NSArray *)mas_updateConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *))block {
+- (NSArray *)mas_updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     constraintMaker.updateExisting = YES;
@@ -26,7 +26,7 @@
     return [constraintMaker install];
 }
 
-- (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block {
+- (NSArray *)mas_remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     constraintMaker.removeExisting = YES;
@@ -80,7 +80,7 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
-- (MASViewAttribute *(^)(NSLayoutAttribute))mas_attribute {
+- (MASViewAttribute * (^)(NSLayoutAttribute))mas_attribute {
     return ^(NSLayoutAttribute attr) {
         return [[MASViewAttribute alloc] initWithView:self layoutAttribute:attr];
     };

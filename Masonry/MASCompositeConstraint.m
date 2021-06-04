@@ -11,8 +11,8 @@
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
-@property (nonatomic, strong) id mas_key;
-@property (nonatomic, strong) NSMutableArray *childConstraints;
+@property (nonatomic) id mas_key;
+@property (nonatomic) NSMutableArray *childConstraints;
 
 @end
 

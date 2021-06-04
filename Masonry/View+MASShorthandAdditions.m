@@ -49,19 +49,19 @@ MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterY, API_AVAILABLE(ios(11.0)))
 
 #endif
 
-- (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
+- (MASViewAttribute * (^)(NSLayoutAttribute))attribute {
     return [self mas_attribute];
 }
 
-- (NSArray *)makeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *))block {
+- (NSArray *)makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
 }
 
-- (NSArray *)updateConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *))block {
+- (NSArray *)updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_updateConstraints:block];
 }
 
-- (NSArray *)remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *))block {
+- (NSArray *)remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_remakeConstraints:block];
 }
 

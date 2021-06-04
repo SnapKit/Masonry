@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *	a key to associate with this constraint
  */
-@property (nonatomic, strong) id mas_key;
+@property (nonatomic) id mas_key;
 
 @end
 

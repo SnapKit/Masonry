@@ -18,7 +18,7 @@
 
 @property (nonatomic, weak) MAS_VIEW *view;
 @property (nullable, nonatomic, weak) MASLayoutGuide *item;
-@property (nonatomic, strong) NSMutableArray *constraints;
+@property (nonatomic) NSMutableArray *constraints;
 
 @end
 

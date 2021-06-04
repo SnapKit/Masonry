@@ -22,12 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *	First item/view and first attribute of the NSLayoutConstraint
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *firstViewAttribute;
+@property (nonatomic, readonly) MASViewAttribute *firstViewAttribute;
 
 /**
  *	Second item/view and second attribute of the NSLayoutConstraint
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *secondViewAttribute;
+@property (nonatomic, readonly) MASViewAttribute *secondViewAttribute;
 
 /**
  *	initialises the MASViewConstraint with the first part of the equation

@@ -19,22 +19,22 @@ NS_ASSUME_NONNULL_BEGIN
 API_AVAILABLE(macos(10.11), ios(9.0))
 @interface MASLayoutGuide (MASShorthandAdditions)
 
-@property (nonatomic, strong, readonly) MASViewAttribute *left;
-@property (nonatomic, strong, readonly) MASViewAttribute *top;
-@property (nonatomic, strong, readonly) MASViewAttribute *right;
-@property (nonatomic, strong, readonly) MASViewAttribute *bottom;
-@property (nonatomic, strong, readonly) MASViewAttribute *leading;
-@property (nonatomic, strong, readonly) MASViewAttribute *trailing;
-@property (nonatomic, strong, readonly) MASViewAttribute *width;
-@property (nonatomic, strong, readonly) MASViewAttribute *height;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerX;
-@property (nonatomic, strong, readonly) MASViewAttribute *centerY;
+@property (nonatomic, readonly) MASViewAttribute *left;
+@property (nonatomic, readonly) MASViewAttribute *top;
+@property (nonatomic, readonly) MASViewAttribute *right;
+@property (nonatomic, readonly) MASViewAttribute *bottom;
+@property (nonatomic, readonly) MASViewAttribute *leading;
+@property (nonatomic, readonly) MASViewAttribute *trailing;
+@property (nonatomic, readonly) MASViewAttribute *width;
+@property (nonatomic, readonly) MASViewAttribute *height;
+@property (nonatomic, readonly) MASViewAttribute *centerX;
+@property (nonatomic, readonly) MASViewAttribute *centerY;
 
-@property (nonatomic, strong, readonly) MASViewAttribute *(^attribute)(NSLayoutAttribute attr);
+@property (nonatomic, copy, readonly) MASViewAttribute * (^attribute)(NSLayoutAttribute attr);
 
-- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
 
 @end
 

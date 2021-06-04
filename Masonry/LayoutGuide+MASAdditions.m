@@ -12,20 +12,20 @@
 
 @implementation MASLayoutGuide (MASAdditions)
 
-- (NSArray *)mas_makeConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
+- (NSArray *)mas_makeConstraints:(void (NS_NOESCAPE^)(id<MASLayoutConstraint> make))block {
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     block(constraintMaker);
     return [constraintMaker install];
 }
 
-- (NSArray *)mas_updateConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
+- (NSArray *)mas_updateConstraints:(void (NS_NOESCAPE^)(id<MASLayoutConstraint> make))block {
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     constraintMaker.updateExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
 }
 
-- (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(id<MASLayoutConstraint> make))block {
+- (NSArray *)mas_remakeConstraints:(void (NS_NOESCAPE^)(id<MASLayoutConstraint> make))block {
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithLayoutGuide:self];
     constraintMaker.removeExisting = YES;
     block(constraintMaker);
@@ -74,7 +74,7 @@
     return [[MASViewAttribute alloc] initWithView:self.owningView item:self layoutAttribute:NSLayoutAttributeCenterY];
 }
 
-- (MASViewAttribute *(^)(NSLayoutAttribute))mas_attribute {
+- (MASViewAttribute * (^)(NSLayoutAttribute))mas_attribute {
     return ^(NSLayoutAttribute attr) {
         return [[MASViewAttribute alloc] initWithView:self.owningView item:self layoutAttribute:attr];
     };

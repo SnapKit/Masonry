@@ -10,15 +10,15 @@
 
 @implementation NSArray (MASShorthandAdditions)
 
-- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
+- (NSArray *)makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
 }
 
-- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *))block {
+- (NSArray *)updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_updateConstraints:block];
 }
 
-- (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *))block {
+- (NSArray *)remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *))block {
     return [self mas_remakeConstraints:block];
 }
 

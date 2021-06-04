@@ -59,16 +59,16 @@ static char kInstalledConstraintsKey;
 
 @interface MASViewConstraint ()
 
-@property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
+@property (nonatomic, readwrite) MASViewAttribute *secondViewAttribute;
 @property (nonatomic, weak) MAS_VIEW *installedView;
 @property (nonatomic, weak) MASLayoutConstraint *layoutConstraint;
-@property (nonatomic, assign) NSLayoutRelation layoutRelation;
-@property (nonatomic, assign) MASLayoutPriority layoutPriority;
-@property (nonatomic, assign) CGFloat layoutMultiplier;
-@property (nonatomic, assign) CGFloat layoutConstant;
-@property (nonatomic, assign) BOOL hasLayoutRelation;
-@property (nonatomic, strong) id mas_key;
-@property (nonatomic, assign) BOOL useAnimator;
+@property (nonatomic) NSLayoutRelation layoutRelation;
+@property (nonatomic) MASLayoutPriority layoutPriority;
+@property (nonatomic) CGFloat layoutMultiplier;
+@property (nonatomic) CGFloat layoutConstant;
+@property (nonatomic) BOOL hasLayoutRelation;
+@property (nonatomic) id mas_key;
+@property (nonatomic) BOOL useAnimator;
 
 @end
 

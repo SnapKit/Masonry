@@ -18,9 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface NSArray (MASShorthandAdditions)
 
-- (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;
-- (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)makeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)updateConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
+- (NSArray *)remakeConstraints:(void (NS_NOESCAPE^)(MASConstraintMaker *make))block;
 
 @end
 
