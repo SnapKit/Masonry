@@ -29,7 +29,7 @@
     if (!self) return nil;
 
     self.view = view;
-    self.constraints = NSMutableArray.new;
+    self.constraints = [NSMutableArray array];
 
     return self;
 }
@@ -41,7 +41,7 @@
 
     self.view = layoutGuide.owningView;
     self.item = layoutGuide;
-    self.constraints = NSMutableArray.new;
+    self.constraints = [NSMutableArray array];
 
     return self;
 }

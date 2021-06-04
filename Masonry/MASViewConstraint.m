@@ -21,13 +21,12 @@
 
 @implementation MAS_VIEW (MASConstraints)
 
-static char kInstalledConstraintsKey;
-
 - (NSMutableSet *)mas_installedConstraints {
-    NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
+    const void *key = @selector(mas_installedConstraints);
+    NSMutableSet *constraints = objc_getAssociatedObject(self, key);
     if (!constraints) {
         constraints = [NSMutableSet set];
-        objc_setAssociatedObject(self, &kInstalledConstraintsKey, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, key, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return constraints;
 }
@@ -43,13 +42,12 @@ static char kInstalledConstraintsKey;
 
 @implementation MASLayoutGuide (MASConstraints)
 
-static char kInstalledConstraintsKey;
-
 - (NSMutableSet *)mas_installedConstraints {
-    NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
+    const void *key = @selector(mas_installedConstraints);
+    NSMutableSet *constraints = objc_getAssociatedObject(self, key);
     if (!constraints) {
         constraints = [NSMutableSet set];
-        objc_setAssociatedObject(self, &kInstalledConstraintsKey, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, key, constraints, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return constraints;
 }
@@ -214,7 +212,7 @@ static char kInstalledConstraintsKey;
     return ^id(id attribute, NSLayoutRelation relation) {
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
-            NSMutableArray *children = NSMutableArray.new;
+            NSMutableArray *children = [NSMutableArray array];
             for (id attr in attribute) {
                 MASViewConstraint *viewConstraint = [self copy];
                 viewConstraint.layoutRelation = relation;
