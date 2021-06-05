@@ -1,0 +1,22 @@
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Test
+      uses: actions/checkout@v2
+    - name: Build for iOS
+      run: xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry' -configuration Debug -sdk iphonesimulator clean build ARCHS=x86_64 VALID_ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO
+    - name: Build for macOS
+      run: xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry' -configuration Debug -sdk macosx clean build
+    - name: Build and Test
+      run: xcodebuild -workspace 'Masonry.xcworkspace' -scheme 'Masonry iOS Tests' -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' clean test ARCHS=x86_64 VALID_ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.2.1
