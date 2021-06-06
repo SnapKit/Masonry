@@ -15,10 +15,9 @@
 @implementation MASExampleLayoutGuideViewController
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-
-    self.title = @"Layout Guides";
+    if (self = [super init]) {
+        self.title = @"Layout Guides";
+    }
 
     return self;
 }

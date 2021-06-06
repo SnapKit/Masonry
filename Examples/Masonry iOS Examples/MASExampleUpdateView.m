@@ -18,24 +18,23 @@
 @implementation MASExampleUpdateView
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
+    if (self = [super init]) {
+        self.growingButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.growingButton setTitle:@"Grow Me!" forState:UIControlStateNormal];
+        self.growingButton.layer.borderColor = UIColor.greenColor.CGColor;
+        self.growingButton.layer.borderWidth = 3;
 
-    self.growingButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.growingButton setTitle:@"Grow Me!" forState:UIControlStateNormal];
-    self.growingButton.layer.borderColor = UIColor.greenColor.CGColor;
-    self.growingButton.layer.borderWidth = 3;
-
-    [self.growingButton addTarget:self action:@selector(didTapGrowButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.growingButton];
-    [self.growingButton makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.width.equalTo(@(self.buttonSize.width)).priorityLow();
-        make.height.equalTo(@(self.buttonSize.height)).priorityLow();
-        make.width.lessThanOrEqualTo(self);
-        make.height.lessThanOrEqualTo(self);
-    }];
-
+        [self.growingButton addTarget:self action:@selector(didTapGrowButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.growingButton];
+        [self.growingButton makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self);
+            make.width.equalTo(@(self.buttonSize.width)).priorityLow();
+            make.height.equalTo(@(self.buttonSize.height)).priorityLow();
+            make.width.lessThanOrEqualTo(self);
+            make.height.lessThanOrEqualTo(self);
+        }];
+    }
+    
     self.buttonSize = CGSizeMake(100, 100);
 
     return self;

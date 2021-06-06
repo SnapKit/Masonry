@@ -20,19 +20,18 @@
 @implementation MASExampleRemakeView
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    self.movingButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.movingButton setTitle:@"Move Me!" forState:UIControlStateNormal];
-    self.movingButton.layer.borderColor = UIColor.greenColor.CGColor;
-    self.movingButton.layer.borderWidth = 3;
-    
-    [self.movingButton addTarget:self action:@selector(toggleButtonPosition) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.movingButton];
-    
-    self.topLeft = YES;
-    
+    if (self = [super init]) {
+        self.movingButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.movingButton setTitle:@"Move Me!" forState:UIControlStateNormal];
+        self.movingButton.layer.borderColor = UIColor.greenColor.CGColor;
+        self.movingButton.layer.borderWidth = 3;
+
+        [self.movingButton addTarget:self action:@selector(toggleButtonPosition) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.movingButton];
+
+        self.topLeft = YES;
+    }
+
     return self;
 }
 

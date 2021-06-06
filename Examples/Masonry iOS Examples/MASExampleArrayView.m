@@ -20,37 +20,36 @@ static CGFloat const kArrayExampleIncrement = 10.0;
 @implementation MASExampleArrayView
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    UIButton *raiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [raiseButton setTitle:@"Raise" forState:UIControlStateNormal];
-    [raiseButton addTarget:self action:@selector(raiseAction) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:raiseButton];
-    
-    UIButton *centerButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [centerButton setTitle:@"Center" forState:UIControlStateNormal];
-    [centerButton addTarget:self action:@selector(centerAction) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:centerButton];
+    if (self = [super init]) {
+        UIButton *raiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [raiseButton setTitle:@"Raise" forState:UIControlStateNormal];
+        [raiseButton addTarget:self action:@selector(raiseAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:raiseButton];
 
-    UIButton *lowerButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [lowerButton setTitle:@"Lower" forState:UIControlStateNormal];
-    [lowerButton addTarget:self action:@selector(lowerAction) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:lowerButton];
-    
-    [lowerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).with.offset(10.0);
-    }];
+        UIButton *centerButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [centerButton setTitle:@"Center" forState:UIControlStateNormal];
+        [centerButton addTarget:self action:@selector(centerAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:centerButton];
 
-    [centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-    }];
+        UIButton *lowerButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [lowerButton setTitle:@"Lower" forState:UIControlStateNormal];
+        [lowerButton addTarget:self action:@selector(lowerAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:lowerButton];
 
-    [raiseButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).with.offset(-10);
-    }];
-    
-    self.buttonViews = @[ raiseButton, lowerButton, centerButton ];
+        [lowerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).with.offset(10.0);
+        }];
+
+        [centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self);
+        }];
+
+        [raiseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self).with.offset(-10);
+        }];
+
+        self.buttonViews = @[ raiseButton, lowerButton, centerButton ];
+    }
     
     return self;
 }

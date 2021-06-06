@@ -36,53 +36,51 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 @implementation MASExampleListViewController
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    self.title = @"Examples";
-    
-    self.exampleControllers = @[
-        [[MASExampleViewController alloc] initWithTitle:@"Basic"
-                                              viewClass:MASExampleBasicView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Update Constraints"
-                                              viewClass:MASExampleUpdateView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Remake Constraints"
-                                              viewClass:MASExampleRemakeView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Using Constants"
-                                              viewClass:MASExampleConstantsView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Composite Edges"
-                                              viewClass:MASExampleSidesView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Aspect Fit"
-                                              viewClass:MASExampleAspectFitView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
-                                              viewClass:MASExampleAnimatedView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Debugging Helpers"
-                                              viewClass:MASExampleDebuggingView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Bacony Labels"
-                                              viewClass:MASExampleLabelView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
-                                              viewClass:MASExampleScrollView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Array"
-                                              viewClass:MASExampleArrayView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
-                                              viewClass:MASExampleAttributeChainingView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Margins"
-                                              viewClass:MASExampleMarginView.class],
-        [[MASExampleViewController alloc] initWithTitle:@"Views Distribute"
-                                              viewClass:MASExampleDistributeView.class],
+    if (self = [super init]) {
+        self.title = @"Examples";
 
-    ];
-    
-    if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
-    {
-        self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleLayoutGuideViewController alloc] init]];
+        self.exampleControllers = @[
+            [[MASExampleViewController alloc] initWithTitle:@"Basic"
+                                                  viewClass:MASExampleBasicView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Update Constraints"
+                                                  viewClass:MASExampleUpdateView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Remake Constraints"
+                                                  viewClass:MASExampleRemakeView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Using Constants"
+                                                  viewClass:MASExampleConstantsView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Composite Edges"
+                                                  viewClass:MASExampleSidesView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Aspect Fit"
+                                                  viewClass:MASExampleAspectFitView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Basic Animated"
+                                                  viewClass:MASExampleAnimatedView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Debugging Helpers"
+                                                  viewClass:MASExampleDebuggingView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Bacony Labels"
+                                                  viewClass:MASExampleLabelView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"UIScrollView"
+                                                  viewClass:MASExampleScrollView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Array"
+                                                  viewClass:MASExampleArrayView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Attribute Chaining"
+                                                  viewClass:MASExampleAttributeChainingView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Margins"
+                                                  viewClass:MASExampleMarginView.class],
+            [[MASExampleViewController alloc] initWithTitle:@"Views Distribute"
+                                                  viewClass:MASExampleDistributeView.class],
+        ];
+
+        if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
+        {
+            self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleLayoutGuideViewController alloc] init]];
+        }
+
+        if ([UIView instancesRespondToSelector:@selector(safeAreaLayoutGuide)])
+        {
+            self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleSafeAreaLayoutGuideViewController alloc] init]];
+        }
     }
-    
-    if ([UIView instancesRespondToSelector:@selector(safeAreaLayoutGuide)])
-    {
-        self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleSafeAreaLayoutGuideViewController alloc] init]];
-    }
-    
+
     return self;
 }
 

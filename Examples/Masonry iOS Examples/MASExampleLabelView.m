@@ -20,34 +20,32 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 @implementation MASExampleLabelView
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
+    if (self = [super init]) {
+        // text courtesy of http://baconipsum.com/
+        self.shortLabel = UILabel.new;
+        self.shortLabel.numberOfLines = 1;
+        self.shortLabel.textColor = [UIColor purpleColor];
+        self.shortLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.shortLabel.text = @"Bacon";
+        [self addSubview:self.shortLabel];
 
-    // text courtesy of http://baconipsum.com/
+        self.longLabel = UILabel.new;
+        self.longLabel.numberOfLines = 8;
+        self.longLabel.textColor = [UIColor darkGrayColor];
+        self.longLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.longLabel.text = @"Bacon ipsum dolor sit amet spare ribs fatback kielbasa salami, tri-tip jowl pastrami flank short loin rump sirloin. Tenderloin frankfurter chicken biltong rump chuck filet mignon pork t-bone flank ham hock.";
+        [self addSubview:self.longLabel];
 
-    self.shortLabel = UILabel.new;
-    self.shortLabel.numberOfLines = 1;
-    self.shortLabel.textColor = [UIColor purpleColor];
-    self.shortLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.shortLabel.text = @"Bacon";
-    [self addSubview:self.shortLabel];
+        [self.longLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.left).insets(kPadding);
+            make.top.equalTo(self.top).insets(kPadding);
+        }];
 
-    self.longLabel = UILabel.new;
-    self.longLabel.numberOfLines = 8;
-    self.longLabel.textColor = [UIColor darkGrayColor];
-    self.longLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.longLabel.text = @"Bacon ipsum dolor sit amet spare ribs fatback kielbasa salami, tri-tip jowl pastrami flank short loin rump sirloin. Tenderloin frankfurter chicken biltong rump chuck filet mignon pork t-bone flank ham hock.";
-    [self addSubview:self.longLabel];
-
-    [self.longLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.left).insets(kPadding);
-        make.top.equalTo(self.top).insets(kPadding);
-    }];
-
-    [self.shortLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.longLabel.lastBaseline);
-        make.right.equalTo(self.right).insets(kPadding);
-    }];
+        [self.shortLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.longLabel.lastBaseline);
+            make.right.equalTo(self.right).insets(kPadding);
+        }];
+    }
 
     return self;
 }

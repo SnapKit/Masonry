@@ -11,11 +11,10 @@
 @implementation MASConstraintDelegateMock
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-
-    self.constraints = NSMutableArray.new;
-    self.chainedConstraints = NSMutableArray.new;
+    if (self = [super init]) {
+        self.constraints = NSMutableArray.new;
+        self.chainedConstraints = NSMutableArray.new;
+    }
 
     return self;
 }

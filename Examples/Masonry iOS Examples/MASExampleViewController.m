@@ -18,11 +18,10 @@
 @implementation MASExampleViewController
 
 - (instancetype)initWithTitle:(NSString *)title viewClass:(Class)viewClass {
-    self = [super init];
-    if (!self) return nil;
-    
-    self.title = title;
-    self.viewClass = viewClass;
+    if (self = [super init]) {
+        self.title = title;
+        self.viewClass = viewClass;
+    }
     
     return self;
 }
