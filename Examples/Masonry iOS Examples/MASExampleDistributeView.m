@@ -10,55 +10,54 @@
 
 @implementation MASExampleDistributeView
 
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
+- (instancetype)init {
+    if (self = [super init]) {
+        NSMutableArray *arr = @[].mutableCopy;
+        for (int i = 0; i < 4; i++) {
+            UIView *view = UIView.new;
+            view.backgroundColor = [self randomColor];
+            view.layer.borderColor = UIColor.blackColor.CGColor;
+            view.layer.borderWidth = 2;
+            [self addSubview:view];
+            [arr addObject:view];
+        }
+        
+        unsigned int type  = arc4random()%4;
+        switch (type) {
+            case 0:
+                [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
+                [arr makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(@60);
+                    make.height.equalTo(@60);
+                }];
+                break;
+            case 1:
+                [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
+                [arr makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(@0);
+                    make.width.equalTo(@60);
+                }];
+                break;
+            case 2:
+                [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:200 tailSpacing:30];
+                [arr makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(@60);
+                    make.height.equalTo(@60);
+                }];
+                break;
+            case 3:
+                [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:30 tailSpacing:200];
+                [arr makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(@0);
+                    make.width.equalTo(@60);
+                }];
+                break;
+                
+            default:
+                break;
+        }
+    }
 
-    NSMutableArray *arr = @[].mutableCopy;
-    for (int i = 0; i < 4; i++) {
-        UIView *view = UIView.new;
-        view.backgroundColor = [self randomColor];
-        view.layer.borderColor = UIColor.blackColor.CGColor;
-        view.layer.borderWidth = 2;
-        [self addSubview:view];
-        [arr addObject:view];
-    }
-    
-    unsigned int type  = arc4random()%4;
-    switch (type) {
-        case 0:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
-            [arr makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(@60);
-                make.height.equalTo(@60);
-            }];
-            break;
-        case 1:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
-            [arr makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(@0);
-                make.width.equalTo(@60);
-            }];
-            break;
-        case 2:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:200 tailSpacing:30];
-            [arr makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(@60);
-                make.height.equalTo(@60);
-            }];
-            break;
-        case 3:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:30 tailSpacing:200];
-            [arr makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(@0);
-                make.width.equalTo(@60);
-            }];
-            break;
-            
-        default:
-            break;
-    }
-    
     return self;
 }
 

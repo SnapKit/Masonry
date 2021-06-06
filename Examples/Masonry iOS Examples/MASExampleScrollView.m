@@ -23,19 +23,18 @@
 
 @implementation MASExampleScrollView
 
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    UIScrollView *scrollView = UIScrollView.new;
-    self.scrollView = scrollView;
-    scrollView.backgroundColor = [UIColor grayColor];
-    [self addSubview:scrollView];
-    [self.scrollView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
-    
-    [self generateContent];
+- (instancetype)init {
+    if (self = [super init]) {
+        UIScrollView *scrollView = UIScrollView.new;
+        self.scrollView = scrollView;
+        scrollView.backgroundColor = [UIColor grayColor];
+        [self addSubview:scrollView];
+        [self.scrollView makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+        
+        [self generateContent];
+    }
 
     return self;
 }

@@ -10,6 +10,6 @@
 
 @interface MASExampleViewController : UIViewController
 
-- (id)initWithTitle:(NSString *)title viewClass:(Class)viewClass;
+- (instancetype)initWithTitle:(NSString *)title viewClass:(Class)viewClass;
 
 @end

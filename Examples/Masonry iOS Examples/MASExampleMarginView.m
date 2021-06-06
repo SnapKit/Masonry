@@ -11,26 +11,25 @@
 @implementation MASExampleMarginView
 
 - (instancetype)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    UIView *lastView = self;
-    for (int i = 0; i < 10; i++) {
-        UIView *view = UIView.new;
-        view.backgroundColor = [self randomColor];
-        view.layer.borderColor = UIColor.blackColor.CGColor;
-        view.layer.borderWidth = 2;
-        view.layoutMargins = UIEdgeInsetsMake(5, 10, 15, 20);
-        [self addSubview:view];
-        
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(lastView.topMargin);
-            make.bottom.equalTo(lastView.bottomMargin);
-            make.left.equalTo(lastView.leftMargin);
-            make.right.equalTo(lastView.rightMargin);
-        }];
-        
-        lastView = view;
+    if (self = [super init]) {
+        UIView *lastView = self;
+        for (int i = 0; i < 10; i++) {
+            UIView *view = UIView.new;
+            view.backgroundColor = [self randomColor];
+            view.layer.borderColor = UIColor.blackColor.CGColor;
+            view.layer.borderWidth = 2;
+            view.layoutMargins = UIEdgeInsetsMake(5, 10, 15, 20);
+            [self addSubview:view];
+            
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(lastView.topMargin);
+                make.bottom.equalTo(lastView.bottomMargin);
+                make.left.equalTo(lastView.leftMargin);
+                make.right.equalTo(lastView.rightMargin);
+            }];
+            
+            lastView = view;
+        }
     }
     
     return self;

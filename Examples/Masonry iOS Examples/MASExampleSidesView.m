@@ -10,25 +10,24 @@
 
 @implementation MASExampleSidesView
 
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
-    
-    UIView *lastView = self;
-    for (int i = 0; i < 10; i++) {
-        UIView *view = UIView.new;
-        view.backgroundColor = [self randomColor];
-        view.layer.borderColor = UIColor.blackColor.CGColor;
-        view.layer.borderWidth = 2;
-        [self addSubview:view];
-        
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20));
-        }];
-        
-        lastView = view;
+- (instancetype)init {
+    if (self = [super init]) {
+        UIView *lastView = self;
+        for (int i = 0; i < 10; i++) {
+            UIView *view = UIView.new;
+            view.backgroundColor = [self randomColor];
+            view.layer.borderColor = UIColor.blackColor.CGColor;
+            view.layer.borderWidth = 2;
+            [self addSubview:view];
+
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20));
+            }];
+
+            lastView = view;
+        }
     }
-    
+
     return self;
 }
 

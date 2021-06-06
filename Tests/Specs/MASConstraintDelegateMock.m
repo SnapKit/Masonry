@@ -7,16 +7,14 @@
 //
 
 #import "MASConstraintDelegateMock.h"
-#import "MASViewConstraint.h"
 
 @implementation MASConstraintDelegateMock
 
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
-
-    self.constraints = NSMutableArray.new;
-    self.chainedConstraints = NSMutableArray.new;
+- (instancetype)init {
+    if (self = [super init]) {
+        self.constraints = NSMutableArray.new;
+        self.chainedConstraints = NSMutableArray.new;
+    }
 
     return self;
 }

@@ -17,12 +17,11 @@
 
 @implementation MASExampleViewController
 
-- (id)initWithTitle:(NSString *)title viewClass:(Class)viewClass {
-    self = [super init];
-    if (!self) return nil;
-    
-    self.title = title;
-    self.viewClass = viewClass;
+- (instancetype)initWithTitle:(NSString *)title viewClass:(Class)viewClass {
+    if (self = [super init]) {
+        self.title = title;
+        self.viewClass = viewClass;
+    }
     
     return self;
 }

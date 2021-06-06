@@ -11,20 +11,19 @@
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
 
-@property (nonatomic, strong) id mas_key;
-@property (nonatomic, strong) NSMutableArray *childConstraints;
+@property (nonatomic) id mas_key;
+@property (nonatomic) NSMutableArray *childConstraints;
 
 @end
 
 @implementation MASCompositeConstraint
 
-- (id)initWithChildren:(NSArray *)children {
-    self = [super init];
-    if (!self) return nil;
-
-    _childConstraints = [children mutableCopy];
-    for (MASConstraint *constraint in _childConstraints) {
-        constraint.delegate = self;
+- (instancetype)initWithChildren:(NSArray *)children {
+    if (self = [super init]) {
+        _childConstraints = [children mutableCopy];
+        for (MASConstraint *constraint in _childConstraints) {
+            constraint.delegate = self;
+        }
     }
 
     return self;

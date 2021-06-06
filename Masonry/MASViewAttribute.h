@@ -8,6 +8,8 @@
 
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  An immutable tuple which stores the view and the related NSLayoutAttribute.
  *  Describes part of either the left or right hand side of a constraint equation
@@ -27,17 +29,20 @@
 /**
  *  The attribute which the reciever relates to
  */
-@property (nonatomic, assign, readonly) NSLayoutAttribute layoutAttribute;
+@property (nonatomic, readonly) NSLayoutAttribute layoutAttribute;
 
 /**
  *  Convenience initializer.
  */
-- (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
 /**
  *  The designated initializer.
  */
-- (id)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute;
+- (instancetype)initWithView:(MAS_VIEW *)view item:(id)item layoutAttribute:(NSLayoutAttribute)layoutAttribute NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 /**
  *	Determine whether the layoutAttribute is a size attribute
@@ -47,3 +52,5 @@
 - (BOOL)isSizeAttribute;
 
 @end
+
+NS_ASSUME_NONNULL_END

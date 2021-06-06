@@ -334,12 +334,11 @@ For an example of how to set this up take a look at the **Masonry iOS Examples**
 ```objc
 @implementation DIYCustomView
 
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
-
-    // --- Create your views here ---
-    self.button = [[UIButton alloc] init];
+- (instancetype)init {
+    if (self = [super init]) {
+        // --- Create your views here ---
+        self.button = [[UIButton alloc] init];
+    }
 
     return self;
 }

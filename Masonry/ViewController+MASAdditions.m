@@ -1,5 +1,5 @@
 //
-//  UIViewController+MASAdditions.m
+//  ViewController+MASAdditions.m
 //  Masonry
 //
 //  Created by Craig Siemens on 2015-06-23.

@@ -11,6 +11,8 @@
 #import "MASLayoutConstraint.h"
 #import "MASUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  A single constraint.
  *  Contains the attributes neccessary for creating a NSLayoutConstraint and adding it to the appropriate view
@@ -20,12 +22,12 @@
 /**
  *	First item/view and first attribute of the NSLayoutConstraint
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *firstViewAttribute;
+@property (nonatomic, readonly) MASViewAttribute *firstViewAttribute;
 
 /**
  *	Second item/view and second attribute of the NSLayoutConstraint
  */
-@property (nonatomic, strong, readonly) MASViewAttribute *secondViewAttribute;
+@property (nonatomic, readonly) MASViewAttribute *secondViewAttribute;
 
 /**
  *	initialises the MASViewConstraint with the first part of the equation
@@ -34,7 +36,10 @@
  *
  *	@return	a new view constraint
  */
-- (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute;
+- (instancetype)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 /**
  *  Returns all MASViewConstraints installed with this view as a first item.
@@ -45,4 +50,8 @@
  */
 + (NSArray *)installedConstraintsForView:(MAS_VIEW *)view;
 
++ (NSArray *)installedConstraintsForLayoutGuide:(MASLayoutGuide *)layoutGuide API_AVAILABLE(macos(10.11), ios(9.0));
+
 @end
+
+NS_ASSUME_NONNULL_END

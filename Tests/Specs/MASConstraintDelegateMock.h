@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
 //
 
-#import "MASConstraint+Private.h"
+#import "MASViewConstraint.h"
 
 @interface MASConstraintDelegateMock : NSObject <MASConstraintDelegate>
 
