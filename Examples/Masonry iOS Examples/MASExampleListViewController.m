@@ -19,6 +19,7 @@
 #import "MASExampleScrollView.h"
 #import "MASExampleLayoutGuideViewController.h"
 #import "MASExampleSafeAreaLayoutGuideViewController.h"
+#import "MASExampleLayoutMarginsGuideViewController.h"
 #import "MASExampleArrayView.h"
 #import "MASExampleAttributeChainingView.h"
 #import "MASExampleAspectFitView.h"
@@ -81,6 +82,11 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
     if ([UIView instancesRespondToSelector:@selector(safeAreaLayoutGuide)])
     {
         self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleSafeAreaLayoutGuideViewController alloc] init]];
+    }
+    
+    if ([UIView instancesRespondToSelector:@selector(layoutMarginsGuide)])
+    {
+        self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleLayoutMarginsGuideViewController alloc] init]];
     }
     
     return self;
