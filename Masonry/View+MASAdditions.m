@@ -172,6 +172,50 @@
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterY];
 }
 
+- (MASViewAttribute *)mas_layoutMarginsGuide {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeNotAnAttribute];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideLeading {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeLeading];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideTrailing {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeTrailing];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideLeft {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeLeft];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideRight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeRight];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideTop {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeTop];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideBottom {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideWidth {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeWidth];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideHeight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeHeight];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideCenterX {
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeCenterX];
+}
+
+- (MASViewAttribute *)mas_layoutMarginsGuideCenterY{
+    return [[MASViewAttribute alloc] initWithView:self item:self.layoutMarginsGuide layoutAttribute:NSLayoutAttributeCenterY];
+}
+
 #endif
 
 #pragma mark - associated properties
