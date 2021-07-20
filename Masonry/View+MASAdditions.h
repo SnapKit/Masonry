@@ -60,7 +60,7 @@
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuide NS_AVAILABLE_IOS(9.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideLeading NS_AVAILABLE_IOS(9.0);
-@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideTrailing NS_AVAILABLE_IOS(11.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideTrailing NS_AVAILABLE_IOS(9.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideLeft NS_AVAILABLE_IOS(9.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideRight NS_AVAILABLE_IOS(9.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideTop NS_AVAILABLE_IOS(9.0);
