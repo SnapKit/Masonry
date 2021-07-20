@@ -58,6 +58,18 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterX NS_AVAILABLE_IOS(11.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideCenterY NS_AVAILABLE_IOS(11.0);
 
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuide NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideLeading NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideTrailing NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideLeft NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideRight NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideTop NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideBottom NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideWidth NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideHeight NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideCenterX NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_layoutMarginsGuideCenterY NS_AVAILABLE_IOS(9.0);
+
 #endif
 
 /**

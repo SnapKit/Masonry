@@ -58,6 +58,17 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterX NS_AVAILABLE_IOS(11.0);
 @property (nonatomic, strong, readonly) MASViewAttribute *safeAreaLayoutGuideCenterY NS_AVAILABLE_IOS(11.0);
 
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideLeading NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideTrailing NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideLeft NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideRight NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideTop NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideBottom NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideWidth NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideHeight NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideCenterX NS_AVAILABLE_IOS(9.0);
+@property (nonatomic, strong, readonly) MASViewAttribute *layoutMarginsGuideCenterY NS_AVAILABLE_IOS(9.0);
+
 #endif
 
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;
@@ -114,6 +125,17 @@ MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideWidth, NS_AVAILABLE_IOS(11.0));
 MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideHeight, NS_AVAILABLE_IOS(11.0));
 MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterX, NS_AVAILABLE_IOS(11.0));
 MAS_ATTR_FORWARD_AVAILABLE(safeAreaLayoutGuideCenterY, NS_AVAILABLE_IOS(11.0));
+
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideLeading, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideTrailing, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideLeft, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideRight, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideTop, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideBottom, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideWidth, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideHeight, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideCenterX, NS_AVAILABLE_IOS(9.0));
+MAS_ATTR_FORWARD_AVAILABLE(layoutMarginsGuideCenterY, NS_AVAILABLE_IOS(9.0));
 
 #endif
 
