@@ -4,12 +4,16 @@
 EXPMatcherImplementationBegin(respondTo, (SEL expected)) {
   BOOL actualIsNil = (actual == nil);
   BOOL expectedIsNull = (expected == NULL);
-
+    
   prerequisite (^BOOL {
     return !(actualIsNil || expectedIsNull);
   });
 
   match(^BOOL {
+    if ([actual respondsToSelector:@selector(instancesRespondToSelector:)] &&
+        [actual instancesRespondToSelector:expected]) {
+      return YES;
+    }
     return [actual respondsToSelector:expected];
   });
 

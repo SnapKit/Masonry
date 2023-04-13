@@ -9,9 +9,9 @@
 #ifndef Expecta_EXPDefines_h
 #define Expecta_EXPDefines_h
 
-typedef void (^EXPBasicBlock)();
-typedef id (^EXPIdBlock)();
-typedef BOOL (^EXPBoolBlock)();
-typedef NSString *(^EXPStringBlock)();
+typedef void (^EXPBasicBlock)(void);
+typedef id (^EXPIdBlock)(void);
+typedef BOOL (^EXPBoolBlock)(void);
+typedef NSString *(^EXPStringBlock)(void);
 
 #endif

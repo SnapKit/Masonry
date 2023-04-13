@@ -1,13 +1,8 @@
-#Expecta
-
-[![Build Status](http://img.shields.io/travis/specta/expecta/master.svg?style=flat)](https://travis-ci.org/specta/expecta)
-[![Pod Version](http://img.shields.io/cocoapods/v/Expecta.svg?style=flat)](http://cocoadocs.org/docsets/Expecta/)
-[![Pod Platform](http://img.shields.io/cocoapods/p/Expecta.svg?style=flat)](http://cocoadocs.org/docsets/Expecta/)
-[![Pod License](http://img.shields.io/cocoapods/l/Expecta.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+# Expecta [![Build Status](http://img.shields.io/travis/specta/expecta/master.svg?style=flat)](https://travis-ci.org/specta/expecta) [![Pod Version](http://img.shields.io/cocoapods/v/Expecta.svg?style=flat)](http://cocoadocs.org/docsets/Expecta/)
 
 A matcher framework for Objective-C and Cocoa.
 
-## Introduction
+## FEATURES
 
 The main advantage of using Expecta over other matcher frameworks is that you do not have to specify the data types. Also, the syntax of Expecta matchers is much more readable and does not suffer from parenthesitis.
 
@@ -18,63 +13,10 @@ expect([bar isBar]).to.equal(YES);
 expect(baz).to.equal(3.14159);
 ```
 
-Expecta is framework-agnostic: it works well with XCTest and XCTest-compatible test frameworks such as [Specta](http://github.com/petejkim/specta/).
+Expecta is framework-agnostic: it works well with XCTest and XCTest-compatible test frameworks such as [Specta](http://github.com/petejkim/specta/), or [Kiwi](https://github.com/kiwi-bdd/Kiwi/).
 
 
-## Installation
-
-You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [CocoaPods](http://github.com/CocoaPods/CocoaPods) or [completely manually](#setting-up-manually).
-
-### Carthage
-
-1. Add Expecta to your project's `Cartfile.private`:
-
-	```ruby
-	github "specta/expecta" "master"
-	```
-
-2. Run `carthage update` in your project directory.
-3. Drag the appropriate **Expecta.framework** for your platform (located in `Carthage/Build/`) into your application’s Xcode project, and add it to your test target(s).
-
-### CocoaPods
-
-1. Add Expecta to your project's `Podfile`:
-
-	```ruby
-	target :MyApp do
-	# Your app's dependencies
-	end
-
-	target :MyAppTests do
-	  pod 'Expecta', '~> 1.0.0'
-	end
-	```
-
-2. Run `pod update` or `pod install` in your project directory.
-
-### Setting Up Manually
-
-1. Clone Expecta from Github.
-2. Run `rake` in your project directory to build the frameworks and libraries.
-3. Add a Cocoa or Cocoa Touch Unit Testing Bundle target to your Xcode project if you don't already have one.
-4. For **OS X projects**, copy and add `Expecta.framework` in the `Products/osx` folder to your project's test target.
-
-   For **iOS projects**, copy and add `Expecta.framework` in the `Products/ios` folder to your project's test target.
-
-   You can also use `libExpecta.a` if you prefer to link Expecta as a static library — iOS 7.x and below require this.
-
-6. Add `-ObjC` and `-all_load` to the **Other Linker Flags** build setting for the test target in your Xcode project.
-7. You can now use Expecta in your test classes by adding the following import:
-
-	```objective-c
-	@import Expecta; // If you're using Expecta.framework
-
-	// OR
-
-	#import <Expecta/Expecta.h> // If you're using the static library, or the framework
-	```
-
-## Built-in Matchers
+## MATCHERS
 
 > `expect(x).to.equal(y);` compares objects or primitives x and y and passes if they are identical (==) or equivalent isEqual:).
 
@@ -132,13 +74,13 @@ You can setup Expecta using [Carthage](https://github.com/Carthage/Carthage), [C
 
 > `expect(x).to.match(y);` passes if an instance of NSString `x` matches regular expression (given as NSString) `y` one or more times.
 
-## Inverting Matchers
+### Inverting Matchers
 
 Every matcher's criteria can be inverted by prepending `.notTo` or `.toNot`:
 
 >`expect(x).notTo.equal(y);` compares objects or primitives x and y and passes if they are *not* equivalent.
 
-## Asynchronous Testing
+### Asynchronous Testing
 
 Every matcher can be made to perform asynchronous testing by prepending `.will`, `.willNot` or `after(...)`:
 
@@ -172,14 +114,14 @@ describe(@"Foo", ^{
 });
 ```
 
-## Forced Failing
+### Forced Failing
 
 You can fail a test by using the `failure` attribute. This can be used to test branching.
 
 > `failure(@"This should not happen");` outright fails a test.
 
 
-## Writing New Matchers
+### WRITING NEW MATCHERS
 
 Writing a new matcher is easy with special macros provided by Expecta. Take a look at how `.beKindOf()` matcher is defined:
 
@@ -246,7 +188,7 @@ EXPMatcherImplementationBegin(beKindOf, (Class expected)) {
 EXPMatcherImplementationEnd
 ```
 
-## Dynamic Predicate Matchers
+## DYNAMIC PREDICATE MATCHERS
 
 It is possible to add predicate matchers by simply defining the matcher interface, with the matcher implementation being handled at runtime by delegating to the predicate method on your object.
 
@@ -282,6 +224,68 @@ You can now write your assertion as follows:
 expect(lightSwitch).isTurnedOn();
 ```
 
+## INSTALLATION
+
+You can setup Expecta using [CocoaPods](http://github.com/CocoaPods/CocoaPods), [Carthage](https://github.com/Carthage/Carthage) or [completely manually](#setting-up-manually).
+
+### CocoaPods
+
+1. Add Expecta to your project's `Podfile`:
+
+```ruby
+target :MyApp do
+# your app dependencies
+
+  target :MyAppTests do
+    inherit! search_paths
+
+    pod 'Expecta', '~> 1.0'
+  end
+end
+```
+
+### Carthage
+
+1. Add Expecta to your project's `Cartfile.private`:
+
+	```ruby
+	github "specta/expecta" "master"
+	```
+
+2. Run `carthage update` in your project directory.
+3. Drag the appropriate **Expecta.framework** for your platform (located in `Carthage/Build/`) into your application’s Xcode project, and add it to your test target(s).
+
+
+2. Run `pod update` or `pod install` in your project directory.
+
+### Setting Up Manually
+
+1. Clone Expecta from Github.
+2. Run `rake` in your project directory to build the frameworks and libraries.
+3. Add a Cocoa or Cocoa Touch Unit Testing Bundle target to your Xcode project if you don't already have one.
+4. For **OS X projects**, copy and add `Expecta.framework` in the `Products/osx` folder to your project's test target.
+
+   For **iOS projects**, copy and add `Expecta.framework` in the `Products/ios` folder to your project's test target.
+
+   You can also use `libExpecta.a` if you prefer to link Expecta as a static library — iOS 7.x and below require this.
+
+6. Add `-ObjC` and `-all_load` to the **Other Linker Flags** build setting for the test target in your Xcode project.
+7. You can now use Expecta in your test classes by adding the following import:
+
+	```objective-c
+	@import Expecta; // If you're using Expecta.framework
+
+	// OR
+
+	#import <Expecta/Expecta.h> // If you're using the static library, or the framework
+	```
+
+## STATUS
+
+Expecta, and Specta are considered done projects, there are no plans for _active_ development on the project at the moment aside from ensuring future Xcode compatability.
+Therefore it is a stable dependency, but will not be moving into the Swift world. If you are looking for that, we recommend you consider [Quick](https://github.com/quick/quick) and [Nimble](https://github.com/quick/nimble).
+
+
 ## Contribution Guidelines
 
 * Please use only spaces and indent 2 spaces at a time.
@@ -290,4 +294,4 @@ expect(lightSwitch).isTurnedOn();
 
 ## License
 
-Copyright (c) 2012-2015 [Specta Team](https://github.com/specta?tab=members). This software is licensed under the [MIT License](http://github.com/specta/specta/raw/master/LICENSE).
+Copyright (c) 2012-2016 [Specta Team](https://github.com/specta?tab=members). This software is licensed under the [MIT License](http://github.com/specta/specta/raw/master/LICENSE).
